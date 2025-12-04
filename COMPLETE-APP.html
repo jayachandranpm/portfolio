@@ -1,0 +1,3280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EduElements - Complete App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Disable auto dark mode, require manual class
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF9933",
+                        "secondary": "#1ABC9C",
+                        "success": "#4CAF50",
+                        "background-light": "#F9F9F9",
+                        "text-primary": "#333333",
+                        "text-secondary": "#888888"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    }
+                }
+            }
+        }
+</script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: #e0e0e0;
+        }
+        body {
+            font-family: 'Lexend', sans-serif;
+            width: 100%;
+            max-width: 430px;
+            background: #f5f5f5;
+            overflow-x: hidden;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        /* Define background color classes */
+        .bg-background-light {
+            background-color: #F9F9F9 !important;
+        }
+        .bg-background-dark {
+            background-color: #1a1a1a !important;
+        }
+        
+        .app-screen { 
+            display: none; 
+            min-height: 100vh;
+            width: 100%;
+            max-width: 430px !important;
+            overflow-x: hidden !important;
+            background: #f5f5f5;
+            position: relative;
+        }
+        .app-screen > * {
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+        }
+        .app-screen img,
+        .app-screen div,
+        .app-screen section {
+            max-width: 100% !important;
+        }
+        
+        /* Ensure all inner containers don't overflow */
+        .app-screen .relative,
+        .app-screen > div {
+            max-width: 430px !important;
+            overflow-x: hidden !important;
+        }
+        
+        /* Ensure all content stays within bounds */
+        * {
+            box-sizing: border-box;
+        }
+        
+        /* Fix tab content to be within mobile layout */
+        .tab-content {
+            background: #f5f5f5 !important;
+            width: 100%;
+            max-width: 430px !important;
+            overflow-x: hidden;
+        }
+        
+        /* Fix all fixed position elements to stay within body width */
+        .fixed.bottom-0,
+        .fixed.inset-x-0,
+        .sticky.bottom-0,
+        nav.fixed,
+        nav[class*="fixed"],
+        div.fixed[class*="bottom"],
+        div.fixed.bottom-0,
+        div[class*="fixed"][class*="bottom"] {
+            position: fixed !important;
+            left: 0 !important;
+            right: 0 !important;
+            max-width: 430px !important;
+            width: 100%;
+            margin: 0 auto;
+            bottom: 0 !important;
+        }
+        
+        .fixed.inset-x-0 {
+            position: fixed !important;
+        }
+        
+        /* Keep sticky headers at top */
+        .sticky.top-0,
+        header.sticky {
+            max-width: 430px !important;
+            width: 100%;
+        }
+        
+        @media (min-width: 431px) {
+            /* On desktop, center all fixed elements within the mobile container */
+            .fixed.bottom-0,
+            .fixed.inset-x-0,
+            nav.fixed,
+            nav[class*="fixed"],
+            div.fixed[class*="bottom"],
+            div.fixed.bottom-0,
+            div[class*="fixed"][class*="bottom"] {
+                position: fixed !important;
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%) !important;
+                bottom: 0 !important;
+                max-width: 430px !important;
+            }
+            
+            /* Make sure body background is visible around mobile layout */
+            html {
+                background: #e0e0e0;
+            }
+        }
+        .app-screen.active { 
+            display: block !important; 
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Additional mobile view constraints */
+        @media (max-width: 430px) {
+            html {
+                background: #f5f5f5;
+            }
+            body {
+                box-shadow: none;
+            }
+        }
+        
+        /* Reduce bottom padding - only need space for navigation bar */
+        .pb-24 {
+            padding-bottom: 5rem !important; /* 80px - enough for nav bar */
+        }
+        
+        /* Fix modal positioning on desktop */
+        .fixed.inset-0 {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            max-width: 100vw !important;
+        }
+        
+        @media (min-width: 431px) {
+            .fixed.inset-0 {
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                max-width: 430px !important;
+            }
+        }
+        
+        /* Prevent horizontal scrolling globally */
+        html, body, .app-screen, .app-screen > div {
+            overflow-x: hidden !important;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Role Selection Screen -->
+<div id="role-select" class="app-screen active" style="background: linear-gradient(135deg, #FF9933 0%, #1ABC9C 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;">
+    <div class="text-center">
+        <span class="material-symbols-outlined" style="font-size: 100px; color: white; font-variation-settings: 'FILL' 1">school</span>
+        <h1 class="text-white text-5xl font-bold mt-4 mb-2">EduElements</h1>
+        <p class="text-white/90 text-lg mb-12">Choose Your Journey</p>
+        
+        <div class="space-y-4">
+            <button onclick="setRole('learner'); showScreen('screen-05-learner-home')" class="w-full bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all text-left">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-purple-500" style="background-image: url('https://i.pravatar.cc/300?img=12'); background-size: cover;"></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Learner</h2>
+                        <p class="text-gray-600">Jayachandran</p>
+                        <p class="text-primary font-bold text-sm"><span id="role-learner-credits">LC 12,500</span></p>
+                    </div>
+                </div>
+            </button>
+            
+            <button onclick="setRole('educator'); showScreen('screen-10-educator-dashboard')" class="w-full bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all text-left">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500" style="background-image: url('https://i.pravatar.cc/300?img=47'); background-size: cover;"></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Educator</h2>
+                        <p class="text-gray-600">Anjali</p>
+                        <p class="text-primary font-bold text-sm"><span id="role-educator-credits">TC 1,25,430</span></p>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Screen: 01_login.html -->
+<div id="screen-01-login" class="app-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden font-display" style='font-family: Lexend, "Noto Sans", sans-serif;'>
+<div class="flex flex-col items-center justify-start p-6 pt-16 w-full max-w-md mx-auto">
+<!-- Logo -->
+<div class="flex items-center justify-center gap-2 mb-8">
+<div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary">
+<span class="material-symbols-outlined text-4xl text-white">school</span>
+</div>
+<span class="text-3xl font-bold text-text-primary-light dark:text-text-primary-dark">EduElements</span>
+</div>
+<!-- Headline and Body Text -->
+<h1 class="text-text-primary-light dark:text-text-primary-dark tracking-light text-[32px] font-bold leading-tight px-4 text-center pb-3">Welcome Back!</h1>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-base font-normal leading-normal pb-8 px-4 text-center">Log in to continue your learning journey.</p>
+<!-- Phone Number Input -->
+<div class="flex max-w-full flex-wrap items-end gap-4 px-4 py-3 w-full">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-medium leading-normal pb-2">Phone Number</p>
+<div class="relative w-full">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+<span class="text-text-secondary-light dark:text-text-secondary-dark text-base">+91</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-text-primary-light dark:text-text-primary-dark dark:bg-[#2a2a2a] focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#ddd] dark:border-[#444] bg-white focus:border-primary h-14 placeholder:text-text-secondary-light pl-12 text-base font-normal leading-normal" placeholder="Enter your 10-digit number" type="tel" value=""/>
+</div>
+</label>
+</div>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark px-4 w-full -mt-2 mb-4">We will send a one-time password to this number.</p>
+<!-- Primary Button -->
+<div class="flex px-4 py-3 w-full">
+<button id="loginBtn" class="flex min-w-[84px] max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 flex-1 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity">
+<span class="truncate">Get OTP</span>
+</button>
+</div>
+<script>
+// Login redirects to learner home by default
+    document.getElementById('loginBtn').addEventListener('click', function() {
+        window.location.href = '05_learner_home.html';
+    });
+</script>
+<!-- Separator -->
+<div class="flex items-center w-full px-4 py-4">
+<div class="flex-grow h-px bg-[#ddd] dark:bg-[#444]"></div>
+<span class="flex-shrink px-4 text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark">OR</span>
+<div class="flex-grow h-px bg-[#ddd] dark:bg-[#444]"></div>
+</div>
+<!-- Social Login Button -->
+<div class="flex px-4 py-3 w-full">
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 flex-1 bg-white dark:bg-[#2a2a2a] text-text-primary-light dark:text-text-primary-dark text-base font-bold leading-normal tracking-[0.015em] border border-[#ddd] dark:border-[#444] hover:bg-[#f5f5f5] dark:hover:bg-[#333] transition-colors">
+<img alt="Google logo" class="w-5 h-5 mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD18FBpQkCdUhehfDKklto67PTOlglMnhKJuf89GcoedLCpp3MchV43u929Co7uciV9_0kUAwgMRDEyyZySo633aVrBBuSSwmOH6cYB0hG8-kpVrz5cgbBGhQOw5ZDobYBtjTvbGocI9BSDt0FcVM93kHTtgUEaZmyS-4jMQSH2Vl_-ebuDmwB-4NX_0OItJKjxzEOiNbSeTrjqDaQcwMTo3XaWBmrgI8uQtHy_ZRnoGlObxzG0doFT52tPDAVB3D_NsRb5MMrCPw"/>
+<span class="truncate">Continue with Google</span>
+</button>
+</div>
+<!-- Helper Text -->
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal py-6 px-4 text-center">
+    <a href="02_signup.html" class="font-medium text-primary hover:underline">Don't have an account? Sign up</a>
+</p>
+<!-- Legal Text -->
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark leading-normal px-4 text-center mt-auto pb-4">By continuing, you agree to our <a class="font-medium text-primary hover:underline" href="#">Terms of Service</a> and <a class="font-medium text-primary hover:underline" href="#">Privacy Policy</a>.</p>
+</div>
+</div>
+</div>
+
+<!-- Screen: 02_signup.html -->
+<div id="screen-02-signup" class="app-screen">
+<div class="relative flex min-h-screen w-full flex-col items-center bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark">
+<div class="flex w-full max-w-md flex-col px-4 pt-8 sm:px-6">
+<!-- App Logo -->
+<div class="flex items-center justify-center gap-2 pb-6 pt-4">
+<span class="material-symbols-outlined text-4xl text-primary">school</span>
+<span class="text-3xl font-bold tracking-tight text-text-primary-light dark:text-text-primary-dark">EduElements</span>
+</div>
+<!-- Headline and Body Text -->
+<h1 class="text-text-primary-light dark:text-text-primary-dark tracking-light text-3xl font-bold leading-tight px-4 text-center pb-2">Start Your Learning Journey</h1>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-base font-normal leading-normal pb-6 pt-1 px-4 text-center">Choose your role to begin:</p>
+<!-- Role Selector -->
+<div class="flex px-4 py-3">
+<div class="flex h-12 flex-1 items-center justify-center rounded-full bg-background-light dark:bg-background-dark/50 p-1.5 shadow-inner">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-full px-2 has-[:checked]:bg-primary has-[:checked]:shadow-md has-[:checked]:text-white text-text-secondary-light dark:text-text-secondary-dark text-sm font-medium leading-normal transition-colors duration-200">
+<span class="truncate">I am a Learner</span>
+<input checked="" class="invisible w-0" name="role-selector" type="radio" value="Learner"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-full px-2 has-[:checked]:bg-primary has-[:checked]:shadow-md has-[:checked]:text-white text-text-secondary-light dark:text-text-secondary-dark text-sm font-medium leading-normal transition-colors duration-200">
+<span class="truncate">I am an Educator</span>
+<input class="invisible w-0" name="role-selector" type="radio" value="Educator"/>
+</label>
+</div>
+</div>
+<!-- Google Sign-Up Button -->
+<div class="flex px-4 py-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 flex-1 bg-primary text-white gap-2 pl-5 text-base font-bold leading-normal tracking-[0.015em] shadow-md hover:opacity-90 transition-opacity">
+<div class="text-white" data-icon="GoogleLogo" data-size="24px" data-weight="regular">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.35 11.1H12.18v2.8h4.94c-.23 1.24-.87 2.2-1.74 2.85v2.25h2.89c1.69-1.56 2.68-3.88 2.68-6.9Z" fill="#FFC107"></path>
+<path d="M12.18 21.9c2.44 0 4.48-.8 5.97-2.18l-2.89-2.25c-.8.54-1.83.86-2.99.86-2.31 0-4.26-1.56-4.96-3.66H4.2v2.33C5.69 19.93 8.7 21.9 12.18 21.9Z" fill="#4CAF50"></path>
+<path d="M7.22 14.65c-.19-.54-.3-1.11-.3-1.7s.11-1.16.3-1.7V8.92H4.2C3.21 10.93 2.7 13.2 2.7 15.61c0 2.41.51 4.68 1.5 6.69l3.02-2.32Z" fill="#F44336"></path>
+<path d="M12.18 8.19c1.32 0 2.52.46 3.46 1.37l2.57-2.57C16.66 5.1 14.62 4.1 12.18 4.1c-3.48 0-6.49 1.97-7.98 4.82l3.02 2.33c.7-2.1 2.65-3.66 4.96-3.66Z" fill="#1976D2"></path>
+</svg>
+</div>
+<span class="truncate">Continue with Google</span>
+</button>
+</div>
+<!-- Divider -->
+<div class="flex items-center justify-center px-4 py-2">
+<div class="w-full flex-1 border-t border-[#ddd] dark:border-[#444]"></div>
+<span class="px-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">or continue with</span>
+<div class="w-full flex-1 border-t border-[#ddd] dark:border-[#444]"></div>
+</div>
+<!-- Phone Number Input -->
+<div class="flex w-full items-center gap-2 px-4 py-3">
+<div class="relative flex h-12 w-full flex-1 rounded-full bg-white dark:bg-[#2a2a2a] shadow-sm ring-1 ring-inset ring-[#ddd] dark:ring-[#444] focus-within:ring-2 focus-within:ring-primary">
+<div class="flex items-center pl-4 pr-2">
+<span class="text-base text-text-secondary-light dark:text-text-secondary-dark">+91</span>
+</div>
+<div class="h-full w-px bg-[#ddd] dark:bg-[#444]"></div>
+<input class="block w-full flex-1 border-0 bg-transparent py-1.5 pl-3 pr-4 text-text-primary-light dark:text-text-primary-dark placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark focus:ring-0 sm:text-sm sm:leading-6 rounded-r-full" placeholder="Your phone number" type="tel"/>
+</div>
+</div>
+<!-- OTP Button -->
+<div class="flex px-4 pb-8 pt-1">
+<button id="signupBtn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 flex-1 bg-secondary text-white gap-2 pl-5 text-base font-bold leading-normal tracking-[0.015em] hover:bg-secondary/90 transition-colors">
+<span class="truncate">Get OTP & Continue</span>
+</button>
+</div>
+<script>
+document.getElementById('signupBtn').addEventListener('click', function() {
+        const selectedRole = document.querySelector('input[name="role-selector"]:checked').value;
+        if (selectedRole === 'Educator') {
+            window.location.href = '04b_educator_onboarding.html';
+        } else {
+            window.location.href = '04_learner_onboarding.html';
+        }
+    });
+</script>
+<!-- Footer Links -->
+<div class="w-full flex-col items-center justify-center gap-2 px-4 py-4 text-center">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">
+                    By continuing, you agree to our
+                    <a class="font-semibold text-primary hover:underline" href="#">Terms of Service</a> and
+                    <a class="font-semibold text-primary hover:underline" href="#">Privacy Policy</a>.
+                </p>
+<p class="mt-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+                    Already have an account? <a class="font-bold text-primary hover:underline" href="01_login.html">Log In</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Screen: 03_welcome.html -->
+<div id="screen-03-welcome" class="app-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden" style='font-family: Lexend, "Noto Sans", sans-serif;'>
+<!-- Main Container -->
+<div class="flex flex-col h-full min-h-screen">
+<!-- Header Section -->
+<header class="p-6">
+<div class="flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl mr-2">school</span>
+<span class="font-display text-2xl font-bold text-text-primary-light dark:text-text-primary-dark">EduElements</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex flex-col grow px-6 pb-6">
+<!-- Hero Image -->
+<div class="flex-shrink-0 w-full mb-6">
+<div class="w-full bg-center bg-no-repeat bg-cover aspect-square rounded-xl" data-alt="Vibrant illustration of diverse Indian learners and educators interacting with digital devices, with floating reward icons like coins and trophies." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD35fOynKT1Uz_0uM1CoSZOwKze0B0OKuAIG-bjuoDEs4C2sHSoNtqbIsKzFL8v3UDqcMgK2W-Z0Y1tyxXMjhn8yznc2FtPVlj9kXWUY5SqlMteRmlybsBsocKYjzuquGpYr-TnNfO4z9dzz1TzRdFsERdw_cQJ5j6A1QZU081goLnn-tX7rMaqT1zvpqdcRXKGPYsQyreivwVOBwQ1TlGKU5ypOfDJd6tkBhSPi6ubP4sGJEijrn6NkAwJ3CaNR4to8x2Kl2Al6g");'></div>
+</div>
+<!-- Text Content -->
+<div class="flex flex-col items-center text-center mb-8">
+<h1 class="text-text-primary-light dark:text-text-primary-dark tracking-tight text-3xl font-bold leading-tight font-display">Learn Anything. Teach Anything. Earn Real Rewards.</h1>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-base font-normal leading-normal pt-2 font-display">India's first learning rewards marketplace.</p>
+</div>
+<!-- Spacer to push CTA to the bottom -->
+<div class="grow"></div>
+<!-- CTA and Social Proof -->
+<div class="flex-shrink-0">
+<p class="text-secondary text-sm font-medium leading-normal pb-3 text-center font-display">Join 50,000+ happy learners!</p>
+<a href="02_signup.html" class="block w-full">
+<button class="w-full bg-primary text-white font-display font-bold text-lg py-4 px-6 rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-200">Get Started</button>
+</a>
+<a class="block w-full text-center text-text-secondary-light dark:text-text-secondary-dark font-display font-medium text-base py-4 mt-2 hover:text-primary transition-colors" href="01_login.html">Already have an account? Log In</a>
+</div>
+</main>
+</div>
+</div>
+</div>
+
+<!-- Screen: 04_learner_onboarding.html -->
+<div id="screen-04-learner-onboarding" class="app-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden" style="max-width: 480px; margin: auto;">
+<div class="flex flex-col flex-1 justify-between p-6">
+<div class="flex-grow flex flex-col items-center justify-center text-center">
+<div class="@container w-full">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-xl min-h-80" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-LahyFQ6iByZMS_8p0ymiddPpGw0diyxhAUszYbpWIXtxYostPoZJKc5Olu5argdVRBxaEyJ2L7it8zJn01CvvMGu74UrxtQ0MPHWrvYgrU0s0fvmeNCO8W0Zln22yJJJUByJyX3-uwVoOiPnzTiLSgWTLWpqxzofCH_ejSwkB6_WhVk_G19yx9EcChoFZqqSn1RPMZu6pEIkseM-B5AoNeln89epJLpqURlFspaAQ2gxMbeEFlvZgxbsHDiSQnhh2d065ao2Vw");'></div>
+</div>
+<h1 class="text-text-primary-light dark:text-text-primary-dark tracking-tight text-[32px] font-bold leading-tight px-4 text-center pb-3 pt-6">Master New Skills</h1>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-base font-normal leading-normal pb-3 pt-1 px-4 text-center max-w-sm">Complete courses from a wide variety of categories to expand your knowledge and earn rewards.</p>
+<div class="flex w-full flex-row items-center justify-center gap-3 py-5">
+<div class="h-2 w-8 rounded-full bg-primary"></div>
+<div class="h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+<div class="h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+</div>
+</div>
+<div class="w-full">
+<div class="flex px-4 py-3">
+<a href="05_learner_home.html" class="w-full" onclick="event.preventDefault(); showScreen('screen-05-learner-home');">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 w-full bg-primary text-white text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Continue</span>
+</button>
+</a>
+</div>
+<div class="text-center py-2">
+<a class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-medium hover:text-primary" href="05_learner_home.html">Skip for now</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Screen: 04b_educator_onboarding.html -->
+<div id="screen-04b-educator-onboarding" class="app-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden">
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center">
+<span class="material-symbols-outlined text-text-primary-light dark:text-text-primary-dark text-3xl">school</span>
+</div>
+<h2 class="text-text-primary-light dark:text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1">EduElements</h2>
+<div class="flex w-12 items-center justify-end">
+<a href="10_educator_dashboard.html" class="text-primary text-base font-bold leading-normal tracking-[0.015em] shrink-0">Skip</a>
+</div>
+</header>
+<main class="flex-grow">
+<div class="px-4 py-3">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-[#E0F2F1] dark:bg-[#0D4742] rounded-lg min-h-60" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBBMHjD2mlRYK1EloGlMItAMJwvSVqnUAOVNl8RppRmNjAWS0BaR_h2MW_dxOUOuhz7YpzkJ_4UBOhfvYbNiMxrbfmO0ytvp53lH0HFyG13guY1y-ScyWapnX5tvBJ6GDio4P84PdvQaRDecFdVjPvWP_kklHk1lVhVWyFvl3KBpzuETzGE_LADY6hWZGUWVdMasC9JGkxglIIKOeeHiIrKS973OAHeht2Anyuo7RRpv9ohSrILbeEtTBi-g0nfRtIFrWgoVqX7sA");'></div>
+</div>
+<h1 class="text-text-primary-light dark:text-text-primary-dark tracking-light text-[32px] font-bold leading-tight px-4 text-center pb-3 pt-6">Empower Learners. Earn Rewards.</h1>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-base font-normal leading-normal pb-3 pt-1 px-6 text-center">Join EduElements and turn your expertise into professional growth.</p>
+<div class="flex w-full flex-row items-center justify-center gap-3 py-5">
+<div class="h-2.5 w-8 rounded-full bg-primary"></div>
+<div class="h-2.5 w-2.5 rounded-full bg-primary/20"></div>
+<div class="h-2.5 w-2.5 rounded-full bg-primary/20"></div>
+</div>
+<div class="flex flex-col gap-6 px-4 py-4">
+<div class="flex items-center gap-4">
+<div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-secondary/10">
+<span class="material-symbols-outlined text-secondary !text-4xl">auto_awesome</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">Craft Engaging Courses</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark mt-1 text-sm">Easily build and publish courses with our intuitive creation tools.</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-secondary/10">
+<span class="material-symbols-outlined text-secondary !text-4xl">toll</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">Earn Teaching Credits</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark mt-1 text-sm">Gain credits automatically when students complete your courses.</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-secondary/10">
+<span class="material-symbols-outlined text-secondary !text-4xl">redeem</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">Unlock Professional Rewards</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark mt-1 text-sm">Redeem for software, certifications, event tickets, and more.</p>
+</div>
+</div>
+</div>
+</main>
+<footer class="sticky bottom-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-4 pt-6 pb-8">
+<a href="10_educator_dashboard.html" class="block w-full">
+<button class="w-full bg-primary text-white font-bold py-4 px-6 rounded-lg text-lg">Start Creating Your First Course</button>
+</a>
+<p class="text-center text-text-secondary-light dark:text-text-secondary-dark mt-4">
+Already have an account? <a class="font-bold text-primary" href="01_login.html">Sign In</a>
+</p>
+</footer>
+</div>
+</div>
+
+<!-- Screen: 05_learner_home.html -->
+<div id="screen-05-learner-home" class="app-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-24">
+<!-- Top App Bar -->
+<header class="flex items-center bg-background-light p-4 justify-between sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://i.pravatar.cc/300?img=12");'></div>
+<div class="flex flex-col">
+<p class="text-text-secondary text-sm font-normal leading-tight">Hi, Jayachandran!</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-lg">diamond</span>
+<p class="text-text-primary text-base font-bold leading-tight tracking-[-0.015em]"><span id="learner-home-credits">LC 12,500</span></p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 w-12 bg-transparent text-text-primary gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+</div>
+</header>
+<!-- Spotlight Banner Carousel -->
+<div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+<div class="flex items-stretch p-4 gap-3">
+<div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-[300px] bg-primary/10 p-4">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBe2MtlEE7OnXR-6b8kEHn3xb_QGoWUfwzESvEbZh4DUXlYhxE6t_Vr76Vim6_Z_TtFFrbgJ0_BFPqRDFnWcX5Ync6Xb7JTF6UWfMU8fFl-Ps-OU3tnNde09iXWytfvtxzzA4d0YBnlCUSU5t6quC2Fxzsm7q_DQPeMe7aSnTpa2GvxSvCToylI6gBMf3gTQoUdxXLSqWWWEpEu1DeBCsyENn_39DYWDPtBsna47lBn5_7enKbOWYHCXnShVWjC4PKt1wTyVzmwXg");'></div>
+<div>
+<p class="text-text-primary text-base font-bold leading-normal">Trending Rewards</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">Redeem your credits now!</p>
+</div>
+</div>
+<div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-[300px] bg-secondary/10 p-4">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCR77MyO-mHYb5qNGyCAsYAOD6aNfYw61iA-dlKwIsGqNoIla_no5LVU6meeXI4RZPCMpYTrd0BXb7e_dmdVygtyad0azZyOi-8ok9OUSalobRX5lEUqyTIcLqDakBTTRsqV7twm82a3QSNOgXEZ8Uf2QgxwJwJfCUUUMEIgRC_5uJDFu6PGTQLWDnx_QO6VY40FfzDtvfpJqMPsdBGw-eT1QfTSSZkT5XtRwTmKOFYcCZcQDfawBZPRQ_mY1p7S0BEwinbHSUcLg");'></div>
+<div>
+<p class="text-text-primary text-base font-bold leading-normal">Featured: Learn AI in 30 Days</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">Start your journey into AI</p>
+</div>
+</div>
+<div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-[300px] bg-success/10 p-4">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBynf4zC9U1oVeTCdFGWqm0haaA4CScs0G2kupbesAl6Joq9Mwba_vnQ0TuXmcYa68zk092-pRJHL-yKETRlU1SScpm-irf6Jt5Jq9NL3OexYC7mDY7DzS3YV9X9UtRB8Lq_xh04Mdis6GdTm1zgR4tgi7_m1e1_7Q7qATMTrBZlkfHYIRxAdRbWdoCy-mwM8d6_B4Ij5fXjClN-3jC7DoxasZLbHbQ5S2-RQZmT5Tp1l1bv9lYh6BV4PtOIbkQRZ_MmjcsbbODfg");'></div>
+<div>
+<p class="text-text-primary text-base font-bold leading-normal">Weekend Learning Sprint</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">Earn double credits this weekend</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Daily Challenges Card -->
+<div class="px-4 py-2">
+<div class="flex flex-col items-stretch justify-start rounded-lg bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+<div class="flex w-full flex-col items-stretch justify-center gap-3 p-4">
+<p class="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em]">Your Daily Streak</p>
+<div class="flex flex-col gap-2">
+<p class="text-text-secondary text-base font-normal leading-normal">Complete 1 lesson and watch a 10-min video to earn 50 credits.</p>
+<div class="w-full bg-gray-200 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<a href="07_course_page.html"><button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary text-white text-base font-bold">
+<span>Start Challenge</span>
+</button></a>
+</div>
+</div>
+</div>
+<!-- Course Feed Section -->
+<h3 class="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Recommended For You</h3>
+<div class="px-4 py-2 @container">
+<a href="07_course_page.html"><div class="flex flex-col items-stretch justify-start rounded-lg bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)] overflow-hidden @xl:flex-row @xl:items-start">
+<div class="w-full bg-center bg-no-repeat aspect-[16/8] bg-cover @xl:w-1/3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfN1eCGg-WrTAswA_IVgn5QY3WztE63O14iE8gjQoCQP2XoVTC-OtvL13KiYJhSljrqNPH1cIafsiHCpXfQVTo8Rw5EOVNqLkxgBs9bRpGfgQkjrWChWtE5uuYxjGGW7wX_xp3DiPqNtzNjIfQuZ52W4QFO6_I8c3TFdYtDT6QEITH7yk23kKYJuA2fgWCNmJN-_zrDCjI9Fl1DWfdSUdj2rFbcl5z2i0tfHxdf0Vp-_4xO6K3myLNycGrfqKZ1QrLEdvBZtSBDA");'></div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-1 p-4">
+<p class="text-text-secondary text-sm font-normal leading-normal">Marketing</p>
+<p class="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em]">Digital Marketing Masterclass</p>
+<div class="flex items-end gap-3 justify-between mt-2">
+<div class="flex flex-col gap-1">
+<p class="text-primary text-base font-bold leading-normal flex items-center gap-1"><span class="material-symbols-outlined text-lg">diamond</span> Earn up to 500</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">4.5 ★ | 2h 30m</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 px-4 bg-primary/10 text-primary text-sm font-bold leading-normal">
+<span class="truncate">View Course</span>
+</button>
+</div>
+</div>
+</div></a>
+</div>
+<h3 class="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Rewards You Might Like</h3>
+<div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+<div class="flex items-stretch px-4 pb-4 gap-3">
+<a href="12_reward_store.html"><div class="flex flex-col gap-2 rounded-lg min-w-40 bg-white p-3 shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-contain rounded-md" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnvxENxusfztecPkw-IGp1gbrL1LIcxF_qz6TganQ_x5X2DTKR0Y-jq06atqs7PvmXsBAv7YRLdbE7KoLXMDuWAClSN0c-ttTLWlpYiM0Ozx5_WXYoIF4lC_gsUD_pU_uxi5yE9Al_xTrHxo0RYCvgRYd1e2tO6P9AXlDXJ5QY8flGAUg5sM-mOTczqQaItDVvwU_SJ8l5os_vujW5PDY_4LR4HjuE6KyH07KSLEuRwi0jCBAoyf6Ha_HOSwsoLhDIiSQ152kmEg");'></div>
+<div class="text-center">
+<p class="text-text-primary text-sm font-bold leading-normal">₹100 Off Voucher</p>
+<p class="text-primary text-sm font-medium leading-normal flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">diamond</span> 800</p>
+</div>
+</div></a>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around p-2">
+<a href="05_learner_home.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary" onclick="event.preventDefault(); showScreen('screen-05-learner-home');"><span class="material-symbols-outlined">home</span>
+<span class="text-xs font-bold">Home</span>
+</a>
+<a href="06_course_library.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-06-course-library');">
+<span class="material-symbols-outlined">school</span>
+<span class="text-xs font-medium">Courses</span>
+</a>
+<a href="12_reward_store.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-12-reward-store');">
+<span class="material-symbols-outlined">card_giftcard</span>
+<span class="text-xs font-medium">Rewards</span>
+</a>
+<a href="09_learner_profile.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-09-learner-profile');">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</a>
+</nav>
+</div>
+</div>
+
+<!-- Screen: 06_course_library.html -->
+<div id="screen-06-course-library" class="app-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden pb-24">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-gray-800 dark:text-gray-200" style="font-size: 28px;">menu</span>
+</div>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Explore Courses</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-gray-800 dark:text-gray-200 gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full">
+<div class="text-gray-500 dark:text-gray-400 flex border-none bg-white dark:bg-gray-800 items-center justify-center pl-4 rounded-l-full border-r-0">
+<span class="material-symbols-outlined" style="font-size: 24px;">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-full text-gray-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-white dark:bg-gray-800 focus:border-none h-full placeholder:text-gray-500 dark:placeholder:text-gray-400 px-4 pl-2 text-base font-normal leading-normal" placeholder="Search for courses, subjects..." value=""/>
+</div>
+</label>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-3 px-4 py-2 overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 dark:bg-primary/30 px-4">
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">All</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-gray-800 px-4">
+<p class="text-gray-800 dark:text-gray-300 text-sm font-medium leading-normal">Tech</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-gray-800 px-4">
+<p class="text-gray-800 dark:text-gray-300 text-sm font-medium leading-normal">Business</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-gray-800 px-4">
+<p class="text-gray-800 dark:text-gray-300 text-sm font-medium leading-normal">Design</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-gray-800 px-4">
+<p class="text-gray-800 dark:text-gray-300 text-sm font-medium leading-normal">Arts</p>
+</button>
+<button class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white dark:bg-gray-800">
+<span class="material-symbols-outlined text-gray-800 dark:text-gray-300" style="font-size: 24px;">tune</span>
+</button>
+</div>
+<!-- Section Header -->
+<h3 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Trending Courses</h3>
+<!-- Carousel -->
+<div class="flex overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+<div class="flex items-stretch p-4 gap-4">
+<a href="07_course_page.html"><div class="flex h-full flex-1 flex-col gap-3 rounded-lg bg-white dark:bg-gray-800 shadow-sm min-w-64">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5SSSFYEqn_Z97qnyAhmwx_W_2aOY9UdomAPjwcwZJUu3I-vRZsITR-EEfG07Eh_T14FPHvngJjBqCoJcD6yQi_poQD2j5FkxogvHsHytZIO095umWeOt127pLY4bp7ZVL88iA-nfxoV4mdblWmD9EJGMG1RlhKqER4oBnpNXzHzI1Nn9jU4T34Lxa4Pqr730vNWW_ZpQeiAp9U0_7-rhKIOM-dFEnTM-sV1on6hSX4oMifwfiIkEUQnwkhP94ZOL0JnHgCSPYkg");'></div>
+<div class="flex flex-col flex-1 justify-between p-3 pt-0 gap-3">
+<div>
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal">Python for Beginners</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">By Priya Sharma</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Enroll Now</span>
+</button>
+</div>
+</div></a>
+<a href="07_course_page.html"><div class="flex h-full flex-1 flex-col gap-3 rounded-lg bg-white dark:bg-gray-800 shadow-sm min-w-64">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_0wDc1wEOtf5HQMEvvObLsbbE4-bCrZwQIKEQGvd_fsXL5O-7ByTLMpg7HLY5JraXEwYm1IFQ0brSbOTMBRkki7UysiSR5gssDrU8ZplWIVxHGorISbN0iTGOLMPLMwwvUMvAIBe0FRZrQZ5Aly-Yaq206eT0Wsj279C4OLGtzgpcUK1Ohcp6WIlhAiPeT6R0vxD3YGxR8cYk2PeRr5WwRlTEoYYHki04H0lXMbumsvRkcJYwmXjxPB_ILFp-dVPXFBGXQhMx6Q");'></div>
+<div class="flex flex-col flex-1 justify-between p-3 pt-0 gap-3">
+<div>
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal">Digital Art Fundamentals</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">By Rohan Das</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Enroll Now</span>
+</button>
+</div>
+</div></a>
+</div>
+</div>
+<!-- Section Header -->
+<h3 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">All Courses</h3>
+<!-- Course Grid -->
+<div class="grid grid-cols-2 gap-4 p-4 pb-24">
+<!-- Course Cards -->
+<a href="07_course_page.html"><div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4isVKn4ZNi1YzFIJXJKjW9IzyNT3HGfO0xbsos1q8fc6HQqTOD1pHzlpZ4se8U2awdj3d_aOpYdpqY8W5TC0z3UtKvhpV7FCmh_oDCGNheNsqogemb8jD9tCaKAKHOdCUx1dICm_zNwSXglFyMF6sHgwQjlzK5sxgnE8dqGiTN_LGhw44qiB3qcqtWZ0TRdfioqaInraYPehI4Ma1dDSCNocusz64EMaRCiN3LQzsv_nJKet2NhAaSTiXYe06F6XzgVuL-rfAKw");'></div>
+<div class="flex flex-col p-3 pt-1">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal truncate">Advanced Javascript</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">By Anjali Mehta</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined icon-filled text-accent" style="font-size: 16px;">star</span>
+<p class="text-gray-600 dark:text-gray-300 text-sm font-medium">4.8</p>
+</div>
+<div class="flex items-center gap-1.5 mt-2 rounded-full bg-accent/20 dark:bg-accent/30 px-2 py-1 self-start">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">diamond</span>
+<p class="text-primary text-sm font-bold">+500</p>
+</div>
+</div>
+</div></a>
+<a href="07_course_page.html"><div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_6lRBoj_YrQeyESTlFEC60od-z55DB2yxgOBpkKa9xL23tGT8MIagbpY2-4yDhsWVdjPIPym0S8hxLFX1wwPFrXg_YltrQ4HNE7Eza5k-dVU1nJ3hA33b-0QAi5jyql7qgJSqO_Y1I4OwUpSfaKTHkpb52pmOIrQ-B3RcbzZ8bACzBJddhbKRzyfIZsePtIH4NRF3eOc-LmQRphEokUeRnCu8U8oraD8AhNdgyrVbwdbvUxyeSMr7Q6LGo7rDXZQCFSirQItywg");'></div>
+<div class="flex flex-col p-3 pt-1">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal truncate">Watercolor Painting</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">By Aisha Khan</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined icon-filled text-accent" style="font-size: 16px;">star</span>
+<p class="text-gray-600 dark:text-gray-300 text-sm font-medium">4.5</p>
+</div>
+<div class="flex items-center gap-1.5 mt-2 rounded-full bg-accent/20 dark:bg-accent/30 px-2 py-1 self-start">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">diamond</span>
+<p class="text-primary text-sm font-bold">+350</p>
+</div>
+</div>
+</div></a>
+<a href="07_course_page.html"><div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDUX4y54HzmqDtB8KoWwk9HB9h6hvxZzwDVx--STIXVezeiD1_S0MypRxVTnH_SD9nSXllhOEwpPm-Iysk1QPK06qjpC2_sFWH-zDQoJ_c-RdZseZCRz4EdQLaqXTeryD3j62Kb_fqBv4ybexFFJAmLGW8qv7RI5aIfcnYdcxBVmnA7NQQlxqh4yp4_I8-Wa4WHN5PCHsA5OMt8psVwyLLIJUwyVowfPwliPbvCmoyDZmHf_SnGf93ey1yQHvoW2TUXMDWQtPR7eA");'></div>
+<div class="flex flex-col p-3 pt-1">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal truncate">Stock Market 101</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">By Vikram Singh</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined icon-filled text-accent" style="font-size: 16px;">star</span>
+<p class="text-gray-600 dark:text-gray-300 text-sm font-medium">4.9</p>
+</div>
+<div class="flex items-center gap-1.5 mt-2 rounded-full bg-accent/20 dark:bg-accent/30 px-2 py-1 self-start">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">diamond</span>
+<p class="text-primary text-sm font-bold">+700</p>
+</div>
+</div>
+</div></a>
+<a href="07_course_page.html"><div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCyV8WYKqozfI9BU9pc5vUyfzTdG9brfTllhjqAjdugk9bDvv9Jg7H3HkmRccVLuAKM95shQT5dkFWBopL8WfUPNbj8NjBkspATotqXGyyYho-J0N80b-VLXp3Q4OJzqokrgjfbyrHcTL-WyN-z7ITG9qQC71rJ_QPP_mBXa31s--K36yQDTI1XWTdBhP0yqEasO4XSRmcEVhYDB4EuhIaYAZtnOdLpprSCjqaDAzIdWV6HJivW2JW1aJtCI7bqJXZuU9QzZgENDQ");'></div>
+<div class="flex flex-col p-3 pt-1">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal truncate">Guitar for Beginners</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">By Rohan Das</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined icon-filled text-accent" style="font-size: 16px;">star</span>
+<p class="text-gray-600 dark:text-gray-300 text-sm font-medium">4.7</p>
+</div>
+<div class="flex items-center gap-1.5 mt-2 rounded-full bg-accent/20 dark:bg-accent/30 px-2 py-1 self-start">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">diamond</span>
+<p class="text-primary text-sm font-bold">+400</p>
+</div>
+</div>
+</div></a>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around p-2">
+<a href="05_learner_home.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary" onclick="event.preventDefault(); showScreen('screen-05-learner-home');"><span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a href="06_course_library.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary" onclick="event.preventDefault(); showScreen('screen-06-course-library');">
+<span class="material-symbols-outlined">school</span>
+<span class="text-xs font-bold">Courses</span>
+</a>
+<a href="12_reward_store.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-gray-600" onclick="event.preventDefault(); showScreen('screen-12-reward-store');">
+<span class="material-symbols-outlined">card_giftcard</span>
+<span class="text-xs font-medium">Rewards</span>
+</a>
+<a href="09_learner_profile.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-gray-600" onclick="event.preventDefault(); showScreen('screen-09-learner-profile');">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</a>
+</nav>
+</div>
+</div>
+
+<!-- Screen: 07_course_page.html -->
+<div id="screen-07-course-page" class="app-screen">
+<div class="relative min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden antialiased text-text-primary">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-20 flex items-center bg-background-light/80 p-4 pb-2 justify-between backdrop-blur-sm">
+<a href="06_course_library.html" onclick="event.preventDefault(); showScreen('screen-06-course-library');"><button class="flex items-center justify-center size-10 rounded-full">
+<span class="material-symbols-outlined text-text-primary text-2xl">arrow_back</span>
+</button></a>
+<h2 class="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Course Details</h2>
+<button class="flex items-center justify-center size-10 rounded-full">
+<span class="material-symbols-outlined text-text-primary text-2xl">share</span>
+</button>
+</div>
+<!-- Media Player -->
+<div class="px-4">
+<div class="relative flex items-center justify-center bg-gradient-to-br from-primary to-secondary bg-cover bg-center aspect-video rounded-lg overflow-hidden">
+<button class="flex shrink-0 items-center justify-center rounded-full size-16 bg-black/40 text-white hover:bg-black/60 transition-colors">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Headline Text -->
+<h1 class="text-text-primary tracking-tight text-[28px] font-bold leading-tight px-4 text-left pb-1 pt-6">Learn UI Design Fundamentals</h1>
+<!-- Educator Snippet -->
+<div class="flex items-center gap-3 px-4 py-2">
+<img class="size-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7zjdxM4trZqVFtaS7sESKeJBa0id1o4uFQqCq7C7ABxTK7Sg4Sjzr81E0-DbyVixqgC6bvTP0Q6MotM1iA-p6-vaEA1GvOBEKhWt9BX4vcAbWePQu7YABYD9xg4nY6bggGztnnM_ydRKpONGR8gC0OyVf5bkUXGLyFZpL2Xs89CTYnCiMeifB5cBWs5chcaG7q1QB8JlTqh_OOLXudoO5u8f7QibQyCrqqBRwz1GgXWsyHTzOe308BlvCcEctiIXUmjm_qnTq0A"/>
+<div>
+<p class="font-bold text-text-primary">Rohan Sharma</p>
+<p class="text-sm text-text-secondary">Lead UI/UX Designer @ TechNova</p>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-2 p-4">
+<div class="flex gap-6 justify-between"><p class="text-text-primary text-base font-medium leading-normal">35% complete</p></div>
+<div class="rounded-full bg-gray-200 h-2"><div class="h-2 rounded-full bg-primary" style="width: 35%;"></div></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-lg">diamond</span>
+<p class="text-primary text-sm font-medium leading-normal">Earn 50 Coins on completion</p>
+</div>
+</div>
+<!-- Feature Icons Grid -->
+<div class="grid grid-cols-2 gap-3 p-4 pt-2">
+<div class="flex flex-1 gap-3 rounded-lg border border-gray-200 bg-white p-4 items-center">
+<span class="material-symbols-outlined text-text-primary text-2xl">workspace_premium</span>
+<h2 class="text-text-primary text-sm font-bold leading-tight">Certificate</h2>
+</div>
+<div class="flex flex-1 gap-3 rounded-lg border border-gray-200 bg-white p-4 items-center">
+<span class="material-symbols-outlined text-text-primary text-2xl">download_for_offline</span>
+<h2 class="text-text-primary text-sm font-bold leading-tight">Offline Access</h2>
+</div>
+</div>
+<!-- Tab Navigation -->
+<div class="px-4 py-4">
+<div class="flex w-full items-center justify-between rounded-full bg-gray-200 p-1">
+<button class="flex-1 rounded-full px-4 py-2 text-center text-sm font-semibold bg-primary text-white">Lessons</button>
+<button class="flex-1 rounded-full px-4 py-2 text-center text-sm font-semibold text-text-secondary">Syllabus</button>
+<button class="flex-1 rounded-full px-4 py-2 text-center text-sm font-semibold text-text-secondary">Reviews</button>
+</div>
+</div>
+<!-- Lesson List Section -->
+<div class="flex flex-col gap-3 px-4 pb-32">
+<div class="flex items-center gap-4 rounded-lg bg-white p-3 shadow-sm">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-success/20 text-success">
+<span class="material-symbols-outlined text-2xl">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-sm text-text-secondary">Lesson 01</p>
+<h3 class="font-bold text-text-primary">Introduction to UI</h3>
+</div>
+<p class="text-sm text-text-secondary">12 min</p>
+<span class="material-symbols-outlined text-text-secondary text-2xl">download_done</span>
+</div>
+<div class="flex items-center gap-4 rounded-lg bg-white p-3 shadow-sm">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-2xl">play_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-sm text-text-secondary">Lesson 02</p>
+<h3 class="font-bold text-text-primary">Design Principles</h3>
+</div>
+<p class="text-sm text-text-secondary">25 min</p>
+<span class="material-symbols-outlined text-text-secondary text-2xl">download</span>
+</div>
+<div class="flex items-center gap-4 rounded-lg bg-white p-3 shadow-sm opacity-50">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-gray-200 text-gray-500">
+<span class="material-symbols-outlined text-2xl">quiz</span>
+</div>
+<div class="flex-1">
+<p class="text-sm text-text-secondary">Quiz 01</p>
+<h3 class="font-bold text-text-primary">Knowledge Check</h3>
+</div>
+<p class="text-sm text-text-secondary">10 min</p>
+<span class="material-symbols-outlined text-text-secondary text-2xl">lock</span>
+</div>
+<div class="flex items-center gap-4 rounded-lg bg-white p-3 shadow-sm opacity-50">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-gray-200 text-gray-500">
+<span class="material-symbols-outlined text-2xl">play_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-sm text-text-secondary">Lesson 03</p>
+<h3 class="font-bold text-text-primary">Color Theory</h3>
+</div>
+<p class="text-sm text-text-secondary">18 min</p>
+<span class="material-symbols-outlined text-text-secondary text-2xl">lock</span>
+</div>
+</div>
+<!-- Sticky CTA Button -->
+<div class="fixed inset-x-0 bottom-0 z-20 bg-background-light/80 p-4 backdrop-blur-sm">
+<button class="flex w-full items-center justify-center rounded-full bg-primary py-4 px-6 text-lg font-bold text-white shadow-lg hover:bg-primary/90 transition-colors">
+<span>Continue Lesson</span>
+<span class="material-symbols-outlined ml-2">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Screen: 08_learning_dashboard.html -->
+<div id="screen-08-learning-dashboard" class="app-screen">
+<div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col group/design-root overflow-x-hidden pb-24 bg-background-light">
+<!-- Top App Bar -->
+<div class="flex flex-col gap-2 bg-white p-4 pb-2 sticky top-0 z-10">
+<div class="flex items-center h-12 justify-between">
+<div class="flex size-12 shrink-0 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7R_H3LQydN3kV4Waqc2S4-wKPLVxEEiqqJg0rf2G2ZCU3xKBXLbbOWPWEceaLN2tkKcHdPuCJUrCNIbv_nqzevu9_3Ok2tJR22kqlAJ-1Ru8AS0JKU3bmJq9DnOuUrFE816SHSBAg3mVxnrhHhpvOsIb65ZuibyIZJ9hm6974fzsay3xM5cYEmCtRNulSY-mB6eMVQ7rbEigXr-oh5iIlQbFxNX_jgLnh_jKMltwjE9K_nvjSJhAVmv6wjhfKi0zlOEyLllaT6w");'></div>
+</div>
+<div class="flex w-12 items-center justify-end">
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+<p class="text-text-primary tracking-light text-[28px] font-bold leading-tight">Welcome back, Jayachandran!</p>
+</div>
+<!-- EduCoins Display -->
+<div class="flex flex-col items-center justify-center p-4">
+<div class="relative w-48 h-48 flex items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary shadow-lg">
+<div class="absolute inset-0 rounded-full border-4 border-primary/50 animate-pulse"></div>
+<div class="flex flex-col items-center">
+<h1 class="text-white tracking-light text-[40px] font-bold leading-tight"><span id="dashboard-credits">12,500</span></h1>
+<p class="text-yellow-200 text-sm font-normal leading-normal -mt-1">Your EduCoins</p>
+</div>
+</div>
+</div>
+<!-- Learning Streak Card -->
+<div class="p-4 pt-2">
+<div class="flex flex-col items-stretch justify-start rounded-lg bg-white p-4 shadow-sm">
+<div class="flex w-full flex-col items-stretch justify-center gap-2">
+<p class="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em]">🔥 15 Day Streak!</p>
+<p class="text-text-secondary text-base font-normal leading-normal">You're on fire! Keep it up to unlock new rewards.</p>
+<div class="flex items-center gap-2 mt-2">
+<div class="flex size-8 items-center justify-center rounded-full bg-primary text-white font-bold">M</div>
+<div class="flex size-8 items-center justify-center rounded-full bg-primary text-white font-bold">T</div>
+<div class="flex size-8 items-center justify-center rounded-full bg-primary text-white font-bold">W</div>
+<div class="flex size-8 items-center justify-center rounded-full bg-gray-200 border border-dashed border-gray-400 text-gray-500 font-bold">Th</div>
+<div class="flex size-8 items-center justify-center rounded-full bg-primary text-white font-bold">F</div>
+<div class="flex size-8 items-center justify-center rounded-full bg-primary text-white font-bold">Sa</div>
+<div class="flex size-8 items-center justify-center rounded-full bg-gray-200 border border-dashed border-gray-400 text-gray-500 font-bold">Su</div>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA Buttons -->
+<div class="grid grid-cols-2 gap-4 px-4">
+<a href="07_course_page.html"><button class="flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-base font-bold text-white shadow-sm">Continue Learning</button></a>
+<a href="12_reward_store.html"><button class="flex w-full items-center justify-center rounded-lg bg-primary/20 px-4 py-3 text-base font-bold text-primary">Redeem Rewards</button></a>
+</div>
+<!-- Section Header: Courses in Progress -->
+<h2 class="text-text-primary text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-6">Courses in Progress</h2>
+<!-- Course Cards -->
+<div class="px-4 pb-4">
+<a href="07_course_page.html"><div class="flex items-center gap-4 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex-shrink-0">
+<div class="w-16 h-16 rounded-lg bg-center bg-cover" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAP7yxoQuF1aNuFFU6uD7ULmRbsJtS-hVreLQ09OjbIGeoQiF99nPoIYbYMUDPpvU0QzOWf6XNYYfyzRE223-S_s_OT2Bb6Tb97uGHb1THhCT9VNDeQLaiGIH0PscgieGKMk-EeAon-ZqM50VtPZ5uw34vAWd_qVSS-tWFKewcExQduL1V0a0aizroXkU-ndGdV1oz5GoFVlqgLOHUdt7LH1Iv2w0I6KM1DtXsnS8TDuGQvwgvV7OgZjZUk1cVC4k1zwf8tZT2ubg');"></div>
+</div>
+<div class="flex-grow">
+<p class="font-bold text-text-primary">Advanced UI/UX Design</p>
+<p class="text-sm text-text-secondary pb-2">Chapter 3: Prototyping</p>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-success h-2 rounded-full" style="width: 75%"></div>
+</div>
+</div>
+</div></a>
+</div>
+<!-- Section Header: Achievements -->
+<h2 class="text-text-primary text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-2">Achievements</h2>
+<!-- Achievements Grid -->
+<div class="px-4 pb-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col items-center justify-center text-center p-4 rounded-lg bg-white shadow-sm">
+<span class="material-symbols-outlined text-yellow-500 mb-2" style="font-size: 40px;">workspace_premium</span>
+<p class="font-bold text-text-primary text-sm">Course Completer</p>
+<p class="text-xs text-text-secondary">Finish 1st course</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-4 rounded-lg bg-white shadow-sm">
+<span class="material-symbols-outlined text-yellow-500 mb-2" style="font-size: 40px;">school</span>
+<p class="font-bold text-text-primary text-sm">Quiz Master</p>
+<p class="text-xs text-text-secondary">Ace 5 quizzes</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-4 rounded-lg bg-white/50 opacity-60">
+<span class="material-symbols-outlined text-gray-400 mb-2" style="font-size: 40px;">local_fire_department</span>
+<p class="font-bold text-text-primary text-sm">Hot Streak</p>
+<p class="text-xs text-text-secondary">7-day streak</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-4 rounded-lg bg-white/50 opacity-60">
+<span class="material-symbols-outlined text-gray-400 mb-2" style="font-size: 40px;">military_tech</span>
+<p class="font-bold text-text-primary text-sm">Perfect Score</p>
+<p class="text-xs text-text-secondary">100% on a test</p>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around p-2">
+<a href="05_learner_home.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary" onclick="event.preventDefault(); showScreen('screen-05-learner-home');"><span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a href="06_course_library.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-gray-600" onclick="event.preventDefault(); showScreen('screen-06-course-library');">
+<span class="material-symbols-outlined">school</span>
+<span class="text-xs font-medium">Courses</span>
+</a>
+<a href="08_learning_dashboard.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary" onclick="event.preventDefault(); showScreen('screen-08-learning-dashboard');">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-xs font-bold">Dashboard</span>
+</a>
+<a href="09_learner_profile.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-gray-600" onclick="event.preventDefault(); showScreen('screen-09-learner-profile');">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</a>
+</nav>
+</div>
+</div>
+
+<!-- Screen: 09_learner_profile.html -->
+<div id="screen-09-learner-profile" class="app-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden pb-24">
+<!-- Top App Bar -->
+<div class="flex items-center bg-white p-4 pb-2 justify-between sticky top-0 z-10 border-b border-gray-200">
+<a href="05_learner_home.html" onclick="event.preventDefault(); showScreen('screen-05-learner-home');"><button class="flex size-12 shrink-0 items-center text-text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button></a>
+<h2 class="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Profile</h2>
+<a href="18_app_settings.html" onclick="event.preventDefault(); showScreen('screen-18-app-settings');"><button class="flex w-12 items-center justify-end">
+<span class="material-symbols-outlined text-text-primary">settings</span>
+</button></a>
+</div>
+<!-- Profile Header -->
+<div class="flex p-4 bg-white">
+<div class="flex w-full flex-col gap-4 items-center">
+<div class="flex gap-4 flex-col items-center">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32 border-4 border-primary" style='background-image: url("https://i.pravatar.cc/300?img=12");'></div>
+<div class="absolute bottom-0 right-0 flex items-center justify-center size-8 bg-secondary rounded-full border-2 border-white">
+<span class="material-symbols-outlined text-white" style="font-size: 16px;">military_tech</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center">
+<p class="text-text-primary text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">Jayachandran</p>
+<p class="text-text-secondary text-base font-normal leading-normal text-center">@jayachandran</p>
+</div>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-gray-100 text-text-primary text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px]">
+<span class="truncate">Edit Profile</span>
+</button>
+</div>
+</div>
+<!-- Stats -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-white border border-gray-200">
+<p class="text-text-secondary text-xs font-medium leading-tight flex items-center gap-2 whitespace-nowrap"><span class="material-symbols-outlined text-primary" style="font-size: 20px;">diamond</span> Total Credits</p>
+<p class="text-primary tracking-light text-3xl font-bold leading-tight"><span id="profile-credits">12,500</span></p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-white border border-gray-200">
+<p class="text-text-secondary text-xs font-medium leading-tight flex items-center gap-2 whitespace-nowrap"><span class="material-symbols-outlined text-secondary" style="font-size: 20px;">school</span> Courses Done</p>
+<p class="text-secondary tracking-light text-3xl font-bold leading-tight">15</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-3 bg-background-light sticky top-[72px] z-10">
+<div class="flex border-b border-gray-200 px-4 justify-between bg-white">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Courses</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-text-secondary pb-[13px] pt-4 flex-1" href="12_reward_store.html?role=learner">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Rewards</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-text-secondary pb-[13px] pt-4 flex-1" href="15_referral_link.html">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Referrals</p>
+</a>
+</div>
+</div>
+<!-- List Items (Courses Section) -->
+<div class="flex flex-col gap-px p-4 pt-2 pb-24">
+<div class="flex gap-4 bg-white px-4 py-3 justify-between rounded-t-lg">
+<div class="flex items-start gap-4">
+<div class="text-text-primary flex items-center justify-center rounded-lg bg-gray-100 shrink-0 size-12">
+<span class="material-symbols-outlined">code</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-text-primary text-base font-medium leading-normal">Advanced Python Programming</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">Completed: 15 Oct 2023</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">by CodeMasters Academy</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-primary text-base font-bold leading-normal">+250</p>
+</div>
+</div>
+<div class="flex gap-4 bg-white px-4 py-3 justify-between">
+<div class="flex items-start gap-4">
+<div class="text-text-primary flex items-center justify-center rounded-lg bg-gray-100 shrink-0 size-12">
+<span class="material-symbols-outlined">computer</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-text-primary text-base font-medium leading-normal">Data Structures in Java</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">Completed: 02 Sep 2023</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">by Algorithmic U</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-primary text-base font-bold leading-normal">+300</p>
+</div>
+</div>
+<div class="flex gap-4 bg-white px-4 py-3 justify-between rounded-b-lg">
+<div class="flex items-start gap-4">
+<div class="text-text-primary flex items-center justify-center rounded-lg bg-gray-100 shrink-0 size-12">
+<span class="material-symbols-outlined">design_services</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-text-primary text-base font-medium leading-normal">UI/UX Design Fundamentals</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">Completed: 21 Aug 2023</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">by Creative Canvas</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-primary text-base font-bold leading-normal">+150</p>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around p-2">
+<a href="05_learner_home.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary" onclick="event.preventDefault(); showScreen('screen-05-learner-home');"><span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a href="06_course_library.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-gray-600" onclick="event.preventDefault(); showScreen('screen-06-course-library');">
+<span class="material-symbols-outlined">school</span>
+<span class="text-xs font-medium">Courses</span>
+</a>
+<a href="12_reward_store.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-gray-600" onclick="event.preventDefault(); showScreen('screen-12-reward-store');">
+<span class="material-symbols-outlined">card_giftcard</span>
+<span class="text-xs font-medium">Rewards</span>
+</a>
+<a href="09_learner_profile.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary" onclick="event.preventDefault(); showScreen('screen-09-learner-profile');">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-bold">Profile</span>
+</a>
+</nav>
+</div>
+</div>
+
+<!-- Screen: 10_educator_dashboard.html -->
+<div id="screen-10-educator-dashboard" class="app-screen">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden text-text-primary pb-24">
+<!-- Top App Bar -->
+<div class="flex flex-col gap-2 p-4 pb-2 bg-background-light">
+<div class="flex h-12 items-center justify-between">
+<div class="flex size-12 shrink-0 items-center">
+<div class="aspect-square size-10 rounded-full bg-cover bg-center bg-no-repeat" style='background-image: url("https://i.pravatar.cc/300?img=47");'></div>
+</div>
+<div class="flex w-12 items-center justify-end">
+<button class="flex h-12 cursor-pointer items-center justify-center rounded-full bg-transparent">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+<p class="tracking-light text-[28px] font-bold leading-tight">Welcome back, Anjali!</p>
+</div>
+<!-- Header Card -->
+<div class="p-4">
+<div class="flex flex-col items-stretch justify-start rounded-lg bg-gradient-to-br from-primary to-secondary text-white p-6">
+<div class="flex w-full flex-col items-stretch justify-center gap-1">
+<p class="text-[11px] font-normal leading-tight text-white/80 whitespace-nowrap flex-shrink-0">Total Teaching Credits</p>
+<p class="text-3xl font-bold leading-tight tracking-tight"><span id="educator-dashboard-credits">TC 1,25,430</span></p>
+<div class="flex items-end justify-between gap-3 pt-2">
+<p class="text-base font-normal leading-normal text-white/80">Equivalent to ₹1,25,430</p>
+<a href="12_reward_store.html"><button class="flex h-10 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-white px-5 text-sm font-bold leading-normal text-primary">
+<span class="truncate">Redeem</span>
+</button></a>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Stats -->
+<div class="flex flex-wrap gap-4 p-4 pt-0">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-white border border-gray-200">
+<p class="text-text-secondary text-xs font-medium leading-tight whitespace-nowrap" style="white-space: nowrap; font-size: smaller;">Total Students</p>
+<p class="text-2xl font-bold leading-tight tracking-tight">8,345</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-white border border-gray-200">
+<p class="text-text-secondary text-xs font-medium leading-tight whitespace-nowrap" style="white-space: nowrap; font-size: smaller;">Total Views</p>
+<p class="text-2xl font-bold leading-tight tracking-tight">21.2k</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-white border border-gray-200">
+<p class="text-text-secondary text-xs font-medium leading-tight whitespace-nowrap" style="white-space: nowrap; font-size: smaller;">Avg. Completion</p>
+<p class="text-2xl font-bold leading-tight tracking-tight">78%</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-3">
+<div class="flex justify-between border-b border-gray-200 px-4">
+<button id="tab-active" class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-primary pb-[13px] pt-4 text-primary tab-button" data-tab="active">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Active Courses</p>
+</button>
+<button id="tab-analytics" class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-b-transparent pb-[13px] pt-4 text-text-secondary tab-button" data-tab="analytics">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Analytics</p>
+</button>
+<button id="tab-payouts" class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-b-transparent pb-[13px] pt-4 text-text-secondary tab-button" data-tab="payouts">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Payouts</p>
+</button>
+</div>
+</div>
+
+<!-- Active Courses Tab Content -->
+<div id="content-active" class="tab-content">
+<div class="flex flex-col gap-4 p-4 pb-24">
+<!-- Course Card 1 -->
+<div class="flex items-stretch justify-between gap-4 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-base font-bold leading-tight">Advanced Python for Data Science</p>
+<p class="text-sm font-normal leading-normal text-text-secondary">4,120 Students | 85% Completion</p>
+</div>
+<button class="flex h-9 w-fit min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary/10 px-4 text-sm font-medium leading-normal text-primary">
+<span class="truncate">View Details</span>
+</button>
+</div>
+<div class="flex-1 aspect-square w-full rounded-lg bg-cover bg-center bg-no-repeat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxS3ypoyaZqsqjfFVc8FxCefrVh9GzwxRxSRiZugOcSbVGnqURrHRgaXzE5qslqNqQvI9rAjOZhLgPELWbEw13279GkHjIKvQtOJ4E4htj1479jiKjR7Z_WanOZY009srEx8BatCbtK9K47WpbB4g8Gj8CuO9w32V757NVYb0gvMYvvRiVRn8uqojhiY6hfxMXcgbqcW3IfJW2hyRBVf1LKuhO2O2fBUEsuyXHHKULZydUfbWwkSsYfA9ZjGZ573cyrlcWGrNZsQ");'></div>
+</div>
+<!-- Course Card 2 -->
+<div class="flex items-stretch justify-between gap-4 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-base font-bold leading-tight">Introduction to Machine Learning</p>
+<p class="text-sm font-normal leading-normal text-text-secondary">2,890 Students | 72% Completion</p>
+</div>
+<button class="flex h-9 w-fit min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary/10 px-4 text-sm font-medium leading-normal text-primary">
+<span class="truncate">View Details</span>
+</button>
+</div>
+<div class="flex-1 aspect-square w-full rounded-lg bg-cover bg-center bg-no-repeat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIxRfQ2l1rJUFnasMrLagv3V30MLa6qXCpZz5DwgAGLaLIt2LeAVUWoWzFLdU1Zgg6gFYyhw57Xh0bIlOT-r_6nsJleoHzzCWCWKiRICaZeZbEWOvEkarZD8iSgHthdMtWSJXGIq_VCpP-3qNJ7TuBkTlJOqvP7I7qYl9gF2M4PfHPllPiQpAVSYt_eJ3X9J1LvM5MPKHteERYLcAwdMFbg5ko0Y5BvF-h99TwH214X55xmSvj_zsOG48VqDaC6qPPpM95p12Yxg");'></div>
+</div>
+<!-- Course Card 3 -->
+<div class="flex items-stretch justify-between gap-4 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-base font-bold leading-tight">Digital Marketing Fundamentals</p>
+<p class="text-sm font-normal leading-normal text-text-secondary">1,250 Students | 91% Completion</p>
+</div>
+<button class="flex h-9 w-fit min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary/10 px-4 text-sm font-medium leading-normal text-primary">
+<span class="truncate">View Details</span>
+</button>
+</div>
+<div class="flex-1 aspect-square w-full rounded-lg bg-cover bg-center bg-no-repeat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNkyh9_tLnDCQ03vmleEES98feaxnfL4wL4haHCmPzyzSYtMcYz5Xt0bwj8kGkAxMEMf9C7qTFzjqYbIH4I6xhPmr7E6FWAg8NaJ8Nsjg07gfJa8X3mclzJ-9VX2LH6sokf6Yal0wNhnyH_zooZ77bla52vmnhzEpBJQv58Elmo_85QryRbvH0xKvg6jjg8gOCcgXEMmsUud5OUK-1Aa0HlB8NoMfkqI6UZFqkGxlh2Y4SnYUIUvlnkvMC71uBYrCAFTSVz6emcg");'></div>
+</div>
+</div>
+</div>
+
+<!-- Analytics Tab Content -->
+<div id="content-analytics" class="tab-content hidden">
+<div class="flex flex-col gap-4 p-4 pb-24">
+<!-- Analytics Overview Cards -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2 rounded-lg border border-gray-200 bg-white p-4">
+<p class="text-xs font-medium leading-tight text-text-secondary whitespace-nowrap">Total Revenue</p>
+<p class="text-2xl font-bold leading-tight tracking-tight">₹2,45,680</p>
+<p class="text-xs text-green-600 font-medium">+12.5% vs last month</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg border border-gray-200 bg-white p-4">
+<p class="text-xs font-medium leading-tight text-text-secondary whitespace-nowrap">Avg. Rating</p>
+<p class="text-2xl font-bold leading-tight tracking-tight">4.8★</p>
+<p class="text-xs text-text-secondary">From 3,240 reviews</p>
+</div>
+</div>
+
+<!-- Engagement Metrics -->
+<div class="rounded-lg border border-gray-200 bg-white p-4">
+<p class="text-base font-bold leading-tight mb-4">Engagement Metrics</p>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-text-secondary">Video Watch Time</p>
+<p class="text-base font-bold">1,245 hours</p>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 78%"></div>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-text-secondary">Quiz Completion Rate</p>
+<p class="text-base font-bold">85%</p>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 85%"></div>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-text-secondary">Assignment Submissions</p>
+<p class="text-base font-bold">6,890</p>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 72%"></div>
+</div>
+</div>
+</div>
+
+<!-- Top Performing Courses -->
+<div class="rounded-lg border border-gray-200 bg-white p-4">
+<p class="text-base font-bold leading-tight mb-4">Top Performing Courses</p>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex-1">
+<p class="text-sm font-bold">Advanced Python for Data Science</p>
+<p class="text-xs text-text-secondary">4,120 students</p>
+</div>
+<p class="text-sm font-bold text-primary">₹1,23,600</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex-1">
+<p class="text-sm font-bold">Introduction to Machine Learning</p>
+<p class="text-xs text-text-secondary">2,890 students</p>
+</div>
+<p class="text-sm font-bold text-primary">₹86,700</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex-1">
+<p class="text-sm font-bold">Digital Marketing Fundamentals</p>
+<p class="text-xs text-text-secondary">1,250 students</p>
+</div>
+<p class="text-sm font-bold text-primary">₹35,250</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Payouts Tab Content -->
+<div id="content-payouts" class="tab-content hidden">
+<div class="flex flex-col gap-4 p-4 pb-24">
+<!-- Payout Summary -->
+<div class="rounded-lg border border-gray-200 bg-white p-4">
+<p class="text-base font-bold leading-tight mb-4">Payout Summary</p>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-text-secondary">Available Balance</p>
+<p class="text-xl font-bold text-primary">₹1,25,430</p>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-text-secondary">Pending Payouts</p>
+<p class="text-base font-bold">₹45,200</p>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-text-secondary">Total Earned</p>
+<p class="text-base font-bold">₹2,45,680</p>
+</div>
+</div>
+<button class="flex w-full h-10 cursor-pointer items-center justify-center rounded-full bg-primary px-5 text-sm font-bold leading-normal text-white mt-4">
+Request Payout
+</button>
+</div>
+
+<!-- Payout History -->
+<div class="rounded-lg border border-gray-200 bg-white p-4">
+<p class="text-base font-bold leading-tight mb-4">Payout History</p>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between pb-3 border-b border-gray-200">
+<div class="flex-1">
+<p class="text-sm font-bold">15 Nov 2023</p>
+<p class="text-xs text-text-secondary">Bank Transfer - ****1234</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-primary">₹50,000</p>
+<p class="text-xs text-green-600">Completed</p>
+</div>
+</div>
+<div class="flex items-center justify-between pb-3 border-b border-gray-200">
+<div class="flex-1">
+<p class="text-sm font-bold">01 Nov 2023</p>
+<p class="text-xs text-text-secondary">Bank Transfer - ****1234</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-primary">₹45,200</p>
+<p class="text-xs text-green-600">Completed</p>
+</div>
+</div>
+<div class="flex items-center justify-between pb-3 border-b border-gray-200">
+<div class="flex-1">
+<p class="text-sm font-bold">15 Oct 2023</p>
+<p class="text-xs text-text-secondary">Bank Transfer - ****1234</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-primary">₹38,500</p>
+<p class="text-xs text-green-600">Completed</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex-1">
+<p class="text-sm font-bold">01 Oct 2023</p>
+<p class="text-xs text-text-secondary">Bank Transfer - ****1234</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-primary">₹42,000</p>
+<p class="text-xs text-green-600">Completed</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Payment Method -->
+<div class="rounded-lg border border-gray-200 bg-white p-4">
+<p class="text-base font-bold leading-tight mb-4">Payment Method</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+<div>
+<p class="text-sm font-bold">HDFC Bank</p>
+<p class="text-xs text-text-secondary">Account ending in ****1234</p>
+</div>
+</div>
+<button class="flex h-9 cursor-pointer items-center justify-center rounded-full bg-gray-100 px-4 text-sm font-medium text-text-primary">
+Edit
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+// Tab switching functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            
+            // Remove active state from all tabs
+            tabButtons.forEach(btn => {
+                btn.classList.remove('border-primary', 'text-primary');
+                btn.classList.add('border-b-transparent', 'text-text-secondary');
+            });
+            
+            // Hide all tab contents
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Activate clicked tab
+            this.classList.remove('border-b-transparent', 'text-text-secondary');
+            this.classList.add('border-primary', 'text-primary');
+            
+            // Show corresponding content
+            const targetContent = document.getElementById('content-' + targetTab);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+        });
+    });
+});
+</script>
+<!-- Bottom Navigation for Educators -->
+<nav class="fixed bottom-0 left-0 right-0 flex items-center justify-around border-t border-gray-200 bg-white px-4 py-3 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+<a href="10_educator_dashboard.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary" onclick="event.preventDefault(); showScreen('screen-10-educator-dashboard');">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">dashboard</span>
+<span class="text-xs font-bold">Dashboard</span>
+</a>
+<a href="11_course_creation.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-11-course-creation');">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-xs font-medium">Create</span>
+</a>
+<a href="12_reward_store.html?role=educator" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-12-reward-store');">
+<span class="material-symbols-outlined">card_giftcard</span>
+<span class="text-xs font-medium">Rewards</span>
+</a>
+<a href="19_educator_profile.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-19-educator-profile');">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</a>
+</nav>
+</div>
+</div>
+
+<!-- Screen: 11_course_creation.html -->
+<div id="screen-11-course-creation" class="app-screen">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden text-text-primary pb-24">
+<!-- Top App Bar -->
+<div class="sticky top-0 flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3 z-10">
+<div class="flex items-center gap-4">
+<a href="10_educator_dashboard.html" onclick="event.preventDefault(); showScreen('screen-10-educator-dashboard');"><button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined">arrow_back</span>
+</button></a>
+<h2 class="text-xl font-bold leading-tight tracking-tight">Create New Course</h2>
+</div>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Stepper -->
+<div class="flex items-center justify-between gap-2 p-4 bg-white">
+<div class="flex flex-col items-center gap-1 flex-1">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white font-bold">1</div>
+<p class="text-xs font-medium text-primary">Upload</p>
+</div>
+<div class="h-0.5 flex-1 bg-gray-300"></div>
+<div class="flex flex-col items-center gap-1 flex-1">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-300 text-gray-600 font-bold">2</div>
+<p class="text-xs font-medium text-gray-600">Quizzes</p>
+</div>
+<div class="h-0.5 flex-1 bg-gray-300"></div>
+<div class="flex flex-col items-center gap-1 flex-1">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-300 text-gray-600 font-bold">3</div>
+<p class="text-xs font-medium text-gray-600">Details</p>
+</div>
+<div class="h-0.5 flex-1 bg-gray-300"></div>
+<div class="flex flex-col items-center gap-1 flex-1">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-300 text-gray-600 font-bold">4</div>
+<p class="text-xs font-medium text-gray-600">Publish</p>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex flex-col gap-4 p-4 pb-24">
+<!-- Upload Area -->
+<div class="flex flex-col gap-2">
+<p class="text-base font-bold leading-tight">Upload Lessons</p>
+<div class="flex flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-primary bg-primary/5 p-12 text-center">
+<div class="flex h-16 w-16 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined !text-4xl text-primary">cloud_upload</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-base font-bold leading-tight">Drag & Drop Videos</p>
+<p class="text-sm font-normal leading-normal text-text-secondary">or click to browse files</p>
+<p class="text-xs font-normal leading-normal text-text-secondary">Supported: MP4, MOV, AVI (Max 500MB)</p>
+</div>
+<button class="flex h-10 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary px-5 text-sm font-bold leading-normal text-white">
+<span class="truncate">Browse Files</span>
+</button>
+</div>
+</div>
+<!-- Uploaded Lessons -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<p class="text-base font-bold leading-tight">Uploaded Lessons (3)</p>
+<button class="flex h-9 min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-secondary/10 px-4 text-sm font-medium leading-normal text-secondary">
+<span class="material-symbols-outlined !text-lg">add</span>
+<span class="truncate">Add Quiz</span>
+</button>
+</div>
+<!-- Lesson Card 1 -->
+<div class="flex items-center justify-between gap-3 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex items-center gap-3 flex-1">
+<div class="h-12 w-16 rounded bg-cover bg-center bg-no-repeat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCaAVJ36s7kC2s12XVvqp5bsW6bKYQ07wN5FxCO-yE8SJQP3EkQB3HCfZglINCJDjOQxFIjOcHrfKlPCkZSLGKlgGlHmkGmLOvRcwVJXg9T8NJaefEXW8zj8ZJnfV6TQYp5I7rkdGj5Q");'></div>
+<div class="flex flex-col gap-0.5 flex-1">
+<p class="text-sm font-bold leading-tight">Introduction to the Course</p>
+<p class="text-xs font-normal leading-normal text-text-secondary">12:45 • Lesson 1</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined text-text-secondary">edit</span>
+</button>
+<button class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined text-red-500">delete</span>
+</button>
+</div>
+</div>
+<!-- Lesson Card 2 -->
+<div class="flex items-center justify-between gap-3 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex items-center gap-3 flex-1">
+<div class="h-12 w-16 rounded bg-cover bg-center bg-no-repeat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAj0-7tVT8jNJLhD5QZzWTdNl4ZCOr0_DqVMpLd_bCsEu9K3T6lYxzOpSM4BxfbP9KhzxJ3PZbNGmwxJxJLc6KqRxLG4xO8PZdNl4ZCOr0_DqVMpLd_bCsEu9K3T6lYxzOpSM4BxfbP9KhzxJ3PZbNGmwxJxJLc6KqRxLG4xO8");'></div>
+<div class="flex flex-col gap-0.5 flex-1">
+<p class="text-sm font-bold leading-tight">Core Concepts Explained</p>
+<p class="text-xs font-normal leading-normal text-text-secondary">18:20 • Lesson 2</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined text-text-secondary">edit</span>
+</button>
+<button class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined text-red-500">delete</span>
+</button>
+</div>
+</div>
+<!-- Lesson Card 3 -->
+<div class="flex items-center justify-between gap-3 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex items-center gap-3 flex-1">
+<div class="h-12 w-16 rounded bg-cover bg-center bg-no-repeat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIxRfQ2l1rJUFnasMrLagv3V30MLa6qXCpZz5DwgAGLaLIt2LeAVUWoWzFLdU1Zgg6gFYyhw57Xh0bIlOT-r_6nsJleoHzzCWCWKiRICaZeZbEWOvEkarZD8iSgHthdMtWSJXGIq_VCpP-3qNJ7TuBkTlJOqvP7I7qYl9gF2M4PfHPllPiQpAVSYt_eJ3X9J1LvM5MPKHteERYLcAwdMFbg5ko0Y5BvF-h99TwH214X55xmSvj_zsOG48VqDaC6qPPpM95p12Yxg");'></div>
+<div class="flex flex-col gap-0.5 flex-1">
+<p class="text-sm font-bold leading-tight">Practical Implementation</p>
+<p class="text-xs font-normal leading-normal text-text-secondary">25:10 • Lesson 3</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined text-text-secondary">edit</span>
+</button>
+<button class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined text-red-500">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 right-0 flex items-center justify-between gap-3 border-t border-gray-200 bg-white p-4" style="max-width: 430px;">
+<button onclick="showScreen('screen-10-educator-dashboard')" class="flex h-12 flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-primary px-3 text-sm font-bold leading-normal text-primary min-w-0">
+<span class="truncate">Save Draft</span>
+</button>
+<button id="nextBtn" class="flex h-12 flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary px-3 text-sm font-bold leading-normal text-white min-w-0">
+<span class="truncate">Next</span>
+</button>
+</div>
+
+<!-- Success Modal (Hidden by default) -->
+<div id="successModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" style="max-width: 100vw;">
+<div class="bg-white rounded-xl p-8 max-w-sm w-full text-center animate-[scale-in_0.3s_ease-out]" style="margin: 0 auto;">
+<div class="flex h-20 w-20 mx-auto items-center justify-center rounded-full bg-green-100 mb-4">
+<span class="material-symbols-outlined text-green-600 !text-5xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+</div>
+<h3 class="text-2xl font-bold text-text-primary mb-2">Course Created Successfully!</h3>
+<p class="text-text-secondary mb-6">Your course has been published and is now live for learners.</p>
+<button id="goToDashboardBtn" class="flex h-12 w-full cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary px-5 text-base font-bold leading-normal text-white">
+<span class="truncate">Go to Dashboard</span>
+</button>
+</div>
+</div>
+
+<script>
+document.getElementById('nextBtn').addEventListener('click', function() {
+    document.getElementById('successModal').classList.remove('hidden');
+});
+
+document.getElementById('goToDashboardBtn').addEventListener('click', function() {
+    document.getElementById('successModal').classList.add('hidden');
+    showScreen('screen-10-educator-dashboard');
+});
+
+// Also close modal on backdrop click
+document.getElementById('successModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        this.classList.add('hidden');
+        showScreen('screen-10-educator-dashboard');
+    }
+});
+</script>
+<style>
+@keyframes scale-in {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+</style>
+</div>
+</div>
+
+<!-- Screen: 12_reward_store.html -->
+<div id="screen-12-reward-store" class="app-screen">
+<div class="relative flex w-full flex-col group/design-root overflow-x-hidden text-text-primary pb-24" style="min-height: 100vh; max-width: 430px;">
+<!-- Top App Bar -->
+<div class="sticky top-0 flex items-center justify-between bg-white px-4 py-3 z-10 shadow-sm">
+<h2 class="text-xl font-bold leading-tight tracking-tight">Reward Store</h2>
+<div class="flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-4 py-2">
+<span class="material-symbols-outlined !text-lg text-white" style="font-variation-settings: 'FILL' 1">stars</span>
+<p id="creditsDisplay" class="text-sm font-bold text-white">12,500 Credits</p>
+</div>
+</div>
+
+<script>
+// Helper functions for credit management (defined early)
+window.getCreditLabel = window.getCreditLabel || function(includePrefix = false) {
+    const label = window.userRole === 'educator' ? 'TC' : 'LC';
+    return includePrefix ? `${label}` : label;
+};
+
+window.getUserCredits = window.getUserCredits || function() {
+    return window.userRole === 'educator' ? 125430 : 12500;
+};
+
+// Function to update credits display based on current role
+function updateRewardStoreCredits() {
+    const credits = window.getUserCredits();
+    const creditType = window.getCreditLabel();
+    const creditsDisplay = document.getElementById('creditsDisplay');
+    if (creditsDisplay) {
+        creditsDisplay.textContent = creditType + ' ' + credits.toLocaleString('en-IN');
+    }
+}
+
+// Detect user role from URL params or referrer (fallback only)
+window.urlParams = new URLSearchParams(window.location.search);
+if (!window.userRole) {
+    window.userRole = window.urlParams.get('role') || 'learner';
+}
+
+// Update credits display
+updateRewardStoreCredits();
+
+// Reward data with window.categories and images - Store globally
+window.educatorRewards = [
+    // Low-Tier (5,000-10,000 TC) - Content Tools
+    {title: 'Canva Pro Annual', subtitle: 'Content Creation Tool', cost: 8000, category: 'Content Tools', image: 'https://logo.clearbit.com/canva.com', icon: 'palette'},
+    {title: 'Google One 200GB', subtitle: 'Cloud Storage', cost: 6000, category: 'Content Tools', image: 'https://logo.clearbit.com/google.com', icon: 'cloud'},
+    {title: 'Notion Subscription', subtitle: 'Productivity Tool', cost: 7500, category: 'Content Tools', image: 'https://logo.clearbit.com/notion.so', icon: 'description'},
+    {title: 'Grammarly Premium', subtitle: 'Writing Assistant', cost: 9000, category: 'Content Tools', image: 'https://logo.clearbit.com/grammarly.com', icon: 'spellcheck'},
+    {title: 'Business Books', subtitle: 'Amazon India', cost: 5000, category: 'Content Tools', image: 'https://logo.clearbit.com/amazon.in', icon: 'menu_book'},
+    
+    // Mid-Tier (15,000-30,000 TC) - Equipment
+    {title: 'Ring Light', subtitle: 'Professional Setup', cost: 18000, category: 'Equipment', image: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400', icon: 'light_mode'},
+    {title: 'Microphone Kit', subtitle: 'Audio Equipment', cost: 22000, category: 'Equipment', image: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400', icon: 'mic'},
+    {title: 'Webcam HD', subtitle: 'Video Recording', cost: 15000, category: 'Equipment', image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400', icon: 'videocam'},
+    {title: 'Portable SSD 1TB', subtitle: 'Storage Solution', cost: 28000, category: 'Equipment', image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400', icon: 'storage'},
+    
+    // Mid-Tier - Professional
+    {title: 'LinkedIn Premium', subtitle: 'Professional Network', cost: 25000, category: 'Professional', image: 'https://logo.clearbit.com/linkedin.com', icon: 'work'},
+    {title: 'Coursera Certificate', subtitle: 'Professional Development', cost: 20000, category: 'Professional', image: 'https://logo.clearbit.com/coursera.org', icon: 'school'},
+    
+    // High-Tier (50,000+ TC) - Premium
+    {title: 'Featured Course', subtitle: 'Platform Promotion', cost: 50000, category: 'Premium', image: null, icon: 'star', locked: true},
+    {title: 'DSLR Camera', subtitle: 'Professional Equipment', cost: 75000, category: 'Premium', image: 'https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400', icon: 'camera', locked: true},
+    {title: 'Pro Mic Setup', subtitle: 'Studio Quality Audio', cost: 60000, category: 'Premium', image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400', icon: 'settings_voice', locked: true},
+    {title: 'Conference Pass', subtitle: 'EdTech Industry Event', cost: 55000, category: 'Premium', image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400', icon: 'event', locked: true},
+    {title: 'Co-branding', subtitle: 'Platform Partnership', cost: 100000, category: 'Premium', image: null, icon: 'handshake', locked: true}
+];
+
+window.learnerRewards = [
+    // Low-Tier (1,000-2,000 LC) - Stationery
+    {title: 'Classmate Notebooks', subtitle: 'Stationery Pack', cost: 1500, category: 'Stationery', image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400', icon: 'book'},
+    {title: 'Parker Pen Set', subtitle: 'Premium Writing', cost: 2000, category: 'Stationery', image: 'https://images.unsplash.com/photo-1583484963886-cce23b353155?w=400', icon: 'edit'},
+    
+    // Low-Tier - Vouchers
+    {title: 'Audible 3 Months', subtitle: 'India Trial', cost: 1800, category: 'Vouchers', image: 'https://logo.clearbit.com/audible.com', icon: 'headphones'},
+    {title: 'Swiggy ₹200 Voucher', subtitle: 'Food Delivery', cost: 1200, category: 'Vouchers', image: 'https://logo.clearbit.com/swiggy.com', icon: 'restaurant'},
+    {title: 'Zomato ₹200 Voucher', subtitle: 'Food Delivery', cost: 1200, category: 'Vouchers', image: 'https://logo.clearbit.com/zomato.com', icon: 'restaurant'},
+    {title: 'Jio/Airtel Recharge', subtitle: '₹100 Mobile Recharge', cost: 1000, category: 'Vouchers', image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400', icon: 'phone_android'},
+    {title: 'Kindle Ebook', subtitle: 'Best Seller', cost: 1500, category: 'Vouchers', image: 'https://logo.clearbit.com/amazon.in', icon: 'menu_book'},
+    
+    // Mid-Tier (3,000-5,000 LC) - Tech
+    {title: 'Boat Earbuds', subtitle: 'Wireless Audio', cost: 3500, category: 'Tech', image: 'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=400', icon: 'headphones'},
+    {title: 'Wireless Mouse', subtitle: 'Tech Accessory', cost: 3000, category: 'Tech', image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400', icon: 'mouse'},
+    {title: 'Mechanical Keyboard', subtitle: 'Gaming/Work', cost: 4500, category: 'Tech', image: 'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400', icon: 'keyboard'},
+    
+    // Mid-Tier - Courses
+    {title: 'Udemy Course', subtitle: 'Online Learning', cost: 4000, category: 'Courses', image: 'https://logo.clearbit.com/udemy.com', icon: 'school'},
+    {title: 'Unacademy Plus', subtitle: '1 Month Access', cost: 4500, category: 'Courses', image: 'https://logo.clearbit.com/unacademy.com', icon: 'school'},
+    
+    // Mid-Tier - Vouchers
+    {title: 'Spotify Premium', subtitle: '3 Months India', cost: 3200, category: 'Vouchers', image: 'https://logo.clearbit.com/spotify.com', icon: 'music_note'},
+    {title: 'Myntra ₹500 Voucher', subtitle: 'Fashion Shopping', cost: 5000, category: 'Vouchers', image: 'https://logo.clearbit.com/myntra.com', icon: 'shopping_bag'},
+    
+    // High-Tier (8,000-15,000 LC) - Tech
+    {title: 'Fire TV Stick', subtitle: 'Streaming Device', cost: 8000, category: 'Tech', image: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400', icon: 'tv', locked: true},
+    {title: 'Kindle E-reader', subtitle: 'Digital Books', cost: 12000, category: 'Tech', image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400', icon: 'menu_book', locked: true},
+    {title: 'Smartwatch', subtitle: 'Fitness Tracker', cost: 15000, category: 'Tech', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400', icon: 'watch', locked: true},
+    {title: 'Laptop Discount', subtitle: 'Flipkart/Amazon', cost: 15000, category: 'Tech', image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400', icon: 'laptop', locked: true},
+    
+    // High-Tier - Courses
+    {title: 'Coursera Certificate', subtitle: 'Professional Course', cost: 10000, category: 'Courses', image: 'https://logo.clearbit.com/coursera.org', icon: 'workspace_premium', locked: true},
+    {title: 'Internship Access', subtitle: 'Priority Platform', cost: 12000, category: 'Courses', image: 'https://logo.clearbit.com/internshala.com', icon: 'work', locked: true}
+];
+
+// Get rewards based on role
+window.allRewards = window.userRole === 'educator' ? window.educatorRewards : window.learnerRewards;
+
+// Get unique window.categories
+window.categories = ['All', ...new Set(window.allRewards.map(r => r.category))];
+
+function createRewardCard(reward) {
+    const costNum = typeof reward.cost === 'string' ? parseInt(reward.cost.replace(/,/g, '')) : reward.cost;
+    // Use global functions
+    const creditLabel = window.getCreditLabel ? window.getCreditLabel() : (window.userRole === 'educator' ? 'TC' : 'LC');
+    const userCredits = window.getUserCredits ? window.getUserCredits() : (window.userRole === 'educator' ? 125430 : 12500);
+    // Check if user has enough credits (cost must be less than or equal to available credits)
+    const canAfford = userCredits >= costNum;
+    // Lock if explicitly locked OR if user can't afford it
+    const locked = reward.locked === true || !canAfford;
+    
+    return `
+        <div class="reward-card" data-category="${reward.category}" data-cost="${costNum}" onclick="${locked ? 'return false;' : `selectReward(${JSON.stringify(reward).replace(/"/g, '&quot;')})`}" style="cursor: ${locked ? 'not-allowed' : 'pointer'};">
+            <div class="flex flex-col gap-3 rounded-lg bg-white p-3 shadow-sm ${locked ? 'opacity-60 cursor-not-allowed' : 'hover:shadow-md transition-shadow cursor-pointer'}">
+                <div class="aspect-square w-full rounded-lg ${reward.image ? 'bg-gray-100' : 'bg-gradient-to-br from-primary to-secondary'} flex items-center justify-center ${reward.image ? 'p-3' : 'p-4'} overflow-hidden">
+                    ${reward.image ? `<img src="${reward.image}" alt="${reward.title}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div style="display:none;" class="w-full h-full items-center justify-center"><span class="material-symbols-outlined text-white" style="font-size: 48px;">${reward.icon}</span></div>` : `<span class="material-symbols-outlined text-white" style="font-size: 48px;">${reward.icon}</span>`}
+                </div>
+                <div class="flex flex-col gap-1">
+                    <p class="text-sm font-bold leading-tight line-clamp-2">${reward.title}</p>
+                    <p class="text-xs font-normal leading-normal text-text-secondary">${reward.subtitle}</p>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1">
+                        <span class="material-symbols-outlined !text-base text-primary" style="font-variation-settings: 'FILL' 1">stars</span>
+                        <p class="text-sm font-bold text-primary">${reward.cost.toLocaleString('en-IN')} ${creditLabel}</p>
+                    </div>
+                    <button class="flex h-8 items-center justify-center rounded-full ${locked ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-primary text-white cursor-pointer'} px-3 text-xs font-bold" ${locked ? 'disabled' : ''}>
+                        ${locked ? (reward.locked === true ? 'Locked' : 'Low Credits') : 'Redeem'}
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Function to select reward and navigate to redemption page
+function selectReward(reward) {
+    window.selectedReward = reward;
+    showScreen('screen-13-reward-redemption');
+}
+
+// Render rewards
+function renderRewards(filterCategory = 'All', searchTerm = '') {
+    const rewardsGrid = document.getElementById('rewardsGrid');
+    if (!rewardsGrid) return;
+    
+    let filteredRewards = filterCategory === 'All' 
+        ? window.allRewards 
+        : window.allRewards.filter(r => r.category === filterCategory);
+    
+    // Apply search filter if provided
+    if (searchTerm) {
+        filteredRewards = filteredRewards.filter(r => 
+            r.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+            r.subtitle.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }
+    
+    rewardsGrid.innerHTML = filteredRewards.map(createRewardCard).join('');
+    
+    // Force reflow to ensure scrolling works
+    void rewardsGrid.offsetHeight;
+}
+
+// Search functionality variables
+let currentCategory = 'All';
+let currentSearch = '';
+
+// Search handler
+function handleSearch(searchTerm) {
+    currentSearch = searchTerm;
+    renderRewards(currentCategory, searchTerm);
+}
+</script>
+
+<!-- Search Bar -->
+<div class="p-4">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full">
+<div class="flex items-center justify-center pl-4 rounded-l-full border-y border-l border-gray-300 bg-white">
+<span class="material-symbols-outlined text-text-secondary">search</span>
+</div>
+<input id="searchInput" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-full text-base font-normal leading-normal border-y border-r border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent px-4" placeholder="Search rewards..." type="text"/>
+</div>
+</label>
+</div>
+
+
+<!-- Category Filters -->
+<div class="flex gap-2 overflow-x-auto px-4 pb-2" id="categoryFilters">
+<!-- Categories will be populated by script -->
+</div>
+
+<!-- Rewards Grid -->
+<div class="grid grid-cols-2 gap-4 p-4 pb-24" id="rewardsGrid">
+<!-- Rewards will be populated by script -->
+</div>
+
+<script>
+// Function to initialize reward store
+function initializeRewardStore() {
+    // Make sure we have rewards
+    if (!window.allRewards) {
+        window.allRewards = window.userRole === 'educator' ? window.educatorRewards : window.learnerRewards;
+    }
+    if (!window.categories) {
+        window.categories = ['All', ...new Set(window.allRewards.map(r => r.category))];
+    }
+    
+    // Category Filters
+    const categoryFilters = document.getElementById('categoryFilters');
+    if (categoryFilters && window.categories) {
+        categoryFilters.innerHTML = window.categories.map((cat, index) => `
+            <button class="category-btn flex h-9 cursor-pointer items-center justify-center rounded-full ${index === 0 ? 'bg-primary text-white font-bold' : 'bg-white border border-gray-300 text-text-primary font-medium'} px-5 text-sm leading-normal whitespace-nowrap transition-colors" data-category="${cat}">
+                <span class="truncate">${cat}</span>
+</button>
+        `).join('');
+        
+        // Category filter event listeners
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active state
+                document.querySelectorAll('.category-btn').forEach(b => {
+                    b.classList.remove('bg-primary', 'text-white', 'font-bold');
+                    b.classList.add('bg-white', 'border', 'border-gray-300', 'text-text-primary', 'font-medium');
+                    // Remove hover effects that might interfere
+                    b.classList.remove('hover:bg-primary', 'hover:text-white');
+                });
+                this.classList.remove('bg-white', 'border', 'border-gray-300', 'text-text-primary', 'font-medium', 'hover:border-primary', 'hover:text-primary');
+                this.classList.add('bg-primary', 'text-white', 'font-bold');
+                
+                // Filter rewards
+                const category = this.getAttribute('data-category');
+                currentCategory = category;
+                renderRewards(category, currentSearch);
+            });
+        });
+    }
+    
+    // Search input handler
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            handleSearch(e.target.value);
+        });
+    }
+    
+    // Initial render
+    renderRewards();
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Only initialize if we're on the reward store screen
+    const rewardStore = document.getElementById('screen-12-reward-store');
+    if (rewardStore && rewardStore.classList.contains('active')) {
+        initializeRewardStore();
+    }
+});
+</script>
+
+<!-- Bottom Navigation -->
+<nav id="bottomNav" class="fixed bottom-0 left-0 right-0 flex items-center justify-around border-t border-gray-200 bg-white px-4 py-3 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+<!-- Navigation will be populated by script -->
+</nav>
+
+<script>
+// Function to update reward store navigation based on current role
+function updateRewardStoreNav() {
+    const bottomNav = document.getElementById('bottomNav');
+    if (!bottomNav) return;
+    
+    console.log('Updating reward store nav for role:', window.userRole);
+    
+    // Update credits display
+    if (typeof updateRewardStoreCredits === 'function') {
+        updateRewardStoreCredits();
+    }
+    
+    if (window.userRole === 'educator') {
+        bottomNav.innerHTML = `
+            <a href="10_educator_dashboard.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-10-educator-dashboard');">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="text-xs font-medium">Dashboard</span>
+            </a>
+            <a href="11_course_creation.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-11-course-creation');">
+                <span class="material-symbols-outlined">add_circle</span>
+                <span class="text-xs font-medium">Create</span>
+            </a>
+            <a href="12_reward_store.html?role=educator" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">card_giftcard</span>
+                <span class="text-xs font-bold">Rewards</span>
+            </a>
+            <a href="19_educator_profile.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-19-educator-profile');">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-xs font-medium">Profile</span>
+            </a>
+        `;
+    } else {
+        bottomNav.innerHTML = `
+            <a href="05_learner_home.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-05-learner-home');">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-xs font-medium">Home</span>
+            </a>
+            <a href="06_course_library.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-06-course-library');">
+                <span class="material-symbols-outlined">school</span>
+                <span class="text-xs font-medium">Courses</span>
+            </a>
+            <a href="12_reward_store.html?role=learner" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">card_giftcard</span>
+                <span class="text-xs font-bold">Rewards</span>
+            </a>
+            <a href="09_learner_profile.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-09-learner-profile');">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-xs font-medium">Profile</span>
+            </a>
+        `;
+    }
+}
+
+// Initial call
+updateRewardStoreNav();
+</script>
+</div>
+</div>
+
+<!-- Screen: 13_reward_redemption.html -->
+<div id="screen-13-reward-redemption" class="app-screen">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden text-text-primary pb-24">
+<!-- Top App Bar -->
+<div class="sticky top-0 flex items-center justify-between bg-white px-4 py-3 z-10 shadow-sm">
+<div class="flex items-center gap-4">
+<a href="12_reward_store.html" onclick="event.preventDefault(); showScreen('screen-12-reward-store');"><button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined">arrow_back</span>
+</button></a>
+<h2 class="text-xl font-bold leading-tight tracking-tight">Redeem Reward</h2>
+</div>
+</div>
+<!-- Reward Details -->
+<div class="flex flex-col gap-4 p-4">
+<!-- Reward Image -->
+<div class="flex items-center justify-center rounded-xl bg-white p-8 shadow-sm">
+<img id="redemption-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png" alt="Amazon Gift Card" class="w-64 object-contain"/>
+</div>
+<!-- Info Card -->
+<div class="flex flex-col gap-4 rounded-lg bg-white p-6 shadow-sm">
+<div class="flex flex-col gap-2">
+<h3 id="redemption-title" class="text-2xl font-bold leading-tight">Amazon Gift Card</h3>
+<p id="redemption-subtitle" class="text-base font-normal leading-normal text-text-secondary">₹500 Voucher</p>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 rounded-full bg-primary/10 px-4 py-2">
+<span class="material-symbols-outlined !text-lg text-primary" style="font-variation-settings: 'FILL' 1">stars</span>
+<p id="redemption-cost" class="text-base font-bold text-primary">5,000 LC</p>
+</div>
+</div>
+<div class="h-px bg-gray-200"></div>
+<div class="flex flex-col gap-3">
+<p class="text-sm font-bold leading-tight">Details:</p>
+<ul class="flex flex-col gap-2 pl-4">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined !text-lg text-secondary mt-0.5">check_circle</span>
+<p class="text-sm font-normal leading-normal text-text-secondary flex-1">Valid for all products on Amazon.in</p>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined !text-lg text-secondary mt-0.5">check_circle</span>
+<p class="text-sm font-normal leading-normal text-text-secondary flex-1">Code valid for 12 months</p>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined !text-lg text-secondary mt-0.5">check_circle</span>
+<p class="text-sm font-normal leading-normal text-text-secondary flex-1">Instant delivery to your email</p>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined !text-lg text-secondary mt-0.5">check_circle</span>
+<p class="text-sm font-normal leading-normal text-text-secondary flex-1">Non-refundable once redeemed</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- Credit Balance -->
+<div class="flex items-center justify-between rounded-lg bg-gradient-to-r from-primary to-secondary p-4 text-white">
+<div class="flex flex-col gap-1">
+<p class="text-sm font-normal leading-normal text-white/80">Your Available Credits</p>
+<p id="redemption-available-credits" class="text-2xl font-bold leading-tight">12,500 LC</p>
+</div>
+<div class="flex flex-col gap-1 items-end">
+<p class="text-sm font-normal leading-normal text-white/80">After Redemption</p>
+<p id="redemption-after-credits" class="text-2xl font-bold leading-tight">7,500 LC</p>
+</div>
+</div>
+<!-- Terms & Conditions -->
+<div class="flex flex-col gap-2 rounded-lg border border-gray-200 bg-white p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-secondary">info</span>
+<p class="text-sm font-bold leading-tight">Terms & Conditions</p>
+</div>
+<p class="text-xs font-normal leading-normal text-text-secondary">
+By redeeming this reward, you agree to our terms and conditions. Credits will be deducted immediately. Voucher codes are non-transferable and cannot be exchanged for cash.
+</p>
+</div>
+</div>
+<!-- Bottom Action Button -->
+<div class="fixed bottom-0 left-0 right-0 flex items-center gap-3 border-t border-gray-200 bg-white p-4">
+<button class="flex h-14 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary text-base font-bold leading-normal text-white shadow-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">redeem</span>
+<span class="truncate">Confirm Redemption</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Screen: 14_achievement_sharing.html -->
+<div id="screen-14-achievement-sharing" class="app-screen">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden text-text-primary">
+<!-- Top App Bar -->
+<div class="sticky top-0 flex items-center justify-between bg-white px-4 py-3 z-10 shadow-sm">
+<div class="flex items-center gap-4">
+<a href="08_learning_dashboard.html"><button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined">close</span>
+</button></a>
+<h2 class="text-xl font-bold leading-tight tracking-tight">Share Achievement</h2>
+</div>
+<button class="flex h-10 cursor-pointer items-center justify-center rounded-full bg-transparent px-4 text-sm font-bold text-primary hover:bg-primary/10">
+Download
+</button>
+</div>
+<!-- Achievement Card Preview -->
+<div class="flex flex-col gap-4 p-4">
+<div class="flex flex-col gap-6 rounded-xl bg-gradient-to-br from-primary via-secondary to-purple-600 p-8 text-white shadow-xl">
+<!-- EduElements Logo/Header -->
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined !text-3xl" style="font-variation-settings: 'FILL' 1">school</span>
+<p class="text-2xl font-bold">EduElements</p>
+</div>
+<!-- Certificate Content -->
+<div class="flex flex-col items-center gap-4 text-center">
+<div class="flex h-24 w-24 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+<span class="material-symbols-outlined !text-6xl text-yellow-300" style="font-variation-settings: 'FILL' 1">military_tech</span>
+</div>
+<div class="flex flex-col gap-2">
+<p class="text-base font-medium text-white/80">Certificate of Completion</p>
+<h3 class="text-2xl font-bold leading-tight">Advanced Python for Data Science</h3>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-base font-normal text-white/90">Awarded to</p>
+<p class="text-xl font-bold">Jayachandran</p>
+</div>
+<div class="flex items-center gap-6 pt-2">
+<div class="flex flex-col items-center gap-1">
+<p class="text-sm font-normal text-white/80">Date</p>
+<p class="text-base font-bold">Dec 15, 2024</p>
+</div>
+<div class="h-8 w-px bg-white/30"></div>
+<div class="flex flex-col items-center gap-1">
+<p class="text-sm font-normal text-white/80">Score</p>
+<p class="text-base font-bold">95%</p>
+</div>
+<div class="h-8 w-px bg-white/30"></div>
+<div class="flex flex-col items-center gap-1">
+<p class="text-sm font-normal text-white/80">Credits</p>
+<p class="text-base font-bold">+2,500</p>
+</div>
+</div>
+</div>
+<!-- Certificate ID -->
+<div class="flex items-center justify-center gap-2 pt-4 border-t border-white/20">
+<p class="text-xs font-normal text-white/70">Certificate ID: EDU-2024-AC-8745</p>
+</div>
+</div>
+<!-- Share Options -->
+<div class="flex flex-col gap-3">
+<p class="text-base font-bold leading-tight">Share on Social Media</p>
+<div class="grid grid-cols-4 gap-3">
+<!-- WhatsApp -->
+<button class="flex flex-col items-center gap-2 rounded-lg bg-white p-4 hover:bg-gray-50 transition-colors cursor-pointer">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-green-500">
+<svg class="h-7 w-7 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+</svg>
+</div>
+<p class="text-xs font-medium text-text-primary">WhatsApp</p>
+</button>
+<!-- Facebook -->
+<button class="flex flex-col items-center gap-2 rounded-lg bg-white p-4 hover:bg-gray-50 transition-colors cursor-pointer">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600">
+<svg class="h-7 w-7 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+</svg>
+</div>
+<p class="text-xs font-medium text-text-primary">Facebook</p>
+</button>
+<!-- Twitter -->
+<button class="flex flex-col items-center gap-2 rounded-lg bg-white p-4 hover:bg-gray-50 transition-colors cursor-pointer">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-black">
+<svg class="h-6 w-6 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+</svg>
+</div>
+<p class="text-xs font-medium text-text-primary">Twitter</p>
+</button>
+<!-- LinkedIn -->
+<button class="flex flex-col items-center gap-2 rounded-lg bg-white p-4 hover:bg-gray-50 transition-colors cursor-pointer">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-blue-700">
+<svg class="h-6 w-6 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+</svg>
+</div>
+<p class="text-xs font-medium text-text-primary">LinkedIn</p>
+</button>
+</div>
+</div>
+<!-- Copy Link Option -->
+<div class="flex flex-col gap-2">
+<p class="text-base font-bold leading-tight">Or copy certificate link</p>
+<div class="flex items-center gap-2">
+<div class="flex h-12 flex-1 items-center gap-2 rounded-full border border-gray-300 bg-white px-4">
+<span class="material-symbols-outlined text-text-secondary">link</span>
+<p class="text-sm font-normal text-text-secondary truncate">eduelements.com/cert/EDU-2024-AC-8745</p>
+</div>
+<button class="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-primary text-white hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Screen: 15_referral_link.html -->
+<div id="screen-15-referral-link" class="app-screen">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden text-text-primary">
+<!-- Top App Bar -->
+<div class="sticky top-0 flex items-center justify-between bg-white px-4 py-3 z-10 shadow-sm">
+<div class="flex items-center gap-4">
+<button id="backBtn" class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-xl font-bold leading-tight tracking-tight">Refer & Earn</h2>
+</div>
+<button id="leaderboardLink" class="flex h-10 cursor-pointer items-center justify-center rounded-full bg-transparent px-3 text-sm font-bold text-primary hover:bg-primary/10">
+Leaderboard
+</button>
+</div>
+<!-- Hero Banner -->
+<div class="p-4">
+<div class="flex flex-col items-center gap-4 rounded-xl bg-gradient-to-br from-primary to-secondary p-8 text-white text-center">
+<div class="flex h-20 w-20 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+<span class="material-symbols-outlined !text-5xl text-yellow-300" style="font-variation-settings: 'FILL' 1">card_giftcard</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-2xl font-bold leading-tight">Earn 500 Credits</h3>
+<p class="text-base font-normal text-white/90">For every friend who joins EduElements</p>
+</div>
+</div>
+</div>
+<!-- Referral Code Section -->
+<div class="flex flex-col gap-3 p-4 pt-0">
+<p class="text-base font-bold leading-tight">Your Referral Code</p>
+<div class="flex flex-col gap-3 rounded-lg bg-white p-6 shadow-sm">
+<div class="flex items-center justify-center gap-2 rounded-lg bg-gray-50 py-4">
+<p id="referralCode" class="text-3xl font-bold tracking-widest text-primary">JAYA2024</p>
+</div>
+<button class="flex h-12 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary text-base font-bold leading-normal text-white hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">content_copy</span>
+<span class="truncate">Copy Code</span>
+</button>
+</div>
+</div>
+<!-- Referral Link Section -->
+<div class="flex flex-col gap-3 px-4">
+<p class="text-base font-bold leading-tight">Share Your Link</p>
+<div class="flex items-center gap-2">
+<div class="flex h-12 flex-1 items-center gap-2 rounded-full border border-gray-300 bg-white px-4">
+<span class="material-symbols-outlined text-text-secondary !text-lg">link</span>
+<p id="referralLink" class="text-sm font-normal text-text-secondary truncate">eduelements.com/join/jaya2024</p>
+</div>
+<button class="flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full bg-secondary text-white hover:bg-secondary/90 transition-colors">
+<span class="material-symbols-outlined">ios_share</span>
+</button>
+</div>
+</div>
+<!-- Share Buttons -->
+<div class="flex flex-col gap-3 px-4 pt-2">
+<p class="text-base font-bold leading-tight">Quick Share</p>
+<div class="grid grid-cols-3 gap-3">
+<!-- WhatsApp -->
+<button class="flex flex-col items-center gap-2 rounded-lg bg-white p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-green-500">
+<svg class="h-7 w-7 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+</svg>
+</div>
+<p class="text-xs font-medium text-text-primary">WhatsApp</p>
+</button>
+<!-- Facebook -->
+<button class="flex flex-col items-center gap-2 rounded-lg bg-white p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600">
+<svg class="h-7 w-7 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+</svg>
+</div>
+<p class="text-xs font-medium text-text-primary">Facebook</p>
+</button>
+<!-- Email -->
+<button class="flex flex-col items-center gap-2 rounded-lg bg-white p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-700">
+<span class="material-symbols-outlined text-white !text-3xl">email</span>
+</div>
+<p class="text-xs font-medium text-text-primary">Email</p>
+</button>
+</div>
+</div>
+<!-- Referral Stats -->
+<div class="flex flex-col gap-3 px-4 pt-2">
+<p class="text-base font-bold leading-tight">Your Referral Stats</p>
+<div class="grid grid-cols-3 gap-3">
+<div class="flex flex-col gap-2 rounded-lg bg-white p-4 shadow-sm">
+<p id="invitedCount" class="text-2xl font-bold text-primary">24</p>
+<p class="text-xs font-medium text-text-secondary">Invited</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg bg-white p-4 shadow-sm">
+<p id="joinedCount" class="text-2xl font-bold text-secondary">18</p>
+<p class="text-xs font-medium text-text-secondary">Joined</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg bg-white p-4 shadow-sm">
+<p id="creditsEarned" class="text-2xl font-bold text-yellow-600">9,000</p>
+<p class="text-xs font-medium text-text-secondary">Credits</p>
+</div>
+</div>
+</div>
+<!-- How It Works -->
+<div class="flex flex-col gap-3 p-4">
+<p class="text-base font-bold leading-tight">How It Works</p>
+<div class="flex flex-col gap-4 rounded-lg bg-white p-6 shadow-sm">
+<!-- Step 1 -->
+<div class="flex items-start gap-3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-bold">1</div>
+<div class="flex flex-col gap-1">
+<p class="text-sm font-bold leading-tight">Share your code</p>
+<p class="text-xs font-normal leading-normal text-text-secondary">Send your referral code or link to friends</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary/10 text-secondary font-bold">2</div>
+<div class="flex flex-col gap-1">
+<p class="text-sm font-bold leading-tight">They sign up</p>
+<p class="text-xs font-normal leading-normal text-text-secondary">Your friend joins EduElements using your code</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start gap-3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 font-bold">3</div>
+<div class="flex flex-col gap-1">
+<p class="text-sm font-bold leading-tight">You both earn credits</p>
+<p class="text-xs font-normal leading-normal text-text-secondary">Get 500 credits instantly when they complete their first lesson</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+(function() {
+    // Function to initialize referral page
+    function initReferralPage() {
+        const backBtn = document.querySelector('#screen-15-referral-link #backBtn');
+        const leaderboardLink = document.querySelector('#screen-15-referral-link #leaderboardLink');
+        
+        if (!backBtn || !leaderboardLink) return;
+        
+        console.log('Initializing referral page for role:', window.userRole);
+        
+        // Set dynamic content based on role
+        if (window.userRole === 'educator') {
+            // Educator data
+            document.querySelector('#screen-15-referral-link #referralCode').textContent = 'ANJALI2024';
+            document.querySelector('#screen-15-referral-link #referralLink').textContent = 'eduelements.com/join/anjali2024';
+            document.querySelector('#screen-15-referral-link #invitedCount').textContent = '52';
+            document.querySelector('#screen-15-referral-link #joinedCount').textContent = '38';
+            document.querySelector('#screen-15-referral-link #creditsEarned').textContent = '19,000';
+            backBtn.onclick = function(e) { e.preventDefault(); showScreen('screen-19-educator-profile'); };
+            leaderboardLink.onclick = function(e) { e.preventDefault(); showScreen('screen-16-referral-leaderboard'); };
+        } else {
+            // Learner data
+            document.querySelector('#screen-15-referral-link #referralCode').textContent = 'JAYA2024';
+            document.querySelector('#screen-15-referral-link #referralLink').textContent = 'eduelements.com/join/jaya2024';
+            document.querySelector('#screen-15-referral-link #invitedCount').textContent = '24';
+            document.querySelector('#screen-15-referral-link #joinedCount').textContent = '18';
+            document.querySelector('#screen-15-referral-link #creditsEarned').textContent = '9,000';
+            backBtn.onclick = function(e) { e.preventDefault(); showScreen('screen-09-learner-profile'); };
+            leaderboardLink.onclick = function(e) { e.preventDefault(); showScreen('screen-16-referral-leaderboard'); };
+        }
+    }
+    
+    // Store for later use
+    window.initReferralPage = initReferralPage;
+    setTimeout(initReferralPage, 100);
+})();
+</script>
+</div>
+
+<!-- Screen: 16_referral_leaderboard.html -->
+<div id="screen-16-referral-leaderboard" class="app-screen">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden text-text-primary">
+<!-- Top App Bar -->
+<div class="sticky top-0 flex items-center justify-between bg-white px-4 py-3 z-10 shadow-sm">
+<div class="flex items-center gap-4">
+<button id="backBtn" class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-xl font-bold leading-tight tracking-tight">Leaderboard</h2>
+</div>
+<button id="contestLink" class="flex h-10 cursor-pointer items-center justify-center rounded-full bg-transparent px-3 text-sm font-bold text-primary hover:bg-primary/10">
+<span class="material-symbols-outlined !text-lg">emoji_events</span>
+</button>
+</div>
+<!-- Time Period Tabs -->
+<div class="flex justify-between border-b border-gray-200 px-4 bg-white">
+<button class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-primary pb-[13px] pt-4 text-primary">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">This Week</p>
+</button>
+<button class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-b-transparent pb-[13px] pt-4 text-text-secondary">
+<p class="text-sm font-medium leading-normal tracking-[0.015em]">This Month</p>
+</button>
+<button class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-b-transparent pb-[13px] pt-4 text-text-secondary">
+<p class="text-sm font-medium leading-normal tracking-[0.015em]">All Time</p>
+</button>
+</div>
+<!-- Top 3 Podium -->
+<div class="flex items-end justify-center gap-2 p-6 bg-gradient-to-br from-primary/10 to-secondary/10">
+<!-- 2nd Place -->
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="relative">
+<div class="h-16 w-16 rounded-full bg-cover bg-center bg-no-repeat border-4 border-gray-300" style='background-image: url("https://i.pravatar.cc/150?img=5");'></div>
+<div class="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-gray-400 border-2 border-white text-white text-xs font-bold">2</div>
+</div>
+<p class="text-xs font-bold text-center">Priya K.</p>
+<p class="text-lg font-bold text-gray-600">1,45,680</p>
+</div>
+<!-- 1st Place -->
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="relative">
+<div class="h-20 w-20 rounded-full bg-cover bg-center bg-no-repeat border-4 border-yellow-400" style='background-image: url("https://i.pravatar.cc/150?img=33");'></div>
+<div class="absolute -bottom-1 -right-1 flex h-8 w-8 items-center justify-center rounded-full bg-yellow-400 border-2 border-white">
+<span class="material-symbols-outlined !text-lg text-white" style="font-variation-settings: 'FILL' 1">emoji_events</span>
+</div>
+</div>
+<p class="text-sm font-bold text-center">Ravi M.</p>
+<p class="text-2xl font-bold text-yellow-600">2,50,340</p>
+</div>
+<!-- 3rd Place -->
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="relative">
+<div class="h-16 w-16 rounded-full bg-cover bg-center bg-no-repeat border-4 border-orange-400" style='background-image: url("https://i.pravatar.cc/150?img=44");'></div>
+<div class="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-orange-500 border-2 border-white text-white text-xs font-bold">3</div>
+</div>
+<p class="text-xs font-bold text-center">Neha S.</p>
+<p class="text-lg font-bold text-orange-600">1,35,128</p>
+</div>
+</div>
+<!-- Leaderboard List -->
+<div class="flex flex-col gap-2 p-4">
+<!-- Rank 4 -->
+<div class="flex items-center gap-3 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100">
+<p class="text-base font-bold text-text-primary">4</p>
+</div>
+<div class="h-12 w-12 rounded-full bg-cover bg-center bg-no-repeat" style='background-image: url("https://i.pravatar.cc/150?img=15");'></div>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-sm font-bold leading-tight">Amit P.</p>
+<p class="text-xs font-normal text-text-secondary">@amitp</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined !text-lg text-primary" style="font-variation-settings: 'FILL' 1">stars</span>
+<p class="text-base font-bold text-text-primary">98,450</p>
+</div>
+</div>
+<!-- Rank 5 -->
+<div class="flex items-center gap-3 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100">
+<p class="text-base font-bold text-text-primary">5</p>
+</div>
+<div class="h-12 w-12 rounded-full bg-cover bg-center bg-no-repeat" style='background-image: url("https://i.pravatar.cc/150?img=20");'></div>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-sm font-bold leading-tight">Kavya R.</p>
+<p class="text-xs font-normal text-text-secondary">@kavyar</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined !text-lg text-primary" style="font-variation-settings: 'FILL' 1">stars</span>
+<p class="text-base font-bold text-text-primary">87,200</p>
+</div>
+</div>
+<!-- User's Position (Highlighted) -->
+<div class="flex items-center gap-3 rounded-lg bg-primary/10 border-2 border-primary p-4 shadow-sm">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary">
+<p id="userRank" class="text-base font-bold text-white">12</p>
+</div>
+<div id="userAvatar" class="h-12 w-12 rounded-full bg-cover bg-center bg-no-repeat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxS3ypoyaZqsqjfFVc8FxCefrVh9GzwxRxSRiZugOcSbVGnqURrHRgaXzE5qslqNqQvI9rAjOZhLgPELWbEw13279GkHjIKvQtOJ4E4htj1479jiKjR7Z_WanOZY009srEx8BatCbtK9K47WpbB4g8Gj8CuO9w32V757NVYb0gvMYvvRiVRn8uqojhiY6hfxMXcgbqcW3IfJW2hyRBVf1LKuhO2O2fBUEsuyXHHKULZydUfbWwkSsYfA9ZjGZ573cyrlcWGrNZsQ");'></div>
+<div class="flex flex-1 flex-col gap-0.5">
+<p id="userName" class="text-sm font-bold leading-tight text-primary">You (Jayachandran)</p>
+<p id="userHandle" class="text-xs font-normal text-primary">@jayachandran</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined !text-lg text-primary" style="font-variation-settings: 'FILL' 1">stars</span>
+<p id="userReferrals" class="text-base font-bold text-primary">42</p>
+</div>
+</div>
+<!-- Rank 13 -->
+<div class="flex items-center gap-3 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100">
+<p class="text-base font-bold text-text-primary">13</p>
+</div>
+<div class="h-12 w-12 rounded-full bg-cover bg-center bg-no-repeat" style='background-image: url("https://i.pravatar.cc/150?img=68");'></div>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-sm font-bold leading-tight">Rahul T.</p>
+<p class="text-xs font-normal text-text-secondary">@rahult</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined !text-lg text-primary" style="font-variation-settings: 'FILL' 1">stars</span>
+<p class="text-base font-bold text-text-primary">10,380</p>
+</div>
+</div>
+<!-- Rank 14 -->
+<div class="flex items-center gap-3 rounded-lg bg-white p-4 shadow-sm">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100">
+<p class="text-base font-bold text-text-primary">14</p>
+</div>
+<div class="h-12 w-12 rounded-full bg-cover bg-center bg-no-repeat" style='background-image: url("https://i.pravatar.cc/150?img=10");'></div>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-sm font-bold leading-tight">Sneha D.</p>
+<p class="text-xs font-normal text-text-secondary">@snehad</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined !text-lg text-primary" style="font-variation-settings: 'FILL' 1">stars</span>
+<p class="text-base font-bold text-text-primary">9,350</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+(function() {
+    // Function to initialize leaderboard
+    function initLeaderboard() {
+        const backBtn = document.querySelector('#screen-16-referral-leaderboard #backBtn');
+        const contestLink = document.querySelector('#screen-16-referral-leaderboard #contestLink');
+        const userName = document.querySelector('#screen-16-referral-leaderboard #userName');
+        
+        if (!backBtn || !contestLink || !userName) return;
+        
+        // Set dynamic content based on role
+        if (window.userRole === 'educator') {
+            // Educator data (Anjali)
+            document.querySelector('#screen-16-referral-leaderboard #userName').textContent = 'You (Anjali)';
+            document.querySelector('#screen-16-referral-leaderboard #userHandle').textContent = '@anjali_educator';
+            document.querySelector('#screen-16-referral-leaderboard #userRank').textContent = '8';
+            document.querySelector('#screen-16-referral-leaderboard #userReferrals').textContent = '1,25,430';
+            document.querySelector('#screen-16-referral-leaderboard #userAvatar').style.backgroundImage = 'url("https://i.pravatar.cc/300?img=47")';
+        } else {
+            // Learner data (Jayachandran)
+            document.querySelector('#screen-16-referral-leaderboard #userName').textContent = 'You (Jayachandran)';
+            document.querySelector('#screen-16-referral-leaderboard #userHandle').textContent = '@jayachandran';
+            document.querySelector('#screen-16-referral-leaderboard #userRank').textContent = '12';
+            document.querySelector('#screen-16-referral-leaderboard #userReferrals').textContent = '12,500';
+            document.querySelector('#screen-16-referral-leaderboard #userAvatar').style.backgroundImage = 'url("https://i.pravatar.cc/300?img=12")';
+        }
+        
+        // Set click handlers
+        backBtn.onclick = function(e) { 
+            e.preventDefault(); 
+            showScreen('screen-15-referral-link'); 
+        };
+        contestLink.onclick = function(e) { 
+            e.preventDefault(); 
+            showScreen('screen-17-referral-contest'); 
+        };
+    }
+    
+    // Initialize on load and store for later
+    window.initLeaderboard = initLeaderboard;
+    setTimeout(initLeaderboard, 100);
+})();
+</script>
+</div>
+
+<!-- Screen: 17_referral_contest.html -->
+<div id="screen-17-referral-contest" class="app-screen">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden text-text-primary">
+<!-- Top App Bar -->
+<div class="sticky top-0 flex items-center justify-between bg-white px-4 py-3 z-10 shadow-sm">
+<div class="flex items-center gap-4">
+<a href="16_referral_leaderboard.html" onclick="event.preventDefault(); showScreen('screen-16-referral-leaderboard');"><button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined">arrow_back</span>
+</button></a>
+<h2 class="text-xl font-bold leading-tight tracking-tight">Mega Contest</h2>
+</div>
+</div>
+<!-- Hero Banner -->
+<div class="p-4">
+<div class="flex flex-col items-center gap-4 rounded-xl bg-gradient-to-br from-yellow-400 via-primary to-red-500 p-8 text-white text-center overflow-hidden relative">
+<div class="absolute top-0 right-0 opacity-20">
+<span class="material-symbols-outlined" style="font-size: 120px; font-variation-settings: 'FILL' 1">celebration</span>
+</div>
+<div class="flex h-24 w-24 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm z-10">
+<span class="material-symbols-outlined !text-6xl text-yellow-200" style="font-variation-settings: 'FILL' 1">emoji_events</span>
+</div>
+<div class="flex flex-col gap-2 z-10">
+<h3 class="text-3xl font-bold leading-tight">December Mega Contest</h3>
+<p class="text-lg font-medium text-white/90">Refer & Win Amazing Prizes!</p>
+</div>
+<div class="flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-sm px-6 py-3 z-10">
+<span class="material-symbols-outlined !text-xl">schedule</span>
+<p class="text-base font-bold">Ends in 12 Days 5 Hours</p>
+</div>
+</div>
+</div>
+<!-- Prize Pool -->
+<div class="flex flex-col gap-3 px-4">
+<p class="text-lg font-bold leading-tight">Grand Prizes</p>
+<div class="flex flex-col gap-3">
+<!-- 1st Prize -->
+<div class="flex items-center gap-4 rounded-lg bg-gradient-to-r from-yellow-100 to-yellow-50 border-2 border-yellow-400 p-4">
+<div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-yellow-400">
+<span class="material-symbols-outlined !text-4xl text-white" style="font-variation-settings: 'FILL' 1">emoji_events</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<p class="text-base font-bold leading-tight text-yellow-800">1st Place</p>
+<p class="text-2xl font-bold leading-tight text-yellow-900">iPhone 15 Pro</p>
+<p class="text-sm font-normal text-yellow-700">+ 50,000 Credits</p>
+</div>
+</div>
+<!-- 2nd Prize -->
+<div class="flex items-center gap-4 rounded-lg bg-gradient-to-r from-gray-100 to-gray-50 border-2 border-gray-400 p-4">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gray-400">
+<span class="material-symbols-outlined !text-3xl text-white" style="font-variation-settings: 'FILL' 1">workspace_premium</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<p class="text-base font-bold leading-tight text-gray-700">2nd Place</p>
+<p class="text-xl font-bold leading-tight text-gray-900">iPad Air</p>
+<p class="text-sm font-normal text-gray-600">+ 30,000 Credits</p>
+</div>
+</div>
+<!-- 3rd Prize -->
+<div class="flex items-center gap-4 rounded-lg bg-gradient-to-r from-orange-100 to-orange-50 border-2 border-orange-400 p-4">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-orange-400">
+<span class="material-symbols-outlined !text-3xl text-white" style="font-variation-settings: 'FILL' 1">grade</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<p class="text-base font-bold leading-tight text-orange-700">3rd Place</p>
+<p class="text-xl font-bold leading-tight text-orange-900">AirPods Pro</p>
+<p class="text-sm font-normal text-orange-600">+ 20,000 Credits</p>
+</div>
+</div>
+<!-- Consolation Prizes -->
+<div class="flex items-center gap-4 rounded-lg bg-white border border-gray-300 p-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary/20">
+<span class="material-symbols-outlined !text-2xl text-secondary" style="font-variation-settings: 'FILL' 1">stars</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<p class="text-base font-bold leading-tight">Top 4-10</p>
+<p class="text-lg font-bold leading-tight text-secondary">10,000 Credits Each</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Your Progress -->
+<div class="flex flex-col gap-3 p-4">
+<p class="text-lg font-bold leading-tight">Your Progress</p>
+<div class="flex flex-col gap-4 rounded-lg bg-white p-6 shadow-sm border-2 border-primary/20">
+<div class="flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-sm font-medium text-text-secondary">Current Rank</p>
+<p class="text-3xl font-bold text-primary">#12</p>
+</div>
+<div class="flex flex-col gap-1 items-end">
+<p class="text-sm font-medium text-text-secondary">Referrals This Month</p>
+<p class="text-3xl font-bold text-secondary">18</p>
+</div>
+</div>
+<div class="h-px bg-gray-200"></div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-sm">
+<p class="font-medium text-text-secondary">To reach Top 10</p>
+<p class="font-bold text-text-primary">24 more referrals needed</p>
+</div>
+<div class="h-2 w-full rounded-full bg-gray-200 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 43%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Contest Rules -->
+<div class="flex flex-col gap-3 px-4">
+<p class="text-lg font-bold leading-tight">Contest Rules</p>
+<div class="flex flex-col gap-3 rounded-lg bg-white p-6 shadow-sm">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary !text-xl mt-0.5">check_circle</span>
+<p class="text-sm font-normal leading-normal text-text-secondary flex-1">Contest runs from December 1-31, 2024</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary !text-xl mt-0.5">check_circle</span>
+<p class="text-sm font-normal leading-normal text-text-secondary flex-1">Only successful referrals (completed signup + first lesson) count</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary !text-xl mt-0.5">check_circle</span>
+<p class="text-sm font-normal leading-normal text-text-secondary flex-1">Winners will be announced on January 5, 2025</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary !text-xl mt-0.5">check_circle</span>
+<p class="text-sm font-normal leading-normal text-text-secondary flex-1">Prizes will be delivered within 15 business days</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary !text-xl mt-0.5">check_circle</span>
+<p class="text-sm font-normal leading-normal text-text-secondary flex-1">EduElements reserves the right to disqualify fraudulent entries</p>
+</div>
+</div>
+</div>
+<!-- Past Winners -->
+<div class="flex flex-col gap-3 p-4">
+<p class="text-lg font-bold leading-tight">Last Month's Winners</p>
+<div class="flex gap-3 overflow-x-auto pb-2">
+<!-- Winner 1 -->
+<div class="flex flex-col items-center gap-2 min-w-[120px] rounded-lg bg-white p-4 shadow-sm">
+<div class="h-16 w-16 rounded-full bg-cover bg-center bg-no-repeat border-4 border-yellow-400" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxS3ypoyaZqsqjfFVc8FxCefrVh9GzwxRxSRiZugOcSbVGnqURrHRgaXzE5qslqNqQvI9rAjOZhLgPELWbEw13279GkHjIKvQtOJ4E4htj1479jiKjR7Z_WanOZY009srEx8BatCbtK9K47WpbB4g8Gj8CuO9w32V757NVYb0gvMYvvRiVRn8uqojhiY6hfxMXcgbqcW3IfJW2hyRBVf1LKuhO2O2fBUEsuyXHHKULZydUfbWwkSsYfA9ZjGZ573cyrlcWGrNZsQ");'></div>
+<p class="text-sm font-bold text-center">Ravi M.</p>
+<p class="text-xs text-text-secondary text-center">MacBook Pro</p>
+</div>
+<!-- Winner 2 -->
+<div class="flex flex-col items-center gap-2 min-w-[120px] rounded-lg bg-white p-4 shadow-sm">
+<div class="h-16 w-16 rounded-full bg-cover bg-center bg-no-repeat border-4 border-gray-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIxRfQ2l1rJUFnasMrLagv3V30MLa6qXCpZz5DwgAGLaLIt2LeAVUWoWzFLdU1Zgg6gFYyhw57Xh0bIlOT-r_6nsJleoHzzCWCWKiRICaZeZbEWOvEkarZD8iSgHthdMtWSJXGIq_VCpP");'></div>
+<p class="text-sm font-bold text-center">Priya K.</p>
+<p class="text-xs text-text-secondary text-center">iPad Pro</p>
+</div>
+<!-- Winner 3 -->
+<div class="flex flex-col items-center gap-2 min-w-[120px] rounded-lg bg-white p-4 shadow-sm">
+<div class="h-16 w-16 rounded-full bg-cover bg-center bg-no-repeat border-4 border-orange-400" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEoRADzU0dXziq8qbrWwPiQc33QOt1Q4Nee-KBZb0TxV2NOWh8L2p2V8R2_16C9bU_cGllSp-vMdPd_XtkCXXhI6L7E_DIzdrHAdp_NMR0S-GPgY1wWOrZ01tHFdGk7U5ONQAEmLMJtKWka91O4m2oXXiJ7yxor37JR0g1mOfbiwfwjsWWU7NTeF0vXhUv0rcVgnpVPetNY0Y2pmzLLbzJDUyWlwup4RYPjhH5lVr-vX_kmvnKy1nZMY8F0DeL4lwl8pzYXpnNOA");'></div>
+<p class="text-sm font-bold text-center">Neha S.</p>
+<p class="text-xs text-text-secondary text-center">Apple Watch</p>
+</div>
+</div>
+</div>
+<!-- CTA Button -->
+<div class="flex items-center gap-3 p-4 pb-6">
+<a href="15_referral_link.html" class="flex-1"><button class="flex h-14 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-primary to-secondary text-base font-bold leading-normal text-white shadow-lg hover:shadow-xl transition-shadow">
+<span class="material-symbols-outlined">share</span>
+<span class="truncate">Start Referring Now</span>
+</button></a>
+</div>
+</div>
+</div>
+
+<!-- Screen: 18_app_settings.html -->
+<div id="screen-18-app-settings" class="app-screen">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden text-text-primary">
+<!-- Top App Bar -->
+<div class="sticky top-0 flex items-center justify-between bg-white px-4 py-3 z-10 shadow-sm">
+<div class="flex items-center gap-4">
+<button id="settings-backBtn" class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-gray-100">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-xl font-bold leading-tight tracking-tight">Settings</h2>
+</div>
+</div>
+<!-- Settings Sections -->
+<div class="flex flex-col gap-4 p-4">
+<!-- Account Section -->
+<div class="flex flex-col gap-2">
+<p class="text-sm font-bold leading-tight text-text-secondary px-2">ACCOUNT</p>
+<div class="flex flex-col rounded-lg bg-white shadow-sm overflow-hidden">
+<!-- Edit Profile -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">person</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Edit Profile</p>
+<p class="text-xs font-normal text-text-secondary text-left">Update your name, photo and bio</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+<!-- Change Password -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">lock</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Change Password</p>
+<p class="text-xs font-normal text-text-secondary text-left">Update your security credentials</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+<!-- Email & Phone -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-primary">email</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Email & Phone</p>
+<p class="text-xs font-normal text-text-secondary text-left">Manage your contact information</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Preferences Section -->
+<div class="flex flex-col gap-2">
+<p class="text-sm font-bold leading-tight text-text-secondary px-2">PREFERENCES</p>
+<div class="flex flex-col rounded-lg bg-white shadow-sm overflow-hidden">
+<!-- Notifications -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">notifications</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Notifications</p>
+<p class="text-xs font-normal text-text-secondary text-left">Customize your alerts and reminders</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+<!-- Language -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">language</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Language</p>
+<p class="text-xs font-normal text-text-secondary text-left">English (US)</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+<!-- Dark Mode Toggle -->
+<div class="flex items-center gap-4 p-4 border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">dark_mode</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Dark Mode</p>
+<p class="text-xs font-normal text-text-secondary text-left">Switch to dark theme</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input type="checkbox" class="sr-only peer">
+<div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Download Quality -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-primary">download</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Download Quality</p>
+<p class="text-xs font-normal text-text-secondary text-left">High (720p)</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Privacy & Security Section -->
+<div class="flex flex-col gap-2">
+<p class="text-sm font-bold leading-tight text-text-secondary px-2">PRIVACY & SECURITY</p>
+<div class="flex flex-col rounded-lg bg-white shadow-sm overflow-hidden">
+<!-- Privacy Settings -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">shield</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Privacy Settings</p>
+<p class="text-xs font-normal text-text-secondary text-left">Control your data and visibility</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+<!-- Blocked Users -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">block</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Blocked Users</p>
+<p class="text-xs font-normal text-text-secondary text-left">Manage blocked accounts</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+<!-- Data & Storage -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-primary">storage</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Data & Storage</p>
+<p class="text-xs font-normal text-text-secondary text-left">Manage downloaded content</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Support Section -->
+<div class="flex flex-col gap-2">
+<p class="text-sm font-bold leading-tight text-text-secondary px-2">SUPPORT</p>
+<div class="flex flex-col rounded-lg bg-white shadow-sm overflow-hidden">
+<!-- Help Center -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">help</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Help Center</p>
+<p class="text-xs font-normal text-text-secondary text-left">Get answers to common questions</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+<!-- Report a Problem -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">report</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Report a Problem</p>
+<p class="text-xs font-normal text-text-secondary text-left">Let us know about any issues</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+<!-- Terms & Policies -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-primary">description</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Terms & Policies</p>
+<p class="text-xs font-normal text-text-secondary text-left">View our terms and privacy policy</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- About Section -->
+<div class="flex flex-col gap-2">
+<p class="text-sm font-bold leading-tight text-text-secondary px-2">ABOUT</p>
+<div class="flex flex-col rounded-lg bg-white shadow-sm overflow-hidden">
+<!-- App Version -->
+<div class="flex items-center gap-4 p-4 border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">info</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">App Version</p>
+<p class="text-xs font-normal text-text-secondary text-left">v2.4.1 (Latest)</p>
+</div>
+</div>
+<!-- Rate Us -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors border-b border-gray-100">
+<span class="material-symbols-outlined text-primary">star</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Rate Us</p>
+<p class="text-xs font-normal text-text-secondary text-left">Share your feedback on the app store</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+<!-- Share App -->
+<button class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-primary">share</span>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-medium leading-tight text-left">Share EduElements</p>
+<p class="text-xs font-normal text-text-secondary text-left">Invite friends to join</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Logout Button -->
+<div class="flex items-center gap-3 p-4 pt-6 pb-8">
+<button class="flex h-12 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-red-500 text-base font-bold leading-normal text-red-500 hover:bg-red-50 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="truncate">Logout</span>
+</button>
+</div>
+</div>
+<script>
+// Dynamic back button based on user role - runs after DOM is loaded
+(function() {
+    const backBtn = document.getElementById('settings-backBtn');
+    if (backBtn) {
+        backBtn.addEventListener('click', function() {
+            if (window.userRole === 'educator') {
+                showScreen('screen-19-educator-profile');
+            } else {
+                showScreen('screen-09-learner-profile');
+            }
+        });
+    }
+})();
+</script>
+</div>
+</div>
+
+<!-- Screen: 19_educator_profile.html -->
+<div id="screen-19-educator-profile" class="app-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden pb-24">
+<!-- Top App Bar -->
+<div class="flex items-center bg-white p-4 pb-2 justify-between sticky top-0 z-10 border-b border-gray-200">
+<a href="10_educator_dashboard.html" onclick="event.preventDefault(); showScreen('screen-10-educator-dashboard');"><button class="flex size-12 shrink-0 items-center text-text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button></a>
+<h2 class="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Profile</h2>
+<button class="flex w-12 items-center justify-end" onclick="showScreen('screen-18-app-settings');">
+<span class="material-symbols-outlined text-text-primary">settings</span>
+</button>
+</div>
+<!-- Profile Header -->
+<div class="flex p-4 bg-white">
+<div class="flex w-full flex-col gap-4 items-center">
+<div class="flex gap-4 flex-col items-center">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32 border-4 border-primary" style='background-image: url("https://i.pravatar.cc/300?img=47");'></div>
+<div class="absolute bottom-0 right-0 flex items-center justify-center size-8 bg-secondary rounded-full border-2 border-white">
+<span class="material-symbols-outlined text-white !text-base" style="font-variation-settings: 'FILL' 1">verified</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center">
+<p class="text-text-primary text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">Anjali</p>
+<p class="text-text-secondary text-base font-normal leading-normal text-center">@anjali_educator</p>
+</div>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-gray-100 text-text-primary text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px]">
+<span class="truncate">Edit Profile</span>
+</button>
+</div>
+</div>
+<!-- Stats -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-white border border-gray-200">
+<p class="text-text-secondary text-sm font-medium leading-normal flex items-center gap-2 whitespace-nowrap">
+    <span class="material-symbols-outlined text-primary" style="font-size: 20px;">toll</span> Teaching Credits
+</p><p class="text-primary tracking-light text-2xl font-bold leading-tight"><span id="educator-profile-credits">1,25,430</span></p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-white border border-gray-200">
+<p class="text-text-secondary text-sm font-medium leading-normal flex items-center gap-2 whitespace-nowrap">
+    <span class="material-symbols-outlined text-primary" style="font-size: 20px;">school</span> Courses Created</p>
+<p class="text-secondary tracking-light text-3xl font-bold leading-tight">8</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 px-4 pb-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-white border border-gray-200">
+<p class="text-text-secondary text-sm font-medium leading-normal flex items-center gap-2 whitespace-nowrap">
+    <span class="material-symbols-outlined text-primary" style="font-size: 20px;">group</span> Total Students</p>
+<p class="text-orange-500 tracking-light text-3xl font-bold leading-tight">8,345</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-white border border-gray-200">
+<p class="text-text-secondary text-sm font-medium leading-normal flex items-center gap-2 whitespace-nowrap">
+    <span class="material-symbols-outlined text-primary" style="font-size: 20px;">trending_up</span> Avg. Rating</p>
+<p class="text-green-500 tracking-light text-3xl font-bold leading-tight">4.8</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-3 bg-background-light sticky top-[72px] z-10">
+<div class="flex border-b border-gray-200 px-4 justify-between bg-white">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Courses</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-text-secondary pb-[13px] pt-4 flex-1" href="12_reward_store.html?role=educator">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Rewards</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-text-secondary pb-[13px] pt-4 flex-1" href="15_referral_link.html?role=educator">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Referrals</p>
+</a>
+</div>
+</div>
+<!-- List Items (Courses Section) -->
+<div class="flex flex-col gap-px p-4 pt-2">
+<div class="flex gap-4 bg-white px-4 py-3 justify-between rounded-t-lg">
+<div class="flex items-start gap-4">
+<div class="text-text-primary flex items-center justify-center rounded-lg bg-gray-100 shrink-0 size-12">
+<span class="material-symbols-outlined">code</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-text-primary text-base font-medium leading-normal">Advanced Python for Data Science</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">4,120 Students • 85% Completion</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">Published: 15 Jan 2024</p>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<p class="text-primary text-base font-bold leading-normal">+52,400</p>
+<span class="text-xs text-text-secondary">TC earned</span>
+</div>
+</div>
+<div class="flex gap-4 bg-white px-4 py-3 justify-between border-t border-gray-100">
+<div class="flex items-start gap-4">
+<div class="text-text-primary flex items-center justify-center rounded-lg bg-gray-100 shrink-0 size-12">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-text-primary text-base font-medium leading-normal">Introduction to Machine Learning</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">2,890 Students • 72% Completion</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">Published: 10 Mar 2024</p>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<p class="text-primary text-base font-bold leading-normal">+36,800</p>
+<span class="text-xs text-text-secondary">TC earned</span>
+</div>
+</div>
+<div class="flex gap-4 bg-white px-4 py-3 justify-between border-t border-gray-100">
+<div class="flex items-start gap-4">
+<div class="text-text-primary flex items-center justify-center rounded-lg bg-gray-100 shrink-0 size-12">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-text-primary text-base font-medium leading-normal">Digital Marketing Fundamentals</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">1,250 Students • 91% Completion</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">Published: 05 May 2024</p>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<p class="text-primary text-base font-bold leading-normal">+16,250</p>
+<span class="text-xs text-text-secondary">TC earned</span>
+</div>
+</div>
+<div class="flex gap-4 bg-white px-4 py-3 justify-between border-t border-gray-100 rounded-b-lg">
+<div class="flex items-start gap-4">
+<div class="text-text-primary flex items-center justify-center rounded-lg bg-gray-100 shrink-0 size-12">
+<span class="material-symbols-outlined">draw</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-text-primary text-base font-medium leading-normal">UI/UX Design Masterclass</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">1,085 Students • 78% Completion</p>
+<p class="text-text-secondary text-sm font-normal leading-normal">Published: 20 Aug 2024</p>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<p class="text-primary text-base font-bold leading-normal">+13,980</p>
+<span class="text-xs text-text-secondary">TC earned</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation for Educators -->
+<div class="fixed bottom-0 left-0 right-0 flex items-center justify-around border-t border-gray-200 bg-white px-4 py-3 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+<a href="10_educator_dashboard.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-10-educator-dashboard');">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-xs font-medium">Dashboard</span>
+</a>
+<a href="11_course_creation.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-11-course-creation');">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-xs font-medium">Create</span>
+</a>
+<a href="12_reward_store.html?role=educator" class="flex flex-col items-center justify-center w-1/4 gap-1 text-text-secondary" onclick="event.preventDefault(); showScreen('screen-12-reward-store');">
+<span class="material-symbols-outlined">card_giftcard</span>
+<span class="text-xs font-medium">Rewards</span>
+</a>
+<a href="19_educator_profile.html" class="flex flex-col items-center justify-center w-1/4 gap-1 text-primary" onclick="event.preventDefault(); showScreen('screen-19-educator-profile');">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">person</span>
+<span class="text-xs font-bold">Profile</span>
+</a>
+</div>
+</div>
+
+<script>
+let currentRole = 'learner';
+window.userRole = window.userRole || 'learner';
+window.selectedReward = null; // Store selected reward for redemption
+
+function setRole(role) {
+    currentRole = role;
+    window.userRole = role;
+    console.log('Role set to:', role);
+}
+
+// Ensure global helper functions are available (already defined earlier but ensure they exist)
+if (!window.getCreditLabel) {
+    window.getCreditLabel = function(includePrefix = false) {
+        const label = window.userRole === 'educator' ? 'TC' : 'LC';
+        return includePrefix ? `${label}` : label;
+    };
+}
+
+if (!window.getUserCredits) {
+    window.getUserCredits = function() {
+        return window.userRole === 'educator' ? 125430 : 12500;
+    };
+}
+
+// Create aliases for easier use
+const getCreditLabel = window.getCreditLabel;
+const getUserCredits = window.getUserCredits;
+
+// Function to update all credit displays on the page
+function updateCreditDisplays() {
+    const creditLabel = getCreditLabel();
+    const credits = getUserCredits();
+    const formattedCredits = credits.toLocaleString('en-IN');
+    
+    // Update specific credit displays by ID
+    const creditsMap = {
+        'role-learner-credits': `LC ${formattedCredits}`,
+        'role-educator-credits': `TC ${formattedCredits}`,
+        'learner-home-credits': `${creditLabel} ${formattedCredits}`,
+        'dashboard-credits': formattedCredits,
+        'profile-credits': formattedCredits,
+        'educator-dashboard-credits': `${creditLabel} ${formattedCredits}`,
+        'educator-profile-credits': formattedCredits
+    };
+    
+    Object.keys(creditsMap).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = creditsMap[id];
+    });
+    
+    // Update all elements with credit display
+    document.querySelectorAll('[data-credit-display]').forEach(el => {
+        const showLabel = el.getAttribute('data-credit-label') === 'true';
+        el.textContent = showLabel ? `${creditLabel} ${formattedCredits}` : formattedCredits;
+    });
+}
+
+function showScreen(screenId) {
+    // Hide all screens including role-select
+    document.querySelectorAll('.app-screen').forEach(screen => {
+        screen.classList.remove('active');
+        screen.style.display = 'none';
+    });
+    
+    // Update userRole based on screen being shown
+    const educatorScreens = ['screen-10-educator-dashboard', 'screen-11-course-creation', 'screen-19-educator-profile'];
+    const learnerScreens = ['screen-05-learner-home', 'screen-06-course-library', 'screen-07-course-page', 'screen-08-learning-dashboard', 'screen-09-learner-profile'];
+    
+    if (educatorScreens.includes(screenId)) {
+        window.userRole = 'educator';
+        currentRole = 'educator';
+    } else if (learnerScreens.includes(screenId)) {
+        window.userRole = 'learner';
+        currentRole = 'learner';
+    }
+    // Don't change role for reward store - keep current role
+    
+    // Show target screen
+    const targetScreen = document.getElementById(screenId);
+    if (targetScreen) {
+        targetScreen.style.display = 'block';
+        targetScreen.classList.add('active');
+        window.scrollTo(0, 0);
+        console.log('Showing screen:', screenId, '| Role:', window.userRole);
+        
+        // Update reward store navigation and initialize if showing reward store
+        if (screenId === 'screen-12-reward-store') {
+            if (typeof updateRewardStoreNav === 'function') {
+                setTimeout(() => updateRewardStoreNav(), 50);
+            }
+            if (typeof initializeRewardStore === 'function') {
+                setTimeout(() => initializeRewardStore(), 100);
+            }
+        }
+        
+        // Initialize referral page if showing referral link
+        if (screenId === 'screen-15-referral-link' && typeof initReferralPage === 'function') {
+            setTimeout(() => initReferralPage(), 50);
+        }
+        
+        // Initialize leaderboard if showing leaderboard
+        if (screenId === 'screen-16-referral-leaderboard' && typeof initLeaderboard === 'function') {
+            setTimeout(() => initLeaderboard(), 50);
+        }
+        
+        // Initialize redemption page if showing redemption with selected reward
+        if (screenId === 'screen-13-reward-redemption' && window.selectedReward) {
+            setTimeout(() => initRedemptionPage(window.selectedReward), 50);
+        }
+        
+        // Update credit displays
+        updateCreditDisplays();
+    } else {
+        console.error('Screen not found:', screenId);
+    }
+}
+
+// Function to initialize redemption page with reward data
+function initRedemptionPage(reward) {
+    const creditLabel = getCreditLabel();
+    const userCredits = getUserCredits();
+    const afterRedemption = userCredits - reward.cost;
+    
+    // Update reward title
+    const titleEl = document.getElementById('redemption-title');
+    if (titleEl) titleEl.textContent = reward.title;
+    
+    // Update reward subtitle
+    const subtitleEl = document.getElementById('redemption-subtitle');
+    if (subtitleEl) subtitleEl.textContent = reward.subtitle;
+    
+    // Update reward image
+    const imgEl = document.getElementById('redemption-image');
+    if (imgEl && reward.image) {
+        imgEl.src = reward.image;
+        imgEl.alt = reward.title;
+    }
+    
+    // Update cost display with proper credit label
+    const costEl = document.getElementById('redemption-cost');
+    if (costEl) costEl.textContent = `${reward.cost.toLocaleString('en-IN')} ${creditLabel}`;
+    
+    // Update available credits with proper label
+    const availableEl = document.getElementById('redemption-available-credits');
+    if (availableEl) availableEl.textContent = `${userCredits.toLocaleString('en-IN')} ${creditLabel}`;
+    
+    // Update after redemption with proper calculation and label
+    const afterEl = document.getElementById('redemption-after-credits');
+    if (afterEl) afterEl.textContent = `${afterRedemption.toLocaleString('en-IN')} ${creditLabel}`;
+}
+
+// Override all anchor link clicks
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (link && link.href) {
+        const href = link.getAttribute('href');
+        if (href && href.includes('.html')) {
+            e.preventDefault();
+            // Extract filename and convert to screen ID
+            const filename = href.split('/').pop().split('?')[0];
+            const screenId = 'screen-' + filename.replace('.html', '').replace(/_/g, '-');
+            showScreen(screenId);
+        }
+    }
+});
+
+// Override button clicks that navigate
+document.addEventListener('click', function(e) {
+    const button = e.target.closest('button');
+    if (button && button.id && button.id.includes('Btn')) {
+        // Handle special navigation buttons
+        console.log('Button clicked:', button.id);
+    }
+});
+
+console.log('Combined app loaded successfully!');
+</script>
+
+</body>
+</html>
