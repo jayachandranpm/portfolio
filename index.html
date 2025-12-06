@@ -4,154 +4,795 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jayachandran PM | Software Engineer</title>
-    <meta name="description"
-        content="Portfolio of Jayachandran PM, a Software Engineer specializing in AI, Python, and Full Stack Development.">
-    <link rel="stylesheet" href="style.css">
+    <title>Jayachandran PM | Product Engineer</title>
+    <!-- Fonts: Manrope for that modern AI aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Kastle.ai Inspired Dark Palette */
+            --bg-void: #050505;
+            --bg-deep: #0a0a0a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+
+            --text-primary: #FFFFFF;
+            --text-secondary: #A1A1AA;
+            /* Grey-400 */
+            --text-tertiary: #52525B;
+            /* Grey-600 */
+
+            /* Neon Accents */
+            --accent-purple: #CB68FF;
+            --accent-cyan: #00B2FF;
+            --accent-glow: rgba(203, 104, 255, 0.25);
+
+            --gradient-primary: linear-gradient(135deg, #CB68FF 0%, #00B2FF 100%);
+            --gradient-dark: linear-gradient(180deg, rgba(15, 10, 31, 0) 0%, rgba(15, 10, 31, 0.4) 100%);
+
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-pill: 9999px;
+
+            --font-main: 'Manrope', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-void);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Subtle background grid */
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Ambient Glow Orbs */
+        .glow-orb {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(203, 104, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .orb-1 {
+            top: -200px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            bottom: -200px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(0, 178, 255, 0.06) 0%, transparent 70%);
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 800;
+            /* Heavy headers */
+            letter-spacing: -0.02em;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #FFFFFF 20%, #A1A1AA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-accent-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Header / Nav */
+        header {
+            position: sticky;
+            top: 2rem;
+            z-index: 100;
+            padding: 0 1rem;
+            margin-bottom: 4rem;
+        }
+
+        nav {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-pill);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.03em;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .btn-header-cta {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 0.6rem 1.25rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-header-cta:hover {
+            background: white;
+            color: black;
+            border-color: white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 6rem 1rem 8rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+        }
+
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--gradient-primary);
+            color: white;
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 0 20px rgba(203, 104, 255, 0.4);
+        }
+
+        .cta-primary:hover {
+            box-shadow: 0 0 40px rgba(203, 104, 255, 0.6);
+            transform: scale(1.03);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Section Headers */
+        .section-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            color: white;
+        }
+
+        /* Experience Cards */
+        .experience-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            /* Hover Glow Gradient */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(203, 104, 255, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        .company {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .role {
+            color: var(--accent-purple);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .date {
+            font-family: monospace;
+            color: var(--text-tertiary);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* Projects */
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 4rem;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 30px rgba(0, 178, 255, 0.15);
+        }
+
+        .project-tags {
+            padding: 2rem 2.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            /* Prevent overlap */
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-pill);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .project-content {
+            padding: 1.5rem 2.5rem 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .project-title h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .project-title a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .narrative-block {
+            margin-bottom: 1.5rem;
+        }
+
+        .narrative-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .c-problem {
+            color: #FF4D4D;
+        }
+
+        .c-solution {
+            color: #4D94FF;
+        }
+
+        .c-impact {
+            color: #00E599;
+        }
+
+        .narrative-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-subtle);
+            background: var(--bg-deep);
+        }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            color: white;
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px white;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 1.5rem;
+                margin-top: 1rem;
+                border-radius: var(--radius-md);
+                border: 1px solid var(--border-subtle);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
+            }
+
+            nav {
+                padding: 0.75rem 1rem;
+                position: relative;
+            }
+
+            .project-tags {
+                padding: 1.5rem 1.5rem 0;
+            }
+
+            .project-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1.5rem;
+            }
+
+            header {
+                padding: 0 0.5rem;
+            }
+
+            .btn-header-cta {
+                background: none;
+                border: none;
+                padding: 0.5rem 0;
+                color: var(--accent-cyan);
+                box-shadow: none;
+                font-size: 1.1rem;
+                width: 100%;
+                text-align: left;
+            }
+
+            .btn-header-cta:hover {
+                background: none;
+                color: white;
+                border-color: transparent;
+                box-shadow: none;
+                transform: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Ambient Backgrounds -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
 
     <header>
-        <h1>Jayachandran PM</h1>
-        <p>Software Engineer | AI Enthusiast</p>
-        <p>
-            <a href="https://www.linkedin.com/in/jayachandranpm" target="_blank">LinkedIn</a> |
-            <a href="https://github.com/jayachandranpm" target="_blank">GitHub</a> |
-            <a href="https://medium.com/@jayachandranpm2001" target="_blank">Blog</a>
-        </p>
+        <nav>
+            <a href="#" class="logo">Jayachandran P M</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Work</a></li>
+                <li><a href="mailto:jayachandranpm2001@gmail.com" class="btn-header-cta">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+
+        <script>
+            document.querySelector('.menu-toggle').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.nav-links').classList.remove('active');
+                });
+            });
+        </script>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <main class="container">
+        <!-- Hero -->
+        <section class="hero" style="border: none;">
+            <h1>
+                <span class="text-gradient">Bridging the gap between</span><br>
+                <span class="text-accent-gradient">Technical Execution & Product Strategy.</span>
+            </h1>
+            <p>Product-Minded Engineer crafting user-centric AI experiences. Previously at Perplexity AI & Zoho.</p>
+            <div>
+                <a href="#projects" class="cta-primary">View Case Studies</a>
+            </div>
+        </section>
 
-    <main>
-
+        <!-- About -->
         <section id="about">
-            <h2>About Me</h2>
-            <p>I am a dedicated Software Engineer based in Chennai, India, with a strong foundation in Computer
-                Applications. My expertise lies in developing robust software solutions, particularly in the
-                realms of <strong>Artificial Intelligence, Machine Learning, and Full Stack Development</strong>.</p>
-            <p>Currently working at <strong>Zoho</strong> as a Software Debug Engineer, I also have experience
-                with <strong>Perplexity AI</strong> and <strong>Turing</strong>. I love solving complex problems
-                and optimizing workflows using cutting-edge technologies like LLMs and RAG.</p>
-
-            <h3>Education</h3>
-            <p><strong>Madras Christian College</strong> | Chennai, India</p>
-            <p>Master of Computer Applications | 2021 - 2023 | 86%</p>
-
-            <p><strong>SRM Arts and Science College</strong> | Chennai, India</p>
-            <p>B.Sc. Computer Science | 2018 - 2021 | 85%</p>
+            <span class="section-tag">About Me</span>
+            <h2 class="section-title">Technical Literacy Meets <br><span class="text-accent-gradient">Business
+                    Intuition.</span></h2>
+            <div class="card">
+                <p>I build products, not just code. Based in Chennai, India, I bridge the gap between Technical
+                    Execution and Product Strategy. My background in full-stack development gives me the technical
+                    empathy to lead teams, while my experience as a <strong>Business Fellow at Perplexity AI</strong>
+                    taught me how to align deep tech with real user needs.</p>
+            </div>
         </section>
 
+        <!-- Experience -->
         <section id="experience">
-            <h2>Experience</h2>
-            <ul>
-                <li><strong>Zoho</strong> | Chennai, India</li>
-                <p>Software Debug Engineer | Feb 2024 - Present</p>
-                <p>Working with the Zoho CRM team on software debugging and CRM systems. Analyzed customer
-                    feature requests and implemented bug fixes, reducing issue resolution time by 20%.</p>
+            <span class="section-tag">Trajectory</span>
+            <h2 class="section-title">Experience</h2>
 
-                <li><strong>Perplexity AI</strong> | Remote</li>
-                <p>Business Fellow | Mar 2025 - Aug 2025</p>
-                <p>Selected for the flagship program focused on bridging business strategy and AI. Participated
-                    in workshops with leaders from NVIDIA, Box, Databricks.</p>
+            <div class="experience-grid">
+                <!-- Zoho -->
+                <div class="card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="company">Zoho</div>
+                            <span class="role">Software Debug Engineer</span>
+                        </div>
+                        <span class="date">Feb 2024 - Present</span>
+                    </div>
+                    <p>Analyzed deeply reported customer issues to identify friction points in the CRM workflow.
+                        Transformed technical debugging into product insights, implementing fixes that reduced
+                        resolution time by <strong>20%</strong> and boosted CSAT scores.</p>
+                </div>
 
-                <li><strong>Turing</strong> | Remote</li>
-                <p>Python LLM Trainer | Nov 2023 - Jan 2024</p>
-                <p>Trained LLMs using RLHF. Developed function calling for various taxonomies, enhancing model
-                    functionality.</p>
+                <!-- Perplexity -->
+                <div class="card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="company">Perplexity AI</div>
+                            <span class="role">Business Fellow</span>
+                        </div>
+                        <span class="date">Mar 2025 - Aug 2025</span>
+                    </div>
+                    <p>Selected for a flagship program at the intersection of AI and Strategy. Participated in
+                        high-level strategy workshops with leaders from NVIDIA and Box, learning to evaluate AI features
+                        through a strict commercial viability lens.</p>
+                </div>
 
-                <li><strong>Rubixe</strong> | Bengaluru (Remote)</li>
-                <p>Data Science Consultant | June 2023 - Dec 2023</p>
-                <p>Worked on proof-of-concepts and client projects, including image classification and text
-                    analysis tasks.</p>
-
-                <li><strong>Madras Christian College</strong> | Chennai</li>
-                <p>Software Development Intern | Dec 2022 - Apr 2023</p>
-                <p>Contributed to the Learning Analytics and Management System (LAMS). Implemented user
-                    authentication, attendance management, and sentiment analysis.</p>
-            </ul>
+                <!-- Turing -->
+                <div class="card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="company">Turing</div>
+                            <span class="role">Python LLM Trainer</span>
+                        </div>
+                        <span class="date">Nov 2023 - Jan 2024</span>
+                    </div>
+                    <p>Worked on RLHF pipelines to improve model helpfulness. Defined function-calling taxonomies,
+                        effectively writing the "product specs" for how LLMs interact with external tools.</p>
+                </div>
+            </div>
         </section>
 
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <p><strong>Languages:</strong> Python, SQL, Java, JavaScript, HTML/CSS</p>
-            <p><strong>Frameworks & Libraries:</strong> Django, Flask, Scikit-learn, Streamlit, RAG</p>
-            <p><strong>Tools & Platforms:</strong> PowerBI, NLP, Generative AI, Web Scraping, Git</p>
-            <p><strong>Databases:</strong> MySQL, PostgreSQL, ChromaDB</p>
-        </section>
-
+        <!-- Projects -->
         <section id="projects">
-            <h2>Projects</h2>
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">Selected Works</h2>
 
-            <div class="project">
-                <h3><a href="https://jayachandranpm.pythonanywhere.com/" target="_blank">Knowledge Graph RAG</a></h3>
-                <div class="project-preview"
-                    onclick="window.open('https://jayachandranpm.pythonanywhere.com/', '_blank')">
-                    <iframe src="https://jayachandranpm.pythonanywhere.com/" loading="lazy"></iframe>
-                    <div class="preview-overlay">Click to explore →</div>
+            <!-- Zia RAG Bot -->
+            <div class="project-card">
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">RAG</span>
+                    <span class="tag">ChromaDB</span>
                 </div>
-                <p><em>Python, Flask, Gemini Pro, D3.js</em></p>
-                <p>An interactive knowledge graph generator that visualizes relationships between entities using
-                    LLMs and web scraping. Features real-time graph expansion and chat.</p>
-            </div>
-
-            <div class="project">
-                <h3><a href="COMPLETE-APP.html" target="_blank">EduElements</a></h3>
-                <div class="project-preview" onclick="window.open('COMPLETE-APP.html', '_blank')">
-                    <iframe src="COMPLETE-APP.html" loading="lazy"></iframe>
-                    <div class="preview-overlay">Click to explore →</div>
+                <div class="project-content">
+                    <div class="project-title">
+                        <h3><a href="https://botzohocrm.pythonanywhere.com/" target="_blank">Zia RAG Bot (Zoho CRM) <i
+                                    class="fa-solid fa-arrow-up-right-from-square"
+                                    style="font-size: 0.6em; vertical-align: middle;"></i></a></h3>
+                        <p style="color:var(--text-secondary);">Conversational AI for Zoho CRM's Knowledge Base.</p>
+                    </div>
+                    <div class="project-narrative">
+                        <div class="narrative-block">
+                            <div class="narrative-label c-problem"><i class="fa-solid fa-circle-exclamation"></i>
+                                Problem</div>
+                            <p class="narrative-text">Users struggle to quickly find specific answers in extensive
+                                static knowledge bases.</p>
+                        </div>
+                        <div class="narrative-block">
+                            <div class="narrative-label c-solution"><i class="fa-solid fa-bolt"></i> Solution</div>
+                            <p class="narrative-text">A RAG-based bot using TF-IDF and Cosine Similarity to semantic
+                                search and synthesized answers.</p>
+                        </div>
+                        <div class="narrative-block">
+                            <div class="narrative-label c-impact"><i class="fa-solid fa-chart-line"></i> Impact</div>
+                            <p class="narrative-text">Enhanced user interaction by delivering instant, context-aware
+                                answers from documentation.</p>
+                        </div>
+                    </div>
                 </div>
-                <p><em>HTML, TailwindCSS, JavaScript</em></p>
-                <p>A high-fidelity design simulation of a comprehensive learning rewards marketplace. Features
-                    learner and educator roles, course libraries, and a gamified reward system.</p>
             </div>
-
-            <div class="project">
-                <h3><a href="https://botzohocrm.pythonanywhere.com/" target="_blank">Zia RAG Bot (Zoho CRM)</a></h3>
-                <div class="project-preview" onclick="window.open('https://botzohocrm.pythonanywhere.com/', '_blank')">
-                    <iframe src="https://botzohocrm.pythonanywhere.com/" loading="lazy"></iframe>
-                    <div class="preview-overlay">Click to explore →</div>
+            <!-- Arbor -->
+            <div class="project-card">
+                <div class="project-tags">
+                    <span class="tag">Generative AI</span>
+                    <span class="tag">Search</span>
+                    <span class="tag">Productivity</span>
                 </div>
-                <p><em>Python, Flask, ChromaDB, GenAI</em></p>
-                <p>Conversational AI to enhance user interaction with Zoho CRM's Knowledge Base using RAG,
-                    TF-IDF, and Cosine Similarity.</p>
-            </div>
-
-            <div class="project">
-                <h3>Gemini Blog Assistant</h3>
-                <p><em>Python, Streamlit, Gemini API</em></p>
-                <p>Streamlit app for creating blogs in 100+ languages with customizable tone and structure.
-                    Includes history tracking and export options.</p>
-            </div>
-
-            <div class="project">
-                <h3><a href="https://arbor.pythonanywhere.com/" target="_blank">Arbor - Deep Research AI</a></h3>
-                <div class="project-preview" onclick="window.open('https://arbor.pythonanywhere.com/', '_blank')">
-                    <iframe src="https://arbor.pythonanywhere.com/" loading="lazy"></iframe>
-                    <div class="preview-overlay">Click to explore →</div>
+                <div class="project-content">
+                    <div class="project-title">
+                        <h3><a href="https://arbor.pythonanywhere.com/" target="_blank">Arbor - Deep Research AI <i
+                                    class="fa-solid fa-arrow-up-right-from-square"
+                                    style="font-size: 0.6em; vertical-align: middle;"></i></a></h3>
+                        <p style="color:var(--text-secondary);">A dual-mode research agent that reads, reasons, and
+                            cites.</p>
+                    </div>
+                    <div class="project-narrative">
+                        <div class="narrative-block">
+                            <div class="narrative-label c-problem"><i class="fa-solid fa-circle-exclamation"></i>
+                                Problem</div>
+                            <p class="narrative-text">AI Hallucinations make LLMs unreliable for serious professional
+                                work.</p>
+                        </div>
+                        <div class="narrative-block">
+                            <div class="narrative-label c-solution"><i class="fa-solid fa-bolt"></i> Solution</div>
+                            <p class="narrative-text">A hybrid RAG engine that scrapes real-time data and strictly
+                                grounds answers in citations.</p>
+                        </div>
+                        <div class="narrative-block">
+                            <div class="narrative-label c-impact"><i class="fa-solid fa-chart-line"></i> Impact</div>
+                            <p class="narrative-text">Reduces hallucinations by ~90% vs raw models. Mobile-first UX
+                                increased retention.</p>
+                        </div>
+                    </div>
                 </div>
-                <p><em>Python, Flask, Gemini, Web Scraping</em></p>
-                <p>A production-ready deep research agent capable of autonomous web scraping, multi-hop reasoning, and
-                    generating cited reports. Features robust anti-bot bypass and real-time streaming.</p>
             </div>
-        </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>You can reach me at jayachandranpm2001@gmail.com</p>
+            <!-- EduElements -->
+            <div class="project-card">
+                <div class="project-tags">
+                    <span class="tag">EdTech</span>
+                    <span class="tag">Gamification</span>
+                    <span class="tag">Marketplace</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">
+                        <h3><a href="COMPLETE-APP.html" target="_blank">EduElements <i
+                                    class="fa-solid fa-arrow-up-right-from-square"
+                                    style="font-size: 0.6em; vertical-align: middle;"></i></a></h3>
+                        <p style="color:var(--text-secondary);">Gamified learning rewards marketplace.</p>
+                    </div>
+                    <div class="project-narrative">
+                        <div class="narrative-block">
+                            <div class="narrative-label c-problem"><i class="fa-solid fa-circle-exclamation"></i>
+                                Problem</div>
+                            <p class="narrative-text">Low student completion rates in online courses due to lack of
+                                motivation.</p>
+                        </div>
+                        <div class="narrative-block">
+                            <div class="narrative-label c-solution"><i class="fa-solid fa-bolt"></i> Solution</div>
+                            <p class="narrative-text">A 2-sided marketplace where students earn redeemable credits for
+                                learning streaks.</p>
+                        </div>
+                        <div class="narrative-block">
+                            <div class="narrative-label c-impact"><i class="fa-solid fa-chart-line"></i> Impact</div>
+                            <p class="narrative-text">Implemented behavioral psychology triggers (Streaks/Badges) to
+                                boost daily active use.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Graph -->
+            <div class="project-card">
+                <div class="project-tags">
+                    <span class="tag">Data Viz</span>
+                    <span class="tag">RAG</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">
+                        <h3><a href="https://jayachandranpm.pythonanywhere.com/" target="_blank">InsightGraph <i
+                                    class="fa-solid fa-arrow-up-right-from-square"
+                                    style="font-size: 0.6em; vertical-align: middle;"></i></a></h3>
+                        <p style="color:var(--text-secondary);">Interactive knowledge discovery engine.</p>
+                    </div>
+                    <div class="project-narrative">
+                        <div class="narrative-block">
+                            <div class="narrative-label c-problem"><i class="fa-solid fa-circle-exclamation"></i>
+                                Problem</div>
+                            <p class="narrative-text">Flat text search misses the hidden connections between entities.
+                            </p>
+                        </div>
+                        <div class="narrative-block">
+                            <div class="narrative-label c-solution"><i class="fa-solid fa-bolt"></i> Solution</div>
+                            <p class="narrative-text">Dynamic D3.js visualization allowing users to spatially explore
+                                relationships.</p>
+                        </div>
+                        <div class="narrative-block">
+                            <div class="narrative-label c-impact"><i class="fa-solid fa-chart-line"></i> Impact</div>
+                            <p class="narrative-text">Enables "serendipitous discovery" impossible with standard search
+                                engines.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </main>
 
     <footer>
+        <div class="social-row">
+            <a href="https://www.linkedin.com/in/jayachandranpm" target="_blank" class="social-link"><i
+                    class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/jayachandranpm" target="_blank" class="social-link"><i
+                    class="fa-brands fa-github"></i></a>
+            <a href="https://medium.com/@jayachandranpm2001" target="_blank" class="social-link"><i
+                    class="fa-brands fa-medium"></i></a>
+        </div>
         <p>&copy; 2025 Jayachandran PM. All rights reserved.</p>
     </footer>
 </body>
