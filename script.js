@@ -15,11 +15,37 @@
   const dialogLinks = document.querySelector("#preview-links");
   const previewStage = document.querySelector("#preview-stage");
   const previewNav = document.querySelector("#preview-nav");
+  const hero = document.querySelector(".hero");
   let previewObserver;
 
   const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 18);
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
+
+  const motionAllowed = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasPrecisePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (hero && motionAllowed && hasPrecisePointer) {
+    let pointerFrame;
+    const updateHeroDepth = (event) => {
+      cancelAnimationFrame(pointerFrame);
+      pointerFrame = requestAnimationFrame(() => {
+        const bounds = hero.getBoundingClientRect();
+        const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+        const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+        hero.style.setProperty("--hero-x", `${x * -7}px`);
+        hero.style.setProperty("--hero-y", `${y * -4}px`);
+        hero.style.setProperty("--note-x", `${x * 5}px`);
+        hero.style.setProperty("--note-y", `${y * 4}px`);
+      });
+    };
+    hero.addEventListener("pointermove", updateHeroDepth, { passive: true });
+    hero.addEventListener("pointerleave", () => {
+      hero.style.setProperty("--hero-x", "0px");
+      hero.style.setProperty("--hero-y", "0px");
+      hero.style.setProperty("--note-x", "0px");
+      hero.style.setProperty("--note-y", "0px");
+    });
+  }
 
   menuButton?.addEventListener("click", () => {
     const open = menu?.classList.toggle("is-open") ?? false;
@@ -204,7 +230,7 @@
   archiveGrid?.replaceChildren(...data.archive.map(archiveCard));
 
   const revealItems = document.querySelectorAll(".section-heading, .feature-card, .mobile-card, .web-card, .archive-card, .about-grid");
-  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if ("IntersectionObserver" in window && motionAllowed) {
     document.body.classList.add("reveal-ready");
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
