@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#9fc6d3">
+  <meta name="theme-color" content="#f5edda">
   <meta name="description" content="Jayachandran P M is a product-minded engineer building useful, private, and intelligent software across mobile, web, AI, and product systems.">
   <meta property="og:title" content="Jayachandran P M — Product engineer">
   <meta property="og:description" content="Mobile apps, product systems, AI tools, data experiences, and interface explorations built from strategy through execution.">
@@ -15,6 +15,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/art/storybook-hills.jpg" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Nunito+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="projects.js" defer></script>
@@ -46,15 +47,7 @@
   <main id="main">
     <section class="hero shell" id="top">
       <div class="hero-landscape" aria-hidden="true">
-        <span class="storybook-sun"></span>
-        <span class="cloud cloud-one"></span>
-        <span class="cloud cloud-two"></span>
-        <span class="cloud cloud-three"></span>
-        <svg class="painted-hills" viewBox="0 0 1600 430" preserveAspectRatio="none">
-          <path class="hill-back" d="M0 238C172 181 307 197 448 243c151 50 264-71 441-53 157 16 251 98 383 71 109-22 211-80 328-55v224H0Z"/>
-          <path class="hill-mid" d="M0 297c176-92 311-73 457-8 146 64 279 8 400-37 155-58 272 36 402 50 129 14 220-40 341-15v143H0Z"/>
-          <path class="hill-front" d="M0 345c185-56 317 5 470 9 190 5 309-66 473-46 159 19 284 98 429 57 79-22 148-32 228-9v74H0Z"/>
-        </svg>
+        <img src="assets/art/storybook-hills.jpg" alt="" fetchpriority="high">
         <span class="wind-seed seed-one">✦</span><span class="wind-seed seed-two">✦</span><span class="wind-seed seed-three">✦</span>
       </div>
       <div class="hero-copy">
@@ -84,7 +77,8 @@
       </div>
     </div>
 
-    <section class="section shell" id="featured">
+    <section class="section shell" id="featured" data-chapter="Chapter one · Selected work">
+      <p class="chapter-label" aria-hidden="true">Chapter one <span>Selected work</span></p>
       <div class="section-heading">
         <div>
           <p class="eyebrow">Selected product work</p>
@@ -95,7 +89,7 @@
 
       <div class="featured-grid">
         <article class="feature-card feature-card-wide tone-mint">
-          <div class="feature-media"><img src="assets/web/pollivu.png" alt="Pollivu privacy-first polling home page" loading="lazy"></div>
+          <div class="feature-media app-window-media"><img src="assets/web/pollivu.png" alt="Pollivu privacy-first polling home page" loading="lazy"></div>
           <div class="feature-copy">
             <p class="project-index">01 · Privacy-first web app</p>
             <h3>Pollivu</h3>
@@ -107,8 +101,9 @@
       </div>
     </section>
 
-    <section class="section mobile-section" id="mobile">
+    <section class="section mobile-section" id="mobile" data-chapter="Chapter two · Pocket worlds">
       <div class="shell">
+        <p class="chapter-label chapter-label-light" aria-hidden="true">Chapter two <span>Pocket worlds</span></p>
         <div class="section-heading section-heading-light">
           <div>
             <p class="eyebrow">Mobile product studio</p>
@@ -127,7 +122,8 @@
       </div>
     </section>
 
-    <section class="section shell" id="experiments">
+    <section class="section shell" id="experiments" data-chapter="Chapter three · More explorations">
+      <p class="chapter-label" aria-hidden="true">Chapter three <span>More explorations</span></p>
       <div class="section-heading">
         <div>
           <p class="eyebrow">Web, systems &amp; interface craft</p>
@@ -149,7 +145,7 @@
         </article>
 
         <article class="web-card web-card-featured web-card-reverse">
-          <div class="web-card-media"><img src="assets/web/annes-diary.jpg" alt="Anne's Diary educational experience" loading="lazy"></div>
+          <div class="web-card-media app-window-media story-preview-media"><img src="assets/web/annes-diary.jpg" alt="Anne's Diary educational experience" loading="lazy"></div>
           <div class="web-card-copy">
             <p class="project-index">Educational experience</p>
             <h3>Anne's Diary</h3>
@@ -158,7 +154,7 @@
           </div>
         </article>
 
-        <article class="web-card web-card-project">
+        <article class="web-card web-card-project" id="roomwise">
           <div class="web-card-media app-preview-media"><img src="assets/web/apps/roomwise.png" alt="Actual Roomwise application interface" loading="lazy"><span>Actual application</span></div>
           <div class="web-card-copy">
             <p class="project-index">Applied AI · Private case study</p>
@@ -170,7 +166,7 @@
           </div>
         </article>
 
-        <article class="web-card web-card-project">
+        <article class="web-card web-card-project" id="knowledge-graph">
           <div class="web-card-media app-preview-media"><img src="assets/web/apps/knowledge-graph.png" alt="Actual Knowledge Graph Intelligence application interface" loading="lazy"><span>Actual application</span></div>
           <div class="web-card-copy">
             <p class="project-index">AI knowledge system</p>
@@ -181,7 +177,7 @@
           </div>
         </article>
 
-        <article class="web-card web-card-project">
+        <article class="web-card web-card-project" id="pg-mind">
           <div class="web-card-media app-preview-media"><img src="assets/web/apps/pg-mind.png" alt="Actual PG Mind essay library interface" loading="lazy"><span>Actual application</span></div>
           <div class="web-card-copy">
             <p class="project-index">Editorial knowledge experience</p>
@@ -192,7 +188,7 @@
           </div>
         </article>
 
-        <article class="web-card web-card-project">
+        <article class="web-card web-card-project" id="arbor">
           <div class="web-card-media app-preview-media"><img src="assets/web/apps/arbor.png" alt="Actual Arbor deep-research application interface" loading="lazy"><span>Actual application</span></div>
           <div class="web-card-copy">
             <p class="project-index">Deep research assistant</p>
@@ -203,7 +199,7 @@
           </div>
         </article>
 
-        <article class="web-card web-card-project">
+        <article class="web-card web-card-project" id="local-global">
           <div class="web-card-media app-preview-media app-preview-native"><img src="assets/web/apps/local-global.png" alt="Local Global running natively on macOS with a locally generated answer" loading="lazy"><span>Actual macOS app</span></div>
           <div class="web-card-copy">
             <p class="project-index">Native macOS · Local AI</p>
@@ -214,7 +210,7 @@
           </div>
         </article>
 
-        <article class="web-card web-card-project">
+        <article class="web-card web-card-project" id="speak-desktop">
           <div class="web-card-media app-preview-media app-preview-native"><img src="assets/web/apps/speak-desktop.png" alt="Speak I Shall Write running natively on macOS" loading="lazy"><span>Actual macOS app</span></div>
           <div class="web-card-copy">
             <p class="project-index">Native macOS · Speech utility</p>
@@ -238,9 +234,10 @@
       <div class="archive-grid" id="archive-grid" aria-live="polite"></div>
     </section>
 
-    <section class="section about-section" id="about">
+    <section class="section about-section" id="about" data-chapter="Chapter four · About the maker">
       <div class="shell about-grid">
-        <div>
+        <div class="about-heading">
+          <p class="chapter-label" aria-hidden="true">Chapter four <span>About the maker</span></p>
           <p class="eyebrow">About</p>
           <h2>Technical literacy meets product judgment.</h2>
         </div>

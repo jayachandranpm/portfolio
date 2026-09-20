@@ -38,6 +38,7 @@
     const button = document.createElement("button");
     button.type = "button";
     button.className = "mobile-card";
+    button.id = `mobile-${app.id}`;
     button.style.setProperty("--card-color", app.color);
     button.style.setProperty("--phone-tilt", app.tilt);
     button.setAttribute("aria-label", `View ${app.name} screen gallery`);
