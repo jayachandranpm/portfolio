@@ -124,13 +124,17 @@
           <p>Open any app to understand the problem, the product response, and the resulting experience—then inspect its real Flutter screens and important states.</p>
         </div>
         <div class="mobile-rail-toolbar">
-          <p>Choose an app for its concise case study and complete screen gallery.</p>
-          <div class="mobile-rail-controls" aria-label="Browse mobile applications">
-            <button type="button" data-mobile-scroll="-1" aria-label="Previous mobile apps">←</button>
-            <button type="button" data-mobile-scroll="1" aria-label="Next mobile apps">→</button>
+          <p>Swipe, use the arrow keys, or browse one app at a time. Open a card for its full case study and real-screen gallery.</p>
+          <div class="mobile-rail-actions">
+            <span class="mobile-rail-status" id="mobile-rail-status" aria-live="polite">01 / 12 · ClipStash</span>
+            <div class="mobile-rail-controls" aria-label="Browse mobile applications">
+              <button type="button" data-mobile-scroll="-1" aria-label="Previous mobile app">←</button>
+              <button type="button" data-mobile-scroll="1" aria-label="Next mobile app">→</button>
+            </div>
           </div>
         </div>
         <div class="mobile-grid" id="mobile-grid" aria-live="polite" tabindex="0" aria-label="Mobile application gallery"></div>
+        <div class="mobile-rail-progress" aria-hidden="true"><span id="mobile-rail-progress"></span></div>
       </div>
     </section>
 
@@ -152,7 +156,7 @@
             <p class="project-index">Email design system</p>
             <h3>Biomimicry campaign collection</h3>
             <p>Ten responsive, production-minded email templates translating forest succession, mycelium, migration, pollination, honeycomb, and other natural systems into campaign structures.</p>
-            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Campaign emails often feel interchangeable and break unpredictably across clients.</p><p><span>Solution</span>Ten nature-derived systems translated into responsive templates with practical Outlook fallbacks.</p></div></details>
+            <details class="compact-case"><summary>Problem, solution &amp; value</summary><div><p><span>Problem</span>Campaign emails often feel interchangeable and break unpredictably across clients.</p><p><span>Solution</span>Ten nature-derived systems translated into responsive templates with practical Outlook fallbacks.</p><p><span>Value</span>Teams get distinctive campaign systems that retain their visual identity across inboxes without sacrificing implementation reliability.</p></div></details>
             <div class="tag-row"><span>Responsive email</span><span>Editorial art direction</span><span>Outlook fallbacks</span></div>
             <div class="project-links"><a href="demos/email-collection/" target="_blank" rel="noreferrer">View all templates ↗</a><a href="https://github.com/jayachandranpm/portfolio/tree/main/demos/email-collection" target="_blank" rel="noreferrer">Source ↗</a></div>
           </div>
@@ -164,7 +168,7 @@
             <p class="project-index">Educational experience</p>
             <h3>Anne's Diary</h3>
             <p>An interactive historical tribute combining editorial storytelling, a contextual AI conversation, multimedia, and visual knowledge exploration.</p>
-            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Historical education can feel distant when learners only consume a fixed sequence of facts.</p><p><span>Solution</span>An editorial experience combining primary context, multimedia, visual exploration, and a bounded AI conversation.</p></div></details>
+            <details class="compact-case"><summary>Problem, solution &amp; value</summary><div><p><span>Problem</span>Historical education can feel distant when learners only consume a fixed sequence of facts.</p><p><span>Solution</span>An editorial experience combining primary context, multimedia, visual exploration, and a bounded AI conversation.</p><p><span>Value</span>Learners move from passive consumption to active inquiry while keeping historical context visible throughout the experience.</p></div></details>
             <div class="project-links"><a href="https://jayachandranpm.github.io/The-Diary-of-a-Young-Girl/website/index.html" target="_blank" rel="noreferrer">Visit experience ↗</a><a href="https://github.com/jayachandranpm/The-Diary-of-a-Young-Girl" target="_blank" rel="noreferrer">Source ↗</a></div>
           </div>
         </article>
@@ -175,7 +179,7 @@
             <p class="project-index">Applied AI · Private case study</p>
             <h3>Roomwise</h3>
             <p>A constraint-first interior planning assistant that grounds recommendations in verified catalog data, checks budget and room fit, explains trade-offs, and keeps safety boundaries explicit.</p>
-            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Generic design suggestions ignore room measurements, budget, product availability, and safety constraints.</p><p><span>Solution</span>A grounded planner that checks verified catalog data and explains every fit, cost, and trade-off.</p></div></details>
+            <details class="compact-case"><summary>Problem, solution &amp; value</summary><div><p><span>Problem</span>Generic design suggestions ignore room measurements, budget, product availability, and safety constraints.</p><p><span>Solution</span>A grounded planner that checks verified catalog data and explains every fit, cost, and trade-off.</p><p><span>Value</span>People receive actionable room plans that respect what fits, what is available, and what they can spend.</p></div></details>
             <div class="tag-row"><span>Product system</span><span>Grounded planning</span><span>Evaluation</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/roomwise-case-study" target="_blank" rel="noreferrer">Public case study ↗</a></div>
             <p class="project-privacy">Restricted source and confidential catalog data are intentionally excluded.</p>
@@ -188,7 +192,7 @@
             <p class="project-index">AI knowledge system</p>
             <h3>Knowledge Graph Intelligence</h3>
             <p>A Gemini-powered workspace that turns a topic into an explorable graph, supports node-by-node expansion, preserves graph sessions, and answers contextual questions against the visible knowledge structure.</p>
-            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Linear search results make relationships within a complex topic difficult to see and revisit.</p><p><span>Solution</span>A persistent, expandable knowledge graph with questions grounded in the structure currently on screen.</p></div></details>
+            <details class="compact-case"><summary>Problem, solution &amp; value</summary><div><p><span>Problem</span>Linear search results make relationships within a complex topic difficult to see and revisit.</p><p><span>Solution</span>A persistent, expandable knowledge graph with questions grounded in the structure currently on screen.</p><p><span>Value</span>Complex subjects become easier to explore, remember, and continue across multiple learning sessions.</p></div></details>
             <div class="tag-row"><span>Flask</span><span>D3 graph</span><span>Gemini</span><span>RAG chat</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/knowledge-graph-intelligence" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
@@ -200,7 +204,7 @@
             <p class="project-index">Editorial knowledge experience</p>
             <h3>Paul Graham’s Thoughts</h3>
             <p>An interactive study layer for 229 essays: searchable library, theme filters, focused reader, related-essay paths, a relationship map, flashcards, and lightweight recall quizzes.</p>
-            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>A large essay archive is valuable but difficult to navigate by idea, relationship, or learning goal.</p><p><span>Solution</span>A searchable editorial library with themes, related paths, a knowledge map, flashcards, and recall quizzes.</p></div></details>
+            <details class="compact-case"><summary>Problem, solution &amp; value</summary><div><p><span>Problem</span>A large essay archive is valuable but difficult to navigate by idea, relationship, or learning goal.</p><p><span>Solution</span>A searchable editorial library with themes, related paths, a knowledge map, flashcards, and recall quizzes.</p><p><span>Value</span>Readers can move from collecting essays to building connected understanding and testing their recall.</p></div></details>
             <div class="tag-row"><span>Information architecture</span><span>Knowledge map</span><span>Editorial UI</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/pg-mind" target="_blank" rel="noreferrer">View source ↗</a><a href="https://www.paulgraham.com/articles.html" target="_blank" rel="noreferrer">Original essays ↗</a></div>
           </div>
@@ -212,7 +216,7 @@
             <p class="project-index">Deep research assistant</p>
             <h3>Arbor</h3>
             <p>A Perplexity-inspired research product with quick and deep modes, streamed answers, hybrid retrieval, persistent threads, prominent sources, and inline citations that reconnect claims to evidence.</p>
-            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Research assistants often separate claims from evidence and make source verification laborious.</p><p><span>Solution</span>Hybrid retrieval, streamed synthesis, and inline citations that reconnect each answer to inspectable sources.</p></div></details>
+            <details class="compact-case"><summary>Problem, solution &amp; value</summary><div><p><span>Problem</span>Research assistants often separate claims from evidence and make source verification laborious.</p><p><span>Solution</span>Hybrid retrieval, streamed synthesis, and inline citations that reconnect each answer to inspectable sources.</p><p><span>Value</span>Researchers can move faster while keeping evidence close enough to audit before trusting or sharing an answer.</p></div></details>
             <div class="tag-row"><span>Flask + SSE</span><span>Hybrid RAG</span><span>Gemini</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/AI-Research-Assistant" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
@@ -224,7 +228,7 @@
             <p class="project-index">Native macOS · Local AI</p>
             <h3>Local Global</h3>
             <p>A fully local desktop assistant built around Ollama, document RAG, multilingual speech, web search when enabled, durable conversations, personas, and extensible MCP tools.</p>
-            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Cloud assistants require private conversations and documents to leave the user’s machine.</p><p><span>Solution</span>A local Ollama assistant with private document RAG, speech, durable conversations, optional web search, and MCP tools.</p></div></details>
+            <details class="compact-case"><summary>Problem, solution &amp; value</summary><div><p><span>Problem</span>Cloud assistants require private conversations and documents to leave the user’s machine.</p><p><span>Solution</span>A local Ollama assistant with private document RAG, speech, durable conversations, optional web search, and MCP tools.</p><p><span>Value</span>Users can search, write, and reason with their own data while keeping sensitive material on-device.</p></div></details>
             <div class="tag-row"><span>C++17</span><span>Drogon</span><span>Ollama</span><span>Local RAG</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/local-global" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
@@ -236,7 +240,7 @@
             <p class="project-index">Native macOS · Speech utility</p>
             <h3>Speak, I Shall Write — Desktop</h3>
             <p>A system-wide local dictation app with Whisper transcription, a global hotkey, auto-paste, meetings, model management, custom vocabulary, snippets, file transcription, and optional Ollama-powered rewriting.</p>
-            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Dictation is frequently confined to one editor, dependent on the cloud, and followed by manual copying.</p><p><span>Solution</span>System-wide local Whisper transcription with a global hotkey, auto-paste, vocabulary, meetings, and file transcription.</p></div></details>
+            <details class="compact-case"><summary>Problem, solution &amp; value</summary><div><p><span>Problem</span>Dictation is frequently confined to one editor, dependent on the cloud, and followed by manual copying.</p><p><span>Solution</span>System-wide local Whisper transcription with a global hotkey, auto-paste, vocabulary, meetings, and file transcription.</p><p><span>Value</span>Dictation becomes available across the desktop with less context switching and no mandatory cloud processing.</p></div></details>
             <div class="tag-row"><span>C++</span><span>Whisper.cpp</span><span>SQLite</span><span>Ollama</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/speak-i-shall-write-desktop" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
@@ -255,10 +259,27 @@
         </div>
         <div class="about-copy">
           <p class="about-lede">I build products, not isolated features. My engineering background gives me the depth to reason about architecture and edge cases; my product work keeps that depth connected to human needs and commercial reality.</p>
-          <div class="experience-list">
-            <article><div><h3>Zoho</h3><p>Software Debug Engineer</p></div><span>2024 — Present</span></article>
-            <article><div><h3>Perplexity AI</h3><p>Business Fellow</p></div><span>2025</span></article>
-            <article><div><h3>Turing</h3><p>Python LLM Trainer</p></div><span>2023 — 2024</span></article>
+          <div class="experience-list" aria-label="Professional experience timeline">
+            <article>
+              <time datetime="2024-02">Feb 2024 — Present</time>
+              <div><h3>Zoho</h3><p class="experience-role">Software Debug Engineer</p><p class="experience-meta">Chennai, India</p></div>
+            </article>
+            <article>
+              <time datetime="2025-03">Mar 2025 — Aug 2025</time>
+              <div><h3>Perplexity AI</h3><p class="experience-role">Business Fellow · Seasonal</p><p class="experience-meta">Remote</p></div>
+            </article>
+            <article>
+              <time datetime="2023-11">Nov 2023 — Jan 2024</time>
+              <div><h3>Turing</h3><p class="experience-role">Python LLM Trainer · Contract</p><p class="experience-meta">Remote</p></div>
+            </article>
+            <article>
+              <time datetime="2023-06">Jun 2023 — Dec 2023</time>
+              <div><h3>Rubixe</h3><p class="experience-role">Data Science Consultant · Internship</p><p class="experience-meta">Bengaluru, India · Remote</p></div>
+            </article>
+            <article>
+              <time datetime="2022-12">Dec 2022 — Apr 2023</time>
+              <div><h3>Madras Christian College</h3><p class="experience-role">Software Development Intern</p><p class="experience-meta">Chennai, India</p></div>
+            </article>
           </div>
           <div class="about-links"><a href="mailto:jayachandranpm2001@gmail.com">Email me ↗</a><a href="https://www.linkedin.com/in/jayachandran-p-m-015412203/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://medium.com/@jayachandranpm2001" target="_blank" rel="noreferrer">Writing ↗</a></div>
         </div>

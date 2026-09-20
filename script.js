@@ -6,6 +6,9 @@
   const menuButton = document.querySelector(".menu-button");
   const menu = document.querySelector(".nav-menu");
   const mobileGrid = document.querySelector("#mobile-grid");
+  const mobileRailStatus = document.querySelector("#mobile-rail-status");
+  const mobileRailProgress = document.querySelector("#mobile-rail-progress");
+  const mobileScrollButtons = [...document.querySelectorAll("[data-mobile-scroll]")];
   const dialog = document.querySelector("#preview-dialog");
   const dialogKicker = document.querySelector("#preview-kicker");
   const dialogTitle = document.querySelector("#preview-title");
@@ -220,22 +223,65 @@
     returnFocus?.focus({ preventScroll: true });
   });
 
-  mobileGrid?.replaceChildren(...data.mobileApps.map(mobileCard));
-  document.querySelectorAll("[data-mobile-scroll]").forEach((button) => {
+  const mobileCards = data.mobileApps.map(mobileCard);
+  let activeMobileIndex = 0;
+  const updateMobileRail = (index) => {
+    activeMobileIndex = Math.max(0, Math.min(mobileCards.length - 1, index));
+    const app = data.mobileApps[activeMobileIndex];
+    if (mobileRailStatus) {
+      mobileRailStatus.textContent = `${String(activeMobileIndex + 1).padStart(2, "0")} / ${String(mobileCards.length).padStart(2, "0")} · ${app.name}`;
+    }
+    if (mobileRailProgress) {
+      mobileRailProgress.style.width = `${((activeMobileIndex + 1) / mobileCards.length) * 100}%`;
+    }
+    mobileCards.forEach((card, cardIndex) => card.classList.toggle("is-rail-active", cardIndex === activeMobileIndex));
+    mobileScrollButtons.forEach((button) => {
+      const direction = Number(button.dataset.mobileScroll) || 1;
+      button.disabled = direction < 0 ? activeMobileIndex === 0 : activeMobileIndex === mobileCards.length - 1;
+    });
+  };
+
+  mobileGrid?.replaceChildren(...mobileCards);
+  updateMobileRail(0);
+
+  if (mobileGrid) {
+    let railFrame;
+    const syncMobileRail = () => {
+      railFrame = undefined;
+      const remainingScroll = mobileGrid.scrollWidth - mobileGrid.clientWidth - mobileGrid.scrollLeft;
+      if (remainingScroll <= 2) {
+        updateMobileRail(mobileCards.length - 1);
+        return;
+      }
+      const railLeft = mobileGrid.getBoundingClientRect().left;
+      const closestIndex = mobileCards.reduce((closest, card, index) => {
+        const distance = Math.abs(card.getBoundingClientRect().left - railLeft);
+        return distance < closest.distance ? { index, distance } : closest;
+      }, { index: 0, distance: Number.POSITIVE_INFINITY }).index;
+      updateMobileRail(closestIndex);
+    };
+    mobileGrid.addEventListener("scroll", () => {
+      if (railFrame) return;
+      railFrame = requestAnimationFrame(syncMobileRail);
+    }, { passive: true });
+  }
+
+  mobileScrollButtons.forEach((button) => {
     button.addEventListener("click", () => {
       if (!mobileGrid) return;
       const direction = Number(button.dataset.mobileScroll) || 1;
-      const card = mobileGrid.querySelector(".mobile-card");
-      const distance = card ? card.getBoundingClientRect().width + 16 : mobileGrid.clientWidth * 0.8;
-      mobileGrid.scrollBy({ left: distance * direction, behavior: reducedMotion ? "auto" : "smooth" });
+      const nextIndex = Math.max(0, Math.min(mobileCards.length - 1, activeMobileIndex + direction));
+      mobileCards[nextIndex]?.scrollIntoView({ inline: "start", block: "nearest", behavior: reducedMotion ? "auto" : "smooth" });
+      updateMobileRail(nextIndex);
     });
   });
   mobileGrid?.addEventListener("keydown", (event) => {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     event.preventDefault();
     const direction = event.key === "ArrowRight" ? 1 : -1;
-    const card = mobileGrid.querySelector(".mobile-card");
-    mobileGrid.scrollBy({ left: (card?.getBoundingClientRect().width || 280) * direction, behavior: reducedMotion ? "auto" : "smooth" });
+    const nextIndex = Math.max(0, Math.min(mobileCards.length - 1, activeMobileIndex + direction));
+    mobileCards[nextIndex]?.scrollIntoView({ inline: "start", block: "nearest", behavior: reducedMotion ? "auto" : "smooth" });
+    updateMobileRail(nextIndex);
   });
 
   if (window.location.hash) {
