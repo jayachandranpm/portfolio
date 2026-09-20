@@ -930,6 +930,74 @@ button { color: inherit; }
   mix-blend-mode: multiply;
 }
 
+.story-character {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 120px;
+  height: 240px;
+  pointer-events: none;
+  background-image: url("assets/art/story-inhabitants.png");
+  background-repeat: no-repeat;
+  background-size: 600% 100%;
+  filter: drop-shadow(0 12px 10px rgba(30,53,39,.2));
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+.sprite-one { background-position: 0 0; }
+.sprite-two { background-position: 20% 0; }
+.sprite-three { background-position: 40% 0; }
+.sprite-four { background-position: 60% 0; }
+.sprite-five { background-position: 80% 0; }
+.sprite-six { background-position: 100% 0; }
+.character-courier {
+  right: 18%;
+  bottom: 22px;
+  width: 110px;
+  height: 220px;
+  animation: character-wander 8s ease-in-out infinite;
+}
+.character-gardener {
+  right: -62px;
+  top: 300px;
+  width: 105px;
+  height: 210px;
+  opacity: .84;
+  animation: character-bob 5.8s ease-in-out -1.2s infinite;
+}
+.character-owl {
+  left: 3vw;
+  bottom: 72px;
+  width: 92px;
+  height: 184px;
+  opacity: .72;
+  animation: character-bob 4.6s ease-in-out -2.3s infinite;
+}
+.character-shepherd {
+  right: -65px;
+  top: 270px;
+  width: 120px;
+  height: 240px;
+  opacity: .82;
+  animation: character-bob 6.4s ease-in-out -.8s infinite;
+}
+.character-maker {
+  right: 2vw;
+  bottom: 20px;
+  z-index: 0;
+  width: 112px;
+  height: 224px;
+  opacity: .62;
+  animation: character-bob 5.2s ease-in-out -3s infinite;
+}
+.character-wish {
+  right: 4vw;
+  bottom: 34px;
+  width: 105px;
+  height: 210px;
+  animation: character-float 5.6s ease-in-out -1.8s infinite;
+}
+
 .site-header {
   background:
     linear-gradient(90deg, rgba(250,244,225,.91), rgba(242,238,216,.84) 68%, rgba(230,237,217,.88));
@@ -1284,7 +1352,7 @@ button { color: inherit; }
   align-items: center;
   padding-block: 150px;
   background-color: #19352f;
-  background-image: url("assets/art/evening-workshop.jpg");
+  background-image: url("assets/art/painted-countryside.jpg");
   background-size: cover;
   background-position: center center;
 }
@@ -1295,8 +1363,8 @@ button { color: inherit; }
   height: auto;
   border-radius: 0;
   background:
-    linear-gradient(90deg, rgba(11,36,34,.94) 0%, rgba(16,40,37,.89) 31%, rgba(18,42,38,.64) 51%, rgba(18,34,32,.08) 78%),
-    linear-gradient(180deg, rgba(15,32,33,.1), rgba(10,30,28,.45));
+    linear-gradient(90deg, rgba(15,48,37,.93) 0%, rgba(19,53,40,.86) 31%, rgba(31,66,46,.55) 53%, rgba(31,66,46,.09) 79%),
+    linear-gradient(180deg, rgba(238,207,139,.08), rgba(12,43,33,.48));
   box-shadow: none;
 }
 .contact-section::after {
@@ -1348,6 +1416,20 @@ button { color: inherit; }
   0%,100% { opacity: .18; transform: translate(0,0) scale(.7); }
   38% { opacity: .92; transform: translate(12px,-14px) scale(1); }
   72% { opacity: .42; transform: translate(-6px,-25px) scale(.8); }
+}
+@keyframes character-bob {
+  0%,100% { transform: translateY(0) rotate(-1.2deg); }
+  48% { transform: translateY(-9px) rotate(1.3deg); }
+}
+@keyframes character-float {
+  0%,100% { transform: translate(0,0) rotate(-2deg); }
+  35% { transform: translate(-6px,-13px) rotate(1deg); }
+  72% { transform: translate(5px,-20px) rotate(3deg); }
+}
+@keyframes character-wander {
+  0%,100% { transform: translateX(0) rotate(-1deg); }
+  45% { transform: translateX(16px) translateY(-3px) rotate(1deg); }
+  55% { transform: translateX(16px) translateY(0) rotate(1deg); }
 }
 
 /* Quiet storybook motion: drifting scenery, sprouting controls, and page reveals. */
@@ -1468,6 +1550,8 @@ button { color: inherit; }
   .painted-cloud { display: none; }
   .hero-copy { max-width: 680px; }
   .hero-note { max-width: 520px; }
+  .character-courier { right: 2%; bottom: 16px; width: 78px; height: 156px; opacity: .7; }
+  .character-gardener { display: none; }
   .proof-strip { margin-top: 0; }
   .proof-grid { padding-block: 0; }
   .proof-grid > div { min-height: 124px; }
@@ -1475,6 +1559,8 @@ button { color: inherit; }
   #experiments { padding-top: 120px; }
   .chapter-path { top: 47px; }
   .about-canopy { right: -130px; width: 480px; opacity: .72; }
+  .character-shepherd { right: -30px; top: 85px; width: 86px; height: 172px; opacity: .48; }
+  .character-maker { width: 82px; height: 164px; opacity: .36; }
   .contact-section {
     min-height: 610px;
     padding-block: 110px;
@@ -1486,6 +1572,7 @@ button { color: inherit; }
   .contact-grid { grid-template-columns: 1fr; gap: 24px; }
   .contact-grid .chapter-label { margin-bottom: 5px; }
   .contact-grid .button { width: max-content; }
+  .character-wish { right: 2vw; width: 82px; height: 164px; opacity: .78; }
 }
 
 @media (max-width: 520px) {
@@ -1497,6 +1584,8 @@ button { color: inherit; }
   .proof-grid > div { min-height: 92px; }
   .chapter-path { left: 4px; width: 130px; }
   .mobile-section { padding-block: 100px; }
+  .character-owl { left: -18px; bottom: 54px; width: 68px; height: 136px; opacity: .42; }
+  .character-shepherd, .character-maker { display: none; }
   .contact-section { min-height: 580px; background-position: 72% center; }
   .contact-grid .button { width: 100%; }
   .evening-fireflies span:nth-child(3),
