@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Biomimicry Email Collection</title>
+  <style>
+    :root{--ink:#17251f;--paper:#f3f0e7;--moss:#345d48;--line:#c8cec5}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}header{padding:72px max(24px,6vw) 52px;background:#18392f;color:#fff}header p{max-width:690px;margin:16px 0 0;color:#cfe0d7;font-size:18px;line-height:1.55}h1{max-width:850px;margin:0;font:700 clamp(42px,7vw,86px)/.98 Georgia,serif;letter-spacing:-3px}.meta{margin-bottom:18px;color:#b7d397;font-size:12px;font-weight:700;letter-spacing:2px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:24px;padding:40px max(24px,6vw) 70px}.card{overflow:hidden;background:#fff;border:1px solid var(--line)}.card-head{display:flex;justify-content:space-between;gap:16px;align-items:start;padding:20px 22px;border-bottom:1px solid var(--line)}h2{margin:0;font:700 22px/1.2 Georgia,serif}.card-head p{margin:7px 0 0;color:#647069;font-size:13px;line-height:1.45}.num{color:#c35f3d;font:700 13px Arial,sans-serif;letter-spacing:1px}.frame-wrap{height:520px;overflow:hidden;background:#dfe3df}.frame-wrap iframe{width:820px;height:1080px;border:0;transform:scale(.52);transform-origin:top left}.actions{display:flex;justify-content:space-between;align-items:center;padding:15px 22px;background:#fff}.actions span{font-size:12px;color:#6e7772}.actions a{color:var(--moss);font-size:12px;font-weight:700;letter-spacing:.7px;text-decoration:none}.actions a:hover{text-decoration:underline}footer{padding:28px max(24px,6vw);background:#111b17;color:#aebbb4;font-size:13px}footer strong{color:#fff}@media(max-width:520px){header{padding-top:48px}h1{letter-spacing:-2px}.grid{grid-template-columns:1fr}.frame-wrap{height:430px}.frame-wrap iframe{transform:scale(.44)}}
+    footer a{color:#fff}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="meta">EMAIL SYSTEM / VOLUME 01</div>
+    <h1>Ten emails,<br>designed by nature.</h1>
+    <p>Not nature as decoration—nature as design logic. Each production-minded template translates a biological strategy into hierarchy, pacing, modules, and CTA flow, then gives it a distinct visual system and freely licensed editorial photograph.</p>
+  </header>
+  <main class="grid" id="gallery"></main>
+  <footer><strong>Built for email:</strong> 600px containers, table layouts, inline presentation styles, mobile stacking, semantic preheaders, and durable font fallbacks. Editorial photography is used under the <a href="https://www.pexels.com/license/" target="_blank" rel="noreferrer">Pexels License</a>.</footer>
+  <script>
+    const templates=[
+      ['01','Welcome','Forest succession','01-welcome-canopy.html','Cormorant Garamond + DM Sans'],
+      ['02','Onboarding','Ant signal trails','02-onboarding-trail.html','IBM Plex Sans + Mono'],
+      ['03','Newsletter','Mycelium networks','03-newsletter-mycelium.html','Fraunces + Work Sans'],
+      ['04','Seasonal','Migration cues','04-seasonal-migration.html','Libre Baskerville + Source Sans 3'],
+      ['05','Product launch','Kingfisher streamlining','05-product-launch-kingfisher.html','Space Grotesk + Inter'],
+      ['06','Event invitation','Firefly synchronization','06-event-invitation-firefly.html','Bodoni Moda + Manrope'],
+      ['07','Promotion','Pollination signals','07-promotion-pollination.html','Barlow Condensed + Barlow'],
+      ['08','Re-engagement','Seed dormancy','08-reengagement-seedbank.html','Lora + Nunito Sans'],
+      ['09','Transactional','Honeycomb packing','09-transactional-honeycomb.html','Roboto Slab + Roboto'],
+      ['10','Feedback survey','Starling murmuration','10-feedback-murmuration.html','Newsreader + Karla']
+    ];
+    document.querySelector('#gallery').innerHTML=templates.map(([n,type,idea,file,fonts])=>`<article class="card"><div class="card-head"><div><h2>${type}</h2><p>${idea}<br><strong>${fonts}</strong></p></div><div class="num">${n}</div></div><div class="frame-wrap"><iframe title="${type} template preview" loading="lazy" src="templates/${file}"></iframe></div><div class="actions"><span>600px · responsive</span><a href="templates/${file}" target="_blank">OPEN FULL PREVIEW →</a></div></article>`).join('');
+  </script>
+</body>
+</html>

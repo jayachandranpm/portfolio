@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" color="#593a24"><g class="ant-legs" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path data-leg="0" d="M43 54 Q31 43 24 39 L13 23"/><path data-leg="1" d="M41 62 Q29 59 23 61 L9 73"/><path data-leg="2" d="M43 71 Q29 78 22 91 L12 108"/><path data-leg="3" d="M57 54 Q69 43 76 39 L87 23"/><path data-leg="4" d="M59 62 Q71 59 77 61 L91 73"/><path data-leg="5" d="M57 71 Q71 78 78 91 L88 108"/></g>
+<g class="ant-core" fill="currentColor" stroke="#efe0c4" stroke-width=".65">
+<path d="M50 87C36 87 32 101 35 114C38 128 46 134 50 135C54 134 62 128 65 114C68 101 64 87 50 87Z"/>
+<ellipse cx="50" cy="82" rx="4" ry="5"/><ellipse cx="50" cy="75" rx="3.6" ry="4"/>
+<path d="M44 46C37 52 38 65 43 72Q50 77 57 72C62 65 63 52 56 46Z"/>
+<path d="M36 31C34 21 41 14 50 14C59 14 66 21 64 31L60 43Q50 49 40 43Z"/>
+<g fill="none" stroke="#c6a776" stroke-width=".8" opacity=".7"><path d="M38 103Q50 107 62 103M38 112Q50 117 62 112M42 121Q50 125 58 121M43 53Q47 50 48 55M40 27Q43 21 48 22"/></g>
+<path d="m43 16 1-5 6 3m7 2-1-5-6 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="37" cy="30" r="2" fill="#1f251c" stroke="none"/><circle cx="63" cy="30" r="2" fill="#1f251c" stroke="none"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path class="ant-antenna-left" d="M41 26 28 17 24 4"/><path class="ant-antenna-right" d="M59 26 72 17 76 4"/></g></svg>

@@ -1,13 +1,160 @@
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+(() => {
+  const data = window.PORTFOLIO_DATA;
+  if (!data) return;
+
+  const header = document.querySelector("[data-header]");
+  const menuButton = document.querySelector(".menu-button");
+  const menu = document.querySelector(".nav-menu");
+  const mobileGrid = document.querySelector("#mobile-grid");
+  const archiveGrid = document.querySelector("#archive-grid");
+  const dialog = document.querySelector("#preview-dialog");
+  const dialogTitle = document.querySelector("#preview-title");
+  const dialogDescription = document.querySelector("#preview-description");
+  const dialogTags = document.querySelector("#preview-tags");
+  const previewStage = document.querySelector("#preview-stage");
+  const previewNav = document.querySelector("#preview-nav");
+
+  const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 18);
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+
+  menuButton?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("is-open") ?? false;
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.querySelector(".sr-only").textContent = open ? "Close navigation" : "Open navigation";
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("is-open");
+      menuButton?.setAttribute("aria-expanded", "false");
     });
-});
+  });
+
+  const mobileCard = (app, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "mobile-card";
+    button.style.setProperty("--card-color", app.color);
+    button.style.setProperty("--phone-tilt", app.tilt);
+    button.setAttribute("aria-label", `View ${app.name} screen gallery`);
+
+    const top = document.createElement("div");
+    top.className = "mobile-card-top";
+    top.innerHTML = `
+      <div class="mobile-card-index"><span>${String(index + 1).padStart(2, "0")} · Mobile</span><span>${app.tags[0]}</span></div>
+      <h3></h3>
+      <p></p>
+    `;
+    top.querySelector("h3").textContent = app.name;
+    top.querySelector("p").textContent = app.summary;
+
+    const phone = document.createElement("div");
+    phone.className = "phone-shot";
+    const image = document.createElement("img");
+    image.src = app.screens[0].src;
+    image.alt = `${app.name}: ${app.screens[0].label}`;
+    image.loading = "lazy";
+    phone.append(image);
+
+    const action = document.createElement("span");
+    action.className = "mobile-card-action";
+    action.setAttribute("aria-hidden", "true");
+    action.textContent = "↗";
+
+    button.append(top, phone, action);
+    button.addEventListener("click", () => openPreview(app));
+    return button;
+  };
+
+  const openPreview = (app) => {
+    if (!dialog || !previewStage || !previewNav) return;
+    dialogTitle.textContent = app.name;
+    dialogDescription.textContent = app.description;
+    dialogTags.replaceChildren(...app.tags.map((tag) => {
+      const item = document.createElement("span");
+      item.textContent = tag;
+      return item;
+    }));
+
+    const phones = app.screens.map((screen, index) => {
+      const frame = document.createElement("figure");
+      frame.className = "preview-phone";
+      frame.id = `preview-${app.id}-${index}`;
+      const image = document.createElement("img");
+      image.src = screen.src;
+      image.alt = `${app.name}: ${screen.label}`;
+      frame.append(image);
+      return frame;
+    });
+    previewStage.replaceChildren(...phones);
+
+    const controls = app.screens.map((screen, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = screen.label;
+      button.classList.toggle("is-active", index === 0);
+      button.addEventListener("click", () => {
+        controls.forEach((control) => control.classList.remove("is-active"));
+        button.classList.add("is-active");
+        phones[index].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      });
+      return button;
+    });
+    previewNav.replaceChildren(...controls);
+
+    document.body.classList.add("dialog-open");
+    dialog.showModal();
+  };
+
+  const closePreview = () => {
+    if (!dialog?.open) return;
+    dialog.close();
+  };
+
+  dialog?.querySelector(".dialog-close")?.addEventListener("click", closePreview);
+  dialog?.addEventListener("click", (event) => {
+    if (event.target === dialog) closePreview();
+  });
+  dialog?.addEventListener("close", () => document.body.classList.remove("dialog-open"));
+
+  mobileGrid?.replaceChildren(...data.mobileApps.map(mobileCard));
+
+  const archiveCard = (project) => {
+    const article = document.createElement("article");
+    article.className = "archive-card";
+    article.dataset.type = project.type;
+
+    const title = document.createElement("h4");
+    title.textContent = project.name;
+    const description = document.createElement("p");
+    description.textContent = project.description;
+    const meta = document.createElement("div");
+    meta.className = "archive-card-meta";
+    const label = document.createElement("span");
+    label.textContent = project.label;
+    const link = document.createElement("a");
+    link.href = project.url;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.setAttribute("aria-label", `Open ${project.name}`);
+    link.textContent = "↗";
+    meta.append(label, link);
+    article.append(title, description, meta);
+    return article;
+  };
+
+  archiveGrid?.replaceChildren(...data.archive.map(archiveCard));
+
+  const filterButtons = document.querySelectorAll("[data-filter]");
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach((item) => item.classList.remove("is-active"));
+      button.classList.add("is-active");
+      const filter = button.dataset.filter;
+      archiveGrid?.querySelectorAll(".archive-card").forEach((card) => {
+        card.hidden = filter !== "all" && card.dataset.type !== filter;
+      });
+    });
+  });
+})();
