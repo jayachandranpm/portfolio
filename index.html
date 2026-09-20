@@ -15,7 +15,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="assets/art/storybook-hills.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/art/painted-countryside.jpg" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Nunito+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="projects.js" defer></script>
@@ -23,6 +23,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to work</a>
+  <div class="paper-grain" aria-hidden="true"></div>
 
   <header class="site-header" data-header>
     <nav class="nav shell" aria-label="Main navigation">
@@ -47,10 +48,12 @@
   <main id="main">
     <section class="hero shell" id="top">
       <div class="hero-landscape" aria-hidden="true">
-        <img src="assets/art/storybook-hills.jpg" alt="" fetchpriority="high">
+        <img src="assets/art/painted-countryside.jpg" alt="" fetchpriority="high">
+        <span class="painted-cloud cloud-one"></span><span class="painted-cloud cloud-two"></span>
         <span class="wind-seed seed-one">✦</span><span class="wind-seed seed-two">✦</span><span class="wind-seed seed-three">✦</span>
       </div>
       <div class="hero-copy">
+        <p class="hero-chapter" aria-hidden="true">A field journal · 2026</p>
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A studio for thoughtful software</p>
         <h1>I turn complicated ideas into <em>calm, useful products.</em></h1>
         <p class="hero-lede">Product-minded engineer working across strategy, systems, and interface craft. I build privacy-conscious mobile apps, AI workflows, data products, and the tools that make them dependable.</p>
@@ -102,6 +105,10 @@
     </section>
 
     <section class="section mobile-section" id="mobile" data-chapter="Chapter two · Pocket worlds">
+      <div class="mobile-scenery" aria-hidden="true">
+        <span class="distant-hill hill-one"></span><span class="distant-hill hill-two"></span>
+        <span class="firefly firefly-one"></span><span class="firefly firefly-two"></span><span class="firefly firefly-three"></span>
+      </div>
       <div class="shell">
         <p class="chapter-label chapter-label-light" aria-hidden="true">Chapter two <span>Pocket worlds</span></p>
         <div class="section-heading section-heading-light">
@@ -123,6 +130,7 @@
     </section>
 
     <section class="section shell" id="experiments" data-chapter="Chapter three · More explorations">
+      <div class="chapter-path" aria-hidden="true"><span></span><i></i><span></span><i></i><span></span></div>
       <p class="chapter-label" aria-hidden="true">Chapter three <span>More explorations</span></p>
       <div class="section-heading">
         <div>
@@ -235,6 +243,7 @@
     </section>
 
     <section class="section about-section" id="about" data-chapter="Chapter four · About the maker">
+      <div class="about-canopy" aria-hidden="true"></div>
       <div class="shell about-grid">
         <div class="about-heading">
           <p class="chapter-label" aria-hidden="true">Chapter four <span>About the maker</span></p>
@@ -253,10 +262,12 @@
       </div>
     </section>
 
-    <section class="contact-section">
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="evening-fireflies" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="shell contact-grid">
+        <p class="chapter-label chapter-label-light" aria-hidden="true">Epilogue <span>The workshop is open</span></p>
         <p class="eyebrow">Have a hard product problem?</p>
-        <h2>Let's make it feel obvious.</h2>
+        <h2 id="contact-title">Let's make it feel obvious.</h2>
         <a class="button button-light" href="mailto:jayachandranpm2001@gmail.com">Start a conversation <span aria-hidden="true">↗</span></a>
       </div>
     </section>

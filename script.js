@@ -229,6 +229,15 @@
 
   archiveGrid?.replaceChildren(...data.archive.map(archiveCard));
 
+  // Dynamic project cards change the document height after the browser's first
+  // anchor calculation. Re-apply deep links once the rendered content is stable.
+  if (window.location.hash) {
+    const anchorId = decodeURIComponent(window.location.hash.slice(1));
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      document.getElementById(anchorId)?.scrollIntoView({ block: "start" });
+    }));
+  }
+
   const revealItems = document.querySelectorAll(".section-heading, .feature-card, .mobile-card, .web-card, .archive-card, .about-grid");
   if ("IntersectionObserver" in window && motionAllowed) {
     document.body.classList.add("reveal-ready");
