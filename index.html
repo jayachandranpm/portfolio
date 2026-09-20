@@ -35,10 +35,6 @@
         <span class="sr-only">Open navigation</span>
         <span></span><span></span>
       </button>
-      <button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause character motion">
-        <span class="motion-toggle-symbol" aria-hidden="true">Ⅱ</span>
-        <span class="motion-toggle-label">Pause motion</span>
-      </button>
       <div class="nav-menu" id="site-menu">
         <a href="#featured">Featured</a>
         <a href="#mobile">Mobile apps</a>
@@ -48,15 +44,6 @@
       </div>
     </nav>
   </header>
-
-  <aside class="story-guide" aria-label="Portfolio guide">
-    <div class="guide-bubble" aria-hidden="true">
-      <small>Trail guide</small>
-      <strong>Begin with selected work</strong>
-    </div>
-    <span class="guide-shadow" aria-hidden="true"></span>
-    <button class="guide-character sprite-one" type="button" aria-label="Continue to selected work"></button>
-  </aside>
 
   <main id="main">
     <section class="hero shell" id="top">
@@ -110,6 +97,11 @@
             <p class="project-index">01 · Privacy-first web app</p>
             <h3>Pollivu</h3>
             <p>A zero-PII polling platform with anonymous voting, live results, AI-assisted poll creation, encrypted bring-your-own keys, QR sharing, embeds, and exports.</p>
+            <div class="project-narrative" aria-label="Pollivu case study">
+              <div><span>Problem</span><p>Online polling often collects more identity data than the decision requires, weakening trust and excluding privacy-conscious participants.</p></div>
+              <div><span>Solution</span><p>A zero-PII polling workflow with anonymous voting, live results, encrypted bring-your-own AI keys, sharing, embeds, and exports.</p></div>
+              <div><span>Value</span><p>Teams can make lightweight decisions without turning participation into another account, profile, or tracking surface.</p></div>
+            </div>
             <div class="tag-row"><span>Flask</span><span>Multi-provider AI</span><span>Privacy</span></div>
             <div class="project-links"><a href="https://jayachandranpm.pythonanywhere.com/" target="_blank" rel="noreferrer">Live app ↗</a><a href="https://github.com/jayachandranpm/Pollivu" target="_blank" rel="noreferrer">Source ↗</a></div>
           </div>
@@ -129,10 +121,10 @@
             <p class="eyebrow">Mobile product studio</p>
             <h2>Twelve apps. Twelve complete systems.</h2>
           </div>
-          <p>Real Flutter screens rendered with representative data—not marketing mockups. Open any app to browse every published screen, including primary flows, alternate themes, and edge states.</p>
+          <p>Open any app to understand the problem, the product response, and the resulting experience—then inspect its real Flutter screens and important states.</p>
         </div>
         <div class="mobile-rail-toolbar">
-          <p>Browse all twelve apps without leaving this section.</p>
+          <p>Choose an app for its concise case study and complete screen gallery.</p>
           <div class="mobile-rail-controls" aria-label="Browse mobile applications">
             <button type="button" data-mobile-scroll="-1" aria-label="Previous mobile apps">←</button>
             <button type="button" data-mobile-scroll="1" aria-label="Next mobile apps">→</button>
@@ -160,6 +152,7 @@
             <p class="project-index">Email design system</p>
             <h3>Biomimicry campaign collection</h3>
             <p>Ten responsive, production-minded email templates translating forest succession, mycelium, migration, pollination, honeycomb, and other natural systems into campaign structures.</p>
+            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Campaign emails often feel interchangeable and break unpredictably across clients.</p><p><span>Solution</span>Ten nature-derived systems translated into responsive templates with practical Outlook fallbacks.</p></div></details>
             <div class="tag-row"><span>Responsive email</span><span>Editorial art direction</span><span>Outlook fallbacks</span></div>
             <div class="project-links"><a href="demos/email-collection/" target="_blank">View all templates ↗</a><a href="https://github.com/jayachandranpm/portfolio/tree/main/demos/email-collection" target="_blank" rel="noreferrer">Source ↗</a></div>
           </div>
@@ -171,6 +164,7 @@
             <p class="project-index">Educational experience</p>
             <h3>Anne's Diary</h3>
             <p>An interactive historical tribute combining editorial storytelling, a contextual AI conversation, multimedia, and visual knowledge exploration.</p>
+            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Historical education can feel distant when learners only consume a fixed sequence of facts.</p><p><span>Solution</span>An editorial experience combining primary context, multimedia, visual exploration, and a bounded AI conversation.</p></div></details>
             <div class="project-links"><a href="https://jayachandranpm.github.io/The-Diary-of-a-Young-Girl/website/index.html" target="_blank" rel="noreferrer">Visit experience ↗</a><a href="https://github.com/jayachandranpm/The-Diary-of-a-Young-Girl" target="_blank" rel="noreferrer">Source ↗</a></div>
           </div>
         </article>
@@ -181,6 +175,7 @@
             <p class="project-index">Applied AI · Private case study</p>
             <h3>Roomwise</h3>
             <p>A constraint-first interior planning assistant that grounds recommendations in verified catalog data, checks budget and room fit, explains trade-offs, and keeps safety boundaries explicit.</p>
+            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Generic design suggestions ignore room measurements, budget, product availability, and safety constraints.</p><p><span>Solution</span>A grounded planner that checks verified catalog data and explains every fit, cost, and trade-off.</p></div></details>
             <div class="tag-row"><span>Product system</span><span>Grounded planning</span><span>Evaluation</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/roomwise-case-study" target="_blank" rel="noreferrer">Public case study ↗</a></div>
             <p class="project-privacy">Restricted source and confidential catalog data are intentionally excluded.</p>
@@ -193,6 +188,7 @@
             <p class="project-index">AI knowledge system</p>
             <h3>Knowledge Graph Intelligence</h3>
             <p>A Gemini-powered workspace that turns a topic into an explorable graph, supports node-by-node expansion, preserves graph sessions, and answers contextual questions against the visible knowledge structure.</p>
+            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Linear search results make relationships within a complex topic difficult to see and revisit.</p><p><span>Solution</span>A persistent, expandable knowledge graph with questions grounded in the structure currently on screen.</p></div></details>
             <div class="tag-row"><span>Flask</span><span>D3 graph</span><span>Gemini</span><span>RAG chat</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/knowledge-graph-intelligence" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
@@ -204,6 +200,7 @@
             <p class="project-index">Editorial knowledge experience</p>
             <h3>Paul Graham’s Thoughts</h3>
             <p>An interactive study layer for 229 essays: searchable library, theme filters, focused reader, related-essay paths, a relationship map, flashcards, and lightweight recall quizzes.</p>
+            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>A large essay archive is valuable but difficult to navigate by idea, relationship, or learning goal.</p><p><span>Solution</span>A searchable editorial library with themes, related paths, a knowledge map, flashcards, and recall quizzes.</p></div></details>
             <div class="tag-row"><span>Information architecture</span><span>Knowledge map</span><span>Editorial UI</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/pg-mind" target="_blank" rel="noreferrer">View source ↗</a><a href="https://www.paulgraham.com/articles.html" target="_blank" rel="noreferrer">Original essays ↗</a></div>
           </div>
@@ -215,6 +212,7 @@
             <p class="project-index">Deep research assistant</p>
             <h3>Arbor</h3>
             <p>A Perplexity-inspired research product with quick and deep modes, streamed answers, hybrid retrieval, persistent threads, prominent sources, and inline citations that reconnect claims to evidence.</p>
+            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Research assistants often separate claims from evidence and make source verification laborious.</p><p><span>Solution</span>Hybrid retrieval, streamed synthesis, and inline citations that reconnect each answer to inspectable sources.</p></div></details>
             <div class="tag-row"><span>Flask + SSE</span><span>Hybrid RAG</span><span>Gemini</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/AI-Research-Assistant" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
@@ -226,6 +224,7 @@
             <p class="project-index">Native macOS · Local AI</p>
             <h3>Local Global</h3>
             <p>A fully local desktop assistant built around Ollama, document RAG, multilingual speech, web search when enabled, durable conversations, personas, and extensible MCP tools.</p>
+            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Cloud assistants require private conversations and documents to leave the user’s machine.</p><p><span>Solution</span>A local Ollama assistant with private document RAG, speech, durable conversations, optional web search, and MCP tools.</p></div></details>
             <div class="tag-row"><span>C++17</span><span>Drogon</span><span>Ollama</span><span>Local RAG</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/local-global" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
@@ -237,6 +236,7 @@
             <p class="project-index">Native macOS · Speech utility</p>
             <h3>Speak, I Shall Write — Desktop</h3>
             <p>A system-wide local dictation app with Whisper transcription, a global hotkey, auto-paste, meetings, model management, custom vocabulary, snippets, file transcription, and optional Ollama-powered rewriting.</p>
+            <details class="compact-case"><summary>Problem &amp; solution</summary><div><p><span>Problem</span>Dictation is frequently confined to one editor, dependent on the cloud, and followed by manual copying.</p><p><span>Solution</span>System-wide local Whisper transcription with a global hotkey, auto-paste, vocabulary, meetings, and file transcription.</p></div></details>
             <div class="tag-row"><span>C++</span><span>Whisper.cpp</span><span>SQLite</span><span>Ollama</span></div>
             <div class="project-links"><a href="https://github.com/jayachandranpm/speak-i-shall-write-desktop" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
@@ -290,16 +290,22 @@
     <div class="shell footer-grid"><p>© 2026 Jayachandran P M</p><p>Product strategy · Engineering · Interface craft</p><a href="#top">Back to top ↑</a></div>
   </footer>
 
-  <dialog class="preview-dialog" id="preview-dialog" aria-labelledby="preview-title">
+  <dialog class="preview-dialog" id="preview-dialog" aria-labelledby="preview-title" aria-describedby="preview-description">
     <button class="dialog-close" type="button" aria-label="Close preview">×</button>
     <div class="dialog-copy">
       <p class="eyebrow" id="preview-kicker">Mobile application</p>
       <h2 id="preview-title"></h2>
       <p id="preview-description"></p>
       <div class="tag-row" id="preview-tags"></div>
+      <div class="case-study-grid" id="preview-case-study">
+        <section><span>Problem</span><p id="preview-problem"></p></section>
+        <section><span>Solution</span><p id="preview-solution"></p></section>
+        <section><span>Value</span><p id="preview-value"></p></section>
+      </div>
       <div class="preview-links" id="preview-links"></div>
     </div>
-    <div class="preview-stage" id="preview-stage"></div>
+    <div class="preview-gallery-heading"><p>Real product screens</p><span id="preview-count"></span></div>
+    <div class="preview-stage" id="preview-stage" tabindex="0" aria-label="Application screenshots"></div>
     <div class="preview-nav" id="preview-nav" aria-label="Choose preview"></div>
   </dialog>
 </body>

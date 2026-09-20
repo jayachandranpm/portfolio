@@ -1712,3 +1712,156 @@ button { color: inherit; }
   .guide-bubble { display: none; }
   .hero-landscape img { transform: scale(1.025) !important; }
 }
+
+/* Content-first portfolio -----------------------------------------------------
+   The decorative character system is intentionally retired. Product framing,
+   navigation state, and inspectable real screens now carry the experience. */
+.motion-toggle,
+.story-guide { display: none !important; }
+.hero-landscape img,
+.painted-cloud,
+.wind-seed,
+.firefly,
+.evening-fireflies span { animation: none !important; }
+.mobile-scenery { transform: none !important; transition: none !important; }
+
+.nav-menu > a.is-current:not(.nav-contact) { color: var(--ink); }
+.nav-menu > a.is-current:not(.nav-contact)::after {
+  left: 7%;
+  right: 7%;
+  width: auto;
+  opacity: .72;
+  transform: none;
+}
+
+.project-narrative {
+  display: grid;
+  gap: 0;
+  margin-top: 26px;
+  border-top: 1px solid rgba(41,72,61,.24);
+}
+.project-narrative > div {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(41,72,61,.18);
+}
+.project-narrative span {
+  padding-top: 2px;
+  color: #84543f;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.project-narrative p { margin: 0; color: var(--ink-soft); font-size: 12px; line-height: 1.48; }
+
+.compact-case {
+  margin-top: 20px;
+  border-block: 1px solid rgba(41,72,61,.18);
+}
+.compact-case summary {
+  position: relative;
+  padding: 12px 26px 12px 0;
+  color: #734d3e;
+  cursor: pointer;
+  list-style: none;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.compact-case summary::-webkit-details-marker { display: none; }
+.compact-case summary::after {
+  content: "+";
+  position: absolute;
+  right: 2px;
+  top: 8px;
+  font: 600 20px/1 "Fraunces", Georgia, serif;
+}
+.compact-case[open] summary::after { content: "−"; }
+.compact-case > div { display: grid; gap: 12px; padding: 2px 0 15px; }
+.compact-case p { margin: 0; color: var(--ink-soft); font-size: 12px; line-height: 1.55; }
+.compact-case p span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--ink);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.mobile-card-meta {
+  display: block;
+  margin-top: 14px;
+  color: rgba(255,255,255,.82);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.mobile-card-action {
+  width: auto;
+  min-width: 68px;
+  padding-inline: 12px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.dialog-copy { max-width: 980px; }
+.case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,248,226,.18);
+  border-radius: 12px 20px 14px 17px;
+  background: rgba(255,255,255,.13);
+}
+.case-study-grid section { min-width: 0; padding: 18px; background: rgba(255,255,255,.055); }
+.case-study-grid span {
+  display: block;
+  margin-bottom: 9px;
+  color: #f2d47c;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.case-study-grid p { margin: 0; color: rgba(255,255,255,.78); font-size: 12px; line-height: 1.58; }
+.preview-gallery-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px max(7vw, 48px) 0;
+  color: rgba(255,255,255,.86);
+  background: #14251f;
+}
+.preview-gallery-heading p { margin: 0; font: 650 22px/1.2 "Fraunces", Georgia, serif; }
+.preview-gallery-heading span { color: rgba(255,255,255,.56); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.preview-stage { background: linear-gradient(180deg, #14251f, #101b17); }
+.preview-stage:focus-visible { outline: 2px solid var(--lime); outline-offset: -8px; }
+.preview-phone { position: relative; }
+.preview-phone.is-unavailable img { min-height: 420px; opacity: .08; }
+.preview-phone.is-unavailable::after {
+  content: "Preview unavailable";
+  position: absolute;
+  inset: 40% 20px auto;
+  color: rgba(255,255,255,.72);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+@media (max-width: 780px) {
+  .case-study-grid { grid-template-columns: 1fr; }
+  .case-study-grid section { padding: 15px; }
+  .preview-gallery-heading { padding: 25px 26px 0; }
+  .project-narrative > div { grid-template-columns: 58px 1fr; }
+}
