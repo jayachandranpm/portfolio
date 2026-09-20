@@ -165,6 +165,16 @@
 
   mobileGrid?.replaceChildren(...data.mobileApps.map(mobileCard));
 
+  document.querySelectorAll("[data-mobile-scroll]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!mobileGrid) return;
+      const direction = Number(button.dataset.mobileScroll) || 1;
+      const card = mobileGrid.querySelector(".mobile-card");
+      const distance = card ? card.getBoundingClientRect().width + 16 : mobileGrid.clientWidth * 0.8;
+      mobileGrid.scrollBy({ left: distance * direction, behavior: "smooth" });
+    });
+  });
+
   const archiveCard = (project) => {
     const article = document.createElement("article");
     article.className = "archive-card";

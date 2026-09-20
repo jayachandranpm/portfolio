@@ -315,11 +315,18 @@ button { color: inherit; }
 .mobile-section { color: var(--white); background: var(--forest-deep); }
 .section-heading-light .eyebrow { color: var(--lime); }
 .section-heading-light > p { color: rgba(255,255,255,.62); }
-.mobile-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.mobile-rail-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: -18px 0 18px; }
+.mobile-rail-toolbar p { margin: 0; color: rgba(255,255,255,.62); font-size: 13px; }
+.mobile-rail-controls { display: flex; gap: 8px; }
+.mobile-rail-controls button { width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; color: var(--white); background: rgba(255,255,255,.08); cursor: pointer; font-size: 20px; transition: color 160ms ease, background 160ms ease, transform 160ms ease; }
+.mobile-rail-controls button:hover { color: var(--forest-deep); background: var(--lime); transform: translateY(-2px); }
+.mobile-rail-controls button:focus-visible { outline-color: var(--lime); }
+.mobile-grid { display: flex; gap: 16px; padding: 4px 4px 20px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-padding-inline: 4px; overscroll-behavior-inline: contain; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.38) transparent; }
 .mobile-card {
   position: relative;
   overflow: hidden;
-  min-height: 520px;
+  flex: 0 0 clamp(250px, 23vw, 294px);
+  min-height: 480px;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -329,6 +336,7 @@ button { color: inherit; }
   background: var(--card-color, #20372f);
   cursor: pointer;
   text-align: left;
+  scroll-snap-align: start;
   transition: transform 220ms ease, border-color 220ms ease;
 }
 .mobile-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,.35); }
@@ -365,6 +373,11 @@ button { color: inherit; }
 .web-card-copy { padding: 34px; }
 .web-card-copy h3 { font-size: clamp(28px, 3vw, 42px); }
 .web-card-project .web-card-media { height: 340px; }
+.app-preview-media { position: relative; background: #17201d; }
+.app-preview-media img { display: block; object-fit: cover; object-position: center top; transition: transform 420ms cubic-bezier(.2,.8,.2,1); }
+.web-card:hover .app-preview-media img { transform: scale(1.018); }
+.app-preview-media > span { position: absolute; right: 16px; bottom: 16px; padding: 7px 10px; border: 1px solid rgba(255,255,255,.34); border-radius: 999px; color: #fff; background: rgba(12,24,20,.78); box-shadow: 0 8px 24px rgba(0,0,0,.2); backdrop-filter: blur(10px); font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.app-preview-native img { object-position: center top; }
 .project-demo { position: relative; overflow: hidden; padding: 26px; color: #243b34; font-family: "Nunito Sans", sans-serif; }
 .project-demo::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(255,255,255,.28) .7px, transparent .8px); background-size: 7px 7px; mix-blend-mode: soft-light; opacity: .35; }
 .project-demo small { font-size: 9px; font-weight: 900; letter-spacing: .13em; }
@@ -780,7 +793,8 @@ button { color: inherit; }
   .featured-grid { grid-template-columns: 1fr; }
   .feature-card-wide { grid-column: auto; }
   .feature-card-wide .feature-media, .feature-media { min-height: 330px; }
-  .mobile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mobile-rail-toolbar { margin-top: -12px; }
+  .mobile-card { flex-basis: min(74vw, 286px); }
   .web-grid { grid-template-columns: 1fr; }
   .web-card-featured { grid-column: auto; display: block; }
   .web-card-reverse .web-card-media { order: initial; }
@@ -807,8 +821,9 @@ button { color: inherit; }
   .proof-grid { grid-template-columns: 1fr; }
   .proof-grid > div { min-height: 100px; display: flex; align-items: center; gap: 18px; }
   .proof-grid span { margin: 0; }
-  .mobile-grid { grid-template-columns: 1fr; }
-  .mobile-card { min-height: 510px; }
+  .mobile-rail-toolbar { align-items: flex-end; }
+  .mobile-rail-toolbar p { max-width: 210px; }
+  .mobile-card { flex-basis: 82vw; min-height: 470px; }
   .phone-shot { width: 55%; }
   .web-card-media, .web-card-featured .web-card-media { height: 280px; }
   .feature-copy, .web-card-copy { padding: 26px; }

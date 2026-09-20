@@ -94,58 +94,10 @@
       </div>
 
       <div class="featured-grid">
-        <article class="feature-card feature-card-wide tone-forest">
-          <div class="feature-media feature-phone-media"><div class="feature-phone-stack"><img src="assets/mobile/vitalis/today.png" alt="Vitalis Today dashboard" loading="lazy"><img src="assets/mobile/vitalis/quick-log.png" alt="Vitalis quick health log" loading="lazy"><img src="assets/mobile/vitalis/insights.png" alt="Vitalis health insights" loading="lazy"></div></div>
-          <div class="feature-copy">
-            <p class="project-index">01 · Mobile health system</p>
-            <h3>Vitalis</h3>
-            <p>A comprehensive, offline-first health companion that makes a large feature set feel coherent: habits, vitals, nutrition, sleep, workouts, mindfulness, journaling, goals, and private insights.</p>
-            <ul class="project-facts">
-              <li>One consistent design system across every health domain</li>
-              <li>Robust persistence, recovery, validation, and empty states</li>
-              <li>Responsive Flutter UI with real rendered previews</li>
-            </ul>
-            <div class="project-links"><a href="https://jayachandranpm.github.io/vitalis/" target="_blank" rel="noreferrer">Live gallery ↗</a><a href="https://github.com/jayachandranpm/vitalis" target="_blank" rel="noreferrer">Source ↗</a></div>
-          </div>
-        </article>
-
-        <article class="feature-card tone-ink">
-          <div class="feature-media feature-phone-single"><img src="assets/mobile/personal-vault/chat.png" alt="Personal Vault private conversation interface" loading="lazy"></div>
-          <div class="feature-copy">
-            <p class="project-index">02 · Private knowledge app</p>
-            <h3>Personal Vault</h3>
-            <p>A familiar, chat-like space for private notes, links, documents, media, audio, locations, collections, backups, and protected attachments.</p>
-            <div class="tag-row"><span>Flutter</span><span>Rich previews</span><span>Local-first</span></div>
-            <div class="project-links"><a href="https://jayachandranpm.github.io/personal-vault/" target="_blank" rel="noreferrer">Live gallery ↗</a><a href="https://github.com/jayachandranpm/personal-vault" target="_blank" rel="noreferrer">Source ↗</a></div>
-          </div>
-        </article>
-
-        <article class="feature-card tone-paper">
-          <div class="feature-media feature-phone-single"><img src="assets/mobile/tell-the-world/editor.png" alt="Tell the World rich article editor" loading="lazy"></div>
-          <div class="feature-copy">
-            <p class="project-index">03 · Writing and publishing</p>
-            <h3>Tell the World</h3>
-            <p>An offline writing studio with rich editing, resilient recovery, flexible article styling, and direct GitHub Pages publishing that preserves each story’s theme.</p>
-            <div class="tag-row"><span>Flutter</span><span>Rich text</span><span>GitHub Pages</span></div>
-            <div class="project-links"><a href="https://jayachandranpm.github.io/tell-the-world/" target="_blank" rel="noreferrer">Live gallery ↗</a><a href="https://github.com/jayachandranpm/tell-the-world" target="_blank" rel="noreferrer">Source ↗</a></div>
-          </div>
-        </article>
-
-        <article class="feature-card tone-sky">
-          <div class="feature-media"><img src="assets/web/product-field-manual.png" alt="The Product Field Manual interactive course preview" loading="lazy"></div>
-          <div class="feature-copy">
-            <p class="project-index">04 · Product education</p>
-            <h3>The Product Field Manual</h3>
-            <p>A rigorous interactive PM course: 12 modules, 48 lessons, practice labs, flashcards, quizzes, prioritization tools, metric trees, and a 30-day capstone.</p>
-            <div class="tag-row"><span>Product strategy</span><span>Learning design</span><span>Local progress</span></div>
-            <div class="project-links"><a href="https://jayachandranpm.github.io/product-field-manual/" target="_blank" rel="noreferrer">Start learning ↗</a><a href="https://github.com/jayachandranpm/product-field-manual" target="_blank" rel="noreferrer">Source ↗</a></div>
-          </div>
-        </article>
-
-        <article class="feature-card tone-mint">
+        <article class="feature-card feature-card-wide tone-mint">
           <div class="feature-media"><img src="assets/web/pollivu.png" alt="Pollivu privacy-first polling home page" loading="lazy"></div>
           <div class="feature-copy">
-            <p class="project-index">05 · Privacy-first web app</p>
+            <p class="project-index">01 · Privacy-first web app</p>
             <h3>Pollivu</h3>
             <p>A zero-PII polling platform with anonymous voting, live results, AI-assisted poll creation, encrypted bring-your-own keys, QR sharing, embeds, and exports.</p>
             <div class="tag-row"><span>Flask</span><span>Multi-provider AI</span><span>Privacy</span></div>
@@ -164,7 +116,14 @@
           </div>
           <p>Real Flutter screens rendered with representative data—not marketing mockups. Open any app to browse every published screen, including primary flows, alternate themes, and edge states.</p>
         </div>
-        <div class="mobile-grid" id="mobile-grid" aria-live="polite"></div>
+        <div class="mobile-rail-toolbar">
+          <p>Browse all twelve apps without leaving this section.</p>
+          <div class="mobile-rail-controls" aria-label="Browse mobile applications">
+            <button type="button" data-mobile-scroll="-1" aria-label="Previous mobile apps">←</button>
+            <button type="button" data-mobile-scroll="1" aria-label="Next mobile apps">→</button>
+          </div>
+        </div>
+        <div class="mobile-grid" id="mobile-grid" aria-live="polite" tabindex="0" aria-label="Mobile application gallery"></div>
       </div>
     </section>
 
@@ -200,65 +159,41 @@
         </article>
 
         <article class="web-card web-card-project">
-          <div class="web-card-media project-demo demo-roomwise" role="img" aria-label="Roomwise constraint-first room planning interface">
-            <div class="demo-appbar"><span class="demo-brand-mark">R</span><b>Roomwise</b><span class="demo-status">Grounded plan</span></div>
-            <div class="roomwise-canvas">
-              <div class="roomwise-scene" aria-hidden="true"><span class="room-window"></span><span class="room-sofa"></span><span class="room-table"></span><span class="room-plant">✦</span></div>
-              <div class="roomwise-panel"><small>ROOM BRIEF</small><strong>Calm, bright living room</strong><div class="demo-metrics"><span><b>Within</b> budget</span><span><b>Clear</b> fit</span><span><b>Verified</b> items</span></div><div class="demo-progress"><i></i></div></div>
-            </div>
-          </div>
+          <div class="web-card-media app-preview-media"><img src="assets/web/apps/roomwise.png" alt="Actual Roomwise application interface" loading="lazy"><span>Actual application</span></div>
           <div class="web-card-copy">
             <p class="project-index">Applied AI · Private case study</p>
             <h3>Roomwise</h3>
             <p>A constraint-first interior planning assistant that grounds recommendations in verified catalog data, checks budget and room fit, explains trade-offs, and keeps safety boundaries explicit.</p>
             <div class="tag-row"><span>Product system</span><span>Grounded planning</span><span>Evaluation</span></div>
-            <p class="project-privacy">Private source · Confidential catalog and evaluation data excluded</p>
+            <div class="project-links"><a href="https://github.com/jayachandranpm/roomwise-case-study" target="_blank" rel="noreferrer">Public case study ↗</a></div>
+            <p class="project-privacy">Restricted source and confidential catalog data are intentionally excluded.</p>
           </div>
         </article>
 
         <article class="web-card web-card-project">
-          <div class="web-card-media project-demo demo-knowledge" role="img" aria-label="Knowledge Graph intelligence interface with connected nodes">
-            <div class="graph-toolbar"><span>GRAPHITI.AI</span><span>Knowledge canvas</span><span class="demo-status">Ready</span></div>
-            <svg class="graph-canvas" viewBox="0 0 600 300" aria-hidden="true">
-              <g class="graph-lines"><path d="M300 145 155 78M300 145 445 70M300 145 475 220M300 145 126 224M155 78 126 224M445 70 475 220"/></g>
-              <g class="graph-node graph-node-main"><circle cx="300" cy="145" r="43"/><text x="300" y="151">TOPIC</text></g>
-              <g class="graph-node"><circle cx="155" cy="78" r="29"/><text x="155" y="83">ENTITY</text></g>
-              <g class="graph-node"><circle cx="445" cy="70" r="35"/><text x="445" y="75">CONCEPT</text></g>
-              <g class="graph-node"><circle cx="475" cy="220" r="31"/><text x="475" y="225">SOURCE</text></g>
-              <g class="graph-node"><circle cx="126" cy="224" r="36"/><text x="126" y="229">INSIGHT</text></g>
-            </svg>
-            <div class="graph-chat"><span>Ask about this graph…</span><b>↑</b></div>
-          </div>
+          <div class="web-card-media app-preview-media"><img src="assets/web/apps/knowledge-graph.png" alt="Actual Knowledge Graph Intelligence application interface" loading="lazy"><span>Actual application</span></div>
           <div class="web-card-copy">
             <p class="project-index">AI knowledge system</p>
             <h3>Knowledge Graph Intelligence</h3>
             <p>A Gemini-powered workspace that turns a topic into an explorable graph, supports node-by-node expansion, preserves graph sessions, and answers contextual questions against the visible knowledge structure.</p>
             <div class="tag-row"><span>Flask</span><span>D3 graph</span><span>Gemini</span><span>RAG chat</span></div>
-            <p class="project-privacy">Private repository · Portfolio-safe interface shown</p>
+            <div class="project-links"><a href="https://github.com/jayachandranpm/knowledge-graph-intelligence" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
         </article>
 
         <article class="web-card web-card-project">
-          <div class="web-card-media project-demo demo-pg" role="img" aria-label="PG Mind essay library and thematic explorer">
-            <div class="pg-top"><b>PG<span>·</span>Mind</b><div><i>Library</i><i>Map</i><i>Flashcards</i></div></div>
-            <div class="pg-body"><div class="pg-intro"><small>THOUGHTS, MAPPED</small><strong>Read ideas in context.</strong><span>229 essays · 12 themes</span></div><div class="pg-cards"><i>Startups</i><i>Thinking</i><i>Work &amp; Craft</i><i>Writing</i></div></div>
-            <div class="pg-thread" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-          </div>
+          <div class="web-card-media app-preview-media"><img src="assets/web/apps/pg-mind.png" alt="Actual PG Mind essay library interface" loading="lazy"><span>Actual application</span></div>
           <div class="web-card-copy">
             <p class="project-index">Editorial knowledge experience</p>
             <h3>Paul Graham’s Thoughts</h3>
             <p>An interactive study layer for 229 essays: searchable library, theme filters, focused reader, related-essay paths, a relationship map, flashcards, and lightweight recall quizzes.</p>
             <div class="tag-row"><span>Information architecture</span><span>Knowledge map</span><span>Editorial UI</span></div>
-            <div class="project-links"><a href="https://www.paulgraham.com/articles.html" target="_blank" rel="noreferrer">Original essays ↗</a></div>
+            <div class="project-links"><a href="https://github.com/jayachandranpm/pg-mind" target="_blank" rel="noreferrer">View source ↗</a><a href="https://www.paulgraham.com/articles.html" target="_blank" rel="noreferrer">Original essays ↗</a></div>
           </div>
         </article>
 
         <article class="web-card web-card-project">
-          <div class="web-card-media project-demo demo-arbor" role="img" aria-label="Arbor deep research assistant with inline citations">
-            <div class="arbor-head"><span class="arbor-tree">⌁</span><b>Arbor</b><span>New research</span></div>
-            <div class="arbor-query"><small>KNOWLEDGE ROOTED IN TRUTH</small><strong>How can local AI stay verifiable?</strong><div><i>Quick</i><i class="active">Deep research</i><b>↑</b></div></div>
-            <div class="arbor-result"><p>Ground responses in retrieved evidence <sup>1</sup>, expose source context <sup>2</sup>, and keep claims inspectable.</p><div><span>1 · Primary source</span><span>2 · Technical reference</span></div></div>
-          </div>
+          <div class="web-card-media app-preview-media"><img src="assets/web/apps/arbor.png" alt="Actual Arbor deep-research application interface" loading="lazy"><span>Actual application</span></div>
           <div class="web-card-copy">
             <p class="project-index">Deep research assistant</p>
             <h3>Arbor</h3>
@@ -269,30 +204,24 @@
         </article>
 
         <article class="web-card web-card-project">
-          <div class="web-card-media project-demo demo-local" role="img" aria-label="Local Global private AI assistant for macOS">
-            <div class="local-sidebar"><b>LG</b><span>＋</span><span>⌕</span><span>◇</span><i></i><span>⚙</span></div>
-            <div class="local-main"><div class="local-top"><span>Local Global</span><em>● Offline</em></div><div class="local-chat"><small>PRIVATE ASSISTANT</small><strong>Your work stays on this Mac.</strong><p>Chat with local models, ask private documents, use tools, and listen to responses—without sending the conversation to a cloud service.</p><div><span>Document cited</span><span>Local model</span><span>MCP tool</span></div></div><div class="local-compose">Message your local assistant… <b>↑</b></div></div>
-          </div>
+          <div class="web-card-media app-preview-media app-preview-native"><img src="assets/web/apps/local-global.png" alt="Local Global running natively on macOS with a locally generated answer" loading="lazy"><span>Actual macOS app</span></div>
           <div class="web-card-copy">
             <p class="project-index">Native macOS · Local AI</p>
             <h3>Local Global</h3>
             <p>A fully local desktop assistant built around Ollama, document RAG, multilingual speech, web search when enabled, durable conversations, personas, and extensible MCP tools.</p>
             <div class="tag-row"><span>C++17</span><span>Drogon</span><span>Ollama</span><span>Local RAG</span></div>
-            <p class="project-privacy">Native macOS product · Private source</p>
+            <div class="project-links"><a href="https://github.com/jayachandranpm/local-global" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
         </article>
 
         <article class="web-card web-card-project">
-          <div class="web-card-media project-demo demo-speak" role="img" aria-label="Speak I Shall Write desktop dictation dashboard">
-            <div class="speak-sidebar"><b>S</b><span class="active">◉</span><span>⌁</span><span>▤</span><span>◎</span><span>⚙</span></div>
-            <div class="speak-main"><div class="speak-head"><div><small>DICTATION</small><strong>Ready when you are</strong></div><span>⌘ ⇧ Space</span></div><div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="speak-cta">Start dictating</span><div class="speak-stats"><span><b>Local</b> transcription</span><span><b>0.8×</b> realtime</span><span><b>Private</b> by default</span></div></div>
-          </div>
+          <div class="web-card-media app-preview-media app-preview-native"><img src="assets/web/apps/speak-desktop.png" alt="Speak I Shall Write running natively on macOS" loading="lazy"><span>Actual macOS app</span></div>
           <div class="web-card-copy">
             <p class="project-index">Native macOS · Speech utility</p>
             <h3>Speak, I Shall Write — Desktop</h3>
             <p>A system-wide local dictation app with Whisper transcription, a global hotkey, auto-paste, meetings, model management, custom vocabulary, snippets, file transcription, and optional Ollama-powered rewriting.</p>
             <div class="tag-row"><span>C++</span><span>Whisper.cpp</span><span>SQLite</span><span>Ollama</span></div>
-            <p class="project-privacy">Native macOS product · Private source</p>
+            <div class="project-links"><a href="https://github.com/jayachandranpm/speak-i-shall-write-desktop" target="_blank" rel="noreferrer">View source ↗</a></div>
           </div>
         </article>
       </div>
