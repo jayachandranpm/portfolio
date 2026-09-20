@@ -15,7 +15,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Nunito+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="projects.js" defer></script>
   <script src="script.js" defer></script>
@@ -78,7 +78,7 @@
     <div class="proof-strip" aria-label="Portfolio overview">
       <div class="shell proof-grid">
         <div><strong>12</strong><span>public mobile repositories</span></div>
-        <div><strong>167</strong><span>real Flutter screen renders</span></div>
+        <div><strong>157</strong><span>real Flutter screen renders</span></div>
         <div><strong>10</strong><span>production-ready email templates</span></div>
         <div><strong>0→1</strong><span>strategy through shipped interface</span></div>
       </div>
@@ -162,7 +162,7 @@
             <p class="eyebrow">Mobile product studio</p>
             <h2>Twelve apps. Twelve complete systems.</h2>
           </div>
-          <p>Real Flutter screens rendered with representative data—not marketing mockups. Open any app for curated product states, then continue into its public source and complete gallery.</p>
+          <p>Real Flutter screens rendered with representative data—not marketing mockups. Open any app to browse every published screen, including primary flows, alternate themes, and edge states.</p>
         </div>
         <div class="mobile-grid" id="mobile-grid" aria-live="polite"></div>
       </div>
@@ -171,7 +171,7 @@
     <section class="section shell" id="experiments">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Web, systems & interface craft</p>
+          <p class="eyebrow">Web, systems &amp; interface craft</p>
           <h2>More ways I explore a problem.</h2>
         </div>
         <p>Working prototypes, editorial experiences, application concepts, and focused tools—each built to test a distinct product idea.</p>
@@ -196,6 +196,103 @@
             <h3>Anne's Diary</h3>
             <p>An interactive historical tribute combining editorial storytelling, a contextual AI conversation, multimedia, and visual knowledge exploration.</p>
             <div class="project-links"><a href="https://jayachandranpm.github.io/The-Diary-of-a-Young-Girl/website/index.html" target="_blank" rel="noreferrer">Visit experience ↗</a><a href="https://github.com/jayachandranpm/The-Diary-of-a-Young-Girl" target="_blank" rel="noreferrer">Source ↗</a></div>
+          </div>
+        </article>
+
+        <article class="web-card web-card-project">
+          <div class="web-card-media project-demo demo-roomwise" role="img" aria-label="Roomwise constraint-first room planning interface">
+            <div class="demo-appbar"><span class="demo-brand-mark">R</span><b>Roomwise</b><span class="demo-status">Grounded plan</span></div>
+            <div class="roomwise-canvas">
+              <div class="roomwise-scene" aria-hidden="true"><span class="room-window"></span><span class="room-sofa"></span><span class="room-table"></span><span class="room-plant">✦</span></div>
+              <div class="roomwise-panel"><small>ROOM BRIEF</small><strong>Calm, bright living room</strong><div class="demo-metrics"><span><b>Within</b> budget</span><span><b>Clear</b> fit</span><span><b>Verified</b> items</span></div><div class="demo-progress"><i></i></div></div>
+            </div>
+          </div>
+          <div class="web-card-copy">
+            <p class="project-index">Applied AI · Private case study</p>
+            <h3>Roomwise</h3>
+            <p>A constraint-first interior planning assistant that grounds recommendations in verified catalog data, checks budget and room fit, explains trade-offs, and keeps safety boundaries explicit.</p>
+            <div class="tag-row"><span>Product system</span><span>Grounded planning</span><span>Evaluation</span></div>
+            <p class="project-privacy">Private source · Confidential catalog and evaluation data excluded</p>
+          </div>
+        </article>
+
+        <article class="web-card web-card-project">
+          <div class="web-card-media project-demo demo-knowledge" role="img" aria-label="Knowledge Graph intelligence interface with connected nodes">
+            <div class="graph-toolbar"><span>GRAPHITI.AI</span><span>Knowledge canvas</span><span class="demo-status">Ready</span></div>
+            <svg class="graph-canvas" viewBox="0 0 600 300" aria-hidden="true">
+              <g class="graph-lines"><path d="M300 145 155 78M300 145 445 70M300 145 475 220M300 145 126 224M155 78 126 224M445 70 475 220"/></g>
+              <g class="graph-node graph-node-main"><circle cx="300" cy="145" r="43"/><text x="300" y="151">TOPIC</text></g>
+              <g class="graph-node"><circle cx="155" cy="78" r="29"/><text x="155" y="83">ENTITY</text></g>
+              <g class="graph-node"><circle cx="445" cy="70" r="35"/><text x="445" y="75">CONCEPT</text></g>
+              <g class="graph-node"><circle cx="475" cy="220" r="31"/><text x="475" y="225">SOURCE</text></g>
+              <g class="graph-node"><circle cx="126" cy="224" r="36"/><text x="126" y="229">INSIGHT</text></g>
+            </svg>
+            <div class="graph-chat"><span>Ask about this graph…</span><b>↑</b></div>
+          </div>
+          <div class="web-card-copy">
+            <p class="project-index">AI knowledge system</p>
+            <h3>Knowledge Graph Intelligence</h3>
+            <p>A Gemini-powered workspace that turns a topic into an explorable graph, supports node-by-node expansion, preserves graph sessions, and answers contextual questions against the visible knowledge structure.</p>
+            <div class="tag-row"><span>Flask</span><span>D3 graph</span><span>Gemini</span><span>RAG chat</span></div>
+            <p class="project-privacy">Private repository · Portfolio-safe interface shown</p>
+          </div>
+        </article>
+
+        <article class="web-card web-card-project">
+          <div class="web-card-media project-demo demo-pg" role="img" aria-label="PG Mind essay library and thematic explorer">
+            <div class="pg-top"><b>PG<span>·</span>Mind</b><div><i>Library</i><i>Map</i><i>Flashcards</i></div></div>
+            <div class="pg-body"><div class="pg-intro"><small>THOUGHTS, MAPPED</small><strong>Read ideas in context.</strong><span>229 essays · 12 themes</span></div><div class="pg-cards"><i>Startups</i><i>Thinking</i><i>Work &amp; Craft</i><i>Writing</i></div></div>
+            <div class="pg-thread" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="web-card-copy">
+            <p class="project-index">Editorial knowledge experience</p>
+            <h3>Paul Graham’s Thoughts</h3>
+            <p>An interactive study layer for 229 essays: searchable library, theme filters, focused reader, related-essay paths, a relationship map, flashcards, and lightweight recall quizzes.</p>
+            <div class="tag-row"><span>Information architecture</span><span>Knowledge map</span><span>Editorial UI</span></div>
+            <div class="project-links"><a href="https://www.paulgraham.com/articles.html" target="_blank" rel="noreferrer">Original essays ↗</a></div>
+          </div>
+        </article>
+
+        <article class="web-card web-card-project">
+          <div class="web-card-media project-demo demo-arbor" role="img" aria-label="Arbor deep research assistant with inline citations">
+            <div class="arbor-head"><span class="arbor-tree">⌁</span><b>Arbor</b><span>New research</span></div>
+            <div class="arbor-query"><small>KNOWLEDGE ROOTED IN TRUTH</small><strong>How can local AI stay verifiable?</strong><div><i>Quick</i><i class="active">Deep research</i><b>↑</b></div></div>
+            <div class="arbor-result"><p>Ground responses in retrieved evidence <sup>1</sup>, expose source context <sup>2</sup>, and keep claims inspectable.</p><div><span>1 · Primary source</span><span>2 · Technical reference</span></div></div>
+          </div>
+          <div class="web-card-copy">
+            <p class="project-index">Deep research assistant</p>
+            <h3>Arbor</h3>
+            <p>A Perplexity-inspired research product with quick and deep modes, streamed answers, hybrid retrieval, persistent threads, prominent sources, and inline citations that reconnect claims to evidence.</p>
+            <div class="tag-row"><span>Flask + SSE</span><span>Hybrid RAG</span><span>Gemini</span></div>
+            <div class="project-links"><a href="https://github.com/jayachandranpm/AI-Research-Assistant" target="_blank" rel="noreferrer">View source ↗</a></div>
+          </div>
+        </article>
+
+        <article class="web-card web-card-project">
+          <div class="web-card-media project-demo demo-local" role="img" aria-label="Local Global private AI assistant for macOS">
+            <div class="local-sidebar"><b>LG</b><span>＋</span><span>⌕</span><span>◇</span><i></i><span>⚙</span></div>
+            <div class="local-main"><div class="local-top"><span>Local Global</span><em>● Offline</em></div><div class="local-chat"><small>PRIVATE ASSISTANT</small><strong>Your work stays on this Mac.</strong><p>Chat with local models, ask private documents, use tools, and listen to responses—without sending the conversation to a cloud service.</p><div><span>Document cited</span><span>Local model</span><span>MCP tool</span></div></div><div class="local-compose">Message your local assistant… <b>↑</b></div></div>
+          </div>
+          <div class="web-card-copy">
+            <p class="project-index">Native macOS · Local AI</p>
+            <h3>Local Global</h3>
+            <p>A fully local desktop assistant built around Ollama, document RAG, multilingual speech, web search when enabled, durable conversations, personas, and extensible MCP tools.</p>
+            <div class="tag-row"><span>C++17</span><span>Drogon</span><span>Ollama</span><span>Local RAG</span></div>
+            <p class="project-privacy">Native macOS product · Private source</p>
+          </div>
+        </article>
+
+        <article class="web-card web-card-project">
+          <div class="web-card-media project-demo demo-speak" role="img" aria-label="Speak I Shall Write desktop dictation dashboard">
+            <div class="speak-sidebar"><b>S</b><span class="active">◉</span><span>⌁</span><span>▤</span><span>◎</span><span>⚙</span></div>
+            <div class="speak-main"><div class="speak-head"><div><small>DICTATION</small><strong>Ready when you are</strong></div><span>⌘ ⇧ Space</span></div><div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="speak-cta">Start dictating</span><div class="speak-stats"><span><b>Local</b> transcription</span><span><b>0.8×</b> realtime</span><span><b>Private</b> by default</span></div></div>
+          </div>
+          <div class="web-card-copy">
+            <p class="project-index">Native macOS · Speech utility</p>
+            <h3>Speak, I Shall Write — Desktop</h3>
+            <p>A system-wide local dictation app with Whisper transcription, a global hotkey, auto-paste, meetings, model management, custom vocabulary, snippets, file transcription, and optional Ollama-powered rewriting.</p>
+            <div class="tag-row"><span>C++</span><span>Whisper.cpp</span><span>SQLite</span><span>Ollama</span></div>
+            <p class="project-privacy">Native macOS product · Private source</p>
           </div>
         </article>
       </div>

@@ -1,3 +1,8 @@
+const mobileScreens = (slug, screens) => screens.map(([file, label]) => ({
+  src: `https://jayachandranpm.github.io/${slug}/previews/${file}.png`,
+  label
+}));
+
 window.PORTFOLIO_DATA = {
   mobileApps: [
     {
@@ -10,11 +15,12 @@ window.PORTFOLIO_DATA = {
       tilt: "-2deg",
       source: "https://github.com/jayachandranpm/clipstash",
       preview: "https://jayachandranpm.github.io/clipstash/",
-      screens: [
-        { src: "assets/mobile/clipstash/home.png", label: "Clipboard library" },
-        { src: "assets/mobile/clipstash/dark.png", label: "Dark theme" },
-        { src: "assets/mobile/clipstash/templates.png", label: "Reusable templates" }
-      ]
+      screens: mobileScreens("clipstash", [
+        ["clips-light", "Clipboard library"], ["clips-dark", "Dark theme"], ["settings-dark", "Settings"],
+        ["approved-features/template", "Reusable templates"], ["approved-features/import-review", "Safe import review"],
+        ["approved-features/backups", "Portable backups"], ["approved-features/privacy", "Privacy controls"],
+        ["approved-features/trash", "Reversible deletion"]
+      ])
     },
     {
       id: "fm-radio",
@@ -26,11 +32,11 @@ window.PORTFOLIO_DATA = {
       tilt: "2deg",
       source: "https://github.com/jayachandranpm/fm-radio",
       preview: "https://jayachandranpm.github.io/fm-radio/",
-      screens: [
-        { src: "assets/mobile/fm-radio/home.png", label: "Station home" },
-        { src: "assets/mobile/fm-radio/now-playing.png", label: "Now playing" },
-        { src: "assets/mobile/fm-radio/history.png", label: "Listening history" }
-      ]
+      screens: mobileScreens("fm-radio", [
+        ["home", "Home"], ["discover", "Discover"], ["discover-filters", "Station filters"],
+        ["saved", "Saved stations"], ["now-playing", "Now playing"], ["history", "Listening history"],
+        ["settings", "Settings"]
+      ])
     },
     {
       id: "i-remember",
@@ -42,11 +48,11 @@ window.PORTFOLIO_DATA = {
       tilt: "-1deg",
       source: "https://github.com/jayachandranpm/i-remember",
       preview: "https://jayachandranpm.github.io/i-remember/",
-      screens: [
-        { src: "assets/mobile/i-remember/notes.png", label: "Notes library" },
-        { src: "assets/mobile/i-remember/quick-create.png", label: "Quick capture" },
-        { src: "assets/mobile/i-remember/ask-notes.png", label: "Ask your notes" }
-      ]
+      screens: mobileScreens("i-remember", [
+        ["notes", "Memory palace"], ["quick-create", "Quick capture"], ["search", "Find a thought"],
+        ["editor", "Rich editor"], ["ask-notes", "Ask your notes"], ["calendar", "Timeline calendar"],
+        ["weekly-digest", "Weekly reflection"], ["templates", "Templates"], ["settings", "Settings"]
+      ])
     },
     {
       id: "jays-journal",
@@ -58,11 +64,14 @@ window.PORTFOLIO_DATA = {
       tilt: "1.5deg",
       source: "https://github.com/jayachandranpm/jays-journal",
       preview: "https://jayachandranpm.github.io/jays-journal/",
-      screens: [
-        { src: "assets/mobile/jays-journal/home.png", label: "Journal home" },
-        { src: "assets/mobile/jays-journal/editor.png", label: "Rich editor" },
-        { src: "assets/mobile/jays-journal/voice.png", label: "Voice journal" }
-      ]
+      screens: mobileScreens("jays-journal", [
+        ["onboarding", "Welcome"], ["onboarding-personalize", "Personalize"], ["home", "Journal home"],
+        ["new-entry-options", "New entry"], ["editor", "Rich editor"], ["reading", "Reading view"],
+        ["entries", "All entries"], ["voice-entry", "Voice journal"], ["moods", "Mood check-in"],
+        ["insights", "Insights"], ["calendar", "Calendar"], ["tags", "Manage tags"],
+        ["import", "Import"], ["settings", "Settings"], ["settings-backup-manage", "Backup and manage"],
+        ["reading-dark", "Dark reading"]
+      ])
     },
     {
       id: "mindful-spend",
@@ -74,11 +83,14 @@ window.PORTFOLIO_DATA = {
       tilt: "-2deg",
       source: "https://github.com/jayachandranpm/mindful-spend",
       preview: "https://jayachandranpm.github.io/mindful-spend/",
-      screens: [
-        { src: "assets/mobile/mindful-spend/dashboard.png", label: "Dashboard" },
-        { src: "assets/mobile/mindful-spend/budgets.png", label: "Budgets" },
-        { src: "assets/mobile/mindful-spend/reports.png", label: "Reports" }
-      ]
+      screens: mobileScreens("mindful-spend", [
+        ["dashboard", "Dashboard"], ["transactions", "Transactions"], ["add-transaction", "Add transaction"],
+        ["receipt", "Receipt capture"], ["accounts", "Accounts"], ["budgets", "Budgets"],
+        ["bills", "Bills"], ["goals", "Savings goals"], ["reports", "Reports"],
+        ["reports-calendar", "Calendar analysis"], ["search", "Search"], ["profile", "Profile"],
+        ["settings", "Settings"], ["backup", "Backups"], ["dashboard-dark", "Dark dashboard"],
+        ["budgets-empty", "Empty budgets"]
+      ])
     },
     {
       id: "music-to-ears",
@@ -90,11 +102,18 @@ window.PORTFOLIO_DATA = {
       tilt: "2deg",
       source: "https://github.com/jayachandranpm/music-to-my-ears",
       preview: "https://jayachandranpm.github.io/music-to-my-ears/",
-      screens: [
-        { src: "assets/mobile/music-to-ears/discover.png", label: "Discover" },
-        { src: "assets/mobile/music-to-ears/now-playing.png", label: "Now playing" },
-        { src: "assets/mobile/music-to-ears/lyrics.png", label: "Time-synced lyrics" }
-      ]
+      screens: mobileScreens("music-to-my-ears", [
+        ["approved-features/discover-dark", "Discover"], ["approved-features/discover-light", "In daylight"],
+        ["approved-features/now-playing", "Now playing"], ["approved-features/search", "Search"],
+        ["approved-features/search-results", "Search results"], ["approved-features/library", "Library"],
+        ["approved-features/downloads", "Downloads"], ["approved-features/queue", "Up next"],
+        ["approved-features/lyrics", "Time-synced lyrics"], ["approved-features/playlist", "Playlist"],
+        ["approved-features/artist", "Artist"], ["approved-features/browse", "Browse by mood"],
+        ["approved-features/settings", "Settings"], ["approved-features/equalizer", "Equalizer"],
+        ["approved-features/history", "Listening history"], ["approved-features/stats", "Listening stats"],
+        ["approved-features/storage", "Storage"], ["approved-features/sources", "Music sources"],
+        ["approved-features/car-mode", "Car mode"]
+      ])
     },
     {
       id: "personal-vault",
@@ -106,11 +125,14 @@ window.PORTFOLIO_DATA = {
       tilt: "-1deg",
       source: "https://github.com/jayachandranpm/personal-vault",
       preview: "https://jayachandranpm.github.io/personal-vault/",
-      screens: [
-        { src: "assets/mobile/personal-vault/vault.png", label: "Vault" },
-        { src: "assets/mobile/personal-vault/media.png", label: "Media library" },
-        { src: "assets/mobile/personal-vault/chat.png", label: "Private conversation" }
-      ]
+      screens: mobileScreens("personal-vault", [
+        ["approved-features/chat-light", "Private timeline"], ["approved-features/chat-dark", "Dark mode"],
+        ["search", "Search everything"], ["search-results", "Search results"], ["collections", "Collections"],
+        ["collection-detail", "Collection detail"], ["image-preview", "Rich file preview"],
+        ["approved-features/protected-photo", "Protected attachment"], ["settings", "Settings"],
+        ["security", "Security"], ["vault-health", "Vault health"], ["automation", "Automation"],
+        ["trash", "Reversible deletion"]
+      ])
     },
     {
       id: "speak-i-shall-write",
@@ -122,11 +144,14 @@ window.PORTFOLIO_DATA = {
       tilt: "1.5deg",
       source: "https://github.com/jayachandranpm/speak-i-shall-write",
       preview: "https://jayachandranpm.github.io/speak-i-shall-write/",
-      screens: [
-        { src: "assets/mobile/speak-i-shall-write/record.png", label: "Live dictation" },
-        { src: "assets/mobile/speak-i-shall-write/history.png", label: "Transcript history" },
-        { src: "assets/mobile/speak-i-shall-write/writing-tools.png", label: "Writing tools" }
-      ]
+      screens: mobileScreens("speak-i-shall-write", [
+        ["onboarding", "Welcome"], ["onboarding-permission", "Microphone access"], ["record", "Live dictation"],
+        ["model-picker", "Model picker"], ["history", "Transcript history"], ["history-detail", "Transcript detail"],
+        ["history-no-results", "No search results"], ["stats", "Dashboard"], ["stats-loading", "Dashboard loading"],
+        ["models", "Speech models"], ["folders", "Folders"], ["writing-tools", "Writing tools"],
+        ["settings", "Dark settings"], ["settings-light", "Light settings"], ["history-empty", "Empty history"],
+        ["stats-error", "Dashboard unavailable"]
+      ])
     },
     {
       id: "tell-the-world",
@@ -138,11 +163,13 @@ window.PORTFOLIO_DATA = {
       tilt: "-2deg",
       source: "https://github.com/jayachandranpm/tell-the-world",
       preview: "https://jayachandranpm.github.io/tell-the-world/",
-      screens: [
-        { src: "assets/mobile/tell-the-world/home.png", label: "Writing home" },
-        { src: "assets/mobile/tell-the-world/editor.png", label: "Article editor" },
-        { src: "assets/mobile/tell-the-world/publish.png", label: "Publishing style" }
-      ]
+      screens: mobileScreens("tell-the-world", [
+        ["home", "Writing home"], ["editor", "Visual editor"], ["posts", "Post library"],
+        ["search", "Search"], ["reading", "Reading preview"], ["editor-dark", "Dark editor"],
+        ["stats", "Statistics"], ["settings", "Settings"], ["connect", "Connect"],
+        ["publish-repository", "Publish repository"], ["publish-details", "Publish details"],
+        ["publish-style", "Publishing style"]
+      ])
     },
     {
       id: "vitalis",
@@ -154,11 +181,14 @@ window.PORTFOLIO_DATA = {
       tilt: "2deg",
       source: "https://github.com/jayachandranpm/vitalis",
       preview: "https://jayachandranpm.github.io/vitalis/",
-      screens: [
-        { src: "assets/mobile/vitalis/today.png", label: "Today" },
-        { src: "assets/mobile/vitalis/quick-log.png", label: "Quick log" },
-        { src: "assets/mobile/vitalis/insights.png", label: "Health insights" }
-      ]
+      screens: mobileScreens("vitalis", [
+        ["today", "Today"], ["quick-log", "Quick log"], ["habits", "Habits"], ["logs", "Logs"],
+        ["insights-loading", "Insights loading"], ["insights", "Health insights"], ["nutrition", "Nutrition"],
+        ["sleep", "Sleep"], ["mindfulness", "Mindfulness"], ["workouts", "Workouts"],
+        ["journal", "Journal"], ["vitals", "Vitals"], ["hydration", "Hydration"], ["goals", "Goals"],
+        ["health-chat", "Health chat"], ["settings", "Settings"], ["settings-dark", "Dark settings"],
+        ["onboarding", "Onboarding"], ["onboarding-profile", "Personal setup"], ["habits-empty", "Empty habits"]
+      ])
     },
     {
       id: "hill-myna",
@@ -170,11 +200,11 @@ window.PORTFOLIO_DATA = {
       tilt: "-1.5deg",
       source: "https://github.com/jayachandranpm/hill-myna",
       preview: "https://jayachandranpm.github.io/hill-myna/",
-      screens: [
-        { src: "assets/mobile/hill-myna/assistant.png", label: "Assistant" },
-        { src: "assets/mobile/hill-myna/models.png", label: "Local models" },
-        { src: "assets/mobile/hill-myna/documents.png", label: "Documents" }
-      ]
+      screens: mobileScreens("hill-myna", [
+        ["assistant", "Assistant"], ["assistant-dark", "Dark theme"], ["history", "Conversation library"],
+        ["documents", "Local knowledge"], ["models", "Local models"], ["settings", "Privacy controls"],
+        ["archive", "Encrypted archive"]
+      ])
     },
     {
       id: "wake-me-up",
@@ -186,16 +216,17 @@ window.PORTFOLIO_DATA = {
       tilt: "2deg",
       source: "https://github.com/jayachandranpm/wake-me-up",
       preview: "https://jayachandranpm.github.io/wake-me-up/",
-      screens: [
-        { src: "assets/mobile/wake-me-up/map.png", label: "Destination map" },
-        { src: "assets/mobile/wake-me-up/trips.png", label: "Saved trips" },
-        { src: "assets/mobile/wake-me-up/alarm.png", label: "Arrival alarm" }
-      ]
+      screens: mobileScreens("wake-me-up", [
+        ["map-destination", "Destination map"], ["map-search-suggestions", "Search suggestions"],
+        ["trips", "Trip history"], ["routes", "Multi-stop routes"], ["route-actions", "Route actions"],
+        ["saved-places", "Saved places"], ["saved-sort", "Sort controls"], ["settings", "Settings"],
+        ["settings-dark", "Dark settings"], ["onboarding-alert", "Onboarding"], ["onboarding-map", "Map onboarding"],
+        ["alarm", "Arrival alarm"], ["trips-empty", "Empty trips"], ["saved-empty", "Empty saved places"]
+      ])
     }
   ],
   archive: [
     { name: "Zia RAG Bot", description: "Citation-backed CRM documentation assistant using hybrid retrieval and reciprocal rank fusion.", type: "ai", label: "AI · RAG", url: "https://github.com/jayachandranpm/Zia-RAG-Bot" },
-    { name: "Arbor Research Assistant", description: "A source-grounded deep research workflow for structured, exportable reports.", type: "ai", label: "AI · Research", url: "https://github.com/jayachandranpm/AI-Research-Assistant" },
     { name: "Python Code Visualizer", description: "Step through Python execution and watch variables, control flow, and output evolve.", type: "web", label: "Web · Education", url: "https://github.com/jayachandranpm/python-code-visualizer" },
     { name: "Zia Agent Walkthrough", description: "A visual product walkthrough for agent capabilities and guided activation.", type: "web", label: "Web · Product", url: "https://github.com/jayachandranpm/Zia-Agent-Product-Walkthrough" },
     { name: "Gemini Blog Assistant", description: "A writing workflow for ideation, drafting, and refining posts with Gemini.", type: "ai", label: "AI · Writing", url: "https://github.com/jayachandranpm/Gemini-Blog-Assistant" },

@@ -8,12 +8,14 @@
   const mobileGrid = document.querySelector("#mobile-grid");
   const archiveGrid = document.querySelector("#archive-grid");
   const dialog = document.querySelector("#preview-dialog");
+  const dialogKicker = document.querySelector("#preview-kicker");
   const dialogTitle = document.querySelector("#preview-title");
   const dialogDescription = document.querySelector("#preview-description");
   const dialogTags = document.querySelector("#preview-tags");
   const dialogLinks = document.querySelector("#preview-links");
   const previewStage = document.querySelector("#preview-stage");
   const previewNav = document.querySelector("#preview-nav");
+  let previewObserver;
 
   const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 18);
   updateHeader();
@@ -70,6 +72,7 @@
 
   const openPreview = (app) => {
     if (!dialog || !previewStage || !previewNav) return;
+    if (dialogKicker) dialogKicker.textContent = `Mobile application · ${app.screens.length} real screens`;
     dialogTitle.textContent = app.name;
     dialogDescription.textContent = app.description;
     dialogTags.replaceChildren(...app.tags.map((tag) => {
@@ -99,7 +102,11 @@
       const image = document.createElement("img");
       image.src = screen.src;
       image.alt = `${app.name}: ${screen.label}`;
-      frame.append(image);
+      image.loading = "lazy";
+      image.decoding = "async";
+      const caption = document.createElement("figcaption");
+      caption.textContent = `${String(index + 1).padStart(2, "0")} · ${screen.label}`;
+      frame.append(image, caption);
       return frame;
     });
     previewStage.replaceChildren(...phones);
@@ -118,8 +125,28 @@
     });
     previewNav.replaceChildren(...controls);
 
+    previewObserver?.disconnect();
+    previewObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const index = phones.indexOf(visible.target);
+      controls.forEach((control, controlIndex) => control.classList.toggle("is-active", controlIndex === index));
+      const activeControl = controls[index];
+      if (activeControl) {
+        previewNav.scrollTo({
+          left: Math.max(0, activeControl.offsetLeft - (previewNav.clientWidth - activeControl.clientWidth) / 2),
+          behavior: "smooth"
+        });
+      }
+    }, { root: previewStage, threshold: [0.55, 0.8] });
+    phones.forEach((phone) => previewObserver.observe(phone));
+
     document.body.classList.add("dialog-open");
     dialog.showModal();
+    dialog.scrollTop = 0;
+    previewStage.scrollLeft = 0;
   };
 
   const closePreview = () => {
@@ -131,7 +158,10 @@
   dialog?.addEventListener("click", (event) => {
     if (event.target === dialog) closePreview();
   });
-  dialog?.addEventListener("close", () => document.body.classList.remove("dialog-open"));
+  dialog?.addEventListener("close", () => {
+    previewObserver?.disconnect();
+    document.body.classList.remove("dialog-open");
+  });
 
   mobileGrid?.replaceChildren(...data.mobileApps.map(mobileCard));
 

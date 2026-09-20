@@ -6,7 +6,7 @@ This is a framework-free static portfolio organized around four bodies of work:
 
 - featured product and data systems;
 - twelve Flutter mobile applications with full-resolution previews;
-- web applications and interactive prototypes;
+- web applications, native desktop products, and interactive prototypes;
 - a public archive of AI, web, and data experiments.
 
 ## Local preview
@@ -20,8 +20,8 @@ Open `http://127.0.0.1:4177`.
 ## Structure
 
 - `index.html` contains the semantic page structure and featured case studies.
-- `projects.js` is the single source of truth for mobile-app galleries and the project archive.
-- `assets/mobile/` contains real Flutter captures at 780 × 1688 pixels.
+- `projects.js` is the single source of truth for the 157-screen mobile gallery and the public project archive.
+- `assets/mobile/` contains selected real Flutter captures used by the featured case studies; complete galleries are loaded from each app's public GitHub Pages site.
 - `assets/web/` contains portfolio images for web projects.
 - `demos/` contains the self-contained, credential-free biomimicry email collection.
 
