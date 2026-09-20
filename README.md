@@ -23,6 +23,6 @@ Open `http://127.0.0.1:4177`.
 - `projects.js` is the single source of truth for mobile-app galleries and the project archive.
 - `assets/mobile/` contains real Flutter captures at 780 × 1688 pixels.
 - `assets/web/` contains portfolio images for web projects.
-- `demos/` contains self-contained, credential-free static demonstrations.
+- `demos/` contains the self-contained, credential-free biomimicry email collection.
 
 GitHub Pages deploys the repository through `.github/workflows/static.yml`.

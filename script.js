@@ -11,6 +11,7 @@
   const dialogTitle = document.querySelector("#preview-title");
   const dialogDescription = document.querySelector("#preview-description");
   const dialogTags = document.querySelector("#preview-tags");
+  const dialogLinks = document.querySelector("#preview-links");
   const previewStage = document.querySelector("#preview-stage");
   const previewNav = document.querySelector("#preview-nav");
 
@@ -76,6 +77,20 @@
       item.textContent = tag;
       return item;
     }));
+    if (dialogLinks) {
+      const links = [
+        { href: app.preview, label: "Open complete gallery ↗" },
+        { href: app.source, label: "View source ↗" }
+      ].map(({ href, label }) => {
+        const link = document.createElement("a");
+        link.href = href;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+        link.textContent = label;
+        return link;
+      });
+      dialogLinks.replaceChildren(...links);
+    }
 
     const phones = app.screens.map((screen, index) => {
       const frame = document.createElement("figure");

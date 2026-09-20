@@ -8,6 +8,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Local-first", "Biometrics"],
       color: "#244d3f",
       tilt: "-2deg",
+      source: "https://github.com/jayachandranpm/clipstash",
+      preview: "https://jayachandranpm.github.io/clipstash/",
       screens: [
         { src: "assets/mobile/clipstash/home.png", label: "Clipboard library" },
         { src: "assets/mobile/clipstash/dark.png", label: "Dark theme" },
@@ -22,6 +24,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Background audio", "Radio Browser"],
       color: "#563f2a",
       tilt: "2deg",
+      source: "https://github.com/jayachandranpm/fm-radio",
+      preview: "https://jayachandranpm.github.io/fm-radio/",
       screens: [
         { src: "assets/mobile/fm-radio/home.png", label: "Station home" },
         { src: "assets/mobile/fm-radio/now-playing.png", label: "Now playing" },
@@ -36,6 +40,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "On-device AI", "Encrypted notes"],
       color: "#4a414f",
       tilt: "-1deg",
+      source: "https://github.com/jayachandranpm/i-remember",
+      preview: "https://jayachandranpm.github.io/i-remember/",
       screens: [
         { src: "assets/mobile/i-remember/notes.png", label: "Notes library" },
         { src: "assets/mobile/i-remember/quick-create.png", label: "Quick capture" },
@@ -50,6 +56,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Voice capture", "Private journal"],
       color: "#2f4f5e",
       tilt: "1.5deg",
+      source: "https://github.com/jayachandranpm/jays-journal",
+      preview: "https://jayachandranpm.github.io/jays-journal/",
       screens: [
         { src: "assets/mobile/jays-journal/home.png", label: "Journal home" },
         { src: "assets/mobile/jays-journal/editor.png", label: "Rich editor" },
@@ -64,6 +72,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Personal finance", "Data visualization"],
       color: "#514521",
       tilt: "-2deg",
+      source: "https://github.com/jayachandranpm/mindful-spend",
+      preview: "https://jayachandranpm.github.io/mindful-spend/",
       screens: [
         { src: "assets/mobile/mindful-spend/dashboard.png", label: "Dashboard" },
         { src: "assets/mobile/mindful-spend/budgets.png", label: "Budgets" },
@@ -78,6 +88,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Media playback", "Lyrics"],
       color: "#5a2947",
       tilt: "2deg",
+      source: "https://github.com/jayachandranpm/music-to-my-ears",
+      preview: "https://jayachandranpm.github.io/music-to-my-ears/",
       screens: [
         { src: "assets/mobile/music-to-ears/discover.png", label: "Discover" },
         { src: "assets/mobile/music-to-ears/now-playing.png", label: "Now playing" },
@@ -92,6 +104,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Knowledge vault", "Rich previews"],
       color: "#303d65",
       tilt: "-1deg",
+      source: "https://github.com/jayachandranpm/personal-vault",
+      preview: "https://jayachandranpm.github.io/personal-vault/",
       screens: [
         { src: "assets/mobile/personal-vault/vault.png", label: "Vault" },
         { src: "assets/mobile/personal-vault/media.png", label: "Media library" },
@@ -106,6 +120,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "On-device speech", "Offline"],
       color: "#3b2c57",
       tilt: "1.5deg",
+      source: "https://github.com/jayachandranpm/speak-i-shall-write",
+      preview: "https://jayachandranpm.github.io/speak-i-shall-write/",
       screens: [
         { src: "assets/mobile/speak-i-shall-write/record.png", label: "Live dictation" },
         { src: "assets/mobile/speak-i-shall-write/history.png", label: "Transcript history" },
@@ -120,6 +136,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Publishing", "GitHub Pages"],
       color: "#4f352d",
       tilt: "-2deg",
+      source: "https://github.com/jayachandranpm/tell-the-world",
+      preview: "https://jayachandranpm.github.io/tell-the-world/",
       screens: [
         { src: "assets/mobile/tell-the-world/home.png", label: "Writing home" },
         { src: "assets/mobile/tell-the-world/editor.png", label: "Article editor" },
@@ -134,6 +152,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Health", "On-device insights"],
       color: "#224a45",
       tilt: "2deg",
+      source: "https://github.com/jayachandranpm/vitalis",
+      preview: "https://jayachandranpm.github.io/vitalis/",
       screens: [
         { src: "assets/mobile/vitalis/today.png", label: "Today" },
         { src: "assets/mobile/vitalis/quick-log.png", label: "Quick log" },
@@ -148,6 +168,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Local LLM", "Private AI"],
       color: "#39462b",
       tilt: "-1.5deg",
+      source: "https://github.com/jayachandranpm/hill-myna",
+      preview: "https://jayachandranpm.github.io/hill-myna/",
       screens: [
         { src: "assets/mobile/hill-myna/assistant.png", label: "Assistant" },
         { src: "assets/mobile/hill-myna/models.png", label: "Local models" },
@@ -162,6 +184,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "OpenStreetMap", "Background location"],
       color: "#27516a",
       tilt: "2deg",
+      source: "https://github.com/jayachandranpm/wake-me-up",
+      preview: "https://jayachandranpm.github.io/wake-me-up/",
       screens: [
         { src: "assets/mobile/wake-me-up/map.png", label: "Destination map" },
         { src: "assets/mobile/wake-me-up/trips.png", label: "Saved trips" },

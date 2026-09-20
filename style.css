@@ -281,6 +281,13 @@ button { color: inherit; }
 .feature-card-wide .feature-media { min-height: 570px; }
 .feature-media img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 500ms cubic-bezier(.2,.8,.2,1); }
 .feature-card:hover .feature-media img { transform: scale(1.015); }
+.feature-phone-media { display: grid; place-items: end center; padding: 54px 34px 0; background: radial-gradient(circle at 50% 24%, #4c7668, #183f34 68%); }
+.feature-phone-stack { width: min(700px, 96%); display: flex; align-items: flex-end; justify-content: center; gap: clamp(10px, 2vw, 24px); }
+.feature-phone-stack img { width: 30%; height: auto; object-fit: contain; border: 5px solid #0b1713; border-bottom: 0; border-radius: 28px 28px 0 0; box-shadow: 0 30px 60px rgba(0,0,0,.34); }
+.feature-phone-stack img:nth-child(2) { width: 34%; }
+.feature-phone-single { display: grid; place-items: end center; padding: 38px 24px 0; background: radial-gradient(circle at 50% 30%, rgba(255,255,255,.2), rgba(0,0,0,.12)); }
+.feature-phone-single img { width: min(210px, 58%); height: auto; object-fit: contain; border: 5px solid #111a17; border-bottom: 0; border-radius: 28px 28px 0 0; box-shadow: 0 26px 54px rgba(0,0,0,.3); }
+.feature-card:hover .feature-phone-stack img, .feature-card:hover .feature-phone-single img { transform: translateY(-5px); }
 .feature-copy { padding: clamp(28px, 4vw, 50px); }
 .feature-card-wide .feature-copy { display: flex; flex-direction: column; justify-content: center; }
 .project-index { margin: 0 0 20px; font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.68; }
@@ -346,6 +353,8 @@ button { color: inherit; }
 .web-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
 .web-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--white); }
 .web-card-featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.2fr .8fr; }
+.web-card-reverse { grid-template-columns: .8fr 1.2fr; }
+.web-card-reverse .web-card-media { order: 2; }
 .web-card-media { height: 260px; overflow: hidden; background: var(--paper-deep); }
 .web-card-featured .web-card-media { height: auto; min-height: 500px; }
 .web-card-media img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
@@ -407,6 +416,10 @@ button { color: inherit; }
 .dialog-copy .eyebrow { color: var(--lime); }
 .dialog-copy h2 { margin: 0; font: 650 clamp(40px, 6vw, 72px)/1 "Manrope", sans-serif; letter-spacing: -.055em; }
 .dialog-copy > p:not(.eyebrow) { color: rgba(255,255,255,.68); font-size: 17px; }
+.preview-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.preview-links a { padding: 11px 15px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; font-size: 13px; font-weight: 800; transition: color 160ms ease, background 160ms ease; }
+.preview-links a:first-child { color: var(--forest-deep); background: var(--lime); border-color: var(--lime); }
+.preview-links a:hover { color: var(--forest-deep); background: var(--white); }
 .preview-stage { min-height: 660px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: start; gap: clamp(15px, 3vw, 38px); padding: 40px 7vw; overflow: hidden; background: radial-gradient(circle at 50% 40%, #29443a, #14241e 60%, #101b17); }
 .preview-phone { margin: 0; padding: 7px; border: 1px solid rgba(255,255,255,.2); border-radius: 36px; background: #0a0f0d; box-shadow: 0 35px 65px rgba(0,0,0,.35); }
 .preview-phone:nth-child(2) { margin-top: -38px; }
@@ -444,6 +457,7 @@ button { color: inherit; }
   .mobile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .web-grid { grid-template-columns: 1fr; }
   .web-card-featured { grid-column: auto; display: block; }
+  .web-card-reverse .web-card-media { order: initial; }
   .web-card-featured .web-card-media { min-height: 0; height: 380px; }
   .archive-heading { align-items: flex-start; flex-direction: column; margin-top: 80px; }
   .archive-card { grid-template-columns: 1fr auto; gap: 8px 18px; }
