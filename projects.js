@@ -65,9 +65,10 @@ window.PORTFOLIO_DATA = {
       source: "https://github.com/jayachandranpm/jays-journal",
       preview: "https://jayachandranpm.github.io/jays-journal/",
       screens: mobileScreens("jays-journal", [
-        ["onboarding", "Welcome"], ["onboarding-personalize", "Personalize"], ["home", "Journal home"],
-        ["new-entry-options", "New entry"], ["editor", "Rich editor"], ["reading", "Reading view"],
-        ["entries", "All entries"], ["voice-entry", "Voice journal"], ["moods", "Mood check-in"],
+        ["home", "Journal home"], ["editor", "Rich editor"], ["voice-entry", "Voice journal"],
+        ["onboarding", "Welcome"], ["onboarding-personalize", "Personalize"],
+        ["new-entry-options", "New entry"], ["reading", "Reading view"],
+        ["entries", "All entries"], ["moods", "Mood check-in"],
         ["insights", "Insights"], ["calendar", "Calendar"], ["tags", "Manage tags"],
         ["import", "Import"], ["settings", "Settings"], ["settings-backup-manage", "Backup and manage"],
         ["reading-dark", "Dark reading"]
@@ -145,10 +146,11 @@ window.PORTFOLIO_DATA = {
       source: "https://github.com/jayachandranpm/speak-i-shall-write",
       preview: "https://jayachandranpm.github.io/speak-i-shall-write/",
       screens: mobileScreens("speak-i-shall-write", [
-        ["onboarding", "Welcome"], ["onboarding-permission", "Microphone access"], ["record", "Live dictation"],
-        ["model-picker", "Model picker"], ["history", "Transcript history"], ["history-detail", "Transcript detail"],
+        ["record", "Live dictation"], ["history", "Transcript history"], ["writing-tools", "Writing tools"],
+        ["onboarding", "Welcome"], ["onboarding-permission", "Microphone access"],
+        ["model-picker", "Model picker"], ["history-detail", "Transcript detail"],
         ["history-no-results", "No search results"], ["stats", "Dashboard"], ["stats-loading", "Dashboard loading"],
-        ["models", "Speech models"], ["folders", "Folders"], ["writing-tools", "Writing tools"],
+        ["models", "Speech models"], ["folders", "Folders"],
         ["settings", "Dark settings"], ["settings-light", "Light settings"], ["history-empty", "Empty history"],
         ["stats-error", "Dashboard unavailable"]
       ])

@@ -54,7 +54,8 @@
     top.querySelector("p").textContent = app.summary;
 
     const phone = document.createElement("div");
-    phone.className = "phone-shot";
+    phone.className = "mobile-screen";
+    phone.style.setProperty("--screen-image", `url("${app.screens[0].src}")`);
     const image = document.createElement("img");
     image.src = app.screens[0].src;
     image.alt = `${app.name}: ${app.screens[0].label}`;
@@ -201,6 +202,22 @@
   };
 
   archiveGrid?.replaceChildren(...data.archive.map(archiveCard));
+
+  const revealItems = document.querySelectorAll(".section-heading, .feature-card, .mobile-card, .web-card, .archive-card, .about-grid");
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.body.classList.add("reveal-ready");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-revealed");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
+    revealItems.forEach((item, index) => {
+      item.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 55}ms`);
+      revealObserver.observe(item);
+    });
+  }
 
   const filterButtons = document.querySelectorAll("[data-filter]");
   filterButtons.forEach((button) => {
