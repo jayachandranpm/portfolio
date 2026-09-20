@@ -35,6 +35,10 @@
         <span class="sr-only">Open navigation</span>
         <span></span><span></span>
       </button>
+      <button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause character motion">
+        <span class="motion-toggle-symbol" aria-hidden="true">Ⅱ</span>
+        <span class="motion-toggle-label">Pause motion</span>
+      </button>
       <div class="nav-menu" id="site-menu">
         <a href="#featured">Featured</a>
         <a href="#mobile">Mobile apps</a>
@@ -45,6 +49,15 @@
     </nav>
   </header>
 
+  <aside class="story-guide" aria-label="Portfolio guide">
+    <div class="guide-bubble" aria-hidden="true">
+      <small>Trail guide</small>
+      <strong>Begin with selected work</strong>
+    </div>
+    <span class="guide-shadow" aria-hidden="true"></span>
+    <button class="guide-character sprite-one" type="button" aria-label="Continue to selected work"></button>
+  </aside>
+
   <main id="main">
     <section class="hero shell" id="top">
       <div class="hero-landscape" aria-hidden="true">
@@ -52,7 +65,6 @@
         <span class="painted-cloud cloud-one"></span><span class="painted-cloud cloud-two"></span>
         <span class="wind-seed seed-one">✦</span><span class="wind-seed seed-two">✦</span><span class="wind-seed seed-three">✦</span>
       </div>
-      <span class="story-character character-courier sprite-one" aria-hidden="true"></span>
       <div class="hero-copy">
         <p class="hero-chapter" aria-hidden="true">A field journal · 2026</p>
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A studio for thoughtful software</p>
@@ -82,7 +94,6 @@
     </div>
 
     <section class="section shell" id="featured" data-chapter="Chapter one · Selected work">
-      <span class="story-character character-gardener sprite-two" aria-hidden="true"></span>
       <p class="chapter-label" aria-hidden="true">Chapter one <span>Selected work</span></p>
       <div class="section-heading">
         <div>
@@ -110,7 +121,6 @@
       <div class="mobile-scenery" aria-hidden="true">
         <span class="distant-hill hill-one"></span><span class="distant-hill hill-two"></span>
         <span class="firefly firefly-one"></span><span class="firefly firefly-two"></span><span class="firefly firefly-three"></span>
-        <span class="story-character character-owl sprite-three"></span>
       </div>
       <div class="shell">
         <p class="chapter-label chapter-label-light" aria-hidden="true">Chapter two <span>Pocket worlds</span></p>
@@ -134,7 +144,6 @@
 
     <section class="section shell" id="experiments" data-chapter="Chapter three · More explorations">
       <div class="chapter-path" aria-hidden="true"><span></span><i></i><span></span><i></i><span></span></div>
-      <span class="story-character character-shepherd sprite-four" aria-hidden="true"></span>
       <p class="chapter-label" aria-hidden="true">Chapter three <span>More explorations</span></p>
       <div class="section-heading">
         <div>
@@ -248,7 +257,6 @@
 
     <section class="section about-section" id="about" data-chapter="Chapter four · About the maker">
       <div class="about-canopy" aria-hidden="true"></div>
-      <span class="story-character character-maker sprite-five" aria-hidden="true"></span>
       <div class="shell about-grid">
         <div class="about-heading">
           <p class="chapter-label" aria-hidden="true">Chapter four <span>About the maker</span></p>
@@ -269,7 +277,6 @@
 
     <section class="contact-section" id="contact" aria-labelledby="contact-title">
       <div class="evening-fireflies" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-      <span class="story-character character-wish sprite-six" aria-hidden="true"></span>
       <div class="shell contact-grid">
         <p class="chapter-label chapter-label-light" aria-hidden="true">Epilogue <span>The workshop is open</span></p>
         <p class="eyebrow">Have a hard product problem?</p>

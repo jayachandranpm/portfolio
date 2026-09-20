@@ -16,6 +16,13 @@
   const previewStage = document.querySelector("#preview-stage");
   const previewNav = document.querySelector("#preview-nav");
   const hero = document.querySelector(".hero");
+  const motionToggle = document.querySelector(".motion-toggle");
+  const motionToggleLabel = document.querySelector(".motion-toggle-label");
+  const motionToggleSymbol = document.querySelector(".motion-toggle-symbol");
+  const storyGuide = document.querySelector(".story-guide");
+  const guideCharacter = document.querySelector(".guide-character");
+  const guideBubbleKicker = document.querySelector(".guide-bubble small");
+  const guideBubbleCopy = document.querySelector(".guide-bubble strong");
   let previewObserver;
 
   const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 18);
@@ -43,11 +50,10 @@
     atmosphere.setAttribute("aria-hidden", "true");
     const palette = ["#7f9b70", "#c98a55", "#ecd68b", "#9bb9a8"];
 
-    for (let index = 0; index < 11; index += 1) {
+    for (let index = 0; index < 4; index += 1) {
       const mote = document.createElement("span");
       mote.className = "atmosphere-mote";
-      if (index % 4 === 1) mote.classList.add("is-pollen");
-      if (index % 5 === 3) mote.classList.add("is-seed");
+      if (index % 3 === 2) mote.classList.add("is-seed");
       const duration = 12 + ((index * 3 + sceneIndex * 2) % 11);
       mote.style.setProperty("--mote-x", `${(index * 19 + sceneIndex * 13) % 94}%`);
       mote.style.setProperty("--mote-y", `${12 + ((index * 31 + sceneIndex * 17) % 76)}%`);
@@ -72,6 +78,7 @@
     let cinematicFrame = 0;
     const updateCinematicDepth = () => {
       cinematicFrame = 0;
+      if (document.body.classList.contains("motion-paused")) return;
       const viewportCenter = window.innerHeight / 2;
       cinematicScenes.forEach((scene) => {
         const bounds = scene.getBoundingClientRect();
@@ -94,9 +101,213 @@
     cinematicScenes.forEach((scene) => scene.classList.add("scene-active"));
   }
 
+  const guideStops = [
+    { name: "Courier", copy: "Begin with selected work", target: "#featured", sprite: "sprite-one" },
+    { name: "Moss gardener", copy: "Follow me to the pocket worlds", target: "#mobile", sprite: "sprite-two" },
+    { name: "Lantern owl", copy: "Fly on to web and AI explorations", target: "#experiments", sprite: "sprite-three" },
+    { name: "Cloud shepherd", copy: "Continue to meet the maker", target: "#about", sprite: "sprite-four" },
+    { name: "Workshop helper", copy: "The workshop is open below", target: "#contact", sprite: "sprite-five" },
+    { name: "Wish spirit", copy: "Return to the beginning", target: "#top", sprite: "sprite-six" }
+  ];
+  const guidePhysics = {
+    x: window.innerWidth + 20,
+    y: window.innerHeight,
+    vx: 0,
+    vy: 0,
+    phase: 0,
+    lastTime: 0,
+    frame: 0,
+    scrolling: false,
+    activeIndex: -1,
+    paused: !motionAllowed
+  };
+  let guideIdleTimer = 0;
+  let guideAnnouncementTimer = 0;
+  const guideSpriteClasses = guideStops.map((stop) => stop.sprite);
+
+  try {
+    if (motionAllowed && localStorage.getItem("portfolio-motion") === "paused") guidePhysics.paused = true;
+  } catch (_) {
+    // Motion preference remains session-only when storage is unavailable.
+  }
+
+  const guideLayout = () => {
+    const compact = window.innerWidth <= 780;
+    const width = compact ? 188 : 270;
+    const height = compact ? 136 : 174;
+    return {
+      floor: Math.max(76, window.innerHeight - height - (compact ? 8 : 14)),
+      restingX: Math.max(8, window.innerWidth - width - (compact ? 8 : 16)),
+      hiddenX: window.innerWidth - (compact ? 146 : 215)
+    };
+  };
+
+  const setMotionToggleState = () => {
+    document.body.classList.toggle("motion-paused", guidePhysics.paused);
+    motionToggle?.setAttribute("aria-pressed", String(guidePhysics.paused));
+    motionToggle?.setAttribute("aria-label", guidePhysics.paused ? "Resume character motion" : "Pause character motion");
+    if (motionToggleLabel) motionToggleLabel.textContent = guidePhysics.paused ? "Resume motion" : "Pause motion";
+    if (motionToggleSymbol) motionToggleSymbol.textContent = guidePhysics.paused ? "▶" : "Ⅱ";
+  };
+
+  const showGuideAnnouncement = () => {
+    if (!storyGuide) return;
+    clearTimeout(guideAnnouncementTimer);
+    storyGuide.classList.add("is-announcing");
+    guideAnnouncementTimer = window.setTimeout(() => storyGuide.classList.remove("is-announcing"), 3600);
+  };
+
+  const setGuideStop = (index, announce = true) => {
+    if (!guideCharacter || !guideStops[index] || index === guidePhysics.activeIndex) return;
+    const stop = guideStops[index];
+    const hadGuide = guidePhysics.activeIndex >= 0;
+    guidePhysics.activeIndex = index;
+    guidePhysics.vy = hadGuide && !guidePhysics.paused ? -7.4 : 0;
+    guidePhysics.vx += hadGuide && !guidePhysics.paused ? 3.2 : 0;
+    guideCharacter.classList.remove(...guideSpriteClasses);
+    guideCharacter.classList.add(stop.sprite);
+    guideCharacter.setAttribute("aria-label", `${stop.name}: ${stop.copy}`);
+    if (guideBubbleKicker) guideBubbleKicker.textContent = stop.name;
+    if (guideBubbleCopy) guideBubbleCopy.textContent = stop.copy;
+    if (announce) showGuideAnnouncement();
+  };
+
+  const updateActiveGuide = () => {
+    const marker = window.innerHeight * .48;
+    let nextIndex = 0;
+    cinematicScenes.forEach((scene, index) => {
+      if (scene.getBoundingClientRect().top <= marker) nextIndex = index;
+    });
+    setGuideStop(Math.min(nextIndex, guideStops.length - 1));
+  };
+
+  const renderGuidePhysics = (time) => {
+    if (!storyGuide || !guideCharacter || guidePhysics.paused) return;
+    const layout = guideLayout();
+    const delta = guidePhysics.lastTime ? Math.min(2.4, (time - guidePhysics.lastTime) / 16.667) : 1;
+    guidePhysics.lastTime = time;
+
+    // Semi-implicit Euler integration: a damped horizontal spring plus vertical
+    // gravity and an inelastic floor collision keeps entrances weighty, not floaty.
+    const targetX = guidePhysics.scrolling ? layout.hiddenX : layout.restingX;
+    const springAcceleration = (targetX - guidePhysics.x) * .048;
+    guidePhysics.vx = (guidePhysics.vx + springAcceleration * delta) * Math.pow(.74, delta);
+    guidePhysics.x += guidePhysics.vx * delta;
+
+    guidePhysics.vy += .58 * delta;
+    guidePhysics.y += guidePhysics.vy * delta;
+    let impact = 0;
+    if (guidePhysics.y >= layout.floor) {
+      impact = Math.abs(guidePhysics.vy);
+      guidePhysics.y = layout.floor;
+      guidePhysics.vy = impact > 1.25 ? -impact * .2 : 0;
+    }
+
+    const grounded = Math.abs(guidePhysics.y - layout.floor) < .8;
+    const speed = Math.abs(guidePhysics.vx);
+    guidePhysics.phase += (.065 + speed * .16) * delta;
+    const walk = grounded && speed > .22 ? Math.abs(Math.sin(guidePhysics.phase)) : 0;
+    const airHeight = Math.max(0, layout.floor - guidePhysics.y);
+    const stretch = Math.min(.08, Math.abs(guidePhysics.vy) * .007);
+    const squash = Math.min(.1, impact * .01);
+    const lean = Math.max(-7, Math.min(7, guidePhysics.vx * .7));
+
+    storyGuide.style.transform = `translate3d(${guidePhysics.x.toFixed(2)}px, ${guidePhysics.y.toFixed(2)}px, 0)`;
+    guideCharacter.style.transform = `translateY(${(-walk * 3).toFixed(2)}px) rotate(${lean.toFixed(2)}deg) scaleX(${(-1 + squash).toFixed(3)}) scaleY(${(1 + stretch - squash).toFixed(3)})`;
+    storyGuide.style.setProperty("--shadow-scale", `${Math.max(.62, 1 - airHeight / 180).toFixed(3)}`);
+    storyGuide.style.setProperty("--shadow-opacity", `${Math.max(.12, .5 - airHeight / 280).toFixed(3)}`);
+    storyGuide.style.setProperty("--dust-opacity", `${grounded && speed > .7 ? Math.min(.62, speed / 5).toFixed(3) : 0}`);
+    storyGuide.style.setProperty("--dust-shift", `${(-Math.min(12, speed * 2)).toFixed(2)}px`);
+    storyGuide.style.setProperty("--dust-scale", `${Math.min(1.35, .65 + speed * .08).toFixed(3)}`);
+    storyGuide.classList.add("is-ready");
+    guidePhysics.frame = requestAnimationFrame(renderGuidePhysics);
+  };
+
+  const startGuidePhysics = () => {
+    if (!motionAllowed || guidePhysics.paused || guidePhysics.frame) return;
+    guidePhysics.lastTime = 0;
+    guidePhysics.frame = requestAnimationFrame(renderGuidePhysics);
+  };
+
+  const stopGuidePhysics = () => {
+    cancelAnimationFrame(guidePhysics.frame);
+    guidePhysics.frame = 0;
+  };
+
+  const placeGuideAtRest = () => {
+    if (!storyGuide) return;
+    const layout = guideLayout();
+    guidePhysics.x = layout.restingX;
+    guidePhysics.y = layout.floor;
+    guidePhysics.vx = 0;
+    guidePhysics.vy = 0;
+    storyGuide.style.transform = `translate3d(${layout.restingX}px, ${layout.floor}px, 0)`;
+    guideCharacter?.style.setProperty("transform", "translateY(0) rotate(0) scaleX(-1) scaleY(1)");
+    storyGuide.classList.add("is-ready");
+  };
+
+  const setMotionPaused = (paused, persist = true) => {
+    guidePhysics.paused = paused || !motionAllowed;
+    setMotionToggleState();
+    if (guidePhysics.paused) stopGuidePhysics();
+    else startGuidePhysics();
+    if (persist && motionAllowed) {
+      try {
+        localStorage.setItem("portfolio-motion", guidePhysics.paused ? "paused" : "playing");
+      } catch (_) {
+        // Ignore storage restrictions; the control still works for this visit.
+      }
+    }
+  };
+
+  updateActiveGuide();
+  setMotionToggleState();
+  if (motionAllowed && !guidePhysics.paused) startGuidePhysics();
+  else if (motionAllowed) placeGuideAtRest();
+  else {
+    placeGuideAtRest();
+    motionToggle?.setAttribute("hidden", "");
+  }
+
+  motionToggle?.addEventListener("click", () => setMotionPaused(!guidePhysics.paused));
+  guideCharacter?.addEventListener("pointerdown", () => {
+    if (!guidePhysics.paused) guidePhysics.vy = -5.5;
+  });
+  guideCharacter?.addEventListener("click", () => {
+    const stop = guideStops[guidePhysics.activeIndex];
+    const target = stop ? document.querySelector(stop.target) : null;
+    if (!target) return;
+    storyGuide?.classList.remove("is-announcing");
+    if (!guidePhysics.paused) guidePhysics.vy = -10.5;
+    window.setTimeout(() => target.scrollIntoView({ behavior: motionAllowed && !guidePhysics.paused ? "smooth" : "auto", block: "start" }), guidePhysics.paused ? 0 : 210);
+  });
+
+  const handleGuideScroll = () => {
+    updateActiveGuide();
+    if (!storyGuide) return;
+    guidePhysics.scrolling = true;
+    storyGuide.classList.add("is-scrolling");
+    clearTimeout(guideIdleTimer);
+    guideIdleTimer = window.setTimeout(() => {
+      guidePhysics.scrolling = false;
+      storyGuide.classList.remove("is-scrolling");
+      showGuideAnnouncement();
+    }, 260);
+  };
+  window.addEventListener("scroll", handleGuideScroll, { passive: true });
+  window.addEventListener("resize", () => {
+    updateActiveGuide();
+    if (guidePhysics.paused) placeGuideAtRest();
+  }, { passive: true });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopGuidePhysics();
+    else startGuidePhysics();
+  });
+
   if (hero && motionAllowed && hasPrecisePointer) {
     let pointerFrame;
     const updateHeroDepth = (event) => {
+      if (guidePhysics.paused) return;
       cancelAnimationFrame(pointerFrame);
       pointerFrame = requestAnimationFrame(() => {
         const bounds = hero.getBoundingClientRect();
