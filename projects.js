@@ -262,30 +262,5 @@ window.PORTFOLIO_DATA = {
         ["alarm", "Arrival alarm"], ["trips-empty", "Empty trips"], ["saved-empty", "Empty saved places"]
       ])
     }
-  ],
-  archive: [
-    { name: "Zia RAG Bot", description: "Citation-backed CRM documentation assistant using hybrid retrieval and reciprocal rank fusion.", type: "ai", label: "AI · RAG", url: "https://github.com/jayachandranpm/Zia-RAG-Bot" },
-    { name: "Python Code Visualizer", description: "Step through Python execution and watch variables, control flow, and output evolve.", type: "web", label: "Web · Education", url: "https://github.com/jayachandranpm/python-code-visualizer" },
-    { name: "Zia Agent Walkthrough", description: "A visual product walkthrough for agent capabilities and guided activation.", type: "web", label: "Web · Product", url: "https://github.com/jayachandranpm/Zia-Agent-Product-Walkthrough" },
-    { name: "Gemini Blog Assistant", description: "A writing workflow for ideation, drafting, and refining posts with Gemini.", type: "ai", label: "AI · Writing", url: "https://github.com/jayachandranpm/Gemini-Blog-Assistant" },
-    { name: "Web Automation Assistant", description: "Turns natural-language tasks into reviewable Puppeteer browser automations.", type: "ai", label: "AI · Automation", url: "https://github.com/jayachandranpm/Web-Automation-Assistant-with-Puppeteer-Gemini-AI" },
-    { name: "CodeLens", description: "Compile code and receive a step-by-step AI explanation of how it behaves.", type: "ai", label: "AI · Developer tool", url: "https://github.com/jayachandranpm/CodeLens-Compile-Explain" },
-    { name: "Quiz Creator", description: "Generate, share, and take focused quizzes from a prompt or learning goal.", type: "ai", label: "AI · Education", url: "https://github.com/jayachandranpm/Quiz-Creator-using-AI" },
-    { name: "JEN Agent", description: "An agent experiment built with the Mastra framework and tool-oriented workflows.", type: "ai", label: "AI · Agents", url: "https://github.com/jayachandranpm/JEN-Agent" },
-    { name: "Web Search Agent", description: "A focused agent for exploring the web and synthesizing search findings.", type: "ai", label: "AI · Search", url: "https://github.com/jayachandranpm/Web-Search-Agent" },
-    { name: "RAG UI", description: "A TypeScript interface exploration for retrieval-augmented conversations.", type: "web", label: "Web · RAG", url: "https://github.com/jayachandranpm/RAG-UI" },
-    { name: "Gentle Voice Support", description: "A softer conversational support interface centered on accessible voice interaction.", type: "web", label: "Web · Voice", url: "https://github.com/jayachandranpm/gentle-voice-support" },
-    { name: "Django Realtime Chat", description: "A realtime messaging application built around Django workflows.", type: "web", label: "Web · Django", url: "https://github.com/jayachandranpm/Django_chatproject" },
-    { name: "Hacker News Clone", description: "A clean web implementation of familiar feed, ranking, and discussion patterns.", type: "web", label: "Web · Frontend", url: "https://github.com/jayachandranpm/Hackernews_Clone" },
-    { name: "Rentify", description: "A property rental experience exploring discovery, listings, and renter workflows.", type: "web", label: "Web · Marketplace", url: "https://github.com/jayachandranpm/Rentify" },
-    { name: "Jen Analytics", description: "A hosted analytics project and collection of interactive data work.", type: "data", label: "Data · Analytics", url: "https://JenAnalytics.github.io/" },
-    { name: "Employee Churn Prediction", description: "A Streamlit dashboard for exploring employee retention risk from model inputs.", type: "data", label: "Data · ML", url: "https://github.com/jayachandranpm/Employee-Churn-Prediction" },
-    { name: "Heart Disease Prediction", description: "A machine-learning exploration of heart disease risk classification.", type: "data", label: "Data · ML", url: "https://github.com/jayachandranpm/Heart_Disease_Prediction" },
-    { name: "IMDB Sentiment Analysis", description: "Natural-language classification for positive and negative movie reviews.", type: "data", label: "Data · NLP", url: "https://github.com/jayachandranpm/IMDB-movie-review-sentiment-analysis" },
-    { name: "Movie Recommendation System", description: "A recommendation experiment for finding relevant films from user taste.", type: "data", label: "Data · Recommenders", url: "https://github.com/jayachandranpm/Movie-Recommendation-System" },
-    { name: "MNIST Digit App", description: "An interactive handwritten-digit prediction experience backed by an MNIST model.", type: "data", label: "Data · Vision", url: "https://github.com/jayachandranpm/MNIST-Handwritten-Digit-Prediction-App" },
-    { name: "Data Analytics Projects", description: "A growing archive of analysis, visualization, and modeling exercises.", type: "data", label: "Data · Portfolio", url: "https://github.com/jayachandranpm/Data-Analytics-Projects" },
-    { name: "Thirukural Wisdom", description: "A cultural knowledge experience centered on discovering and reflecting on Thirukural.", type: "ai", label: "AI · Culture", url: "https://github.com/jayachandranpm/Thirukural-Wisdom" },
-    { name: "Jen Encryption Tool", description: "A browser-based utility for approachable encryption and decryption workflows.", type: "web", label: "Web · Security", url: "https://github.com/jayachandranpm/Jen-Encryption-tool" }
   ]
 };

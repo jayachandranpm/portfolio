@@ -6,7 +6,6 @@
   const menuButton = document.querySelector(".menu-button");
   const menu = document.querySelector(".nav-menu");
   const mobileGrid = document.querySelector("#mobile-grid");
-  const archiveGrid = document.querySelector("#archive-grid");
   const dialog = document.querySelector("#preview-dialog");
   const dialogKicker = document.querySelector("#preview-kicker");
   const dialogTitle = document.querySelector("#preview-title");
@@ -239,38 +238,19 @@
     mobileGrid.scrollBy({ left: (card?.getBoundingClientRect().width || 280) * direction, behavior: reducedMotion ? "auto" : "smooth" });
   });
 
-  const archiveCard = (project) => {
-    const article = document.createElement("article");
-    article.className = "archive-card";
-    article.dataset.type = project.type;
-    const title = document.createElement("h4");
-    title.textContent = project.name;
-    const description = document.createElement("p");
-    description.textContent = project.description;
-    const meta = document.createElement("div");
-    meta.className = "archive-card-meta";
-    const label = document.createElement("span");
-    label.textContent = project.label;
-    const link = document.createElement("a");
-    link.href = project.url;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.setAttribute("aria-label", `Open ${project.name}`);
-    link.textContent = "↗";
-    meta.append(label, link);
-    article.append(title, description, meta);
-    return article;
-  };
-  archiveGrid?.replaceChildren(...data.archive.map(archiveCard));
-
   if (window.location.hash) {
     const anchorId = decodeURIComponent(window.location.hash.slice(1));
     requestAnimationFrame(() => requestAnimationFrame(() => {
-      document.getElementById(anchorId)?.scrollIntoView({ block: "start" });
+      const target = document.getElementById(anchorId);
+      if (!target) return;
+      const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior = "auto";
+      target.scrollIntoView({ block: "start" });
+      document.documentElement.style.scrollBehavior = previousScrollBehavior;
     }));
   }
 
-  const revealItems = document.querySelectorAll(".section-heading, .feature-card, .mobile-card, .web-card, .archive-card, .about-grid");
+  const revealItems = document.querySelectorAll(".section-heading, .feature-card, .mobile-card, .web-card, .about-grid");
   if ("IntersectionObserver" in window && !reducedMotion) {
     document.body.classList.add("reveal-ready");
     const revealObserver = new IntersectionObserver((entries) => {
@@ -286,18 +266,12 @@
     });
   }
 
-  const filterButtons = document.querySelectorAll("[data-filter]");
-  filterButtons.forEach((button) => {
-    button.setAttribute("aria-pressed", String(button.classList.contains("is-active")));
-    button.addEventListener("click", () => {
-      filterButtons.forEach((item) => {
-        const active = item === button;
-        item.classList.toggle("is-active", active);
-        item.setAttribute("aria-pressed", String(active));
-      });
-      const filter = button.dataset.filter;
-      archiveGrid?.querySelectorAll(".archive-card").forEach((card) => {
-        card.hidden = filter !== "all" && card.dataset.type !== filter;
+  const projectDisclosures = document.querySelectorAll(".compact-case");
+  projectDisclosures.forEach((disclosure) => {
+    disclosure.addEventListener("toggle", () => {
+      if (!disclosure.open) return;
+      projectDisclosures.forEach((other) => {
+        if (other !== disclosure) other.open = false;
       });
     });
   });
