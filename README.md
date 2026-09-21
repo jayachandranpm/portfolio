@@ -20,7 +20,7 @@ Open `http://127.0.0.1:4177`.
 
 - `index.html` contains the semantic page structure and selected case studies.
 - `projects.js` is the source of truth for mobile application content and repository links.
-- The homepage intentionally ships without a stylesheet, local images, video, SVG artwork, custom fonts, or decorative asset bundles.
+- The homepage uses a small monochrome stylesheet and intentionally ships without local images, video, SVG artwork, custom fonts, or decorative asset bundles.
 - Projects are presented as concise, text-led case studies with links to their public source repositories.
 - `demos/` contains the self-contained, credential-free biomimicry email collection.
 
