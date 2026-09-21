@@ -15,7 +15,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="assets/art/painted-countryside.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/art/wildflower-meadow-poster.jpg" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Nunito+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="projects.js" defer></script>
@@ -48,9 +48,10 @@
   <main id="main">
     <section class="hero shell" id="top">
       <div class="hero-landscape" aria-hidden="true">
-        <img src="assets/art/painted-countryside.jpg" alt="" fetchpriority="high">
-        <span class="painted-cloud cloud-one"></span><span class="painted-cloud cloud-two"></span>
-        <span class="wind-seed seed-one">✦</span><span class="wind-seed seed-two">✦</span><span class="wind-seed seed-three">✦</span>
+        <video class="hero-film" autoplay muted loop playsinline preload="metadata" poster="assets/art/wildflower-meadow-poster.jpg" disablepictureinpicture>
+          <source src="assets/video/wildflower-meadow-1080.mp4" type="video/mp4" media="(max-width: 780px)">
+          <source src="assets/video/wildflower-meadow-4k.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="hero-copy">
         <p class="hero-chapter" aria-hidden="true">A field journal · 2026</p>
@@ -110,10 +111,6 @@
     </section>
 
     <section class="section mobile-section" id="mobile" data-chapter="Chapter two · Pocket worlds">
-      <div class="mobile-scenery" aria-hidden="true">
-        <span class="distant-hill hill-one"></span><span class="distant-hill hill-two"></span>
-        <span class="firefly firefly-one"></span><span class="firefly firefly-two"></span><span class="firefly firefly-three"></span>
-      </div>
       <div class="shell">
         <p class="chapter-label chapter-label-light" aria-hidden="true">Chapter two <span>Pocket worlds</span></p>
         <div class="section-heading section-heading-light">
@@ -287,7 +284,6 @@
     </section>
 
     <section class="contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="evening-fireflies" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="shell contact-grid">
         <p class="chapter-label chapter-label-light" aria-hidden="true">Epilogue <span>The workshop is open</span></p>
         <p class="eyebrow">Have a hard product problem?</p>

@@ -1954,3 +1954,127 @@ button { color: inherit; }
   .mobile-rail-actions { flex: 0 0 auto; }
   .mobile-card { flex-basis: 84vw; min-height: 500px; }
 }
+
+/* Cinematic meadow edition ------------------------------------------------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  width: 100%;
+  background: transparent;
+  border-color: transparent;
+  border-image: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+.site-header.is-scrolled {
+  background: rgba(248, 243, 225, .72);
+  border-color: rgba(43, 75, 59, .16);
+  backdrop-filter: blur(24px) saturate(1.12);
+  box-shadow: 0 12px 38px rgba(30, 57, 43, .11);
+}
+.site-header:not(.is-scrolled) .brand,
+.site-header:not(.is-scrolled) .nav-menu > a:not(.nav-contact) {
+  color: #29483d;
+  text-shadow: 0 1px 12px rgba(255, 252, 235, .78);
+}
+.nav { min-height: 76px; }
+
+.hero {
+  min-height: 100svh;
+  padding-block: clamp(132px, 17vh, 190px) clamp(150px, 19vh, 220px);
+}
+.hero-landscape {
+  background-color: #bad9df;
+  background-image: url("assets/art/wildflower-meadow-poster.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.hero-film {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  filter: saturate(.94) contrast(.97) brightness(1.02);
+}
+.hero-landscape::before {
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(250,245,226,.94) 0%, rgba(250,245,226,.82) 27%, rgba(250,245,226,.42) 48%, rgba(250,245,226,.06) 72%, transparent 86%),
+    linear-gradient(180deg, rgba(246,242,223,.16), transparent 58%, rgba(25,61,43,.25));
+}
+.hero-landscape::after {
+  z-index: 2;
+  background:
+    linear-gradient(180deg, transparent 68%, rgba(26,60,43,.18)),
+    repeating-linear-gradient(93deg, rgba(255,255,255,.018) 0 1px, transparent 1px 7px);
+}
+.hero-copy { max-width: 740px; }
+.hero h1 { text-shadow: 0 2px 0 rgba(255,250,232,.7), 0 14px 42px rgba(255,246,220,.36); }
+.hero-lede { max-width: 640px; font-size: clamp(17px, 1.5vw, 20px); }
+.hero-note {
+  background-color: rgba(255, 248, 222, .84);
+  backdrop-filter: blur(12px) saturate(1.08);
+}
+
+.proof-strip { position: relative; z-index: 5; }
+.about-canopy,
+.evening-fireflies { display: none; }
+.about-heading { align-self: start; }
+
+.contact-section {
+  overflow: hidden;
+  background-color: #18372f;
+  background-image: url("assets/art/wildflower-meadow-poster.jpg");
+  background-position: center 56%;
+}
+.contact-section::before {
+  background:
+    linear-gradient(90deg, rgba(13,46,35,.95) 0%, rgba(15,50,37,.88) 36%, rgba(18,55,40,.62) 58%, rgba(18,55,40,.23) 100%),
+    linear-gradient(180deg, rgba(20,59,41,.08), rgba(7,37,28,.64));
+}
+.contact-grid {
+  grid-template-columns: minmax(0, 760px);
+  justify-content: start;
+}
+.contact-grid .button { width: max-content; }
+
+@media (max-width: 780px) {
+  .site-header.is-scrolled { background: rgba(248, 243, 225, .88); }
+  .hero { min-height: 830px; padding-block: 118px 150px; }
+  .hero-film { object-position: 61% center; }
+  .hero-landscape::before {
+    background:
+      linear-gradient(90deg, rgba(249,244,226,.93), rgba(249,244,226,.7) 75%, rgba(249,244,226,.34)),
+      linear-gradient(180deg, rgba(249,244,226,.2), rgba(249,244,226,.72) 72%, rgba(31,68,49,.18));
+  }
+  .contact-grid { position: relative; z-index: 4; }
+}
+
+@media (max-width: 520px) {
+  .nav { min-height: 70px; }
+  .hero { min-height: 790px; padding-block: 105px 132px; }
+  .hero-note { backdrop-filter: blur(9px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-film { display: none; }
+}
+
+/* Keep navigation and section labels quiet: no decorative leaf/cloud UI. */
+.nav-menu > a:not(.nav-contact)::after,
+.button::before,
+.chapter-label::before,
+.section-heading .eyebrow::before,
+.about-grid .eyebrow::before,
+.hero-note::after { display: none !important; content: none !important; }
+
+.painted-cloud,
+.wind-seed,
+.atmosphere-layer,
+.atmosphere-mote,
+.mobile-scenery,
+.firefly,
+.evening-fireflies { display: none !important; animation: none !important; }

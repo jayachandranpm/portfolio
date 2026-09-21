@@ -21,9 +21,23 @@
   const previewCount = document.querySelector("#preview-count");
   const previewStage = document.querySelector("#preview-stage");
   const previewNav = document.querySelector("#preview-nav");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const heroFilm = document.querySelector(".hero-film");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const reducedMotion = reducedMotionQuery.matches;
   let previewObserver;
   let returnFocus;
+
+  const syncHeroFilm = () => {
+    if (!heroFilm) return;
+    if (document.hidden || reducedMotionQuery.matches) {
+      heroFilm.pause();
+      return;
+    }
+    heroFilm.play().catch(() => {});
+  };
+  syncHeroFilm();
+  document.addEventListener("visibilitychange", syncHeroFilm);
+  reducedMotionQuery.addEventListener?.("change", syncHeroFilm);
 
   const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 18);
   updateHeader();
