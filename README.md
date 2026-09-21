@@ -2,12 +2,11 @@
 
 The source for [jayachandranpm.github.io/portfolio](https://jayachandranpm.github.io/portfolio/).
 
-This is a framework-free static portfolio organized around four bodies of work:
+This is a framework-free, content-first portfolio organized around three bodies of work:
 
 - featured product and data systems;
-- twelve Flutter mobile applications with full-resolution previews;
-- web applications, native desktop products, and interactive prototypes;
-- a public archive of AI, web, and data experiments.
+- twelve Flutter mobile application case studies;
+- professional experience and contact information.
 
 ## Local preview
 
@@ -19,10 +18,10 @@ Open `http://127.0.0.1:4177`.
 
 ## Structure
 
-- `index.html` contains the semantic page structure and featured case studies.
-- `projects.js` is the single source of truth for the 157-screen mobile gallery and the public project archive.
-- `assets/mobile/` contains selected real Flutter captures used by the featured case studies; complete galleries are loaded from each app's public GitHub Pages site.
-- `assets/web/` contains portfolio images for web projects.
+- `index.html` contains the semantic page structure and selected case studies.
+- `projects.js` is the source of truth for mobile application content and repository links.
+- The homepage intentionally ships without a stylesheet, local images, video, SVG artwork, custom fonts, or decorative asset bundles.
+- Projects are presented as concise, text-led case studies with links to their public source repositories.
 - `demos/` contains the self-contained, credential-free biomimicry email collection.
 
 GitHub Pages deploys the repository through `.github/workflows/static.yml`.
