@@ -61,23 +61,26 @@ header > p {
 nav {
   grid-column: 2;
   grid-row: 1 / span 2;
-  color: var(--rule);
+  color: var(--ink);
   font-size: 0.9rem;
 }
 
 a {
-  color: inherit;
+  color: var(--ink);
   text-decoration-color: #9b9b96;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
+}
+
+a:visited {
+  color: var(--ink);
 }
 
 a:hover {
   text-decoration-color: currentColor;
 }
 
-a:focus-visible,
-summary:focus-visible {
+a:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 4px;
 }
@@ -147,7 +150,7 @@ main > section:first-child > p:first-of-type {
 }
 
 #work > article {
-  max-width: var(--measure);
+  max-width: none;
   padding-block: 2.25rem;
 }
 
@@ -174,42 +177,41 @@ li {
   padding-left: 0.3rem;
 }
 
-details {
-  margin-block: 1.2rem;
-}
-
-summary {
-  width: fit-content;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-details[open] summary {
-  margin-bottom: 1.25rem;
-}
-
-dl {
+.case-grid {
   display: grid;
-  grid-template-columns: 6rem minmax(0, 1fr);
-  gap: 0.65rem 1.25rem;
-  margin-block: 0;
-  padding-left: 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: none;
+  margin-block: 1.5rem;
+  padding: 0;
+  border: 1px solid var(--rule);
+}
+
+.case-grid > div {
+  min-width: 0;
+  padding: 1.25rem;
+}
+
+.case-grid > div + div {
   border-left: 1px solid var(--rule);
 }
 
-dt {
-  font-weight: 650;
+.case-grid dt {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-dd {
+.case-grid dd {
   margin: 0;
+  margin-top: 0.55rem;
   color: #3e3e3e;
+  line-height: 1.55;
 }
 
 #mobile-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 3.5rem;
+  display: block;
   margin-top: 3rem;
 }
 
@@ -218,40 +220,117 @@ dd {
   padding-block: 1.8rem 2rem;
 }
 
-#mobile-grid h3,
-#mobile-grid p,
-#mobile-grid dl {
-  max-width: none;
-}
-
 #mobile-grid > article > p {
   color: #444;
 }
 
-#mobile-grid details p,
-#mobile-grid details a {
-  font-size: 0.94rem;
+#mobile-grid .technical-scope {
+  color: var(--muted);
+  font-size: 0.88rem;
 }
 
-#mobile-grid dl {
-  display: block;
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.45rem;
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
-#mobile-grid dt {
-  margin-top: 0.8rem;
-}
-
-#experience ol {
-  margin-top: 2rem;
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.3rem;
+  margin-block: 1.5rem 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--soft-rule);
 }
 
-#experience li {
+.contact-links li {
   margin: 0;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--soft-rule);
+  padding: 0;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.contact-links img {
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
+}
+
+#experience .timeline {
+  position: relative;
+  max-width: 48rem;
+  margin-top: 2.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+#experience .timeline::before {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  width: 1px;
+  background: var(--rule);
+  content: "";
+}
+
+#experience .timeline li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 1.4rem;
+  margin: 0;
+  padding: 0 0 2.6rem;
+}
+
+#experience .timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.company-mark {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 0.45rem;
+  background: var(--paper);
+}
+
+.company-mark img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+.timeline time {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.timeline h3 {
+  margin-bottom: 0.3rem;
+  font-size: 1.25rem;
+}
+
+.timeline p {
+  margin: 0;
+  color: #444;
+  font-size: 0.94rem;
 }
 
 footer {
@@ -286,21 +365,13 @@ footer p {
     padding-block: 3.5rem;
   }
 
-  #mobile-grid {
+  .case-grid {
     grid-template-columns: 1fr;
-    gap: 0;
   }
 
-  dl {
-    display: block;
-  }
-
-  dt:not(:first-child) {
-    margin-top: 0.85rem;
-  }
-
-  dd {
-    margin-top: 0.15rem;
+  .case-grid > div + div {
+    border-top: 1px solid var(--rule);
+    border-left: 0;
   }
 }
 
