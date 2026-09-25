@@ -5,9 +5,156 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Biomimicry Email Collection</title>
   <style>
-    :root{--ink:#17251f;--paper:#f3f0e7;--moss:#345d48;--line:#c8cec5}
-    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}header{padding:72px max(24px,6vw) 52px;background:#18392f;color:#fff}header p{max-width:690px;margin:16px 0 0;color:#cfe0d7;font-size:18px;line-height:1.55}h1{max-width:850px;margin:0;font:700 clamp(42px,7vw,86px)/.98 Georgia,serif;letter-spacing:-3px}.meta{margin-bottom:18px;color:#b7d397;font-size:12px;font-weight:700;letter-spacing:2px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:24px;padding:40px max(24px,6vw) 70px}.card{overflow:hidden;background:#fff;border:1px solid var(--line)}.card-head{display:flex;justify-content:space-between;gap:16px;align-items:start;padding:20px 22px;border-bottom:1px solid var(--line)}h2{margin:0;font:700 22px/1.2 Georgia,serif}.card-head p{margin:7px 0 0;color:#647069;font-size:13px;line-height:1.45}.num{color:#c35f3d;font:700 13px Arial,sans-serif;letter-spacing:1px}.frame-wrap{height:520px;overflow:hidden;background:#dfe3df}.frame-wrap iframe{width:820px;height:1080px;border:0;transform:scale(.52);transform-origin:top left}.actions{display:flex;justify-content:space-between;align-items:center;padding:15px 22px;background:#fff}.actions span{font-size:12px;color:#6e7772}.actions a{color:var(--moss);font-size:12px;font-weight:700;letter-spacing:.7px;text-decoration:none}.actions a:hover{text-decoration:underline}footer{padding:28px max(24px,6vw);background:#111b17;color:#aebbb4;font-size:13px}footer strong{color:#fff}@media(max-width:520px){header{padding-top:48px}h1{letter-spacing:-2px}.grid{grid-template-columns:1fr}.frame-wrap{height:430px}.frame-wrap iframe{transform:scale(.44)}}
-    footer a{color:#fff}
+    :root {
+      --ink: #17251f;
+      --paper: #f3f0e7;
+      --moss: #345d48;
+      --line: #c8cec5;
+      --surface: #ffffff;
+      --preview: #dfe3df;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      padding: 72px max(24px, 6vw) 52px;
+      background: #18392f;
+      color: #fff;
+    }
+
+    header p {
+      max-width: 690px;
+      margin: 16px 0 0;
+      color: #cfe0d7;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font: 700 clamp(42px, 7vw, 86px) / .98 Georgia, serif;
+      letter-spacing: -3px;
+    }
+
+    .meta {
+      margin-bottom: 18px;
+      color: #b7d397;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 34px;
+      width: min(100% - 40px, 960px);
+      margin-inline: auto;
+      padding-block: 48px 76px;
+    }
+
+    .card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: 0 18px 45px rgba(23, 37, 31, .08);
+    }
+
+    .card-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font: 700 24px / 1.2 Georgia, serif;
+    }
+
+    .card-head p {
+      margin: 7px 0 0;
+      color: #647069;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .num {
+      color: #c35f3d;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .frame-wrap {
+      height: 720px;
+      padding: 22px;
+      background: var(--preview);
+    }
+
+    .frame-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 24px;
+      background: var(--surface);
+    }
+
+    .actions span {
+      color: #6e7772;
+      font-size: 12px;
+    }
+
+    .actions a {
+      color: var(--moss);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .7px;
+      text-decoration: none;
+    }
+
+    .actions a:hover { text-decoration: underline; }
+
+    footer {
+      padding: 28px max(24px, 6vw);
+      background: #111b17;
+      color: #aebbb4;
+      font-size: 13px;
+    }
+
+    footer strong,
+    footer a { color: #fff; }
+
+    @media (max-width: 640px) {
+      header { padding-top: 48px; }
+      h1 { letter-spacing: -2px; }
+      .grid { width: min(100% - 24px, 960px); gap: 24px; padding-top: 28px; }
+      .card { border-radius: 12px; }
+      .frame-wrap { height: 600px; padding: 10px; }
+      .card-head, .actions { padding-inline: 16px; }
+      .actions { align-items: flex-start; flex-direction: column; }
+    }
   </style>
 </head>
 <body>
