@@ -54,14 +54,17 @@
 
     .grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 34px;
-      width: min(100% - 40px, 960px);
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      align-items: start;
+      gap: 24px;
+      width: min(100% - 40px, 1280px);
       margin-inline: auto;
       padding-block: 48px 76px;
     }
 
     .card {
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -97,19 +100,58 @@
       letter-spacing: 1px;
     }
 
-    .frame-wrap {
-      height: 720px;
-      padding: 22px;
+    .preview-link {
+      position: relative;
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .preview-frame {
+      display: grid;
+      aspect-ratio: 4 / 5;
+      place-items: center;
+      overflow: hidden;
+      padding: 18px;
       background: var(--preview);
     }
 
-    .frame-wrap iframe {
+    .preview-frame img {
       display: block;
       width: 100%;
       height: 100%;
-      border: 0;
-      border-radius: 10px;
-      background: #fff;
+      object-fit: contain;
+      object-position: center;
+      filter: drop-shadow(0 12px 18px rgba(23, 37, 31, .14));
+      transition: transform 180ms ease;
+    }
+
+    .preview-link::after {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(17, 27, 23, .9);
+      color: #fff;
+      content: "View complete template ↗";
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .preview-link:hover .preview-frame img,
+    .preview-link:focus-visible .preview-frame img {
+      transform: scale(1.018);
+    }
+
+    .preview-link:hover::after,
+    .preview-link:focus-visible::after {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .actions {
@@ -136,6 +178,12 @@
 
     .actions a:hover { text-decoration: underline; }
 
+    .preview-link:focus-visible,
+    .actions a:focus-visible {
+      outline: 3px solid var(--moss);
+      outline-offset: -3px;
+    }
+
     footer {
       padding: 28px max(24px, 6vw);
       background: #111b17;
@@ -149,11 +197,11 @@
     @media (max-width: 640px) {
       header { padding-top: 48px; }
       h1 { letter-spacing: -2px; }
-      .grid { width: min(100% - 24px, 960px); gap: 24px; padding-top: 28px; }
+      .grid { width: min(100% - 24px, 1280px); gap: 20px; padding-top: 28px; }
       .card { border-radius: 12px; }
-      .frame-wrap { height: 600px; padding: 10px; }
+      .preview-frame { padding: 12px; }
       .card-head, .actions { padding-inline: 16px; }
-      .actions { align-items: flex-start; flex-direction: column; }
+      .preview-link::after { display: none; }
     }
   </style>
 </head>
@@ -178,7 +226,10 @@
       ['09','Transactional','Honeycomb packing','09-transactional-honeycomb.html','Roboto Slab + Roboto'],
       ['10','Feedback survey','Starling murmuration','10-feedback-murmuration.html','Newsreader + Karla']
     ];
-    document.querySelector('#gallery').innerHTML=templates.map(([n,type,idea,file,fonts])=>`<article class="card"><div class="card-head"><div><h2>${type}</h2><p>${idea}<br><strong>${fonts}</strong></p></div><div class="num">${n}</div></div><div class="frame-wrap"><iframe title="${type} template preview" loading="lazy" src="templates/${file}"></iframe></div><div class="actions"><span>600px · responsive</span><a href="templates/${file}" target="_blank">OPEN FULL PREVIEW →</a></div></article>`).join('');
+    document.querySelector('#gallery').innerHTML=templates.map(([n,type,idea,file,fonts])=>{
+      const preview=file.replace('.html','.jpg');
+      return `<article class="card"><div class="card-head"><div><h2>${type}</h2><p>${idea}<br><strong>${fonts}</strong></p></div><div class="num">${n}</div></div><a class="preview-link" href="templates/${file}" target="_blank" rel="noreferrer" aria-label="Open the complete ${type} email template"><span class="preview-frame"><img src="previews/${preview}" alt="Complete ${type} email template preview" loading="lazy" decoding="async"></span></a><div class="actions"><span>Complete email overview</span><a href="templates/${file}" target="_blank" rel="noreferrer">VIEW COMPLETE TEMPLATE →</a></div></article>`;
+    }).join('');
   </script>
 </body>
 </html>
