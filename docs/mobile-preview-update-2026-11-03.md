@@ -72,6 +72,10 @@ audio and device-service behavior cannot be verified from these static galleries
   and the main profile's GitHub link remain.
 - The verifier rejects mobile source fields and source-emitting render code, and
   requires Vitalis's full-size, freshly regenerated home preview.
+- Live navigation exposed cached older gallery HTML, even though the homepage
+  had refreshed. Gallery links now include the release version, matching all
+  script versions. This also covers previous/next gallery navigation, preventing
+  it from reopening an old script bundle and old image manifest.
 
 ## Verification
 

@@ -5,6 +5,7 @@ const mobileScreens = (slug, screens) => screens.map(([file, label]) => ({
 }));
 
 window.PORTFOLIO_DATA = {
+  previewRelease: "20261103d",
   mobileApps: [
     {
       id: "aether",
@@ -265,5 +266,5 @@ for (const app of window.PORTFOLIO_DATA.mobileApps) {
     app.screens = preview.screens;
     app.previewUpdated = preview.updated;
   }
-  app.preview = `mobile-app.html?app=${encodeURIComponent(app.id)}`;
+  app.preview = `mobile-app.html?app=${encodeURIComponent(app.id)}&v=${window.PORTFOLIO_DATA.previewRelease}`;
 }

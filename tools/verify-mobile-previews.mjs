@@ -24,7 +24,7 @@ let count = 0;
 for (const app of apps) {
   assert(!Object.hasOwn(app, 'source'), `${app.id}: mobile source link is exposed`);
   assert(app.screens.length > 0, `${app.id}: missing screens`);
-  assert.equal(app.preview, `mobile-app.html?app=${app.id}`);
+  assert.equal(app.preview, `mobile-app.html?app=${app.id}&v=${context.window.PORTFOLIO_DATA.previewRelease}`);
   for (const field of ['name', 'summary', 'description', 'problem', 'solution', 'value']) {
     assert(app[field]?.trim(), `${app.id}: missing ${field}`);
   }
@@ -76,6 +76,14 @@ for (const id of ['aether', 'rooted', 'thirukkural', 'agaram']) {
 for (const file of ['index.html', 'mobile-app.html']) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
   assert(html.indexOf('mobile-previews.js') < html.indexOf('projects.js'));
-  assert(html.includes('style.css?v=20261103c'));
+  if (file === 'mobile-app.html') {
+    assert(html.includes(`index.html?v=${context.window.PORTFOLIO_DATA.previewRelease}#mobile`),
+      'Gallery back link must not reopen a cached homepage');
+  }
+  for (const asset of ['style.css', 'mobile-previews.js', 'projects.js',
+    file === 'index.html' ? 'script.js' : 'mobile-app.js']) {
+    assert(html.includes(`${asset}?v=${context.window.PORTFOLIO_DATA.previewRelease}`),
+      `${file}: asset version differs from gallery release`);
+  }
 }
 console.log(`Verified ${apps.length} app galleries and ${count} original full-screen images.`);
