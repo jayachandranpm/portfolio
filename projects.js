@@ -27,7 +27,7 @@ window.PORTFOLIO_DATA = {
       solution: "A source-aware mobile workspace that connects label details, personal purchase records, nature discovery and private notes.",
       value: "People can make more informed everyday choices while keeping personal receipts, notes and purchase history on their device.",
       tags: ["Flutter", "Open data", "Local-first"],
-      notes: "Food and nature coverage depends on the public sources. Prices are dated observations, not live merchant offers; nature records are not guaranteed sightings.",
+      notes: "Full-phone previews are rendered from the current Flutter widgets with controlled sample foods, prices, weather and journal entries. Food and nature coverage depends on public sources. Prices are dated observations, not live merchant offers; nature records are not guaranteed sightings.",
       screens: []
     },
     {
@@ -158,54 +158,6 @@ window.PORTFOLIO_DATA = {
       ])
     },
     {
-      id: "music-to-ears",
-      name: "Music to My Ears",
-      summary: "Music discovery and playback with playlists, lyrics, downloads, queues, and car mode.",
-      description: "A full music player covering discovery, search, artists, playlists, queue management, synchronized lyrics, local music, downloads, playback history, equalizer controls, car mode, statistics, and dependable background audio.",
-      problem: "Music listening becomes disjointed when discovery, local files, lyrics, queues, downloads, and background controls behave like separate products.",
-      solution: "A complete player that unifies discovery, playlists, synchronized lyrics, downloads, local music, queues, car mode, and durable background audio.",
-      value: "Listeners keep a continuous playback experience while moving between discovery, the lock screen, lyrics, and offline listening.",
-      tags: ["Flutter", "Media playback", "Lyrics"],
-      color: "#76536a",
-      tilt: "2deg",
-      source: "https://github.com/jayachandranpm/music-to-my-ears",
-      preview: "https://jayachandranpm.github.io/music-to-my-ears/",
-      screens: mobileScreens("music-to-my-ears", [
-        ["approved-features/discover-dark", "Discover"], ["approved-features/discover-light", "In daylight"],
-        ["approved-features/now-playing", "Now playing"], ["approved-features/search", "Search"],
-        ["approved-features/search-results", "Search results"], ["approved-features/library", "Library"],
-        ["approved-features/downloads", "Downloads"], ["approved-features/queue", "Up next"],
-        ["approved-features/lyrics", "Time-synced lyrics"], ["approved-features/playlist", "Playlist"],
-        ["approved-features/artist", "Artist"], ["approved-features/browse", "Browse by mood"],
-        ["approved-features/settings", "Settings"], ["approved-features/equalizer", "Equalizer"],
-        ["approved-features/history", "Listening history"], ["approved-features/stats", "Listening stats"],
-        ["approved-features/storage", "Storage"], ["approved-features/sources", "Music sources"],
-        ["approved-features/car-mode", "Car mode"]
-      ])
-    },
-    {
-      id: "personal-vault",
-      name: "Personal Vault",
-      summary: "A chat-like private space for notes, links, media, files, voice, and shared locations.",
-      description: "A local personal knowledge vault organized like a familiar conversation. It supports rich messages, replies, reactions, documents, media, audio, link previews, maps and location sharing, collections, history, lock screens, backups, and security controls.",
-      problem: "Personal files, links, voice notes, locations, and reminders are spread across apps that were designed for communication rather than private organization.",
-      solution: "A familiar chat-shaped vault with rich messages, previews, replies, reactions, collections, protected attachments, locations, search, and backups.",
-      value: "Different kinds of personal information can be captured in one private timeline without inventing a new organizational habit.",
-      tags: ["Flutter", "Knowledge vault", "Rich previews"],
-      color: "#4c5d78",
-      tilt: "-1deg",
-      source: "https://github.com/jayachandranpm/personal-vault",
-      preview: "https://jayachandranpm.github.io/personal-vault/",
-      screens: mobileScreens("personal-vault", [
-        ["approved-features/chat-light", "Private timeline"], ["approved-features/chat-dark", "Dark mode"],
-        ["search", "Search everything"], ["search-results", "Search results"], ["collections", "Collections"],
-        ["collection-detail", "Collection detail"], ["image-preview", "Rich file preview"],
-        ["approved-features/protected-photo", "Protected attachment"], ["settings", "Settings"],
-        ["security", "Security"], ["vault-health", "Vault health"], ["automation", "Automation"],
-        ["trash", "Reversible deletion"]
-      ])
-    },
-    {
       id: "speak-i-shall-write",
       name: "Speak, I Shall Write",
       summary: "Privacy-first on-device dictation for fast notes, long recordings, and clean transcripts.",
@@ -299,6 +251,7 @@ window.PORTFOLIO_DATA = {
       solution: "An OpenStreetMap destination alarm with place search, adjustable geofences, background monitoring, reusable routes, saved places, and full-screen arrival challenges.",
       value: "People can rest during a journey while the device watches the destination instead of the clock.",
       tags: ["Flutter", "OpenStreetMap", "Background location"],
+      notes: "These previews use the current Flutter interface and controlled journey data. Map tiles and Android's native 3D map renderer are unavailable in offscreen widget renders; map views demonstrate the interface rather than live cartography. Location monitoring and alarms require device testing.",
       color: "#416b7d",
       tilt: "2deg",
       source: "https://github.com/jayachandranpm/wake-me-up",

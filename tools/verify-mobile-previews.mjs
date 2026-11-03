@@ -12,8 +12,14 @@ for (const file of ['mobile-previews.js', 'projects.js']) {
 }
 const apps = context.window.PORTFOLIO_DATA.mobileApps;
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'assets/mobile/manifest.json')));
-assert.equal(apps.length, 16);
+assert.equal(apps.length, 14);
 assert.equal(new Set(apps.map(app => app.id)).size, apps.length);
+assert.deepEqual(Object.keys(manifest).sort(), Array.from(apps, app => app.id).sort());
+for (const id of ['music-to-ears', 'personal-vault']) {
+  assert(!apps.some(app => app.id === id), `${id}: removed app is still listed`);
+  assert(!Object.hasOwn(manifest, id), `${id}: removed gallery is still generated`);
+  assert(!fs.existsSync(path.join(root, 'assets/mobile', id)), `${id}: removed assets remain`);
+}
 let count = 0;
 for (const app of apps) {
   assert(app.screens.length > 0, `${app.id}: missing screens`);
@@ -35,6 +41,14 @@ for (const app of apps) {
     const bytes = fs.readFileSync(path.join(root, screen.src));
     const recorded = manifest[app.id].screens.find(item => item.src === screen.src);
     assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), recorded.sha256);
+    assert(screen.src.includes(`-${recorded.sha256.slice(0, 12)}.`), `Unversioned image: ${screen.src}`);
+    if (app.id === 'wake-me-up' || app.id === 'rooted') {
+      assert.equal(screen.width, 780, `${app.id}: incorrect full-phone width`);
+      assert.equal(screen.height, 1688, `${app.id}: incorrect full-phone height`);
+      assert.equal(recorded.captured, '2026-11-03', `${app.id}: stale preview`);
+      assert(recorded.source.startsWith(app.id === 'rooted'
+        ? 'Rooted/docs/portfolio-2026-11-03/' : 'wakemeup/docs/previews/'));
+    }
     if (screen.src.endsWith('.png')) {
       assert.equal(bytes.readUInt32BE(0), 0x89504e47);
       assert.equal(bytes.readUInt32BE(16), screen.width);
@@ -52,6 +66,6 @@ for (const id of ['aether', 'rooted', 'thirukkural', 'agaram']) {
 for (const file of ['index.html', 'mobile-app.html']) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
   assert(html.indexOf('mobile-previews.js') < html.indexOf('projects.js'));
-  assert(html.includes('style.css?v=20261103'));
+  assert(html.includes('style.css?v=20261103b'));
 }
 console.log(`Verified ${apps.length} app galleries and ${count} original full-screen images.`);

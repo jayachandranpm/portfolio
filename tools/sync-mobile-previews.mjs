@@ -14,7 +14,6 @@ const apps = sandbox.window.PORTFOLIO_DATA.mobileApps;
 const base = {
   clipstash: 'ClipStash', 'fm-radio': 'FM Radio', 'i-remember': 'I remember',
   'jays-journal': "Jay's Diary", 'mindful-spend': 'Mindful Spend',
-  'music-to-ears': 'MusicToEars', 'personal-vault': 'Personal Vault',
   'speak-i-shall-write': 'Speak I shall write', 'tell-the-world': 'Tell the world',
   vitalis: 'Vitalis', 'hill-myna': 'hill_myna', 'wake-me-up': 'wakemeup',
 };
@@ -35,34 +34,34 @@ const overrides = {
     ['Aether Weather/validation/navigation-polish/after-layers.png', 'Map layers · shared renderer', 'browser'],
   ],
   rooted: [
-    ['Rooted/docs/validation/home-final-web.png', 'Everyday overview', 'browser'],
-    ['Rooted/docs/validation/food-search-final.png', 'Food search', 'browser'],
-    ['Rooted/docs/validation/food-detail-web.png', 'Food label details', 'browser'],
-    ['Rooted/docs/validation/basket-final-web.png', 'Shopping basket', 'browser'],
-    ['Rooted/docs/validation/nature-detail-web.png', 'Nearby nature', 'browser'],
-    ['Rooted/docs/validation/journal-final-web.png', 'Private journal', 'browser'],
-    ['Rooted/docs/previews/editor.png', 'Rich journal editor'],
-    ['Rooted/docs/previews/editor-format.png', 'Journal formatting'],
-    ['Rooted/docs/previews/editor-insert.png', 'Journal inserts'],
-  ],
+    ['home', 'Everyday overview'], ['food-search', 'Food search'],
+    ['food-details', 'Food label details'], ['basket', 'Shopping basket'],
+    ['nearby', 'Nearby nature · empty state'], ['journal', 'Private journal'],
+    ['editor', 'Rich journal editor'], ['editor-format', 'Journal formatting'],
+    ['editor-insert', 'Journal inserts'], ['settings', 'Settings'],
+  ].map(([file, label]) => [`Rooted/docs/portfolio-2026-11-03/${file}.png`, label]),
   thirukkural: ['today', 'reader', 'explore', 'learn', 'journey', 'voice', 'downloads', 'settings'].map(file => [
     `Thirukkural/docs/verification/ui-1.7.0/${file}.png`,
     ({today:'Daily Kural',reader:'Thoughtful reading',explore:'Explore the collection',learn:'Recall practice',journey:'Reading journey',voice:'Voice and speech',downloads:'Voice downloads',settings:'Settings'})[file],
   ]),
   'wake-me-up': [
-    ...[
-      ['01-destination', 'Destination alert'], ['02-distance', 'Alert distance'],
-      ['10-trips', 'Saved trips'], ['04-settings', 'Settings'],
-      ['05-alert-settings', 'Alert settings'], ['11-offline-coverage', 'Offline coverage'],
-      ['07-destination-dark', 'Destination · dark theme'],
-      ['08-weak-location-dark', 'Location accuracy guidance'],
-      ['09-stop-confirmation', 'Stop confirmation'], ['12-onboarding', 'Map onboarding'],
-    ].map(([file, label]) => [`wakemeup/docs/validation/2026-10-16-ux-update/screenshots/${file}.png`, label]),
-    ['wakemeup/docs/validation/2026-10-18-alarm/alarm.png', 'Arrival alarm'],
-    ['wakemeup/docs/validation/2026-10-18-alarm/snoozed-map.png', 'Snoozed alert'],
-    ['wakemeup/docs/validation/2026-10-18-alarm/challenge-keyboard.png', 'Wake-up challenge'],
-    ['wakemeup/docs/validation/2026-10-18-alarm/challenge-wrong-answer.png', 'Challenge feedback'],
-  ],
+    ['map-destination', 'Destination alert · Flutter preview'],
+    ['arrival-setup', 'Arrival setup'], ['map-radius', 'Wake-up distance'],
+    ['map-search-suggestions', 'Destination search'], ['trips', 'Trip history'],
+    ['trip-insights', 'Trip insights'], ['routes', 'Saved routes'],
+    ['saved-places', 'Saved places'], ['saved-sort', 'Place sorting'],
+    ['settings', 'Settings'], ['settings-search', 'Search settings'],
+    ['settings-alert-behavior', 'Alert behavior'],
+    ['settings-alarm-experience', 'Alarm experience'],
+    ['settings-appearance', 'Appearance'], ['settings-about', 'About Wake Me Up'],
+    ['settings-dark', 'Settings · dark theme'],
+    ['map-dark', 'Destination · dark theme'],
+    ['active-alert-dark', 'Active alert · dark theme'],
+    ['route-actions', 'Route actions'], ['offline-maps', 'Offline maps'],
+    ['onboarding-alert', 'Arrival onboarding'], ['alarm', 'Arrival alarm'],
+    ['trips-empty', 'Trip history · empty state'],
+    ['saved-empty', 'Saved places · empty state'],
+  ].map(([file, label]) => [`wakemeup/docs/previews/${file}.png`, label]),
   agaram: [
     ['../Agaram/docs/portfolio-2026-11-03/learning-path.jpg', 'Your learning path', 'browser'],
     ['../Agaram/docs/peacock-layout-2026-10-28/12-profile-phone.png', 'Your learning space', 'browser'],
@@ -97,26 +96,20 @@ function dimensions(bytes) {
 }
 
 const manifest = {};
+const manifestFile = path.join(root, 'assets/mobile/manifest.json');
+const previousIds = fs.existsSync(manifestFile)
+  ? Object.keys(JSON.parse(fs.readFileSync(manifestFile, 'utf8'))) : [];
 let total = 0;
 for (const app of apps) {
   const appFolder = base[app.id];
   let captures = overrides[app.id] ?? app.screens.map(screen => [
     `${appFolder}/docs/previews/${screen.file}`, screen.label,
   ]);
-  if (app.id === 'music-to-ears') {
-    captures = fs.readdirSync(path.join(workspace, 'MusicToEars/docs/verification/telegram-1.4.3'))
-      .filter(file => file.endsWith('.png'))
-      .map(file => [`MusicToEars/docs/verification/telegram-1.4.3/${file}`, title(file)]);
-    captures.sort((a, b) => (a[1] === 'Discover dark' ? -1 : b[1] === 'Discover dark' ? 1 : 0));
-  } else if (['jays-journal', 'i-remember', 'mindful-spend', 'tell-the-world', 'personal-vault'].includes(app.id)) {
+  if (['jays-journal', 'i-remember', 'mindful-spend', 'tell-the-world'].includes(app.id)) {
     const directory = path.join(workspace, appFolder, 'docs/previews');
     const extras = fs.readdirSync(directory).filter(file => file.endsWith('.png'))
       .map(file => [`${appFolder}/docs/previews/${file}`, title(file)]);
     captures = [...captures, ...extras];
-    if (app.id === 'personal-vault') {
-      captures = captures.filter(([file]) => !file.includes('approved-features/chat-'));
-      captures.unshift([`${appFolder}/docs/previews/vault-light.png`, 'Private timeline']);
-    }
   }
   const seen = new Set();
   const screens = [];
@@ -133,14 +126,17 @@ for (const app of apps) {
     const key = path.parse(relative).name;
     if (seen.has(key)) continue;
     seen.add(key);
-    const file = `${key}.${info.extension}`;
+    const sha256 = crypto.createHash('sha256').update(bytes).digest('hex');
+    // New image bytes always receive a new URL, including when the source name
+    // stays the same. This prevents stale portfolio images in browser caches.
+    const file = `${key}-${sha256.slice(0, 12)}.${info.extension}`;
     fs.copyFileSync(input, path.join(output, file));
     screens.push({
       src: `assets/mobile/${app.id}/${file}`, label,
       width: info.width, height: info.height, kind,
       source: relative,
       captured: fs.statSync(input).mtime.toISOString().slice(0, 10),
-      sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+      sha256,
     });
   }
   if (!screens.length) throw new Error(`No usable captures for ${app.id}`);
@@ -152,7 +148,13 @@ for (const app of apps) {
   total += screens.length;
   console.log(`${app.name}: ${screens.length} screens`);
 }
-fs.writeFileSync(path.join(root, 'assets/mobile/manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
+// Only prune previously managed galleries, never unrelated asset directories.
+for (const id of previousIds) {
+  if (!Object.hasOwn(manifest, id) && /^[a-z0-9-]+$/.test(id)) {
+    fs.rmSync(path.join(root, 'assets/mobile', id), {recursive: true, force: true});
+  }
+}
+fs.writeFileSync(manifestFile, JSON.stringify(manifest, null, 2) + '\n');
 const runtime = Object.fromEntries(Object.entries(manifest).map(([id, entry]) => [id, {
   updated: entry.updated,
   screens: entry.screens.map(({src,label,width,height,kind}) => ({src,label,width,height,kind})),
