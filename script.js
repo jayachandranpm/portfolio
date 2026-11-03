@@ -9,15 +9,6 @@
     return element;
   };
 
-  const externalLink = (label, href) => {
-    const link = document.createElement("a");
-    link.href = href;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.textContent = label;
-    return link;
-  };
-
   const entries = apps.map((app) => {
     const article = document.createElement("article");
     article.id = app.id;
@@ -45,7 +36,6 @@
     gallery.href = app.preview;
     gallery.setAttribute("aria-label", `View ${app.screens.length} ${app.name} screens and case study`);
     links.append(gallery);
-    if (app.source) links.append(externalLink("Source", app.source));
 
     article.append(title, summary, links);
     return article;

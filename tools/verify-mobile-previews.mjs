@@ -22,6 +22,7 @@ for (const id of ['music-to-ears', 'personal-vault']) {
 }
 let count = 0;
 for (const app of apps) {
+  assert(!Object.hasOwn(app, 'source'), `${app.id}: mobile source link is exposed`);
   assert(app.screens.length > 0, `${app.id}: missing screens`);
   assert.equal(app.preview, `mobile-app.html?app=${app.id}`);
   for (const field of ['name', 'summary', 'description', 'problem', 'solution', 'value']) {
@@ -60,12 +61,21 @@ for (const app of apps) {
     count++;
   }
 }
+const vitalisHome = manifest.vitalis.screens[0];
+assert.equal(vitalisHome.source, 'Vitalis/docs/previews/today.png');
+assert.equal(vitalisHome.captured, '2026-11-03');
+assert.equal(vitalisHome.width, 780);
+assert.equal(vitalisHome.height, 1688);
+for (const file of ['script.js', 'mobile-app.js']) {
+  assert(!/\bapp\.source\b/.test(fs.readFileSync(path.join(root, file), 'utf8')),
+    `${file}: mobile renderer must not emit source links`);
+}
 for (const id of ['aether', 'rooted', 'thirukkural', 'agaram']) {
   assert(apps.some(app => app.id === id));
 }
 for (const file of ['index.html', 'mobile-app.html']) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
   assert(html.indexOf('mobile-previews.js') < html.indexOf('projects.js'));
-  assert(html.includes('style.css?v=20261103b'));
+  assert(html.includes('style.css?v=20261103c'));
 }
 console.log(`Verified ${apps.length} app galleries and ${count} original full-screen images.`);

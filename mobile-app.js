@@ -31,13 +31,6 @@
   const scope = text("p", `Built with ${app.tags.join(" · ")}`);
   scope.className = "technical-scope";
   context.append(scope);
-  if (app.source) {
-    const source = text("a", "Source repository");
-    source.href = app.source;
-    source.target = "_blank";
-    source.rel = "noreferrer";
-    context.append(source);
-  }
   if (app.notes) context.append(text("p", app.notes));
   document.querySelector("#screen-count").textContent = `${app.screens.length} screens · Actual app interfaces, with sample data where applicable. Open any screen at full resolution. Static previews do not run device services or native animations.`;
 

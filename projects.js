@@ -65,7 +65,6 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Local-first", "Biometrics"],
       color: "#3f6b56",
       tilt: "-2deg",
-      source: "https://github.com/jayachandranpm/clipstash",
       preview: "https://jayachandranpm.github.io/clipstash/",
       screens: mobileScreens("clipstash", [
         ["clips-light", "Clipboard library"], ["clips-dark", "Dark theme"], ["settings-dark", "Settings"],
@@ -85,7 +84,6 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Background audio", "Radio Browser"],
       color: "#7a6148",
       tilt: "2deg",
-      source: "https://github.com/jayachandranpm/fm-radio",
       preview: "https://jayachandranpm.github.io/fm-radio/",
       screens: mobileScreens("fm-radio", [
         ["home", "Home"], ["discover", "Discover"], ["discover-filters", "Station filters"],
@@ -104,7 +102,6 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "On-device AI", "Encrypted notes"],
       color: "#6a5c70",
       tilt: "-1deg",
-      source: "https://github.com/jayachandranpm/i-remember",
       preview: "https://jayachandranpm.github.io/i-remember/",
       screens: mobileScreens("i-remember", [
         ["notes", "Memory palace"], ["quick-create", "Quick capture"], ["search", "Find a thought"],
@@ -123,7 +120,6 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Voice capture", "Private journal"],
       color: "#4b6f7b",
       tilt: "1.5deg",
-      source: "https://github.com/jayachandranpm/jays-journal",
       preview: "https://jayachandranpm.github.io/jays-journal/",
       screens: mobileScreens("jays-journal", [
         ["home", "Journal home"], ["editor", "Rich editor"], ["voice-entry", "Voice journal"],
@@ -146,7 +142,6 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Personal finance", "Data visualization"],
       color: "#70643b",
       tilt: "-2deg",
-      source: "https://github.com/jayachandranpm/mindful-spend",
       preview: "https://jayachandranpm.github.io/mindful-spend/",
       screens: mobileScreens("mindful-spend", [
         ["dashboard", "Dashboard"], ["transactions", "Transactions"], ["add-transaction", "Add transaction"],
@@ -168,7 +163,6 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "On-device speech", "Offline"],
       color: "#635576",
       tilt: "1.5deg",
-      source: "https://github.com/jayachandranpm/speak-i-shall-write",
       preview: "https://jayachandranpm.github.io/speak-i-shall-write/",
       screens: mobileScreens("speak-i-shall-write", [
         ["record", "Live dictation"], ["history", "Transcript history"], ["writing-tools", "Writing tools"],
@@ -191,7 +185,6 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Publishing", "GitHub Pages"],
       color: "#795b4d",
       tilt: "-2deg",
-      source: "https://github.com/jayachandranpm/tell-the-world",
       preview: "https://jayachandranpm.github.io/tell-the-world/",
       screens: mobileScreens("tell-the-world", [
         ["home", "Writing home"], ["editor", "Visual editor"], ["posts", "Post library"],
@@ -212,11 +205,10 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Health", "On-device insights"],
       color: "#39665b",
       tilt: "2deg",
-      source: "https://github.com/jayachandranpm/vitalis",
       preview: "https://jayachandranpm.github.io/vitalis/",
       screens: mobileScreens("vitalis", [
         ["today", "Today"], ["quick-log", "Quick log"], ["habits", "Habits"], ["logs", "Logs"],
-        ["insights-loading", "Insights loading"], ["insights", "Health insights"], ["nutrition", "Nutrition"],
+        ["insights", "Health insights"], ["nutrition", "Nutrition"],
         ["sleep", "Sleep"], ["mindfulness", "Mindfulness"], ["workouts", "Workouts"],
         ["journal", "Journal"], ["vitals", "Vitals"], ["hydration", "Hydration"], ["goals", "Goals"],
         ["health-chat", "Health chat"], ["settings", "Settings"], ["settings-dark", "Dark settings"],
@@ -234,7 +226,6 @@ window.PORTFOLIO_DATA = {
       tags: ["Flutter", "Local LLM", "Private AI"],
       color: "#59633f",
       tilt: "-1.5deg",
-      source: "https://github.com/jayachandranpm/hill-myna",
       preview: "https://jayachandranpm.github.io/hill-myna/",
       screens: mobileScreens("hill-myna", [
         ["assistant", "Assistant"], ["assistant-dark", "Dark theme"], ["history", "Conversation library"],
@@ -254,7 +245,6 @@ window.PORTFOLIO_DATA = {
       notes: "These previews use the current Flutter interface and controlled journey data. Map tiles and Android's native 3D map renderer are unavailable in offscreen widget renders; map views demonstrate the interface rather than live cartography. Location monitoring and alarms require device testing.",
       color: "#416b7d",
       tilt: "2deg",
-      source: "https://github.com/jayachandranpm/wake-me-up",
       preview: "https://jayachandranpm.github.io/wake-me-up/",
       screens: mobileScreens("wake-me-up", [
         ["map-destination", "Destination map"], ["map-search-suggestions", "Search suggestions"],

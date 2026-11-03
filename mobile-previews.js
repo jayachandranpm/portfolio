@@ -1452,7 +1452,7 @@ window.MOBILE_PREVIEWS = {
     "updated": "2026-11-03",
     "screens": [
       {
-        "src": "assets/mobile/vitalis/today-94e1207bba63.png",
+        "src": "assets/mobile/vitalis/today-747d75296e57.png",
         "label": "Today",
         "width": 780,
         "height": 1688,
@@ -1475,13 +1475,6 @@ window.MOBILE_PREVIEWS = {
       {
         "src": "assets/mobile/vitalis/logs-dad089e8d22f.png",
         "label": "Logs",
-        "width": 780,
-        "height": 1688,
-        "kind": "flutter"
-      },
-      {
-        "src": "assets/mobile/vitalis/insights-loading-4101bb5ac6b6.png",
-        "label": "Insights loading",
         "width": 780,
         "height": 1688,
         "kind": "flutter"
@@ -1529,14 +1522,14 @@ window.MOBILE_PREVIEWS = {
         "kind": "flutter"
       },
       {
-        "src": "assets/mobile/vitalis/vitals-8e830fb97527.png",
+        "src": "assets/mobile/vitalis/vitals-ab26d4660cf6.png",
         "label": "Vitals",
         "width": 780,
         "height": 1688,
         "kind": "flutter"
       },
       {
-        "src": "assets/mobile/vitalis/hydration-cb55a5e6905e.png",
+        "src": "assets/mobile/vitalis/hydration-40d98a99af16.png",
         "label": "Hydration",
         "width": 780,
         "height": 1688,
@@ -1550,7 +1543,7 @@ window.MOBILE_PREVIEWS = {
         "kind": "flutter"
       },
       {
-        "src": "assets/mobile/vitalis/health-chat-a822fa034eda.png",
+        "src": "assets/mobile/vitalis/health-chat-fc1440de90cb.png",
         "label": "Health chat",
         "width": 780,
         "height": 1688,

@@ -2048,14 +2048,14 @@
     "updated": "2026-11-03",
     "screens": [
       {
-        "src": "assets/mobile/vitalis/today-94e1207bba63.png",
+        "src": "assets/mobile/vitalis/today-747d75296e57.png",
         "label": "Today",
         "width": 780,
         "height": 1688,
         "kind": "flutter",
         "source": "Vitalis/docs/previews/today.png",
         "captured": "2026-11-03",
-        "sha256": "94e1207bba63d5d8ffaf7c9e370a4ed1d4bc03b2f0964e632fb07d7c6b9f0e6e"
+        "sha256": "747d75296e57f82183ddf1c01a6a5cc4029b5c6ea7ae3696cb4c5c790b1857ee"
       },
       {
         "src": "assets/mobile/vitalis/quick-log-d99892ed6acc.png",
@@ -2086,16 +2086,6 @@
         "source": "Vitalis/docs/previews/logs.png",
         "captured": "2026-11-03",
         "sha256": "dad089e8d22f3eda00b36847082e7d89fd08d16ff8b832dbf45a63d4968d1877"
-      },
-      {
-        "src": "assets/mobile/vitalis/insights-loading-4101bb5ac6b6.png",
-        "label": "Insights loading",
-        "width": 780,
-        "height": 1688,
-        "kind": "flutter",
-        "source": "Vitalis/docs/previews/insights-loading.png",
-        "captured": "2026-11-03",
-        "sha256": "4101bb5ac6b601c38bfdfaf8b8bfbdac067b99693f83089f8bdb12bc09d974e7"
       },
       {
         "src": "assets/mobile/vitalis/insights-0828cb91fa2c.png",
@@ -2158,24 +2148,24 @@
         "sha256": "bf8439c6f8aefb444e25123151ac2a972af5e19196ec16c851e01d60a9ed5796"
       },
       {
-        "src": "assets/mobile/vitalis/vitals-8e830fb97527.png",
+        "src": "assets/mobile/vitalis/vitals-ab26d4660cf6.png",
         "label": "Vitals",
         "width": 780,
         "height": 1688,
         "kind": "flutter",
         "source": "Vitalis/docs/previews/vitals.png",
         "captured": "2026-11-03",
-        "sha256": "8e830fb975275616d69a76708b8fbd268aebce314cc33af1df95e7cfb391f2f3"
+        "sha256": "ab26d4660cf6a6f6ffa40916309826194dedaff465169829313ea2477788871a"
       },
       {
-        "src": "assets/mobile/vitalis/hydration-cb55a5e6905e.png",
+        "src": "assets/mobile/vitalis/hydration-40d98a99af16.png",
         "label": "Hydration",
         "width": 780,
         "height": 1688,
         "kind": "flutter",
         "source": "Vitalis/docs/previews/hydration.png",
         "captured": "2026-11-03",
-        "sha256": "cb55a5e6905e87df649e5e7465b24969f2e301662ea267f14728c169e35df9f7"
+        "sha256": "40d98a99af168dbcc9cd21fcc5eb0723a45eba9b17581b9bba3b0d51809552ce"
       },
       {
         "src": "assets/mobile/vitalis/goals-c1e8c9fda75b.png",
@@ -2188,14 +2178,14 @@
         "sha256": "c1e8c9fda75b4e3fa11261d2415fa425ccd97a380f92fab946f15f0ab3ee6399"
       },
       {
-        "src": "assets/mobile/vitalis/health-chat-a822fa034eda.png",
+        "src": "assets/mobile/vitalis/health-chat-fc1440de90cb.png",
         "label": "Health chat",
         "width": 780,
         "height": 1688,
         "kind": "flutter",
         "source": "Vitalis/docs/previews/health-chat.png",
         "captured": "2026-11-03",
-        "sha256": "a822fa034edaa5088173743b8d48eff395f7681d2732816fabeeb2f5b240e120"
+        "sha256": "fc1440de90cbbf2564f15b52cc98547d04cd73e55e026a4e5c4337e262dbe52b"
       },
       {
         "src": "assets/mobile/vitalis/settings-8a6916e376a8.png",

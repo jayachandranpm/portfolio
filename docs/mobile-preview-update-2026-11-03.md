@@ -1,6 +1,6 @@
 # Mobile gallery refresh — 3 November 2026
 
-The corrected portfolio includes 14 mobile products and 250 original app captures.
+The corrected portfolio includes 14 mobile products and 249 original app captures.
 Added Aether, Rooted, Thirukkural and Agaram, with descriptions grounded in their
 local README and implementation notes. Their galleries intentionally omit source
 repository links until a matching public repository is confirmed.
@@ -56,6 +56,22 @@ audio and device-service behavior cannot be verified from these static galleries
 - Codex browser review checked Rooted's complete screens and editor panels,
   Wake Me Up's current interface, and the 390 CSS-pixel gallery layout. No
   horizontal overflow was present. Browser screenshots only; no OS capture.
+
+## Vitalis cover and mobile source-link follow-up
+
+- Vitalis's previous home preview was exported before asynchronous Drift statistics
+  had resolved. Its capture harness now awaits the actual seeded stats, water and
+  habits providers and asserts that the Overall ring and “1 of 3” habit summary
+  have rendered before exporting. Visible image assets are also precached.
+- Regenerated the real Flutter screens at 780 × 1688. The homepage and Vitalis
+  gallery use the new content-hashed home image. The duplicate Insights loading
+  image is no longer included in the public gallery (19 selected Vitalis screens).
+- Removed mobile source URLs from project data and both renderers. All 14 mobile
+  cards and galleries retain preview links but omit source repository links.
+  Repositories themselves are unchanged; source links for web and desktop work
+  and the main profile's GitHub link remain.
+- The verifier rejects mobile source fields and source-emitting render code, and
+  requires Vitalis's full-size, freshly regenerated home preview.
 
 ## Verification
 
