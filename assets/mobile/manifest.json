@@ -1,0 +1,2882 @@
+{
+  "aether": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/aether/today.png",
+        "label": "Today",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Aether Weather/validation/native/today.png",
+        "captured": "2026-11-02",
+        "sha256": "310f7cf9205d25fd67acd31007511f40d118fe2dbb681311e4d85cbaf61c44cd"
+      },
+      {
+        "src": "assets/mobile/aether/forecast.png",
+        "label": "Forecast",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Aether Weather/validation/native/forecast.png",
+        "captured": "2026-11-02",
+        "sha256": "d58df6675be274ac9bb7c9066c22eadd2ef22aa3382837c7b093e53368a51514"
+      },
+      {
+        "src": "assets/mobile/aether/places.png",
+        "label": "Saved places",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Aether Weather/validation/native/places.png",
+        "captured": "2026-11-02",
+        "sha256": "7119c03a6a571a6956c637b05ab1993d16b15a4f6e3a9feca8cac0bd2d977af1"
+      },
+      {
+        "src": "assets/mobile/aether/search.png",
+        "label": "Place search",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Aether Weather/validation/native/search.png",
+        "captured": "2026-11-02",
+        "sha256": "aea448c91cdd7ac1e5bac5e0c1e34960dce5c3895f416e66711c82d3846aa52a"
+      },
+      {
+        "src": "assets/mobile/aether/hour-details.png",
+        "label": "Hourly details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Aether Weather/validation/native/hour-details.png",
+        "captured": "2026-11-02",
+        "sha256": "76bd3f8342712e8b8e8bdcd082cd0cfc7e56f4cf02598a6811e5a6e18784d742"
+      },
+      {
+        "src": "assets/mobile/aether/daylight-dawn.png",
+        "label": "Dawn and daylight",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Aether Weather/validation/native/daylight-dawn.png",
+        "captured": "2026-11-02",
+        "sha256": "1a2a2da815effe46ad3281136e12d3e503443f4aad42e4e52330588e3fff6925"
+      },
+      {
+        "src": "assets/mobile/aether/daylight-golden.png",
+        "label": "Golden hour",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Aether Weather/validation/native/daylight-golden.png",
+        "captured": "2026-11-02",
+        "sha256": "591b15f2538bcc8d66a8c835cb97ca69d85b77e72415d79dc3a9e3f0de117a0b"
+      },
+      {
+        "src": "assets/mobile/aether/night.png",
+        "label": "Night forecast",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Aether Weather/validation/native/night.png",
+        "captured": "2026-11-02",
+        "sha256": "9909cbd4b3ce12ab2a5c232d69daee43998818bef69dab1e06b2daae0a54ca0f"
+      },
+      {
+        "src": "assets/mobile/aether/alerts.png",
+        "label": "Weather warnings · sample data",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Aether Weather/validation/native/alerts.png",
+        "captured": "2026-11-02",
+        "sha256": "65d52c0857b31a318aacd68ee54ef6a3bf2e7062192c1eefdd24d33a7bb99f11"
+      },
+      {
+        "src": "assets/mobile/aether/alert-details.png",
+        "label": "Warning details · sample data",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Aether Weather/validation/native/alert-details.png",
+        "captured": "2026-11-02",
+        "sha256": "c61b7dc95ad9071aa4e0a86ad4200f43b25c9ddaaf0e47645866c01aa799c59a"
+      },
+      {
+        "src": "assets/mobile/aether/after-india-map.png",
+        "label": "Weather map · shared renderer",
+        "width": 390,
+        "height": 844,
+        "kind": "browser",
+        "source": "Aether Weather/validation/navigation-polish/after-india-map.png",
+        "captured": "2026-11-02",
+        "sha256": "76f24ecae09872b66a1f5117842bfb29bdb6de418c8d69da077b6a209f242c1f"
+      },
+      {
+        "src": "assets/mobile/aether/after-layers.png",
+        "label": "Map layers · shared renderer",
+        "width": 390,
+        "height": 844,
+        "kind": "browser",
+        "source": "Aether Weather/validation/navigation-polish/after-layers.png",
+        "captured": "2026-11-02",
+        "sha256": "9222d230b3aacdf291a55c3b6e5823fbc0ed524341ed34e36e0a5057d320548b"
+      }
+    ]
+  },
+  "rooted": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/rooted/home-final-web.jpg",
+        "label": "Everyday overview",
+        "width": 491,
+        "height": 1066,
+        "kind": "browser",
+        "source": "Rooted/docs/validation/home-final-web.png",
+        "captured": "2026-10-25",
+        "sha256": "5f5858bf442b842411db90e3f93b5eba05800a01cf64893ffd9ec94c9917deee"
+      },
+      {
+        "src": "assets/mobile/rooted/food-search-final.jpg",
+        "label": "Food search",
+        "width": 491,
+        "height": 1066,
+        "kind": "browser",
+        "source": "Rooted/docs/validation/food-search-final.png",
+        "captured": "2026-10-25",
+        "sha256": "a7a991d00c1c2135c3073e23c4a49cfe686f413c178dddafc68d7681e693c819"
+      },
+      {
+        "src": "assets/mobile/rooted/food-detail-web.jpg",
+        "label": "Food label details",
+        "width": 491,
+        "height": 1066,
+        "kind": "browser",
+        "source": "Rooted/docs/validation/food-detail-web.png",
+        "captured": "2026-10-25",
+        "sha256": "b6331168da00575a7a9419abbfe0dd932f9c7c55dc942cb17e65118ebe4fa9f9"
+      },
+      {
+        "src": "assets/mobile/rooted/basket-final-web.jpg",
+        "label": "Shopping basket",
+        "width": 491,
+        "height": 1066,
+        "kind": "browser",
+        "source": "Rooted/docs/validation/basket-final-web.png",
+        "captured": "2026-10-25",
+        "sha256": "89f6f06a76c745bb07419b47f07029ca8d7e45084d48a0bb5795a746ae35bc36"
+      },
+      {
+        "src": "assets/mobile/rooted/nature-detail-web.jpg",
+        "label": "Nearby nature",
+        "width": 491,
+        "height": 1066,
+        "kind": "browser",
+        "source": "Rooted/docs/validation/nature-detail-web.png",
+        "captured": "2026-10-25",
+        "sha256": "3ae3c8cc4a097d5ef9574a0fdb89000128fcbff297303788bf0d9bbf207cd28c"
+      },
+      {
+        "src": "assets/mobile/rooted/journal-final-web.jpg",
+        "label": "Private journal",
+        "width": 491,
+        "height": 1066,
+        "kind": "browser",
+        "source": "Rooted/docs/validation/journal-final-web.png",
+        "captured": "2026-10-25",
+        "sha256": "eb8b1e6202daa631f60360de7f48bed5987bc54999f3571dfd602fdbce704e29"
+      },
+      {
+        "src": "assets/mobile/rooted/editor.png",
+        "label": "Rich journal editor",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Rooted/docs/previews/editor.png",
+        "captured": "2026-11-02",
+        "sha256": "50421d17b1fd4ea53d97573d01a54adb930679bf70a103cba2a560a2ccad4e4c"
+      },
+      {
+        "src": "assets/mobile/rooted/editor-format.png",
+        "label": "Journal formatting",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Rooted/docs/previews/editor-format.png",
+        "captured": "2026-11-02",
+        "sha256": "0b249a07b9698f0ba0eeee73640160dc88b2efd0c54c5e2258424f4b67f4dbf1"
+      },
+      {
+        "src": "assets/mobile/rooted/editor-insert.png",
+        "label": "Journal inserts",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Rooted/docs/previews/editor-insert.png",
+        "captured": "2026-11-02",
+        "sha256": "7ad19c43ed81911133d69cffa594e3e936559eb95139081ec5906e648c609862"
+      }
+    ]
+  },
+  "thirukkural": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/thirukkural/today.png",
+        "label": "Daily Kural",
+        "width": 840,
+        "height": 1867,
+        "kind": "flutter",
+        "source": "Thirukkural/docs/verification/ui-1.7.0/today.png",
+        "captured": "2026-10-21",
+        "sha256": "efcd39669763f8da641d5dd47cdfac2a680c4deff3c09daa109a5f671d3b75d4"
+      },
+      {
+        "src": "assets/mobile/thirukkural/reader.png",
+        "label": "Thoughtful reading",
+        "width": 840,
+        "height": 1867,
+        "kind": "flutter",
+        "source": "Thirukkural/docs/verification/ui-1.7.0/reader.png",
+        "captured": "2026-10-21",
+        "sha256": "ba7a95ea09985738330c2753bbf8bbb18ef9527eab8722092e6262fe29691416"
+      },
+      {
+        "src": "assets/mobile/thirukkural/explore.png",
+        "label": "Explore the collection",
+        "width": 840,
+        "height": 1867,
+        "kind": "flutter",
+        "source": "Thirukkural/docs/verification/ui-1.7.0/explore.png",
+        "captured": "2026-10-21",
+        "sha256": "f4690756355ec8b8c36cf73cecde1c528f7bc9e6802805c32c10af123fb2f338"
+      },
+      {
+        "src": "assets/mobile/thirukkural/learn.png",
+        "label": "Recall practice",
+        "width": 840,
+        "height": 1867,
+        "kind": "flutter",
+        "source": "Thirukkural/docs/verification/ui-1.7.0/learn.png",
+        "captured": "2026-10-21",
+        "sha256": "8218c91867ab9bcd7d2dcc1001b632e255cc6e2d8f51eb1c67bef2baf8dbd79e"
+      },
+      {
+        "src": "assets/mobile/thirukkural/journey.png",
+        "label": "Reading journey",
+        "width": 840,
+        "height": 1867,
+        "kind": "flutter",
+        "source": "Thirukkural/docs/verification/ui-1.7.0/journey.png",
+        "captured": "2026-10-21",
+        "sha256": "0e27afd04915f825c5990e3e0be3ea53e323022d560581130d9149a81974206a"
+      },
+      {
+        "src": "assets/mobile/thirukkural/voice.png",
+        "label": "Voice and speech",
+        "width": 840,
+        "height": 1867,
+        "kind": "flutter",
+        "source": "Thirukkural/docs/verification/ui-1.7.0/voice.png",
+        "captured": "2026-10-21",
+        "sha256": "589fd638ce890b5a570e6eea2618150e3bc796e459bf75fbbc5c5f6244848b45"
+      },
+      {
+        "src": "assets/mobile/thirukkural/downloads.png",
+        "label": "Voice downloads",
+        "width": 840,
+        "height": 1867,
+        "kind": "flutter",
+        "source": "Thirukkural/docs/verification/ui-1.7.0/downloads.png",
+        "captured": "2026-10-21",
+        "sha256": "9950a1b4609060183d7e9c87723dd7b3a6ca27d87dbfed53acb3f462ddeb3caa"
+      },
+      {
+        "src": "assets/mobile/thirukkural/settings.png",
+        "label": "Settings",
+        "width": 840,
+        "height": 1867,
+        "kind": "flutter",
+        "source": "Thirukkural/docs/verification/ui-1.7.0/settings.png",
+        "captured": "2026-10-21",
+        "sha256": "502d1a4c629c80a90f5fb653c9b88dca6ecc59c9532125a9a10941628f43e6c6"
+      }
+    ]
+  },
+  "agaram": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/agaram/learning-path.jpg",
+        "label": "Your learning path",
+        "width": 487,
+        "height": 1055,
+        "kind": "browser",
+        "source": "../Agaram/docs/portfolio-2026-11-03/learning-path.jpg",
+        "captured": "2026-11-03",
+        "sha256": "aa2b17da56cc20a5ec768bd79ab7c02b2f8f3dcc2a7c2620c165b299be64bc4f"
+      },
+      {
+        "src": "assets/mobile/agaram/12-profile-phone.jpg",
+        "label": "Your learning space",
+        "width": 390,
+        "height": 844,
+        "kind": "browser",
+        "source": "../Agaram/docs/peacock-layout-2026-10-28/12-profile-phone.png",
+        "captured": "2026-10-28",
+        "sha256": "184bcb8169d1304d030daa946569707f3a9f1ad17fde671b32eb620011bf8917"
+      },
+      {
+        "src": "assets/mobile/agaram/10-dictionary-phone.jpg",
+        "label": "Explore the dictionary",
+        "width": 390,
+        "height": 844,
+        "kind": "browser",
+        "source": "../Agaram/docs/peacock-layout-2026-10-28/10-dictionary-phone.png",
+        "captured": "2026-10-28",
+        "sha256": "e205a10b5148749d8d60a122c3244f8a78fe9d61c8864f4a7e22c3635fa3f97c"
+      },
+      {
+        "src": "assets/mobile/agaram/16-word-phone-final.jpg",
+        "label": "Word discovery",
+        "width": 390,
+        "height": 844,
+        "kind": "browser",
+        "source": "../Agaram/docs/peacock-layout-2026-10-28/16-word-phone-final.png",
+        "captured": "2026-10-28",
+        "sha256": "5802c87d373528bed4cbf7ca70ad07bad54255b97ebfffaf54e55130f1731087"
+      },
+      {
+        "src": "assets/mobile/agaram/03-practice.jpg",
+        "label": "Practice hub",
+        "width": 501,
+        "height": 853,
+        "kind": "browser",
+        "source": "../Agaram/docs/peacock-layout-2026-10-28/03-practice.png",
+        "captured": "2026-10-28",
+        "sha256": "942b28e084b05183b1ba2802b9ab771353abcc4cb67fc4effc80bd567c84fe9e"
+      },
+      {
+        "src": "assets/mobile/agaram/05-lab-phone.jpg",
+        "label": "Learning lab",
+        "width": 390,
+        "height": 844,
+        "kind": "browser",
+        "source": "../Agaram/docs/peacock-layout-2026-10-28/05-lab-phone.png",
+        "captured": "2026-10-28",
+        "sha256": "5994367a594d2f62940495632a0513378747a38557397e92736056704c4d248e"
+      },
+      {
+        "src": "assets/mobile/agaram/23-recording-bar-final.jpg",
+        "label": "Speaking practice",
+        "width": 390,
+        "height": 844,
+        "kind": "browser",
+        "source": "../Agaram/docs/peacock-layout-2026-10-28/23-recording-bar-final.png",
+        "captured": "2026-10-28",
+        "sha256": "0c9dce3083c744e3392765cd1758acfe0a51940a8e8a38d4fd10ec6f16b022d8"
+      },
+      {
+        "src": "assets/mobile/agaram/09-voice-phone.jpg",
+        "label": "Voice settings",
+        "width": 390,
+        "height": 844,
+        "kind": "browser",
+        "source": "../Agaram/docs/peacock-layout-2026-10-28/09-voice-phone.png",
+        "captured": "2026-10-28",
+        "sha256": "ea6e7fd768b700a61c30f1aee1e9253225a4b3861b123690fbfcf2d5bffe2391"
+      },
+      {
+        "src": "assets/mobile/agaram/17-peacock-phone.jpg",
+        "label": "Meet Aru",
+        "width": 390,
+        "height": 844,
+        "kind": "browser",
+        "source": "../Agaram/docs/peacock-layout-2026-10-28/17-peacock-phone.png",
+        "captured": "2026-10-28",
+        "sha256": "a18152712eb329d3320e8cc7c5e254ca4c299e2b5c7ae6b2caaa25214ac0f851"
+      }
+    ]
+  },
+  "clipstash": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/clipstash/clips-light.png",
+        "label": "Clipboard library",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "ClipStash/docs/previews/clips-light.png",
+        "captured": "2026-09-25",
+        "sha256": "e730b6c94fa5e851d7b3fe3a4a40adf455964ffb4e3068aec61e3c4aefb21c77"
+      },
+      {
+        "src": "assets/mobile/clipstash/clips-dark.png",
+        "label": "Dark theme",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "ClipStash/docs/previews/clips-dark.png",
+        "captured": "2026-09-25",
+        "sha256": "4a26b113ceebea109f6ad64ea6f0fb1c0b29df749192ad2d558aae9a69c7c35e"
+      },
+      {
+        "src": "assets/mobile/clipstash/settings-dark.png",
+        "label": "Settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "ClipStash/docs/previews/settings-dark.png",
+        "captured": "2026-09-25",
+        "sha256": "b087ba9b5ce4f5de22c65a3d9b27dad31d5ce6bf07c003dacff76d211e0fff4e"
+      },
+      {
+        "src": "assets/mobile/clipstash/template.png",
+        "label": "Reusable templates",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "ClipStash/docs/previews/approved-features/template.png",
+        "captured": "2026-09-25",
+        "sha256": "cf4dfdfb3aad1545b0d5665ab9723b6b534a0d8a19bfd3af55b317ead05e371c"
+      },
+      {
+        "src": "assets/mobile/clipstash/import-review.png",
+        "label": "Safe import review",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "ClipStash/docs/previews/approved-features/import-review.png",
+        "captured": "2026-09-25",
+        "sha256": "7bd331ab2ed2aa7487bbc9db8bdc4e072ef588edfca12f00d1ee16c12f0da9c3"
+      },
+      {
+        "src": "assets/mobile/clipstash/backups.png",
+        "label": "Portable backups",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "ClipStash/docs/previews/approved-features/backups.png",
+        "captured": "2026-09-25",
+        "sha256": "3f548b2f695e7e25252bc77cb901c5b6479984cf856a1371a5fe4107aff15ee2"
+      },
+      {
+        "src": "assets/mobile/clipstash/privacy.png",
+        "label": "Privacy controls",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "ClipStash/docs/previews/approved-features/privacy.png",
+        "captured": "2026-09-25",
+        "sha256": "464db479df89f677444bcdfe01c6a9c2fc4b3964ccc52b0134b684e58210c4ee"
+      },
+      {
+        "src": "assets/mobile/clipstash/trash.png",
+        "label": "Reversible deletion",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "ClipStash/docs/previews/approved-features/trash.png",
+        "captured": "2026-09-25",
+        "sha256": "52c75c605611f7a0f3eaff5f60eaff5eb08aede992e253dee977382d8aa5786d"
+      }
+    ]
+  },
+  "fm-radio": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/fm-radio/home.png",
+        "label": "Home",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "FM Radio/docs/previews/home.png",
+        "captured": "2026-11-03",
+        "sha256": "d8c8b39a346c9163c8cf4daea9c38abed96722eef9c5e583485cf99f8cb83893"
+      },
+      {
+        "src": "assets/mobile/fm-radio/discover.png",
+        "label": "Discover",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "FM Radio/docs/previews/discover.png",
+        "captured": "2026-11-03",
+        "sha256": "2e378e613c463503f5da4bf07cd376f8172b5859607ff413ddec05c3de403046"
+      },
+      {
+        "src": "assets/mobile/fm-radio/discover-filters.png",
+        "label": "Station filters",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "FM Radio/docs/previews/discover-filters.png",
+        "captured": "2026-11-03",
+        "sha256": "02094d9bd5ec59c858dad8797585de5a0bef1e65dc4369be33547eda76424fb3"
+      },
+      {
+        "src": "assets/mobile/fm-radio/saved.png",
+        "label": "Saved stations",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "FM Radio/docs/previews/saved.png",
+        "captured": "2026-11-03",
+        "sha256": "950960222840fb3d765eb61c2281e745f0d271c45a09aaf5bdc16011ef72de8b"
+      },
+      {
+        "src": "assets/mobile/fm-radio/now-playing.png",
+        "label": "Now playing",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "FM Radio/docs/previews/now-playing.png",
+        "captured": "2026-11-03",
+        "sha256": "e58dc5ff0e4755b6644f6eb0ca776d715bb6a738b02be387c654e84b3fc824cc"
+      },
+      {
+        "src": "assets/mobile/fm-radio/history.png",
+        "label": "Listening history",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "FM Radio/docs/previews/history.png",
+        "captured": "2026-11-03",
+        "sha256": "001a6a859c13bc2ab0bc637fdb3f5f1e59f6f6e218d6a1df05d5409971693b8c"
+      },
+      {
+        "src": "assets/mobile/fm-radio/settings.png",
+        "label": "Settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "FM Radio/docs/previews/settings.png",
+        "captured": "2026-11-03",
+        "sha256": "799808639201ad0f95d3da7ead1012c7aaae05f4d26fffff17e2aba1a973ee9d"
+      }
+    ]
+  },
+  "i-remember": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/i-remember/notes.png",
+        "label": "Memory palace",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/notes.png",
+        "captured": "2026-11-02",
+        "sha256": "0490b14dd00654343a1bff469fa67b0a9d1ccba438375b223dc6f4d5cb9f7b77"
+      },
+      {
+        "src": "assets/mobile/i-remember/quick-create.png",
+        "label": "Quick capture",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/quick-create.png",
+        "captured": "2026-11-02",
+        "sha256": "1d5d3df962a5751f9dd4fa63de1545a3ad03178affebe713abe0fe714b01c4df"
+      },
+      {
+        "src": "assets/mobile/i-remember/search.png",
+        "label": "Find a thought",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/search.png",
+        "captured": "2026-11-02",
+        "sha256": "eeb94e91c6974675673a1b81a1f83bca28d17ab5e90a531ba67f31e1ea0437ed"
+      },
+      {
+        "src": "assets/mobile/i-remember/editor.png",
+        "label": "Rich editor",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/editor.png",
+        "captured": "2026-11-02",
+        "sha256": "2ab62d9ad46af4cb4fcf1ec418feb2aa88fd8bad54cef5cd142a5c3982e15b5c"
+      },
+      {
+        "src": "assets/mobile/i-remember/ask-notes.png",
+        "label": "Ask your notes",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/ask-notes.png",
+        "captured": "2026-11-02",
+        "sha256": "4097317ba0611aff5da60999d8dabe33b817afa9d3008f120aafe47cb5fdd134"
+      },
+      {
+        "src": "assets/mobile/i-remember/calendar.png",
+        "label": "Timeline calendar",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/calendar.png",
+        "captured": "2026-11-02",
+        "sha256": "eacf8551238a115d431d2dd07b0a796209c407adb3bd043b25d239d383176b53"
+      },
+      {
+        "src": "assets/mobile/i-remember/weekly-digest.png",
+        "label": "Weekly reflection",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/weekly-digest.png",
+        "captured": "2026-11-02",
+        "sha256": "7095ea33ebc3f72f9f9e7e7208e045ba6bc438db102ddeb365f4588ee5d66df7"
+      },
+      {
+        "src": "assets/mobile/i-remember/templates.png",
+        "label": "Templates",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/templates.png",
+        "captured": "2026-11-02",
+        "sha256": "835951dd6d2741dbf9232677acddcca75542a78f07288f055faae2e7c9b1e307"
+      },
+      {
+        "src": "assets/mobile/i-remember/settings.png",
+        "label": "Settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/settings.png",
+        "captured": "2026-11-02",
+        "sha256": "67172114b978242e54d94a440ef9358473e0cd9d87417b24c48e65a75489c797"
+      },
+      {
+        "src": "assets/mobile/i-remember/editor-font.png",
+        "label": "Editor font",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/editor-font.png",
+        "captured": "2026-11-02",
+        "sha256": "86a0e4dfe3af3c194e9bdb291b1c3b2e2ee186c47df534ab22dfa7dd36a57649"
+      },
+      {
+        "src": "assets/mobile/i-remember/editor-format.png",
+        "label": "Editor format",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/editor-format.png",
+        "captured": "2026-11-02",
+        "sha256": "c8d44af0350a7bd80667ad5346d7b3d812c168a3bcf2165e535e7f29472148ab"
+      },
+      {
+        "src": "assets/mobile/i-remember/editor-insert.png",
+        "label": "Editor insert",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "I remember/docs/previews/editor-insert.png",
+        "captured": "2026-11-02",
+        "sha256": "219e8bda11b62dde6ff5a40c45b2205d22632be3342eab7ce1d62c77d438f1b8"
+      }
+    ]
+  },
+  "jays-journal": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/jays-journal/home.png",
+        "label": "Journal home",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/home.png",
+        "captured": "2026-10-23",
+        "sha256": "cb3024e38b8260e9954d2d99a1bb73f45b8e5101ba0d708d5308a83975c6ec55"
+      },
+      {
+        "src": "assets/mobile/jays-journal/editor.png",
+        "label": "Rich editor",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/editor.png",
+        "captured": "2026-10-23",
+        "sha256": "7a6ff9c7e779a82a3b74993d7f469805d296a46a2c56f0a5171b1b96cfe150a8"
+      },
+      {
+        "src": "assets/mobile/jays-journal/voice-entry.png",
+        "label": "Voice journal",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/voice-entry.png",
+        "captured": "2026-10-23",
+        "sha256": "c47e6cac096e4e28a6d31e7b28b4e93dce352313e1d119efe0f1007c9b12c0a1"
+      },
+      {
+        "src": "assets/mobile/jays-journal/onboarding.png",
+        "label": "Welcome",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/onboarding.png",
+        "captured": "2026-10-23",
+        "sha256": "acb9e13323a0db8c96ae09aeb0425ba89b7a0e6af61ef35e42e7f2c3e3e191f3"
+      },
+      {
+        "src": "assets/mobile/jays-journal/onboarding-personalize.png",
+        "label": "Personalize",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/onboarding-personalize.png",
+        "captured": "2026-10-23",
+        "sha256": "b7288c29eba7844c233686be853d2520d7e29a76236c422e208a9f1e980fa61e"
+      },
+      {
+        "src": "assets/mobile/jays-journal/new-entry-options.png",
+        "label": "New entry",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/new-entry-options.png",
+        "captured": "2026-10-23",
+        "sha256": "96404eab12b23adff4e0f179a4403a8a12f5ca054549fe7130222c116b52fedb"
+      },
+      {
+        "src": "assets/mobile/jays-journal/reading.png",
+        "label": "Reading view",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/reading.png",
+        "captured": "2026-10-23",
+        "sha256": "cfc5b6ebad4487c9dbac32feac41405327e441008f1b38017e203005572f02e2"
+      },
+      {
+        "src": "assets/mobile/jays-journal/entries.png",
+        "label": "All entries",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/entries.png",
+        "captured": "2026-10-23",
+        "sha256": "42722633ef2500e6b69ea2b9959ef7f2bc3159b86a3e571dc57c356f6e5e5a78"
+      },
+      {
+        "src": "assets/mobile/jays-journal/moods.png",
+        "label": "Mood check-in",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/moods.png",
+        "captured": "2026-10-23",
+        "sha256": "53f28bd309443df1ead2fa31c278ed277d468968b44e770135d5527fc3b402a4"
+      },
+      {
+        "src": "assets/mobile/jays-journal/insights.png",
+        "label": "Insights",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/insights.png",
+        "captured": "2026-10-23",
+        "sha256": "79742b3fe5d745fe0735c9bb53c5d19eeae2fef38f4960127b72b5d90bee65c1"
+      },
+      {
+        "src": "assets/mobile/jays-journal/calendar.png",
+        "label": "Calendar",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/calendar.png",
+        "captured": "2026-10-23",
+        "sha256": "a61d9400b8297893dcb22b09f1e0638d2f8339cccf32ee970e26ecca6b82e24d"
+      },
+      {
+        "src": "assets/mobile/jays-journal/tags.png",
+        "label": "Manage tags",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/tags.png",
+        "captured": "2026-10-23",
+        "sha256": "b1fa0b3bbe838b15ce83a59c073f57b936d9bf2acd4f601f41062f0a031a58a6"
+      },
+      {
+        "src": "assets/mobile/jays-journal/import.png",
+        "label": "Import",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/import.png",
+        "captured": "2026-10-23",
+        "sha256": "aa0cbd0b78f300b0a2ac9b667ef9d12e97cc8acf955ff82792bdb1557f2f5e13"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings.png",
+        "label": "Settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings.png",
+        "captured": "2026-10-23",
+        "sha256": "2b0096a5a3dd70837f6697093cd3706b04b11eb1bb217a594b56c23929f4f37c"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-backup-manage.png",
+        "label": "Backup and manage",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-backup-manage.png",
+        "captured": "2026-10-23",
+        "sha256": "90e93998270fd6a2cc089d4bc784fd84984f631a1bbf32e7628c6a6f9ab0fb10"
+      },
+      {
+        "src": "assets/mobile/jays-journal/reading-dark.png",
+        "label": "Dark reading",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/reading-dark.png",
+        "captured": "2026-10-23",
+        "sha256": "83fa7a9712ed1be2a29500f0937c2cca621db8a32237a836fa10d730d3ed67b1"
+      },
+      {
+        "src": "assets/mobile/jays-journal/editor-actions.png",
+        "label": "Editor actions",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/editor-actions.png",
+        "captured": "2026-10-23",
+        "sha256": "16c623fbcd648a829575777425488e4195f019c06ebe91e04ff8708c4e5be359"
+      },
+      {
+        "src": "assets/mobile/jays-journal/editor-insert.png",
+        "label": "Editor insert",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/editor-insert.png",
+        "captured": "2026-10-23",
+        "sha256": "c067e6decd05dae6008efa79d97a51cdd085670533a66ef6a4b1315c7759cd39"
+      },
+      {
+        "src": "assets/mobile/jays-journal/editor-typography.png",
+        "label": "Editor typography",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/editor-typography.png",
+        "captured": "2026-10-23",
+        "sha256": "a7fc1bd514fb52d4a986cfe7c977f83d97ed8421887c5a92a638a624b6a4f3b9"
+      },
+      {
+        "src": "assets/mobile/jays-journal/home-empty.png",
+        "label": "Home empty",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/home-empty.png",
+        "captured": "2026-10-23",
+        "sha256": "ec80947d4610dc0ee1eef5a3d5148b8a9e03417a1961380702b269678a92070f"
+      },
+      {
+        "src": "assets/mobile/jays-journal/journal-menu.png",
+        "label": "Journal menu",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/journal-menu.png",
+        "captured": "2026-10-23",
+        "sha256": "72739fab19bdd741036e459d718d851d62c4f6123558dd15ad60088e1b1d2607"
+      },
+      {
+        "src": "assets/mobile/jays-journal/onboarding-name.png",
+        "label": "Onboarding name",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/onboarding-name.png",
+        "captured": "2026-10-23",
+        "sha256": "2665bcde6866ee9ad4e328f48b1625fd5ef4a2f446f1be4d33dadcafa9a0cf34"
+      },
+      {
+        "src": "assets/mobile/jays-journal/onboarding-ready.png",
+        "label": "Onboarding ready",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/onboarding-ready.png",
+        "captured": "2026-10-23",
+        "sha256": "15c5f42dfcefdb4e3dc67d0491daa5a7b7b9edc0ae59768bfbd47734db081e0d"
+      },
+      {
+        "src": "assets/mobile/jays-journal/reading-appearance.png",
+        "label": "Reading appearance",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/reading-appearance.png",
+        "captured": "2026-10-23",
+        "sha256": "10b29e678fc5a1df3514191dd207a296734cda3e0ad4a4298cc1c40366792c63"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-autosave.png",
+        "label": "Settings autosave",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-autosave.png",
+        "captured": "2026-10-23",
+        "sha256": "a370b0e8526f3a77b21a5eaa9e189de62cdb7e6a07d66211dfb6f3db936387ba"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-collection.png",
+        "label": "Settings collection",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-collection.png",
+        "captured": "2026-10-23",
+        "sha256": "433f6f76094fd7eee63a40e5b6809ba63d016039c20717c4e93b7a0bf67ac42a"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-dictation.png",
+        "label": "Settings dictation",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-dictation.png",
+        "captured": "2026-10-23",
+        "sha256": "6053130d2463b75fbdd72fc54a8a7cac69a5153e7f61049c7b08c324630287ca"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-editor-font.png",
+        "label": "Settings editor font",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-editor-font.png",
+        "captured": "2026-10-23",
+        "sha256": "8e8efb59e6d58aa6a0f1794f9bc93e7e0787f6f9696c2e7f866c15ed45d7157a"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-font-size.png",
+        "label": "Settings font size",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-font-size.png",
+        "captured": "2026-10-23",
+        "sha256": "db60f47ea2883a637842832c17e059d9af702fef232b8442e9e41c0945b86aa7"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-lock-method.png",
+        "label": "Settings lock method",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-lock-method.png",
+        "captured": "2026-10-23",
+        "sha256": "54abffbaabd920446ba5320614140bf859eac37789f554d37e6aa03917c11de4"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-name.png",
+        "label": "Settings name",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-name.png",
+        "captured": "2026-10-23",
+        "sha256": "e1dee51ca752e7faf6058af9eaa57a725c65995a80b031e7977ecc1a7b001759"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-reminders.png",
+        "label": "Settings reminders",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-reminders.png",
+        "captured": "2026-10-23",
+        "sha256": "a3856d08487563062164f3118c6954cbb23dc2cffd100ca21ca2808e6b8377c7"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-theme.png",
+        "label": "Settings theme",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-theme.png",
+        "captured": "2026-10-23",
+        "sha256": "381f400f7b718e398f7c7aae1dcf9d69bad353e41e1d447a00ba6180fc531122"
+      },
+      {
+        "src": "assets/mobile/jays-journal/settings-word-goal.png",
+        "label": "Settings word goal",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/settings-word-goal.png",
+        "captured": "2026-10-23",
+        "sha256": "b04510d2b5e9f4abfa0e23409757d7cd540cca054f842455dee836c11db08b93"
+      },
+      {
+        "src": "assets/mobile/jays-journal/your-space.png",
+        "label": "Your space",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Jay's Diary/docs/previews/your-space.png",
+        "captured": "2026-10-23",
+        "sha256": "462efd8f96e94cc10e0b220a166fdf14a70b08221216f8dc3f11c73324747ee3"
+      }
+    ]
+  },
+  "mindful-spend": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/mindful-spend/dashboard.png",
+        "label": "Dashboard",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/dashboard.png",
+        "captured": "2026-10-20",
+        "sha256": "ea3e4478169f19848b909e24a53283a22ed00a48bcc4efe93a5bd3fbf50f88a8"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/transactions.png",
+        "label": "Transactions",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/transactions.png",
+        "captured": "2026-10-20",
+        "sha256": "a85818338c522372c6d7952ab92c0d1e7e762efdd1be650c02fd58f7ac898fdc"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-transaction.png",
+        "label": "Add transaction",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-transaction.png",
+        "captured": "2026-10-20",
+        "sha256": "7244fc0225187d7f1b3fb9d5385906203e1bb0b695f6adeeb6e3f23088237b57"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/receipt.png",
+        "label": "Receipt capture",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/receipt.png",
+        "captured": "2026-10-20",
+        "sha256": "c21c550f7bae0d7bfeabe983c87116c1856605c5a01cc58fa79a5daecc939e1c"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/accounts.png",
+        "label": "Accounts",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/accounts.png",
+        "captured": "2026-10-20",
+        "sha256": "5ccc5cf3d8f8ea4247d7d2a91aa4b486994ff735affa33bd7f1ca6ae22c37902"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/budgets.png",
+        "label": "Budgets",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/budgets.png",
+        "captured": "2026-10-20",
+        "sha256": "25c92dd5ed13829d452e5519632ee90a8a7fe3b5ab47cf81a4a099fb68403d69"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/bills.png",
+        "label": "Bills",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/bills.png",
+        "captured": "2026-10-20",
+        "sha256": "bd17b24219006dc75bfd249813506dc46a116c37cbb7cd089427342937bd32eb"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/goals.png",
+        "label": "Savings goals",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/goals.png",
+        "captured": "2026-10-20",
+        "sha256": "4c8540af1f45136ae86a82b6075514188c5294c764e75bc63ba38c6e26ac6513"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/reports.png",
+        "label": "Reports",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/reports.png",
+        "captured": "2026-10-20",
+        "sha256": "7e712e8b2c69a933a71a96b86cb667072a9b59bcbe3e6194e39f86b88a62eaf9"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/reports-calendar.png",
+        "label": "Calendar analysis",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/reports-calendar.png",
+        "captured": "2026-10-20",
+        "sha256": "335f8f44b13b0413b8f2e2d17dab278cb1bc7da8b670abb187cf405144011dce"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/search.png",
+        "label": "Search",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/search.png",
+        "captured": "2026-10-20",
+        "sha256": "998736f21f6f5696abbf82c4a2752a82e2589e4df1bfa37b1b4df40c48aa4c83"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/profile.png",
+        "label": "Profile",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/profile.png",
+        "captured": "2026-10-20",
+        "sha256": "39863de514407d69394eedbc660d76c4ab9122679a342de01d0e03c350a304d8"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/settings.png",
+        "label": "Settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/settings.png",
+        "captured": "2026-10-20",
+        "sha256": "258d0306af14c7268b869c763840893c2a50cd33aa3344be4863f31ec5b624cf"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/backup.png",
+        "label": "Backups",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/backup.png",
+        "captured": "2026-10-20",
+        "sha256": "965c11b6ca63b18fdd5946e94841829105e8861c608b18297c82f0a007837acc"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/dashboard-dark.png",
+        "label": "Dark dashboard",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/dashboard-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "ea3e4478169f19848b909e24a53283a22ed00a48bcc4efe93a5bd3fbf50f88a8"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/budgets-empty.png",
+        "label": "Empty budgets",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/budgets-empty.png",
+        "captured": "2026-10-20",
+        "sha256": "35a9d386278fc8531ccc4da8ec475d3a19344f90e5643249568c00e0271ea9fc"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/account-type-controls-dark.png",
+        "label": "Account type controls dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/account-type-controls-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "1530ce557727844ecd65afda02754504aadcf73350a5ca8c49efdcfda4543b81"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/account-type-controls.png",
+        "label": "Account type controls",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/account-type-controls.png",
+        "captured": "2026-10-20",
+        "sha256": "1530ce557727844ecd65afda02754504aadcf73350a5ca8c49efdcfda4543b81"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-account-details.png",
+        "label": "Add account details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-account-details.png",
+        "captured": "2026-10-20",
+        "sha256": "fcccdaae116f7a5ef41ae6c42779358ecbd2e45e50d8c930a7fee732ed67dbab"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-account.png",
+        "label": "Add account",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-account.png",
+        "captured": "2026-10-20",
+        "sha256": "fcccdaae116f7a5ef41ae6c42779358ecbd2e45e50d8c930a7fee732ed67dbab"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-bill-details.png",
+        "label": "Add bill details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-bill-details.png",
+        "captured": "2026-10-20",
+        "sha256": "be7a8005b3717b85d5ff2f7a191950263f5d0fc14e65b7a6e72ce5a1e70d085d"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-bill.png",
+        "label": "Add bill",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-bill.png",
+        "captured": "2026-10-20",
+        "sha256": "be7a8005b3717b85d5ff2f7a191950263f5d0fc14e65b7a6e72ce5a1e70d085d"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-budget-details.png",
+        "label": "Add budget details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-budget-details.png",
+        "captured": "2026-10-20",
+        "sha256": "b3a6793e78b725453909d9910bcfdd5769f7f22266b97db96846b79850b465b2"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-budget.png",
+        "label": "Add budget",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-budget.png",
+        "captured": "2026-10-20",
+        "sha256": "b3a6793e78b725453909d9910bcfdd5769f7f22266b97db96846b79850b465b2"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-category.png",
+        "label": "Add category",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-category.png",
+        "captured": "2026-10-20",
+        "sha256": "e79c4b6a7fa43df13290946013dfd9a2b36b05415550184bfa390ca470385ea6"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-goal-details.png",
+        "label": "Add goal details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-goal-details.png",
+        "captured": "2026-10-20",
+        "sha256": "98a7badf6d249f82d5fdddd5c3efce73f33bcddcfc3956a28857e86e55c8ce1f"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-goal.png",
+        "label": "Add goal",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-goal.png",
+        "captured": "2026-10-20",
+        "sha256": "98a7badf6d249f82d5fdddd5c3efce73f33bcddcfc3956a28857e86e55c8ce1f"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/add-transaction-details.png",
+        "label": "Add transaction details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/add-transaction-details.png",
+        "captured": "2026-10-20",
+        "sha256": "f50974b1070cdccdc0b43982ffb8b20f20980bb17cb0579f6436900eff0ed3f2"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/backup-details.png",
+        "label": "Backup details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/backup-details.png",
+        "captured": "2026-10-20",
+        "sha256": "965c11b6ca63b18fdd5946e94841829105e8861c608b18297c82f0a007837acc"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/bill-account-controls-dark.png",
+        "label": "Bill account controls dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/bill-account-controls-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "25405477c0ef598173ab07fd280c3fbffcf801d09025088383b7686033932e45"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/bill-account-controls.png",
+        "label": "Bill account controls",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/bill-account-controls.png",
+        "captured": "2026-10-20",
+        "sha256": "25405477c0ef598173ab07fd280c3fbffcf801d09025088383b7686033932e45"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/bills-empty.png",
+        "label": "Bills empty",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/bills-empty.png",
+        "captured": "2026-10-20",
+        "sha256": "08cfaa1ddd2c569e6e0d8912fe4f7bd326282c7715eebfc9c5e6f97c58b2aab5"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/budgets-dark.png",
+        "label": "Budgets dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/budgets-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "25c92dd5ed13829d452e5519632ee90a8a7fe3b5ab47cf81a4a099fb68403d69"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/cashflow-period-controls-dark.png",
+        "label": "Cashflow period controls dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/cashflow-period-controls-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "b612b4b36b7764ada0e9c87e1d50cba6bf25e85e79069f89cb64b09d3f1f5257"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/cashflow-period-controls.png",
+        "label": "Cashflow period controls",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/cashflow-period-controls.png",
+        "captured": "2026-10-20",
+        "sha256": "b612b4b36b7764ada0e9c87e1d50cba6bf25e85e79069f89cb64b09d3f1f5257"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/categories.png",
+        "label": "Categories",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/categories.png",
+        "captured": "2026-10-20",
+        "sha256": "f2f15880cbc1ad09745d27ee921ae5f1749a736c8cca82f95bb38df93994e52c"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/dashboard-details.png",
+        "label": "Dashboard details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/dashboard-details.png",
+        "captured": "2026-10-20",
+        "sha256": "79ea93d1f415f13cc9b4e07129b55dc7458d9ab83df5c4f20da6861bffc1d181"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/date-picker-controls-dark.png",
+        "label": "Date picker controls dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/date-picker-controls-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "ff1c2ad4989dfd70148c44807ed49d456f117bb5f6b39d7bdff12e8f34174645"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/date-picker-controls.png",
+        "label": "Date picker controls",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/date-picker-controls.png",
+        "captured": "2026-10-20",
+        "sha256": "ff1c2ad4989dfd70148c44807ed49d456f117bb5f6b39d7bdff12e8f34174645"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/date-range-controls-dark.png",
+        "label": "Date range controls dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/date-range-controls-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "c04d1b64024b14199589316667111b37a7461ab0cab6357d8d1f5201cfc489a1"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/date-range-controls.png",
+        "label": "Date range controls",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/date-range-controls.png",
+        "captured": "2026-10-20",
+        "sha256": "c04d1b64024b14199589316667111b37a7461ab0cab6357d8d1f5201cfc489a1"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/edit-account.png",
+        "label": "Edit account",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/edit-account.png",
+        "captured": "2026-10-20",
+        "sha256": "736a866eb62efe445afeb49d265866c5a65ff6b4f845fec6301b7d3516cf114e"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/edit-bill.png",
+        "label": "Edit bill",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/edit-bill.png",
+        "captured": "2026-10-20",
+        "sha256": "a6b226f0f38f9d2f48abeaa3effe95a452e127e9548f260433cae101effe629c"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/edit-budget.png",
+        "label": "Edit budget",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/edit-budget.png",
+        "captured": "2026-10-20",
+        "sha256": "fd5722a58042dc780cdbbe246340b4c1746353ca3bb924bef56099cbd04f288b"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/edit-category.png",
+        "label": "Edit category",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/edit-category.png",
+        "captured": "2026-10-20",
+        "sha256": "c559acf359b7acb2ab142676a07b694c2f85a2c7f87432c65d97ec95ac5395c2"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/edit-goal.png",
+        "label": "Edit goal",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/edit-goal.png",
+        "captured": "2026-10-20",
+        "sha256": "ffa45d5392148745b9dba0f8812b02f67d9cec0ab3e318274d994db7488d10d6"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/edit-transaction.png",
+        "label": "Edit transaction",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/edit-transaction.png",
+        "captured": "2026-10-20",
+        "sha256": "cedbde82e9f7815a1a13861573402750817ba7ea8e1961321d68cc9eb2c60c53"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/goals-empty.png",
+        "label": "Goals empty",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/goals-empty.png",
+        "captured": "2026-10-20",
+        "sha256": "1b1cd6d38db2d3bbe72d230db5eb2e817ddb8df1a12e92b964429a7c19d58592"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/household-spaces.png",
+        "label": "Household spaces",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/household-spaces.png",
+        "captured": "2026-10-20",
+        "sha256": "124492977c6479e2bb5c1fd123a33278cbd61a1430fba0c86eeb3804d7a68eb1"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/login.png",
+        "label": "Login",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/login.png",
+        "captured": "2026-10-20",
+        "sha256": "f8fdbecbad9a8c368e72fad9f89717b2ce18ccf9f54d85c35489152f896c54c5"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/month-picker-controls-dark.png",
+        "label": "Month picker controls dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/month-picker-controls-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "4cf7664e8cac94a6a58332e76e12278d9fe49e8b02ca52ae83a796a24034921e"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/month-picker-controls.png",
+        "label": "Month picker controls",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/month-picker-controls.png",
+        "captured": "2026-10-20",
+        "sha256": "4cf7664e8cac94a6a58332e76e12278d9fe49e8b02ca52ae83a796a24034921e"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/new-tag-controls-dark.png",
+        "label": "New tag controls dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/new-tag-controls-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "e36304db9bdedd9960d56b642c605b5bb188afc62fb10d16135fe35ebd1b27f4"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/new-tag-controls.png",
+        "label": "New tag controls",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/new-tag-controls.png",
+        "captured": "2026-10-20",
+        "sha256": "e36304db9bdedd9960d56b642c605b5bb188afc62fb10d16135fe35ebd1b27f4"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/notifications.png",
+        "label": "Notifications",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/notifications.png",
+        "captured": "2026-10-20",
+        "sha256": "40a23f2c0c905d65436486ccb0972d249222e38362fb9be699a6c17cbbd60e5f"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/profile-dark.png",
+        "label": "Profile dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/profile-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "39863de514407d69394eedbc660d76c4ab9122679a342de01d0e03c350a304d8"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/profile-details.png",
+        "label": "Profile details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/profile-details.png",
+        "captured": "2026-10-20",
+        "sha256": "f7bfa7910b1982da3bd6e053af39fd7a65417ac010608e6fb281715a52363e2b"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/reports-dark.png",
+        "label": "Reports dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/reports-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "7e712e8b2c69a933a71a96b86cb667072a9b59bcbe3e6194e39f86b88a62eaf9"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/reports-details.png",
+        "label": "Reports details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/reports-details.png",
+        "captured": "2026-10-20",
+        "sha256": "ae103805465514375ee887ecb60fff603770e0a220377172a1ab90a32017114c"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/reports-wide.png",
+        "label": "Reports wide",
+        "width": 860,
+        "height": 1864,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/reports-wide.png",
+        "captured": "2026-10-20",
+        "sha256": "8529b8c8d062ef754baec505cbddd7d01162234ad384ad78e8b1c03a09eaa023"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/reset-password.png",
+        "label": "Reset password",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/reset-password.png",
+        "captured": "2026-10-20",
+        "sha256": "90d136115a6ab0696bb39b30f9cf2a06472bd9651aff6c107a92ef69c26f17b7"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/search-empty.png",
+        "label": "Search empty",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/search-empty.png",
+        "captured": "2026-10-20",
+        "sha256": "bd1922a7a0f16a331d6edbed02d46b0e6c9807e7f27d48e6a25dab1616ca737e"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/settings-details.png",
+        "label": "Settings details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/settings-details.png",
+        "captured": "2026-10-20",
+        "sha256": "83a27a55714c5f162672588cbcc5fb9ad0bd3287822a4fefddb13fe0d363ace3"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/signup.png",
+        "label": "Signup",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/signup.png",
+        "captured": "2026-10-20",
+        "sha256": "212baa181ae12a4496d17319186380e53e2ba4564c7c6d3a82cfc454f3468c65"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/transactions-dark.png",
+        "label": "Transactions dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/transactions-dark.png",
+        "captured": "2026-10-20",
+        "sha256": "a85818338c522372c6d7952ab92c0d1e7e762efdd1be650c02fd58f7ac898fdc"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/transactions-empty.png",
+        "label": "Transactions empty",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/transactions-empty.png",
+        "captured": "2026-10-20",
+        "sha256": "9e848707e8a13c37bbdbf81d311b9f7008c139cf59641d5ab73e016739f9e99e"
+      },
+      {
+        "src": "assets/mobile/mindful-spend/transfer.png",
+        "label": "Transfer",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Mindful Spend/docs/previews/transfer.png",
+        "captured": "2026-10-20",
+        "sha256": "ab0faabb26f9af0bdd03064293affda05d12dd36de2549286231733d0cfb2a9d"
+      }
+    ]
+  },
+  "music-to-ears": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/music-to-ears/discover-dark.png",
+        "label": "Discover dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/discover-dark.png",
+        "captured": "2026-10-21",
+        "sha256": "09c9e1f50618571a69c0ca64d2905c85d2b20ee43511fde044ee842e4f0357d4"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/artist.png",
+        "label": "Artist",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/artist.png",
+        "captured": "2026-10-21",
+        "sha256": "ae611846db1a409cf4e97ee3df8f25bf20cfd82a88d47e9bd5c067e5630e411a"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/browse.png",
+        "label": "Browse",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/browse.png",
+        "captured": "2026-10-21",
+        "sha256": "367623c3a75a33966fd8a0df6af35b52722ecb68855e4e76290d37a6a05bf4ab"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/car-mode.png",
+        "label": "Car mode",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/car-mode.png",
+        "captured": "2026-10-21",
+        "sha256": "32b9833cc8bcda017cb53566c51ffb5cfdb9996f0a94d13b781360b92318d0b8"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/diagnostics.png",
+        "label": "Diagnostics",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/diagnostics.png",
+        "captured": "2026-10-21",
+        "sha256": "15ce119adddd1f11727dcec86aff66c7348c7e50dddbe1ee45ecb4ff637b463e"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/discover-light.png",
+        "label": "Discover light",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/discover-light.png",
+        "captured": "2026-10-21",
+        "sha256": "38d120406f97bffae09bba2a1bc86960c6b08f4403ba39e3b03dc07905506fe5"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/download-quality.png",
+        "label": "Download quality",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/download-quality.png",
+        "captured": "2026-10-21",
+        "sha256": "483bfd8a40ee14104c8634fbe0834cd5599719c5cb1cad4ce31ea7eb988056da"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/downloads.png",
+        "label": "Downloads",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/downloads.png",
+        "captured": "2026-10-21",
+        "sha256": "d4341a64b77c8b67a2673f987b446f3688d50f1ce7288dd2f263762236523ff5"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/equalizer.png",
+        "label": "Equalizer",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/equalizer.png",
+        "captured": "2026-10-21",
+        "sha256": "6c22b086bf5b11ca7cd087701c399fb41dfb1a0463400322ef5e3e78e88da034"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/history.png",
+        "label": "History",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/history.png",
+        "captured": "2026-10-21",
+        "sha256": "95aae7c09b511b44bbf1b6c42d8c090f78f4e519e039210dc554ade3c30c15a7"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/library.png",
+        "label": "Library",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/library.png",
+        "captured": "2026-10-21",
+        "sha256": "7dfb7c946f4a98b0a80ae5036439d38951617031819d08fcc7506609ef351e47"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/local-music.png",
+        "label": "Local music",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/local-music.png",
+        "captured": "2026-10-21",
+        "sha256": "0e88622afe40802e80a90bb17f22e9d8bdb986decd31430992b4e18363d0f2fb"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/lyrics.png",
+        "label": "Lyrics",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/lyrics.png",
+        "captured": "2026-10-21",
+        "sha256": "748a45e179bf2f583d5b2a94dc79052e9c576cf008756170a27a60de82b04176"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/now-playing.png",
+        "label": "Now playing",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/now-playing.png",
+        "captured": "2026-10-21",
+        "sha256": "63c78eda2f2a0d7a6baeed9d3d9f759edda12531bffdf6d41180aaf595142a94"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/playlist.png",
+        "label": "Playlist",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/playlist.png",
+        "captured": "2026-10-21",
+        "sha256": "30d77674371672e44263946c88f3b54677e6819f976b3bf40a76960b493d1d6f"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/queue.png",
+        "label": "Queue",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/queue.png",
+        "captured": "2026-10-21",
+        "sha256": "194af1c1e00abdcf4d654a99a5badaf71bcb70ac2c131e4235dba6816403f16e"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/search-results.png",
+        "label": "Search results",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/search-results.png",
+        "captured": "2026-10-21",
+        "sha256": "418c3553a2266223e3433ff3d13c2b0eb57475b4af7b11bf7a19f06cdbb14a40"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/search.png",
+        "label": "Search",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/search.png",
+        "captured": "2026-10-21",
+        "sha256": "e9db228d6521331510d0b7aec3f86981683be5c28d5a9e5d984dfdf7237eac3f"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/selection-recovery.png",
+        "label": "Selection recovery",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/selection-recovery.png",
+        "captured": "2026-10-21",
+        "sha256": "dfc899c15279dfa88e6a71629ab00afcef9c4f698c44f00e825069b6920ac317"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/settings.png",
+        "label": "Settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/settings.png",
+        "captured": "2026-10-21",
+        "sha256": "2b0233e4d252c19a27d1704c996c94d0c81881f8257452df83c37a47b5598d74"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/sources.png",
+        "label": "Sources",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/sources.png",
+        "captured": "2026-10-21",
+        "sha256": "174fc60ded17cfdb99a86fd87ad22db77841373284b120a41ab53f3b97b431c0"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/stats.png",
+        "label": "Stats",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/stats.png",
+        "captured": "2026-10-21",
+        "sha256": "4fce510c59fd8c33c5cd9906ed84fb45f9ceb5409a7b25492965e695e0529f99"
+      },
+      {
+        "src": "assets/mobile/music-to-ears/storage.png",
+        "label": "Storage",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "MusicToEars/docs/verification/telegram-1.4.3/storage.png",
+        "captured": "2026-10-21",
+        "sha256": "c9de0b6245103965dba76131dacd23f641bf8989634ea8b56772738d3aeb63f4"
+      }
+    ]
+  },
+  "personal-vault": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/personal-vault/vault-light.png",
+        "label": "Private timeline",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/vault-light.png",
+        "captured": "2026-11-03",
+        "sha256": "e2a2ae4406bf587e8cc3964678cedd7968ee73fe800f01f97195f5edd5e2af8c"
+      },
+      {
+        "src": "assets/mobile/personal-vault/search.png",
+        "label": "Search everything",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/search.png",
+        "captured": "2026-11-03",
+        "sha256": "ee9131c84d43016e2476868c6c210ba8e3a96fe5b97f879375b79e23f704a9a9"
+      },
+      {
+        "src": "assets/mobile/personal-vault/search-results.png",
+        "label": "Search results",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/search-results.png",
+        "captured": "2026-11-03",
+        "sha256": "dce1282a96089151a9d56c45541df529f6e81af048aec3b0ce34579181a8efa7"
+      },
+      {
+        "src": "assets/mobile/personal-vault/collections.png",
+        "label": "Collections",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/collections.png",
+        "captured": "2026-11-03",
+        "sha256": "ce3b30cad1575483cac55fa3b2e4a19f5641987f42493ea2d859535671cd555b"
+      },
+      {
+        "src": "assets/mobile/personal-vault/collection-detail.png",
+        "label": "Collection detail",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/collection-detail.png",
+        "captured": "2026-11-03",
+        "sha256": "8c99781c2271f1891381ec355e74a5d34b1df5e8255cba6b9868c20119a22410"
+      },
+      {
+        "src": "assets/mobile/personal-vault/image-preview.png",
+        "label": "Rich file preview",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/image-preview.png",
+        "captured": "2026-11-03",
+        "sha256": "1574c14c986edaf171d436074311d97b216bbb50393a409ec2cf5c3fe867a10b"
+      },
+      {
+        "src": "assets/mobile/personal-vault/protected-photo.png",
+        "label": "Protected attachment",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/approved-features/protected-photo.png",
+        "captured": "2026-09-27",
+        "sha256": "c8a89c4e545cce1c8dc261a6f95ebcea438af1ba65df1bb3bdb101f6df68e029"
+      },
+      {
+        "src": "assets/mobile/personal-vault/settings.png",
+        "label": "Settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/settings.png",
+        "captured": "2026-11-03",
+        "sha256": "cc689537b412e0609378adf5ea41567e33415fc091b3db402fc673758e35fbea"
+      },
+      {
+        "src": "assets/mobile/personal-vault/security.png",
+        "label": "Security",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/security.png",
+        "captured": "2026-11-03",
+        "sha256": "dbb0801c5c15701f6d4fbf860eed84738e6cc63526db7292b66ae34e9b152429"
+      },
+      {
+        "src": "assets/mobile/personal-vault/vault-health.png",
+        "label": "Vault health",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/vault-health.png",
+        "captured": "2026-11-03",
+        "sha256": "e11e1f2ea0b8680760b5283be8a3c716e09507e81a895b6ec60e1fe489e58232"
+      },
+      {
+        "src": "assets/mobile/personal-vault/automation.png",
+        "label": "Automation",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/automation.png",
+        "captured": "2026-11-03",
+        "sha256": "8ed8940bc278f905f2da636ec029030c7440720a80cefd5b76e9295619d00630"
+      },
+      {
+        "src": "assets/mobile/personal-vault/trash.png",
+        "label": "Reversible deletion",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/trash.png",
+        "captured": "2026-11-03",
+        "sha256": "782750d383dab2649b9772a2510ed7ee9874a9182307472d039d3e07b0a7d9c9"
+      },
+      {
+        "src": "assets/mobile/personal-vault/app-lock.png",
+        "label": "App lock",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/app-lock.png",
+        "captured": "2026-11-03",
+        "sha256": "f0e7aaa3151dbaed291ff6e3927f3d1fa1f0b9fa82343dbadefc5c7e8f578a29"
+      },
+      {
+        "src": "assets/mobile/personal-vault/history.png",
+        "label": "History",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/history.png",
+        "captured": "2026-11-03",
+        "sha256": "6229fd1ed666e94e2105b3f8890dfbe580da38241021de4f7244c27a260ddc42"
+      },
+      {
+        "src": "assets/mobile/personal-vault/lock.png",
+        "label": "Lock",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/lock.png",
+        "captured": "2026-11-03",
+        "sha256": "6dcdac4b070c6a10a2b21d2097ab155e23ec3ffcb456b59b8f223504a0b96004"
+      },
+      {
+        "src": "assets/mobile/personal-vault/media.png",
+        "label": "Media",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/media.png",
+        "captured": "2026-11-03",
+        "sha256": "03786a03b261a06c49bce6360e44e6d4912305df433ca5ce02361eb78b01717e"
+      },
+      {
+        "src": "assets/mobile/personal-vault/save.png",
+        "label": "Save",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/save.png",
+        "captured": "2026-11-03",
+        "sha256": "b9e732e851807ae8572edf378069ff9f95874d08de82bf6f9d1306b450e89203"
+      },
+      {
+        "src": "assets/mobile/personal-vault/vault-dark.png",
+        "label": "Vault dark",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Personal Vault/docs/previews/vault-dark.png",
+        "captured": "2026-11-03",
+        "sha256": "d34c546e8e65270ce2439984edc641ff7ca29c861bd8852ba5c455403476c954"
+      }
+    ]
+  },
+  "speak-i-shall-write": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/speak-i-shall-write/record.png",
+        "label": "Live dictation",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/record.png",
+        "captured": "2026-11-03",
+        "sha256": "4f4e6a9a5a832eab2bf3b8919ddb486e521909874b1cc7a81cee179c4e7399b4"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/history.png",
+        "label": "Transcript history",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/history.png",
+        "captured": "2026-11-03",
+        "sha256": "58b986499f312cfda526d5d10febae0a5999af334409d757daabde2a066ba6ac"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/writing-tools.png",
+        "label": "Writing tools",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/writing-tools.png",
+        "captured": "2026-11-03",
+        "sha256": "40d0d69ad29bc45ac480dada774adce2e1bf98b0af86ac055256cd21f60f344c"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/onboarding.png",
+        "label": "Welcome",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/onboarding.png",
+        "captured": "2026-11-03",
+        "sha256": "a711e8212ace5dbbd500f8328ef56cc7aecfc9b334d25e373abceda0d14438d0"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/onboarding-permission.png",
+        "label": "Microphone access",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/onboarding-permission.png",
+        "captured": "2026-11-03",
+        "sha256": "f07fd874b73b4761051a9c8abd6c079009297cd6895e4fce49de12079af3e209"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/model-picker.png",
+        "label": "Model picker",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/model-picker.png",
+        "captured": "2026-11-03",
+        "sha256": "0157c5f13d40d258dd2b5dd48186fa0c44a71c1e5fe8eabbc0ad3ad8d6aa3881"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/history-detail.png",
+        "label": "Transcript detail",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/history-detail.png",
+        "captured": "2026-11-03",
+        "sha256": "c72baaffe691fd4067af5a30c1ba10efd0dccc69e5d5b717ac81d09e28708b43"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/history-no-results.png",
+        "label": "No search results",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/history-no-results.png",
+        "captured": "2026-11-03",
+        "sha256": "6febbd72d1b5529f5819c06232fbddc6fa09df8637982dcf64c95c3e3650539a"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/stats.png",
+        "label": "Dashboard",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/stats.png",
+        "captured": "2026-11-03",
+        "sha256": "a3dfc6bd7cceca098296150d44b5abb9513946cc3238cd8a4318157b6b9091dd"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/stats-loading.png",
+        "label": "Dashboard loading",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/stats-loading.png",
+        "captured": "2026-11-03",
+        "sha256": "6fb2a546648eaaf03ee3d34b2e59096b531037d1efac286321bc054e544d12d1"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/models.png",
+        "label": "Speech models",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/models.png",
+        "captured": "2026-11-03",
+        "sha256": "ad15daf945b3aba11fb615e58dad5440a316ffea247a602e766d7bc5a3a89809"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/folders.png",
+        "label": "Folders",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/folders.png",
+        "captured": "2026-11-03",
+        "sha256": "280f4580692706dd0c63f7c57ef5e74363f14ad99173df31cdbd475eceff7fcf"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/settings.png",
+        "label": "Dark settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/settings.png",
+        "captured": "2026-11-03",
+        "sha256": "19bbdca8bdafffe42016275c1cf55b4564723b02f5c56a14766f900f0142e5cb"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/settings-light.png",
+        "label": "Light settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/settings-light.png",
+        "captured": "2026-11-03",
+        "sha256": "d5863f811658cdb751ee24a1360da0295f710f34d4ef6e74d8112274afe9826c"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/history-empty.png",
+        "label": "Empty history",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/history-empty.png",
+        "captured": "2026-11-03",
+        "sha256": "ed5d4c576324f88a138cc7d66ed30c2850e69d8dcf389709a620652279ddae14"
+      },
+      {
+        "src": "assets/mobile/speak-i-shall-write/stats-error.png",
+        "label": "Dashboard unavailable",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Speak I shall write/docs/previews/stats-error.png",
+        "captured": "2026-11-03",
+        "sha256": "61d11712fe34d0d9119c62c3d2aeb0199e7486c3d10822537e3f68006d5600db"
+      }
+    ]
+  },
+  "tell-the-world": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/tell-the-world/home.png",
+        "label": "Writing home",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/home.png",
+        "captured": "2026-11-03",
+        "sha256": "80b8f192cbf0d96ec148917c26f1123feb285203fe58bf34c0ca4610dcc928fd"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/editor.png",
+        "label": "Visual editor",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/editor.png",
+        "captured": "2026-11-03",
+        "sha256": "df2ee480bc823b5ff4d9df91f6d9e8db1ef9fe30f91064c81c4d3eea2e81d043"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/posts.png",
+        "label": "Post library",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/posts.png",
+        "captured": "2026-11-03",
+        "sha256": "a9e85a975be923e8b8bdbdf7d9d14fdccef9eb73080e4b2553633db4b8878bab"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/search.png",
+        "label": "Search",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/search.png",
+        "captured": "2026-11-03",
+        "sha256": "a6bf0e55b58c8b790b5ba91f2bc828c814851327d42a56e5ae945320c87b7830"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/reading.png",
+        "label": "Reading preview",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/reading.png",
+        "captured": "2026-11-03",
+        "sha256": "094980915fd0504e777f3d69b0b87f5ac448c7fdd167406b4a7c53198af419ba"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/editor-dark.png",
+        "label": "Dark editor",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/editor-dark.png",
+        "captured": "2026-11-03",
+        "sha256": "1edbb24d39d8348d6dacdd5d0e3fc0d1fb8283b1daef7df1889642e21b4ac776"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/stats.png",
+        "label": "Statistics",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/stats.png",
+        "captured": "2026-11-03",
+        "sha256": "20934a1cf3c66b6fa3a90f280e3216645af2d437806128aec90de00aa2ce4234"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/settings.png",
+        "label": "Settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/settings.png",
+        "captured": "2026-11-03",
+        "sha256": "bf2dac904b93d3f8cb018dad982aca4276fbb4674fcd51de670d8303cc5aa3a3"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/connect.png",
+        "label": "Connect",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/connect.png",
+        "captured": "2026-11-03",
+        "sha256": "08d3d6f2289a621830a11f50e32cbfc5e99f35527bbc53b2b154f7a07d74ba73"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/publish-repository.png",
+        "label": "Publish repository",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/publish-repository.png",
+        "captured": "2026-11-03",
+        "sha256": "691a5a308154c294365f3a27f3a67f1e7e77b1710b7f5a122a40aefefa0cb60d"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/publish-details.png",
+        "label": "Publish details",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/publish-details.png",
+        "captured": "2026-11-03",
+        "sha256": "315869d6b87131e775a081072867c38a3211e5cb94ef2e2765cec6970b89f799"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/publish-style.png",
+        "label": "Publishing style",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/publish-style.png",
+        "captured": "2026-11-03",
+        "sha256": "33c13287e35e70db6527aa59fdcee14f8c8b851f4a5cdd4087b188de490911c4"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/editor-font.png",
+        "label": "Editor font",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/editor-font.png",
+        "captured": "2026-11-03",
+        "sha256": "a75199a84e3b8f88474ef2e98e10842e8608933c61892c267e6b26209a27c9a7"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/editor-format.png",
+        "label": "Editor format",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/editor-format.png",
+        "captured": "2026-11-03",
+        "sha256": "da1d45b8ec74b67c781d38c2602588aae94c0dec0246aeb2e4103ba23c9047ab"
+      },
+      {
+        "src": "assets/mobile/tell-the-world/editor-insert.png",
+        "label": "Editor insert",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Tell the world/docs/previews/editor-insert.png",
+        "captured": "2026-11-03",
+        "sha256": "1cd8df4dba67dc0b54b154f68fa8c5f43e6ad8a301ef5db0f7d4e215d817371b"
+      }
+    ]
+  },
+  "vitalis": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/vitalis/today.png",
+        "label": "Today",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/today.png",
+        "captured": "2026-11-03",
+        "sha256": "94e1207bba63d5d8ffaf7c9e370a4ed1d4bc03b2f0964e632fb07d7c6b9f0e6e"
+      },
+      {
+        "src": "assets/mobile/vitalis/quick-log.png",
+        "label": "Quick log",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/quick-log.png",
+        "captured": "2026-11-03",
+        "sha256": "d99892ed6acccfd1328290d7dee2dd97f1ebdca1d09db901b3706c08586e4d46"
+      },
+      {
+        "src": "assets/mobile/vitalis/habits.png",
+        "label": "Habits",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/habits.png",
+        "captured": "2026-11-03",
+        "sha256": "10804a61e32fb4c79a04b5bc9783e9d592dd42d4f484bdefd86fa85f048fe909"
+      },
+      {
+        "src": "assets/mobile/vitalis/logs.png",
+        "label": "Logs",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/logs.png",
+        "captured": "2026-11-03",
+        "sha256": "dad089e8d22f3eda00b36847082e7d89fd08d16ff8b832dbf45a63d4968d1877"
+      },
+      {
+        "src": "assets/mobile/vitalis/insights-loading.png",
+        "label": "Insights loading",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/insights-loading.png",
+        "captured": "2026-11-03",
+        "sha256": "4101bb5ac6b601c38bfdfaf8b8bfbdac067b99693f83089f8bdb12bc09d974e7"
+      },
+      {
+        "src": "assets/mobile/vitalis/insights.png",
+        "label": "Health insights",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/insights.png",
+        "captured": "2026-11-03",
+        "sha256": "0828cb91fa2cf9412ac5f4ec13baf90a69661cefd444008cb42a7072720b1cba"
+      },
+      {
+        "src": "assets/mobile/vitalis/nutrition.png",
+        "label": "Nutrition",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/nutrition.png",
+        "captured": "2026-11-03",
+        "sha256": "125f685e6b21ccdcf5b1a014cecac34b660ed2cc76cb964d4a71205437b10ec4"
+      },
+      {
+        "src": "assets/mobile/vitalis/sleep.png",
+        "label": "Sleep",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/sleep.png",
+        "captured": "2026-11-03",
+        "sha256": "3fce28624ae7c06ec03e8ae692ed180fee3e11a892de510de867042b3688b35f"
+      },
+      {
+        "src": "assets/mobile/vitalis/mindfulness.png",
+        "label": "Mindfulness",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/mindfulness.png",
+        "captured": "2026-11-03",
+        "sha256": "14bb0d858fd030503d78a10582caaa31a000951413d649d002a110977c0d56d1"
+      },
+      {
+        "src": "assets/mobile/vitalis/workouts.png",
+        "label": "Workouts",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/workouts.png",
+        "captured": "2026-11-03",
+        "sha256": "83dfd791201924c9c958357412a43ab2234c9afc2fdf1f7c8d4e24f4fa13ca61"
+      },
+      {
+        "src": "assets/mobile/vitalis/journal.png",
+        "label": "Journal",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/journal.png",
+        "captured": "2026-11-03",
+        "sha256": "bf8439c6f8aefb444e25123151ac2a972af5e19196ec16c851e01d60a9ed5796"
+      },
+      {
+        "src": "assets/mobile/vitalis/vitals.png",
+        "label": "Vitals",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/vitals.png",
+        "captured": "2026-11-03",
+        "sha256": "8e830fb975275616d69a76708b8fbd268aebce314cc33af1df95e7cfb391f2f3"
+      },
+      {
+        "src": "assets/mobile/vitalis/hydration.png",
+        "label": "Hydration",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/hydration.png",
+        "captured": "2026-11-03",
+        "sha256": "cb55a5e6905e87df649e5e7465b24969f2e301662ea267f14728c169e35df9f7"
+      },
+      {
+        "src": "assets/mobile/vitalis/goals.png",
+        "label": "Goals",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/goals.png",
+        "captured": "2026-11-03",
+        "sha256": "c1e8c9fda75b4e3fa11261d2415fa425ccd97a380f92fab946f15f0ab3ee6399"
+      },
+      {
+        "src": "assets/mobile/vitalis/health-chat.png",
+        "label": "Health chat",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/health-chat.png",
+        "captured": "2026-11-03",
+        "sha256": "a822fa034edaa5088173743b8d48eff395f7681d2732816fabeeb2f5b240e120"
+      },
+      {
+        "src": "assets/mobile/vitalis/settings.png",
+        "label": "Settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/settings.png",
+        "captured": "2026-11-03",
+        "sha256": "8a6916e376a8ecb7c5d3f2af363ad35ffc581445dacc8327b2140dcce8dba0ce"
+      },
+      {
+        "src": "assets/mobile/vitalis/settings-dark.png",
+        "label": "Dark settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/settings-dark.png",
+        "captured": "2026-11-03",
+        "sha256": "b9d080d3c697a08d112e0bd74d55dcbfcf5ba581d90a16233d512701be2507e7"
+      },
+      {
+        "src": "assets/mobile/vitalis/onboarding.png",
+        "label": "Onboarding",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/onboarding.png",
+        "captured": "2026-11-03",
+        "sha256": "88806dd022de55642b515596fdf891c96c8126dbc263a88a63a827334c4df12d"
+      },
+      {
+        "src": "assets/mobile/vitalis/onboarding-profile.png",
+        "label": "Personal setup",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/onboarding-profile.png",
+        "captured": "2026-11-03",
+        "sha256": "14a9325a06c30dd85d86d659977c89388af96665cd170cbde6563699e9c7333e"
+      },
+      {
+        "src": "assets/mobile/vitalis/habits-empty.png",
+        "label": "Empty habits",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "Vitalis/docs/previews/habits-empty.png",
+        "captured": "2026-11-03",
+        "sha256": "6f57ea6770b230febced97e2396d9ab35c1dc7ac5d0504734bc69bbdf84b995d"
+      }
+    ]
+  },
+  "hill-myna": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/hill-myna/assistant.png",
+        "label": "Assistant",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "hill_myna/docs/previews/assistant.png",
+        "captured": "2026-09-27",
+        "sha256": "09c4a8ff14cab85aca6f693e44e6e6bf2694ce54d99d38ceabee43cecfb386c7"
+      },
+      {
+        "src": "assets/mobile/hill-myna/assistant-dark.png",
+        "label": "Dark theme",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "hill_myna/docs/previews/assistant-dark.png",
+        "captured": "2026-09-27",
+        "sha256": "34d5646f4f29d116c4a98a26518d6b8521fec04a53cb1f7a189368203e5b483f"
+      },
+      {
+        "src": "assets/mobile/hill-myna/history.png",
+        "label": "Conversation library",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "hill_myna/docs/previews/history.png",
+        "captured": "2026-09-27",
+        "sha256": "16ba49694d133747ba343cd6f04d54659e1cf3dae24fe89a4894e3fd179e2f9f"
+      },
+      {
+        "src": "assets/mobile/hill-myna/documents.png",
+        "label": "Local knowledge",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "hill_myna/docs/previews/documents.png",
+        "captured": "2026-09-27",
+        "sha256": "032f012315461e5bc9e303fcd8b7f460b5d4550b677a36bd7dfa70d6e1cc6f46"
+      },
+      {
+        "src": "assets/mobile/hill-myna/models.png",
+        "label": "Local models",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "hill_myna/docs/previews/models.png",
+        "captured": "2026-09-27",
+        "sha256": "486fcc3549f7f9b574e8775604e867f1979f72e27bc2f1122346086849413c62"
+      },
+      {
+        "src": "assets/mobile/hill-myna/settings.png",
+        "label": "Privacy controls",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "hill_myna/docs/previews/settings.png",
+        "captured": "2026-09-27",
+        "sha256": "27d69c7b2265800e444a1ed329964ab3f0385681ddff58346868fd27618bf8c7"
+      },
+      {
+        "src": "assets/mobile/hill-myna/archive.png",
+        "label": "Encrypted archive",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "hill_myna/docs/previews/archive.png",
+        "captured": "2026-09-27",
+        "sha256": "525f01c42257270b2cb84429de3c345b447535b7133294efbe7ccdf24609799b"
+      }
+    ]
+  },
+  "wake-me-up": {
+    "updated": "2026-11-03",
+    "screens": [
+      {
+        "src": "assets/mobile/wake-me-up/01-destination.png",
+        "label": "Destination alert",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-16-ux-update/screenshots/01-destination.png",
+        "captured": "2026-10-16",
+        "sha256": "2d216a19f309f0fe06d7627b5318ef70baa25af8baa92a683a52fb5cebdf1f5a"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/02-distance.png",
+        "label": "Alert distance",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-16-ux-update/screenshots/02-distance.png",
+        "captured": "2026-10-16",
+        "sha256": "06ccb3136757c9a23cd4daa518d8290316b3aa61991df2815268b94800b816db"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/10-trips.png",
+        "label": "Saved trips",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-16-ux-update/screenshots/10-trips.png",
+        "captured": "2026-10-16",
+        "sha256": "fccc241d9507b0a2d1bf33835ebd6079da81e1507bc5e6257e93073156cf7862"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/04-settings.png",
+        "label": "Settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-16-ux-update/screenshots/04-settings.png",
+        "captured": "2026-10-16",
+        "sha256": "54db73d6b4fe2c5693a2a1220d0cc1e44f344b53f9173c9fb872a7e0b5334fea"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/05-alert-settings.png",
+        "label": "Alert settings",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-16-ux-update/screenshots/05-alert-settings.png",
+        "captured": "2026-10-16",
+        "sha256": "e02c4bab74ad6eed30f076e097de1374c0450e417771cecc2bff5bb87a5ab211"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/11-offline-coverage.png",
+        "label": "Offline coverage",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-16-ux-update/screenshots/11-offline-coverage.png",
+        "captured": "2026-10-16",
+        "sha256": "1ca78fc2bb365e390ab6fd9239146ecc7ff9bd219663f76d4fdcdde82409023d"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/07-destination-dark.png",
+        "label": "Destination · dark theme",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-16-ux-update/screenshots/07-destination-dark.png",
+        "captured": "2026-10-16",
+        "sha256": "517a36ad6bf6f9dd69efa25f489f739870d812c30c90f4be16ba1f8368d5536c"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/08-weak-location-dark.png",
+        "label": "Location accuracy guidance",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-16-ux-update/screenshots/08-weak-location-dark.png",
+        "captured": "2026-10-16",
+        "sha256": "bb3ebabcf0bcb10f7de6186ff101fab92d5e2e1ec2052a85dedaeb9f461de42d"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/09-stop-confirmation.png",
+        "label": "Stop confirmation",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-16-ux-update/screenshots/09-stop-confirmation.png",
+        "captured": "2026-10-16",
+        "sha256": "1ce21fb55732f5c2b57dce6d2080aedde85d29d72610af51927f4fe5c5469140"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/12-onboarding.png",
+        "label": "Map onboarding",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-16-ux-update/screenshots/12-onboarding.png",
+        "captured": "2026-10-16",
+        "sha256": "4a2eecc46dd365e3a1b17ca57bfb10a5a1f362121742b7344ee9080df837b4bf"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/alarm.png",
+        "label": "Arrival alarm",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-18-alarm/alarm.png",
+        "captured": "2026-10-18",
+        "sha256": "5c1d16d591daa7722a7bd1882d8ba8dec0de303d405cfd7474a133729ab80b4a"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/snoozed-map.png",
+        "label": "Snoozed alert",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-18-alarm/snoozed-map.png",
+        "captured": "2026-10-18",
+        "sha256": "5346ad7bba059cac075fa4ce1e527f1289732e8c1d3adf9a2b128c24ca41e495"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/challenge-keyboard.png",
+        "label": "Wake-up challenge",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-18-alarm/challenge-keyboard.png",
+        "captured": "2026-10-18",
+        "sha256": "e4f499f95ceb5caf40fdcf96c65aec51e10835187e0fdc4e2e8017b6ca3df106"
+      },
+      {
+        "src": "assets/mobile/wake-me-up/challenge-wrong-answer.png",
+        "label": "Challenge feedback",
+        "width": 780,
+        "height": 1688,
+        "kind": "flutter",
+        "source": "wakemeup/docs/validation/2026-10-18-alarm/challenge-wrong-answer.png",
+        "captured": "2026-10-18",
+        "sha256": "eee62fb39ceec94d275d33d0cf35389d2968d3baeedfbd18dc99d46b83153b69"
+      }
+    ]
+  }
+}

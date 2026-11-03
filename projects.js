@@ -1,10 +1,59 @@
 const mobileScreens = (slug, screens) => screens.map(([file, label]) => ({
-  src: `https://jayachandranpm.github.io/${slug}/previews/${file}.png`,
+  file: `${file}.png`,
+  src: `assets/mobile/${slug}/${file}.png`,
   label
 }));
 
 window.PORTFOLIO_DATA = {
   mobileApps: [
+    {
+      id: "aether",
+      name: "Aether",
+      summary: "An illustrated weather companion for forecasts, saved places, daylight and weather maps.",
+      description: "A native Flutter weather app with current conditions, hourly and multi-day forecasts, saved cities, interactive daylight, published weather warnings and a locally bundled scientific map renderer. Weather layers and warning coverage are labeled by source and freshness.",
+      problem: "Weather apps can bury useful details in dense charts, separate maps and ambiguous alerts.",
+      solution: "A clear daily outlook with approachable weather cards, daylight exploration, saved locations and layered maps, backed by visible data sources.",
+      value: "People can move from a quick weather check to deeper exploration without losing the context of place and time.",
+      tags: ["Flutter", "Weather data", "MapLibre"],
+      notes: "The gallery uses controlled native-widget forecasts. Map views are separately labeled browser/shared-renderer previews; warning examples are not active alerts.",
+      screens: []
+    },
+    {
+      id: "rooted",
+      name: "Rooted",
+      summary: "Food labels, personal price history, nearby nature and a private journal in one everyday companion.",
+      description: "Rooted brings together food and barcode lookup, product comparison, an editable basket, receipt review, dated purchase history, nearby nature observations, weather and rich-text journaling. Personal records stay local, with user-controlled backups.",
+      problem: "Everyday information about food, changing prices and nearby nature is scattered across unrelated tools.",
+      solution: "A source-aware mobile workspace that connects label details, personal purchase records, nature discovery and private notes.",
+      value: "People can make more informed everyday choices while keeping personal receipts, notes and purchase history on their device.",
+      tags: ["Flutter", "Open data", "Local-first"],
+      notes: "Food and nature coverage depends on the public sources. Prices are dated observations, not live merchant offers; nature records are not guaranteed sightings.",
+      screens: []
+    },
+    {
+      id: "thirukkural",
+      name: "Thirukkural",
+      summary: "A Tamil-first companion for daily wisdom, thoughtful reading and personal reflection.",
+      description: "All 1,330 Kurals and 133 chapters are available offline, alongside Tamil originals, transliteration, explanations and credited translations. Search, listening, favourites, private reflections, recall practice and a reading journey support a daily habit.",
+      problem: "A rich classical text is harder to build a habit around when reading, translations and personal reflection are disconnected.",
+      solution: "A daily Kural and complete offline library with an intentional reader, multilingual context, voice options and learning tools.",
+      value: "Readers can explore Tamil literature at their own pace, revisit meaningful verses and carry its ideas into daily life.",
+      tags: ["Flutter", "Tamil-first", "Offline reading"],
+      notes: "Device speech uses installed voices. Optional neural voices require a separately configured speech server; the text library itself works offline.",
+      screens: []
+    },
+    {
+      id: "agaram",
+      name: "Agaram",
+      summary: "A playful language-learning foundation with Aru the peacock, dictionaries, lessons and adaptive practice.",
+      description: "Agaram combines situation-based learning paths, a multilingual dictionary, listening and word practice, personal vocabulary, adaptive review and progress tools. An original animated peacock companion brings encouragement to the learning journey.",
+      problem: "Language learning can feel disconnected when vocabulary, useful situations, listening and review live in separate experiences.",
+      solution: "An approachable learning journey with structured starter content, connected dictionaries, speech, recall practice and an expressive companion.",
+      value: "Learners can make small, repeatable progress and revisit what they have learned in a coherent, encouraging space.",
+      tags: ["Flutter", "Language learning", "Rive animation"],
+      notes: "This is a learning foundation, not a complete A1–C1 course or proficiency certification. Optional voice packs have their own licensing and download requirements.",
+      screens: []
+    },
     {
       id: "clipstash",
       name: "ClipStash",
@@ -264,3 +313,14 @@ window.PORTFOLIO_DATA = {
     }
   ]
 };
+
+// Preview assets are versioned with this portfolio, rather than depending on
+// independently deployed app repositories or stale external gallery pages.
+for (const app of window.PORTFOLIO_DATA.mobileApps) {
+  const preview = window.MOBILE_PREVIEWS?.[app.id];
+  if (preview) {
+    app.screens = preview.screens;
+    app.previewUpdated = preview.updated;
+  }
+  app.preview = `mobile-app.html?app=${encodeURIComponent(app.id)}`;
+}

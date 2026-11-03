@@ -18,28 +18,36 @@
     return link;
   };
 
-  const entries = apps.map((app, index) => {
+  const entries = apps.map((app) => {
     const article = document.createElement("article");
-    const title = text("h3", `${index + 1}. ${app.name}`);
+    article.id = app.id;
+    const title = text("h3", app.name);
     const summary = text("p", app.summary);
-    const description = text("p", app.description);
-    const caseStudy = document.createElement("dl");
-    caseStudy.className = "case-grid";
-    caseStudy.setAttribute("aria-label", `${app.name} case study`);
-
-    [["Problem", app.problem], ["Solution", app.solution], ["Value", app.value]].forEach(([label, value]) => {
-      const cell = document.createElement("div");
-      cell.append(text("dt", label), text("dd", value));
-      caseStudy.append(cell);
-    });
-
-    const scope = text("p", `Technical scope: ${app.tags.join(", ")}.`);
-    scope.className = "technical-scope";
+    const screen = app.screens[0];
+    if (screen) {
+      const preview = document.createElement("a");
+      preview.className = "mobile-preview";
+      preview.href = app.preview;
+      preview.setAttribute("aria-label", `View ${app.name} screens`);
+      const image = document.createElement("img");
+      image.src = screen.src;
+      image.alt = `${app.name} — ${screen.label}`;
+      image.width = screen.width;
+      image.height = screen.height;
+      image.loading = "lazy";
+      image.decoding = "async";
+      preview.append(image);
+      article.append(preview);
+    }
     const links = document.createElement("p");
     links.className = "project-links";
-    links.append(externalLink("Live preview", app.preview), document.createTextNode(" · "), externalLink("Source repository", app.source));
+    const gallery = text("a", `View ${app.screens.length} screens`);
+    gallery.href = app.preview;
+    gallery.setAttribute("aria-label", `View ${app.screens.length} ${app.name} screens and case study`);
+    links.append(gallery);
+    if (app.source) links.append(externalLink("Source", app.source));
 
-    article.append(title, summary, description, caseStudy, scope, links);
+    article.append(title, summary, links);
     return article;
   });
 

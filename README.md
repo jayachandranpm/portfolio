@@ -5,7 +5,7 @@ The source for [jayachandranpm.github.io/portfolio](https://jayachandranpm.githu
 This is a framework-free, content-first portfolio organized around three bodies of work:
 
 - featured product and data systems;
-- twelve Flutter mobile application case studies;
+- sixteen Flutter mobile product galleries and case studies;
 - professional experience and contact information.
 
 ## Local preview
@@ -20,8 +20,10 @@ Open `http://127.0.0.1:4177`.
 
 - `index.html` contains the semantic page structure and selected case studies.
 - `projects.js` is the source of truth for mobile application content and repository links.
-- The homepage uses a small, restrained stylesheet with relevant brand marks and intentionally ships without decorative imagery, video, custom fonts, or animation.
-- Projects are presented as concise, text-led case studies with links to their public source repositories.
+- The homepage uses a small, restrained stylesheet with actual app screenshots, relevant brand marks, and no decorative imagery, video, custom fonts, or animation.
+- Mobile products use compact screenshot cards. `mobile-app.html?app=<id>` provides the complete screen gallery and problem / solution / value context without making the homepage excessively long.
+- `assets/mobile/` hosts versioned, uncropped app captures locally; `mobile-previews.js` supplies dimensions and labels. Previews are static app interfaces, not live device emulators. New app entries do not invent source links to unpublished repositories.
+- `tools/sync-mobile-previews.mjs` imports selected real-app evidence from the local projects. It preserves the source image bytes, checks dimensions and records provenance in `assets/mobile/manifest.json`.
 - `demos/` contains the self-contained, credential-free biomimicry email collection.
 
 GitHub Pages deploys the repository through `.github/workflows/static.yml`.
